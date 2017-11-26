@@ -1,0 +1,60 @@
+- name: Azure 体系结构中心
+  href: /azure/architecture
+- name: 应用程序体系结构指南
+  href: index.md
+  items:
+    - name: 体系结构样式
+      href: architecture-styles/index.md
+      items:
+        - name: N 层应用程序
+          href: architecture-styles/n-tier.md
+        - name: Web-队列-辅助角色
+          href: architecture-styles/web-queue-worker.md
+        - name: 微服务
+          href: architecture-styles/microservices.md
+        - name: CQRS
+          href: architecture-styles/cqrs.md
+        - name: 事件驱动的体系结构
+          href: architecture-styles/event-driven.md
+        - name: 大数据
+          href: architecture-styles/big-data.md
+        - name: 大计算
+          href: architecture-styles/big-compute.md
+    - name: 技术选择
+      href: technology-choices/index.md
+      items:
+        - name: 计算选项概述
+          href: technology-choices/compute-overview.md
+        - name: 计算选项的比较
+          href: technology-choices/compute-comparison.md
+        - name: 数据存储概述
+          href: technology-choices/data-store-overview.md
+        - name: 数据存储的比较
+          href: technology-choices/data-store-comparison.md
+    - name: 设计原理
+      href: design-principles/index.md
+      items:
+        - name: 自我修复设计
+          href: design-principles/self-healing.md
+        - name: 实现全面冗余
+          href: design-principles/redundancy.md
+        - name: 尽量减少协调
+          href: design-principles/minimize-coordination.md
+        - name: 横向扩展设计
+          href: design-principles/scale-out.md
+        - name: 通过分区解决限制
+          href: design-principles/partition.md
+        - name: 运营设计
+          href: design-principles/design-for-operations.md
+        - name: 使用托管服务
+          href: design-principles/managed-services.md
+        - name: 使用最佳的数据存储完成作业
+          href: design-principles/use-the-best-data-store.md
+        - name: 演变设计
+          href: design-principles/design-for-evolution.md
+        - name: 根据业务需求构建
+          href: design-principles/build-for-business.md
+    - name: 软件质量的要素
+      href: pillars.md
+    - name: 设计模式
+      href: ../patterns/index.md?toc=/azure/architecture/guide/toc.json

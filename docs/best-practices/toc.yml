@@ -1,0 +1,26 @@
+- name: Azure 体系结构中心
+  href: /azure/architecture
+- name: 最佳实践
+  items:
+    - name: API 设计
+      href: api-design.md
+    - name: API 实现
+      href: api-implementation.md
+    - name: 自动缩放
+      href: auto-scaling.md
+    - name: 后台作业
+      href: background-jobs.md
+    - name: 缓存
+      href: caching.md
+    - name: 内容传送网络
+      href: cdn.md
+    - name: 数据分区
+      href: data-partitioning.md
+    - name: 监视和诊断
+      href: monitoring.md
+    - name: 命名约定
+      href: naming-conventions.md
+    - name: 特定服务的重试指南
+      href: retry-service-specific.md
+    - name: 暂时性故障处理
+      href: transient-faults.md
