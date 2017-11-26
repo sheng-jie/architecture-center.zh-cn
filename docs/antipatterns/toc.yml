@@ -1,0 +1,21 @@
+- name: Azure 体系结构中心
+  href: /azure/architecture
+- name: 性能对立模式
+  href: index.md
+  items:
+    - name: 繁忙数据库
+      href: busy-database/index.md
+    - name: 繁忙前端
+      href: busy-front-end/index.md
+    - name: 琐碎 I/O
+      href: chatty-io/index.md
+    - name: 超量提取
+      href: extraneous-fetching/index.md
+    - name: 不当实例化
+      href: improper-instantiation/index.md
+    - name: 整体持久性
+      href: monolithic-persistence/index.md
+    - name: 无缓存
+      href: no-caching/index.md
+    - name: 同步 I/O
+      href: synchronous-io/index.md

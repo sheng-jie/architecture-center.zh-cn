@@ -1,0 +1,86 @@
+- name: Azure 体系结构中心
+  href: /azure/architecture
+- name: 云设计模式
+  href: index.md
+- name: Categories
+  items:
+    - name: 可用性
+      href: category/availability.md
+    - name: 数据管理
+      href: category/data-management.md
+    - name: 设计和实施
+      href: category/design-implementation.md
+    - name: 消息传递
+      href: category/messaging.md
+    - name: 监视和管理
+      href: category/management-monitoring.md
+    - name: 性能和可伸缩性
+      href: category/performance-scalability.md
+    - name: 复原能力
+      href: category/resiliency.md
+    - name: 安全
+      href: category/security.md
+- name: 代表
+  href: ambassador.md
+- name: 防损层
+  href: anti-corruption-layer.md
+- name: 用于前端的后端
+  href: backends-for-frontends.md
+- name: 隔层
+  href: bulkhead.md
+- name: 缓存端
+  href: cache-aside.md
+- name: 断路器
+  href: circuit-breaker.md
+- name: 命令和查询责任分离 (CQRS)
+  href: cqrs.md
+- name: 补偿事务
+  href: compensating-transaction.md
+- name: 让使用者竞争
+  href: competing-consumers.md
+- name: 计算资源合并
+  href: compute-resource-consolidation.md
+- name: 事件溯源
+  href: event-sourcing.md
+- name: 外部配置存储
+  href: external-configuration-store.md
+- name: 联合标识
+  href: federated-identity.md
+- name: 守护程序
+  href: gatekeeper.md
+- name: 网关聚合
+  href: gateway-aggregation.md
+- name: 网关卸载
+  href: gateway-offloading.md
+- name: 网关路由
+  href: gateway-routing.md
+- name: 运行状况终结点监视
+  href: health-endpoint-monitoring.md
+- name: 索引表
+  href: index-table.md
+- name: 领导选拔
+  href: leader-election.md
+- name: 具体化视图
+  href: materialized-view.md
+- name: 管道和筛选器
+  href: pipes-and-filters.md
+- name: 优先级队列
+  href: priority-queue.md
+- name: 基于队列的负载调控
+  href: queue-based-load-leveling.md
+- name: 重试
+  href: retry.md
+- name: 计划程序代理监督程序
+  href: scheduler-agent-supervisor.md
+- name: 分片
+  href: sharding.md
+- name: Sidecar
+  href: sidecar.md
+- name: 静态内容托管
+  href: static-content-hosting.md
+- name: Strangler
+  href: strangler.md
+- name: 限制
+  href: throttling.md
+- name: 附属密钥
+  href: valet-key.md

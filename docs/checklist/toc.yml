@@ -1,0 +1,12 @@
+- name: Azure 体系结构中心
+  href: /azure/architecture
+- name: 设计评审查检表
+  items:
+    - name: 可用性
+      href: availability.md
+    - name: DevOps
+      href: dev-ops.md
+    - name: 复原能力
+      href: resiliency.md
+    - name: 可伸缩性
+      href: scalability.md

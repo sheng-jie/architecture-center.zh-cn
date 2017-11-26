@@ -1,0 +1,47 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure
+  items:
+    - name: 体系结构
+      tocHref: /azure/architecture/
+      topicHref: /azure/architecture
+      items:
+        - name: 最佳实践
+          tocHref: /azure/architecture/best-practices
+          topicHref: /azure/architecture/best-practices
+        - name: 面向 AWS 专业人员的 Azure
+          tocHref: /azure/architecture/aws-professional
+          topicHref: /azure/architecture/aws-professional
+        - name: 复原设计
+          tocHref: /azure/architecture/resiliency
+          topicHref: /azure/architecture/resiliency
+        - name: 设计评审查检表
+          tocHref: /azure/architecture/checklist
+          topicHref: /azure/architecture/checklist
+        - name: Elasticsearch
+          tocHref: /azure/architecture/elasticsearch
+          topicHref: /azure/architecture/elasticsearch
+        - name: 管理多租户应用程序中的标识
+          tocHref: /azure/architecture/multitenant-identity
+        - name: 参考体系结构
+          tocHref: /azure/architecture/reference-architectures
+          topicHref: /azure/architecture/reference-architectures
+        - name: 云设计模式
+          tocHref: /azure/architecture/patterns
+          topicHref: /azure/architecture/patterns
+        - name: 资源
+          tocHref: /azure/architecture/resources
+          topicHref: /azure/architecture/resources
+        - name: 指南
+          tocHref: /azure/architecture/guide
+          topicHref: /azure/architecture/guide
+        - name: 性能对立模式
+          tocHref: /azure/architecture/antipatterns
+          topicHref: /azure/architecture/
+        - name: 合规性
+          tocHref: /azure/architecture/compliance
+          topicHref: /azure/architecture/compliance
+          items:
+            - name: PCI-DSS
+              tocHref: /azure/architecture/compliance/pci-dss
+              topicHref: /azure/architecture/compliance/pci-dss
