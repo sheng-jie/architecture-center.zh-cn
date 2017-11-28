@@ -5,11 +5,11 @@ keywords: "AWS 专家, Azure 比较, AWS 比较, azure 与 aws 之间的差别, 
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 251489e7a6d78d82f3ed70ca2df6c88f8759f9a5
-ms.sourcegitcommit: fbcf9a1c25db13b2627a8a58bbc985cd01ea668d
+ms.openlocfilehash: 75fda82ee5ca7ca3665501fe428d1d01995e7422
+ms.sourcegitcommit: c53adf50d3a787956fc4ebc951b163a10eeb5d20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-for-aws-professionals"></a>面向 AWS 专业人员的 Azure
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 11/16/2017
 * 如何在 Azure 中构建可用的解决方案。
 * 如何 Azure 服务与 AWS 服务之间有哪些重要差别。
 
- 长久以来，Azure 和 AWS 各自建立了自身的功能，因此，两者的实施方式和设计具有重要差别。
+长久以来，Azure 和 AWS 各自建立了自身的功能，因此，两者的实施方式和设计具有重要差别。
 
 ## <a name="overview"></a>概述
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 11/16/2017
 
 在 Azure 中，术语“资源”的用法与在 AWS 中一样，表示可在平台中创建或配置的任何计算实例、存储对象、网络设备或其他实体。
 
-可使用以下两种模型之一部署和管理 Azure 资源：Azure 资源管理器模型，或早期的 Azure [经典部署模型](/azure/azure-resource-manager/resource-manager-deployment-model)。
+可使用以下两种模型之一部署和管理 Azure 资源：[Azure 资源管理器模型](/azure/azure-resource-manager/resource-group-overview)或早期的 Azure [经典部署模型](/azure/azure-resource-manager/resource-manager-deployment-model)。
 任何新资源都是使用资源管理器模型创建的。
 
 ### <a name="resource-groups"></a>资源组
@@ -166,7 +166,7 @@ Azure [异地冗余存储](https://azure.microsoft.com/documentation/articles/st
 
 与 AWS 的按秒计费不同，Azure 按需 VM 是按分钟计费的。
 
-Azure 不提供类似于 EC2 Spot 实例、保留实例或专用主机的功能。
+Azure 不提供与 EC2 Spot 实例或专用主机相同的功能。
 
 #### <a name="ebs-and-azure-storage-for-vm-disks"></a>EBS 与用作 VM 磁盘的 Azure 存储
 
@@ -232,16 +232,18 @@ Azure 提供多个计算服务，在 AWS 中没有直接与此类似的服务：
 在 Azure 存储中，使用已绑定到订阅的[存储帐户](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/)可以创建和管理以下存储服务：
 
 -   [Blob 存储](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) - 存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 可以设置 Blob 存储进行私人访问，或者在 Internet 上公开共享内容。 Blob 存储的用途与 AWS S3 和 EBS 相同。
-
 -   [表存储](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-table-storage/) - 存储结构化数据集。 表存储是一个 NoSQL“键-属性”数据存储，用于实现快速开发以及快速访问大量数据。 类似于 AWS 的 SimpleDB 和 DynamoDB 服务。
 
 -   [队列存储](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - 为工作流处理和云服务组件之间的通信提供消息传送。
 
 -   [文件存储](https://azure.microsoft.com/documentation/articles/storage-java-how-to-use-file-storage/) - 使用标准服务器消息块 (SMB) 协议为传统应用程序提供共享存储。 文件存储的使用方式与 AWS 平台中的 EFS 类似。
 
-#### <a name="glacier-and-azure-storage"></a>Glacier 与 Azure 存储
 
-Azure 存储与 AWS 的长期存档存储 Glacier 之间没有直接的类似之处。 针对不经常访问且长期留存的数据，Azure 提供 [Azure 冷 Blob 存储层](https://azure.microsoft.com/documentation/articles/storage-blob-storage-tiers/)。
+
+
+ 
+#### <a name="glacier-and-azure-storage"></a>Glacier 与 Azure 存储 
+[Azure 存储标准存档](/azure/storage/blobs/storage-blob-storage-tiers)提供与 AWS 的长期存档 Glacier 存储直接相同的功能。 针对不经常访问且长期留存的数据，Azure 提供 [Azure 冷 Blob 存储层](/azure/storage/blobs/storage-blob-storage-tiers)。
 与标准 Blob 存储相比，冷存储更经济节省但性能更低，类似于 AWS 的 S3 - Infrequent Access。
 
 #### <a name="see-also"></a>另请参阅
@@ -284,13 +286,17 @@ Azure 通过其 [ExpressRoute](https://azure.microsoft.com/documentation/service
 
 ### <a name="database-services"></a>数据库服务
 
-#### <a name="rds-and-azure-sql-database-service"></a>RDS 和 Azure SQL 数据库服务
+#### <a name="rds-and-azure-relational-database-services"></a>RDS 和 Azure 关系数据库服务
 
-对于云中的关系型数据库产品/服务，AWS 和 Azure 采用不同的方法。 AWS 的关系型数据库服务 (RDS) 支持使用多种不同的数据库引擎（例如 Oracle 和 MySQL）创建实例。
+Azure 提供多个与 AWS 的关系数据库服务 (RDS) 功能相同的不同关系数据库服务。
 
-[SQL 数据库](https://azure.microsoft.com/documentation/articles/sql-database-technical-overview/)是 Azure 的云数据库服务。 它通过托管服务提供高度可缩放的关系型数据存储。 SQL 数据库使用自身的引擎，不支持创建其他数据库类型。 可以使用 Azure VM 实例部署其他数据库引擎，例如 [SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)、[Oracle](https://azure.microsoft.com/campaigns/oracle/) 或 [MySQL](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-classic-mysql-2008r2/)。
+-   [SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)
+-   [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview)
+-   [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview)
 
-AWS RDS 的费用根据实例使用的硬件资源确定，例如 CPU、RAM、存储和网络带宽。 在 SQL 数据库服务中，费用取决于数据库大小、并发连接数和吞吐量级别。
+可以使用 Azure VM 实例部署其他数据库引擎，例如 [SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)、[Oracle](https://azure.microsoft.com/campaigns/oracle/) 和 [MySQL](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-classic-mysql-2008r2/)。
+
+AWS RDS 的费用根据实例使用的硬件资源确定，例如 CPU、RAM、存储和网络带宽。 在 Azure 数据库服务中，费用取决于数据库大小、并发连接数和吞吐量级别。
 
 #### <a name="see-also"></a>另请参阅
 
