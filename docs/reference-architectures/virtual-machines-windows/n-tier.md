@@ -6,11 +6,11 @@ ms.date: 11/22/2016
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: f3c375f8fccc633d9525a8afbd11c13037265f4a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: e25d10d661ac4759f209bd27384303dee2ee454e
+ms.sourcegitcommit: 583e54a1047daa708a9b812caafb646af4d7607b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-windows-vms-for-an-n-tier-application"></a>运行用于 N 层应用程序的 Windows VM
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/14/2017
 
 有许多方法可用来实现 N 层体系结构。 关系图中显示了一个典型的 3 层 Web 应用程序。 此体系结构基于[运行负载均衡的 VM 以提高可伸缩性和可用性][multi-vm]中所述的内容。 Web 层和业务层都使用负载均衡的 VM。
 
-* **可用性集。** 为每个层创建一个[可用性集][azure-availability-sets]，并且在每个层中至少预配两个 VM。 这样，VM 便可以满足 VM 的更高[服务级别协议 (SLA)][vm-sla]。
+* **可用性集。** 为每个层创建一个[可用性集][azure-availability-sets]，并且在每个层中至少预配两个 VM。 这样，VM 便可以满足 VM 的更高[服务级别协议 (SLA)][vm-sla]。 可在可用性集中部署单个 VM，但单个 VM 不具备 SLA 保证的资格，除非单个 VM 针对所有 OS 和数据磁盘使用 Azure 高级存储。  
 * **子网。** 为每个层创建一个单独的子网。 使用 [CIDR] 表示法指定地址范围和子网掩码。 
 * **负载均衡器。** 使用[面向 Internet 的负载均衡器][load-balancer-external]将传入的 Internet 流量分布到 Web 层，使用[内部负载均衡器][load-balancer-internal]将来自 Web 层的网络流量分布到业务层。
 * **Jumpbox。** 也称为[守护主机]。 网络上的一个安全 VM，管理员使用它来连接到其他 VM。 Jumpbox 中的某个 NSG 只允许来自安全列表中的公共 IP 地址的远程流量。 该 NSG 应允许远程桌面 (RDP) 流量。
@@ -128,33 +128,50 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[GitHub][github-folder] 上提供了此体系结构的部署。 此体系结构是分三个阶段部署的。 若要部署该体系结构，请执行以下步骤： 
+[GitHub][github-folder] 中提供了此参考体系结构的部署。 
 
-1. 单击下面的按钮以开始第一阶段的部署：<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fvirtual-machines%2Fn-tier-windows%2FvirtualNetwork.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-2. 当链接在 Azure 门户中打开后，输入以下值： 
-   * 参数文件中已定义**资源组**名称，因此请选择“新建”，并在文本框中输入 `ra-ntier-sql-network-rg`。
-   * 从“位置”下拉框中选择区域。
-   * 不要编辑“模板根 URI”或“参数根 URI”文本框。
-   * 查看条款和条件，并单击“我同意上述条款和条件”复选框。
-   * 单击“购买”按钮。
-3. 检查 Azure 门户通知，以查找指明第一阶段的部署已完成的消息。
-4. 单击下面的按钮以开始第二阶段的部署：<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fvirtual-machines%2Fn-tier-windows%2Fworkload.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-5. 当链接在 Azure 门户中打开后，输入以下值： 
-   * 参数文件中已定义**资源组**名称，因此请选择“新建”，并在文本框中输入 `ra-ntier-sql-workload-rg`。
-   * 从“位置”下拉框中选择区域。
-   * 不要编辑“模板根 URI”或“参数根 URI”文本框。
-   * 查看条款和条件，并单击“我同意上述条款和条件”复选框。
-   * 单击“购买”按钮。
-6. 检查 Azure 门户通知，以查找指明第二阶段的部署已完成的消息。
-7. 单击下面的按钮以开始第三阶段的部署：<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fvirtual-machines%2Fn-tier-windows%2Fsecurity.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-8. 当链接在 Azure 门户中打开后，输入以下值： 
-   * 参数文件中已定义了**资源组**名称，因此请选择“使用现有的”，并在文本框中输入 `ra-ntier-sql-network-rg`。
-   * 从“位置”下拉框中选择区域。
-   * 不要编辑“模板根 URI”或“参数根 URI”文本框。
-   * 查看条款和条件，并单击“我同意上述条款和条件”复选框。
-   * 单击“购买”按钮。
-9. 检查 Azure 门户通知，以查找指明第三阶段的部署已完成的消息。
-10. 参数文件包括硬编码的管理员用户名和密码，强烈建议立即在所有 VM 上更改它们。 在 Azure 门户中单击每个 VM，然后，在“支持 + 故障排除”边栏选项卡中单击“重置密码”。 在“模式”下拉框中选择“重置密码”，并选择新**用户名**和**密码**。 单击“更新”按钮保存新用户名和密码。 
+### <a name="prerequisites"></a>先决条件
+
+在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
+
+1. 为 [AzureCAT 参考体系结构][ref-arch-repo] GitHub 存储库克隆、下载 zip 文件或创建其分支。
+
+2. 确保在计算机上安装了 Azure CLI 2.0。 若要安装 CLI，请按照[安装 Azure CLI 2.0][azure-cli-2] 中的说明执行操作。
+
+3. 安装 [Azure 构建基块][azbb] npm 包。
+
+  ```bash
+  npm install -g @mspnp/azure-building-blocks
+  ```
+
+4. 从命令提示符、bash 提示符或 PowerShell 提示符下通过使用以下命令之一，登录到 Azure 帐户，然后按照提示进行操作。
+
+  ```bash
+  az login
+  ```
+
+### <a name="deploy-the-solution-using-azbb"></a>使用 azbb 部署解决方案
+
+若要为 N 层应用程序参考体系结构部署 Windows VM，请按照以下步骤操作：
+
+1. 导航到在以上前决条件的第 1 步中克隆的存储库的 `virtual-machines\n-tier-windows` 文件夹。
+
+2. 参数文件为部署中的每个 VM 指定默认管理员用户名称和密码。 必须在部署参考体系结构前，对其进行更改。 打开 `n-tier-windows.json` 文件，然后将每个“adminUsername”和“adminPassword”字段替换为新设置。
+  
+  > [!NOTE]
+  > 此部署期间，多个脚本在一些 VirtualMachine 对象的 VirtualMachineExtension 对象和 extensions 设置中运行。 这些脚本中的一些需要你刚更改的管理员用户名和密码。 建议查看这些脚本，确保指定正确的凭据。 如果未指定正确的凭据，部署可能失败。
+  > 
+  > 
+
+保存文件。
+
+3. 使用 azbb 命令行工具部署参考体系结构，如下所示。
+
+  ```bash
+  azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-windows.json --deploy
+  ```
+
+若要详细了解如何使用 Azure 构建基块部署此示例参考体系结构，请访问 [GitHub 存储库][git]。
 
 
 <!-- links -->
@@ -162,14 +179,16 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 [multi-dc]: multi-region-application.md
 [multi-vm]: multi-vm.md
 [n-tier]: n-tier.md
-
+[azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 [azure-administration]: /azure/automation/automation-intro
 [azure-availability-sets]: /azure/virtual-machines/virtual-machines-windows-manage-availability#configure-each-application-tier-into-separate-availability-sets
 [azure-cli]: /azure/virtual-machines-command-line-tools
+[azure-cli-2]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-key-vault]: https://azure.microsoft.com/services/key-vault
 [守护主机]: https://en.wikipedia.org/wiki/Bastion_host
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
 [chef]: https://www.chef.io/solutions/azure/
+[git]: https://github.com/mspnp/template-building-blocks
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/n-tier-windows
 [lb-external-create]: /azure/load-balancer/load-balancer-get-started-internet-portal
 [lb-internal-create]: /azure/load-balancer/load-balancer-get-started-ilb-arm-portal
@@ -181,6 +200,7 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 [private-ip-space]: https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces
 [公共 IP 地址]: /azure/virtual-network/virtual-network-ip-addresses-overview-arm
 [puppet]: https://puppetlabs.com/blog/managing-azure-virtual-machines-puppet
+[ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [sql-alwayson]: https://msdn.microsoft.com/library/hh510230.aspx
 [sql-alwayson-force-failover]: https://msdn.microsoft.com/library/ff877957.aspx
 [sql-alwayson-getting-started]: https://msdn.microsoft.com/library/gg509118.aspx

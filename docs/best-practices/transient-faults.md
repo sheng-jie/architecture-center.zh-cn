@@ -4,11 +4,11 @@ description: "有关暂时性故障重试处理的指南。"
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 05558abad8938788d09caa5df8b1f088ce3b5bdc
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 9562e3447b2219fe2f3df96cfca24b845efa39b0
+ms.sourcegitcommit: c53adf50d3a787956fc4ebc951b163a10eeb5d20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="transient-fault-handling"></a>暂时性故障处理
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 11/14/2017
 * **其他注意事项**
   
   * 确定重试次数的值和策略的重试间隔时，请考虑服务或资源的操作是否是长时间运行的或多步骤操作的一部分。 当某个操作步骤失败时，补偿其他所有操作步骤可能会很困难或代价非凡。 在此情况下，可以接受很长的间隔及大量的重试次数，前提是不会因为保留或锁定稀缺资源而阻止其他操作。
-  * 考虑重试相同的操作是否会导致数据不一致。 如果多步骤过程中的某些部分是重复的，并且操作不是幂等的，则可能会导致不一致情况。 例如，递增值的操作如果重复，则会生成无效的结果。 重复执行将消息发送到队列的操作如果无法检测到重复消息，则可能会对消息使用者造成不一致情况。 要避免此问题，请确保将每个步骤设计成幂等操作。 有关幂等性的详细信息，请参阅[幂等模式](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/)。
+  * 考虑重试相同的操作是否会导致数据不一致。 如果多步骤过程中的某些部分是重复的，并且操作不是幂等的，则可能会导致不一致情况。 例如，递增值的操作如果重复，则会生成无效的结果。 重复执行将消息发送到队列的操作如果无法检测到重复消息，则可能会对消息使用者造成不一致情况。 要避免此问题，请确保将每个步骤设计成幂等操作。 有关幂等性的详细信息，请参阅[幂等模式][idempotency-patterns]。
   * 考虑重试操作的范围。 例如，可以更轻松地在包含数个操作的级别实施重试代码，如果其中一个操作失败，则重试所有操作。 但是，这可能会导致幂等性问题或不必要的回滚操作。
   * 如果选择的重试范围包含多个操作，在确定重试间隔时、监视花费时间时，以及因失败而引发警报之前，请考虑所有操作的延迟总和。
   * 考虑重试策略如何影响共享应用程序中的邻居或其他租户，以及何时使用共享资源与服务。 积极重试策略会导致其他用户以及共享资源与服务的应用程序发生越来越多的暂时性故障。 同样地，应用程序可能会受到资源与服务的其他用户所实施的重试策略的影响。 对于任务关键型应用程序，可以决定使用非共享的高级服务。 这样就可以更好地控制这些资源与服务的负载与后续限制，从而找到提高成本的理由。
@@ -103,5 +103,7 @@ ms.lasthandoff: 11/14/2017
 * [暂时性故障处理应用程序块](http://msdn.microsoft.com/library/hh680934.aspx)
 * [断路器模式](http://msdn.microsoft.com/library/dn589784.aspx)
 * [补偿事务模式](http://msdn.microsoft.com/library/dn589804.aspx)
-* [幂等模式](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/)
+* [幂等模式][idempotency-patterns]
+
+[idempotency-patterns]: http://blog.jonathanoliver.com/idempotency-patterns/
 
