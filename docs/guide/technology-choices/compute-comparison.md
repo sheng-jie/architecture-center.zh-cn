@@ -3,11 +3,11 @@ title: "选择 Azure 计算选项的条件"
 description: "跨多个轴比较 Azure 计算服务。"
 author: MikeWasson
 layout: LandingPage
-ms.openlocfilehash: 640793b56c1713f63456bab75ab4b9289d22a53c
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 36b57d1fb674b5a1452a0e8208de836963b2b01b
+ms.sourcegitcommit: c53adf50d3a787956fc4ebc951b163a10eeb5d20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="criteria-for-choosing-an-azure-compute-option"></a>选择 Azure 计算选项的条件
 
@@ -17,14 +17,14 @@ ms.lasthandoff: 11/14/2017
 
 | 条件 | 虚拟机 | 应用服务 | Service Fabric | Azure Functions | Azure 容器服务 | 云服务 | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
-| 应用程序组合 | 不可知 | 应用程序 | 服务，来宾可执行文件 | 函数 | 容器 | 角色 | 计划的作业  |
-| 密度 | 不可知 | 通过应用计划，每个实例多个应用 | 每个 VM 多个服务 | 没有专用实例 <a href="#note1"><sup>1</sup></a> | 每个 VM 多个容器 | 每个 VM 一个角色实例 | 每个 VM 多个应用 |
-| 最小节点数 | 1 <a href="#note2"><sup>2</sup></a>  | 1 | 5 <a href="#note3"><sup>3</sup></a> | 没有专用节点 <a href="#note1"><sup>1</sup></a> | 3 | #N/A | 1 <a href="#note4"><sup>4</sup></a> |
+| 应用程序组合 | 不可知 | 应用程序 | 服务、来宾可执行文件、容器 | 函数 | 容器 | 角色 | 计划的作业  |
+| 密度 | 不可知 | 通过应用计划，每个实例多个应用 | 每个 VM 多个服务 | 无专用实例 <a href="#note1"><sup>1</sup></a> | 每个 VM 多个容器 | 每个 VM 一个角色实例 | 每个 VM 多个应用 |
+| 最小节点数 | 1 <a href="#note2"><sup>2</sup></a>  | 1 | 5 <a href="#note3"><sup>3</sup></a> | 无专用节点 <a href="#note1"><sup>1</sup></a> | 3 | #N/A | 1 <a href="#note4"><sup>4</sup></a> |
 | 状态管理 | 无状态或有状态 | 无状态 | 无状态或有状态 | 无状态 | 无状态或有状态 | 无状态 | 无状态 |
-| Web 托管 | 不可知 | 内置 | 自托管，容器中的 IIS | 不适用 | 不可知 | 内置 (IIS) | 否 |
-| 操作系统 | Windows、Linux | Windows、Linux（预览版）  | Windows、Linux（预览版） | 不适用 | Windows、Linux | Windows | Windows、Linux |
-| 是否可部署到专用 VNet？ | 支持 | 受支持 <a href="#note5"><sup>5</sup></a> | 支持 | 不支持 | 支持 | 受支持 <a href="#note6"><sup>6</sup></a> | 支持 |
-| 混合连接 | 支持 | 受支持 <a href="#note1"><sup>7</sup></a>  | 支持 | 不支持 | 支持 | 受支持 <a href="#note8"><sup>8</sup></a> | 支持 |
+| Web 托管 | 不可知 | 内置 | 不可知 | 不适用 | 不可知 | 内置 (IIS) | 否 |
+| 操作系统 | Windows、Linux | Windows、Linux  | Windows、Linux | 不适用 | Windows（预览版）、Linux | Windows | Windows、Linux |
+| 是否可部署到专用 VNet？ | 支持 | 支持 <a href="#note5"><sup>5</sup></a> | 支持 | 不支持 | 支持 | 支持 <a href="#note6"><sup>6</sup></a> | 支持 |
+| 混合连接 | 支持 | 支持 <a href="#note1"><sup>7</sup></a>  | 支持 | 不支持 | 支持 | 支持 <a href="#note8"><sup>8</sup></a> | 支持 |
 
 说明
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/14/2017
 
 | 条件 | 虚拟机 | 应用服务 | Service Fabric | Azure Functions | Azure 容器服务 | 云服务 | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
-| 本地调试 | 不可知 | IIS Express，其他<a href="#note1b"><sup>1</sup></a> | 本地节点群集 | Azure Functions CLI | 本地容器运行时 | 本地仿真器 | 不支持 |
+| 本地调试 | 不可知 | IIS Express、其他 <a href="#note1b"><sup>1</sup></a> | 本地节点群集 | Azure Functions CLI | 本地容器运行时 | 本地仿真器 | 不支持 |
 | 编程模型 | 不可知 | Web 应用程序、后台任务的 Web 作业 | 来宾可执行文件、服务模型、参与者模型、容器 | 具有触发器的 Functions | 不可知 | Web 角色，辅助角色 | 命令行应用程序 |
 | 资源管理器 | 支持 | 支持 | 支持 | 支持 | 支持 | 受限制 <a href="#note2b"><sup>2</sup></a> | 支持 |  
 | 应用程序更新 | 没有内置支持 | 部署槽 | 滚动升级（每个服务） | 没有内置支持 | 取决于业务流程协调程序。 大多数支持滚动更新 | VIP 交换或滚动更新 | 不适用 |
