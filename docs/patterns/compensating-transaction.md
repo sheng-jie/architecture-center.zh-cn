@@ -6,11 +6,11 @@ author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories: resiliency
-ms.openlocfilehash: f8337717c4afd6b558f0da8e1ded3a8071340db7
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: a822de990d6ce933024207073b110e98f8da40bf
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compensating-transaction-pattern"></a>补偿事务模式
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/14/2017
 
 > 这种方法类似于 [Clemens Vasters 博客](http://vasters.com/clemensv/2012/09/01/Sagas.aspx)中所述的 Sagas 策略。
 
-补偿事务也是最终一致操作，并且也可能会失败。 系统应能够在失败时恢复补偿事务，然后继续。 可能需要重复已失败的步骤，因此补偿事务中的步骤应定义为幂等命令。 有关详细信息，请参阅 Jonathan Oliver 博客中的 [Idempotency Patterns](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/)（幂等模式）。
+补偿事务也是最终一致操作，并且也可能会失败。 系统应能够在失败时恢复补偿事务，然后继续。 可能需要重复已失败的步骤，因此补偿事务中的步骤应定义为幂等命令。 有关详细信息，请参阅 Jonathan Oliver 博客中的 [Idempotency Patterns](http://blog.jonathanoliver.com/idempotency-patterns/)（幂等模式）。
 
 某些情况下，除非手动干预，否则可能无法恢复已失败的步骤。 这类情况下，系统应会发出警报，并会提供尽可能多的有关失败原因的信息。
 

@@ -6,11 +6,11 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: web-api
 pnp.series.next: adfs
-ms.openlocfilehash: ed0def244f3229bbd3fdd0976574d13a345f9aee
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: cffc15686ef9d77fafb40982efdbcd4a79f5aaf2
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="cache-access-tokens"></a>缓存访问令牌
 
@@ -135,7 +135,7 @@ TokenCache 发送其他两个事件：
 * 对于并发，以最后一次写入为准。 这是没问题的，因为令牌是为每个“用户 + 客户端”组合独立存储的，所以只有当同一个用户有两个并发登录会话时才会发生冲突。
 * 对于读取，我们会针对每个请求加载缓存。 请求的生存期较短。 如果在请求生存期内修改缓存，下一个请求会选取新值。
 
-[下一篇][client-assertion]
+[**下一篇**][client-assertion]
 
 <!-- links -->
 [ADAL]: https://msdn.microsoft.com/library/azure/jj573266.aspx

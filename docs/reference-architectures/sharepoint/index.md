@@ -3,11 +3,11 @@ title: "在 Azure 中运行高可用性 SharePoint Server 2016 场"
 description: "有关在 Azure 中设置高可用性 SharePoint Server 2016 场的成熟做法。"
 author: njray
 ms.date: 08/01/2017
-ms.openlocfilehash: a3d47eea15f1e7e8cecf2bf1be55d8c3a9bb9bdc
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 0c0e9a7b2ae12a2d12919548f91304e6cbd2d8a6
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>在 Azure 中运行高可用性 SharePoint Server 2016 场
 
@@ -15,7 +15,7 @@ ms.lasthandoff: 11/14/2017
 
 ![](./images/sharepoint-ha.png)
 
-下载此体系结构的 [Visio 文件][visio-download]。
+*下载此体系结构的 [Visio 文件][visio-download]。*
 
 ## <a name="architecture"></a>体系结构
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="recommendations"></a>建议
 
-你的要求可能与此处描述的体系结构不同。 请使用以下建议作为入手点。
+你的要求可能不同于此处描述的体系结构。 请使用以下建议作为入手点。
 
 ### <a name="resource-group-recommendations"></a>有关资源组的建议
 
@@ -169,7 +169,7 @@ SharePoint Server 2016 无法使用 Azure SQL 数据库，因此，此体系结�
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[Github][github] 中提供了此参考体系结构的部署脚本。 
+[GitHub][github] 中提供了此参考体系结构的部署脚本。 
 
 可以增量方式部署此体系结构，或一次性部署整个体系结构。 对于首次部署，我们建议采用增量方式，以了解每项部署的作用。 使用以下 *mode* 参数之一指定增量部署。
 
