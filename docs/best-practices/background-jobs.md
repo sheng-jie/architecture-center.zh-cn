@@ -4,11 +4,11 @@ description: "有关独立于用户界面运行的后台任务的指南。"
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 62266b822a238ee53b62e74e91d753dc5da308b4
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: d8c1d4dfe12208b72fd6991def805f90a830b5f0
+ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/29/2017
 ---
 # <a name="background-jobs"></a>后台作业
 [!INCLUDE [header](../_includes/header.md)]
@@ -129,14 +129,14 @@ Azure Web 作业具有以下特征：
 在确定是否要在 Azure 虚拟机中部署后台任务时，请注意以下几点：
 
 * 在单独的 Azure 虚拟机中托管后台任务可提供弹性，并可通过启动、执行、计划和资源分配来实现精确控制。 但是，如果只是出于运行后台任务的目的而必须部署虚拟机，则会增加运行时成本。
-* 没有任何工具可以监视 Azure 门户中的任务，并且对于失败的任务没有任何自动重新启动功能 -- 不过，用户可以监视虚拟机的基本状态，并使用[Azure 资源管理器 Cmdlet](https://msdn.microsoft.com/en-us/library/mt125356.aspx) 来管理它。 但是，计算节点中没有任何工具可用于控制进程和线程。 通常，使用虚拟机时，需要付出额外的工作量才能实施一个机制用于从任务的检测中收集数据，以及从虚拟机中的操作系统收集数据。 一个适当的解决方案是使用 [System Center Management Pack for Azure](https://www.microsoft.com/en-us/download/details.aspx?id=50013)（用于 Azure 的 System Center 管理包）。
+* 没有任何工具可以监视 Azure 门户中的任务，并且对于失败的任务没有任何自动重新启动功能 -- 不过，用户可以监视虚拟机的基本状态，并使用[Azure 资源管理器 Cmdlet](https://msdn.microsoft.com/library/mt125356.aspx) 来管理它。 但是，计算节点中没有任何工具可用于控制进程和线程。 通常，使用虚拟机时，需要付出额外的工作量才能实施一个机制用于从任务的检测中收集数据，以及从虚拟机中的操作系统收集数据。 一个适当的解决方案是使用 [System Center Management Pack for Azure](https://www.microsoft.com/download/details.aspx?id=50013)（用于 Azure 的 System Center 管理包）。
 * 可以考虑创建通过 HTTP 终结点公开的监视探测。 这些探测器的代码可以执行运行状况检查、收集操作信息和统计信息，或者整理错误信息，并将其返回给管理应用程序。 有关详细信息，请参阅[运行状况终结点监视模式](http://msdn.microsoft.com/library/dn589789.aspx)。
 
 #### <a name="more-information"></a>详细信息
 * Azure 上的[虚拟机](https://azure.microsoft.com/services/virtual-machines/)
 * [Azure 虚拟机常见问题解答](/azure/virtual-machines/virtual-machines-linux-classic-faq?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-### <a name="azure-batch"></a>Azure Batch 
+### <a name="azure-batch"></a>Azure 批处理 
 
 如果需要在数十、数百或数千个 VM 上运行大型、并行的高性能计算 (HPC) 工作负载，请考虑使用 [Azure Batch](/azure/batch/)。  
 
@@ -180,7 +180,7 @@ Azure Batch 作业在节点池上运行 (VM)。 一种方法是仅在需要时�
 
 可通过多种方式在云服务角色中实施后台任务：
 
-* 在角色中创建 **RoleEntryPoint** 类的实现，并使用它的方法来执行后台任务。 任务在 WaIISHost.exe 的上下文中运行。 它们可以使用 **CloudConfigurationManager** 类的 **GetSetting** 方法来加载配置设置。 有关详细信息，请参阅[生命周期（云服务）](#lifecycle-cloud-services)。
+* 在角色中创建 **RoleEntryPoint** 类的实现，并使用它的方法来执行后台任务。 任务在 WaIISHost.exe 的上下文中运行。 它们可以使用 **CloudConfigurationManager** 类的 **GetSetting** 方法来加载配置设置。 有关详细信息，请参阅[生命周期](#lifecycle)。
 * 应用程序启动时，使用启动任务来执行后台任务。 要强制任务继续在后台运行，请将 **taskType** 属性设置为 **background**（如果不这样做，应用程序启动进程会中止并等待任务完成）。 有关详细信息，请参阅 [Run startup tasks in Azure](/azure/cloud-services/cloud-services-startup-tasks)（在 Azure 中运行启动任务）。
 * 可以使用 WebJobs SDK 来实施作为启动任务启动的后台任务（如 Web 作业）。 有关详细信息，请参阅[在 Azure 应用服务中创建 .NET Web 作业](/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started)。
 * 使用启动任务可以安装一个 Windows 服务来执行一个或多个后台任务。 必须将 **taskType** 属性设置为 **background**，以便服务在后台执行。 有关详细信息，请参阅 [Run startup tasks in Azure](/azure/cloud-services/cloud-services-startup-tasks)（在 Azure 中运行启动任务）。
@@ -321,9 +321,8 @@ Web 角色和辅助角色在启动、运行和停止时会经历一组不同的�
 * [执行后台任务](http://msdn.microsoft.com/library/ff803365.aspx)
 * [Azure 角色启动生命周期](http://blog.syntaxc4.net/post/2011/04/13/windows-azure-role-startup-life-cycle.aspx)（博客文章）
 * [Azure 云服务角色生命周期](http://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Windows-Azure-Cloud-Services-Role-Lifecycle)（视频）
-* [什么是 Azure WebJobs SDK](https://docs.microsoft.com/en-us/azure/app-service-web/websites-dotnet-webjobs-sdk)
-* [在 Azure 应用服务中创建 .NET WebJob](https://docs.microsoft.com/en-us/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started)
-* [使用 WebJobs 运行后台任务](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-create-web-jobs)
-* [Azure 队列和服务总线队列 - 比较与对照](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)
-* [如何在云服务中启用诊断](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-diagnostics)
+* [什么是 Azure WebJobs SDK](https://docs.microsoft.com/azure/app-service-web/websites-dotnet-webjobs-sdk)
+* [使用 WebJobs 运行后台任务](https://docs.microsoft.com/azure/app-service-web/web-sites-create-web-jobs)
+* [Azure 队列和服务总线队列 - 比较与对照](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)
+* [如何在云服务中启用诊断](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 

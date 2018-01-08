@@ -6,11 +6,11 @@ ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: adds-forest
 cardTitle: Extend AD FS to Azure
-ms.openlocfilehash: b24f4e72b13331437d92f20a228e3ba8121db90a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: b8c9ae0621c087c68d449dd13e60046104c01513
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="extend-active-directory-federation-services-ad-fs-to-azure"></a>将 Active Directory 联合身份验证服务 (AD FS) 扩展到 Azure
 
@@ -214,9 +214,9 @@ AD FS 使用 HTTPS 协议，因此请确保包含 Web 层 VM 的子网的 NSG �
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[Github][github] 上提供了一个用于部署此参考体系结构的解决方案。 若要运行部署此解决方案的 Powershell 脚本，需要具有 [Azure CLI][azure-cli] 的最新版本。 若要部署此参考体系结构，请执行以下步骤：
+[GitHub][github] 上提供了一个用于部署此参考体系结构的解决方案。 若要运行部署此解决方案的 Powershell 脚本，需要具有 [Azure CLI][azure-cli] 的最新版本。 若要部署此参考体系结构，请执行以下步骤：
 
-1. 将解决方案文件夹从 [Github][github] 克隆到本地计算机。
+1. 将解决方案文件夹从 [GitHub][github] 克隆到本地计算机。
 
 2. 打开 Azure CLI 并导航到本地解决方案文件夹。
 

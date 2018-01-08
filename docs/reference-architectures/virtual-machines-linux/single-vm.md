@@ -2,15 +2,15 @@
 title: "在 Azure 上运行 Linux VM"
 description: "如何在 Azure 上运行 Linux VM，并注意可伸缩性、弹性、可管理性和安全性。"
 author: telmosampaio
-ms.date: 11/16/2017
+ms.date: 12/12/2017
 pnp.series.title: Linux VM workloads
 pnp.series.next: multi-vm
 pnp.series.prev: ./index
-ms.openlocfilehash: f538958be934ad2e9ea8d53791814b1e963c1a20
-ms.sourcegitcommit: 115db7ee008a0b1f2b0be50a26471050742ddb04
+ms.openlocfilehash: a51e0d7ed4e35c5331241cf78d1715e63f9b4d86
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="run-a-linux-vm-on-azure"></a>在 Azure 上运行 Linux VM
 
@@ -24,15 +24,16 @@ ms.lasthandoff: 11/17/2017
 
 预配 Azure VM 须使用其他组件，如计算、网络和存储资源。
 
-* **资源组。** [*资源组*][resource-manager-overview] 是保存相关资源的容器。 通常情况下，应基于解决方案中资源的生存期以及要管理资源的人员，为这些资源分组。 对于单一 VM 工作负荷，建议为所有资源创建单个资源组。
+* **资源组。** [资源组][resource-manager-overview]是保存相关资源的容器。 通常情况下，应基于解决方案中资源的生存期以及要管理资源的人员，为这些资源分组。 对于单一 VM 工作负荷，建议为所有资源创建单个资源组。
 * **VM**。 可以通过发布的映像列表或上传到 Azure Blob 存储的自定义托管映像或虚拟硬盘 (VHD) 文件来预配 VM。 Azure 支持运行大量常用的 Linux 分发，包括 CentOS、Debian、Red Hat Enterprise、Ubuntu 和 FreeBSD。 有关详细信息，请参阅 [Azure 和 Linux][azure-linux]。
 * **OS 磁盘。** OS 磁盘是存储在 [Azure 存储][azure-storage]中的 VHD，因此即使主机关闭，OS 磁盘也仍然存在。 对于 Linux VM，OS 磁盘是 `/dev/sda1`。
 * **临时磁盘。** 使用临时磁盘创建 VM。 此磁盘存储在主机的物理驱动器上。 它不保存在 Azure 存储中，并且在重启期间以及发生其他 VM 生命周期事件期间可能会被删除。 只使用此磁盘存储临时数据，如页面文件或交换文件。 对于 Linux VM，临时磁盘是 `/dev/sdb1`，并在 `/mnt/resource` 或 `/mnt` 中装入。
 * **数据磁盘。** [数据磁盘][data-disk]是用于保存应用程序数据的持久性 VHD。 数据磁盘像 OS 磁盘一样，存储在 Azure 存储中。
 * **虚拟网络 (VNet) 和子网。** 每个 Azure VM 都会部署到可细分为多个子网的 VNet 中。
 * **公共 IP 地址。** 需要使用公共 IP 地址与 VM 通信 &mdash; 例如，通过 SSH。
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。  
 * **网络接口 (NIC)**。 VM 可使用分配的 NIC 与虚拟网络进行通信。
-* **网络安全组 (NSG)**。 [NSG][nsg] 用于允许或拒绝网络资源的网络流量。 可以将 NSG 与单个 NIC 或与子网相关联。 如果将 NSG 与一个子网相关联，则 NSG 规则适用于该子网中的所有 VM。
+* **网络安全组 (NSG)**。 [网络安全组][nsg]用于允许或拒绝网络资源的网络流量。 可以将 NSG 与单个 NIC 或与子网相关联。 如果将 NSG 与一个子网相关联，则 NSG 规则适用于该子网中的所有 VM。
 * **诊断。** 诊断日志记录对于 VM 管理和故障排除至关重要。
 
 ## <a name="recommendations"></a>建议
@@ -90,7 +91,7 @@ sudo mount /dev/sdc1 /data1
 公共 IP 地址可以是动态的或静态的。 默认是动态的。
 
 * 如果需要不会更改的固定 IP 地址（例如，如果需要在 DNS 中创建 A 记录，或者需要将 IP 地址添加到安全列表），请保留[静态 IP 地址][static-ip]。
-* 还可以为 IP 地址创建完全限定域名 (FQDN)。 然后，可在 DNS 中注册指向 FQDN 的 [CNAME 记录][cname-record]。 有关详细信息，请参阅[在 Azure 门户中创建完全限定的域名][fqdn]。
+* 还可以为 IP 地址创建完全限定域名 (FQDN)。 然后，可在 DNS 中注册指向 FQDN 的 [CNAME 记录][cname-record]。 有关详细信息，请参阅[在 Azure 门户中创建完全限定的域名][fqdn]。 可以使用 [Azure DNS][azure-dns] 或其他 DNS 服务。
 
 所有 NSG 都包含一组[默认规则][nsg-default-rules]，其中包括阻止所有入站 Internet 流量的规则。 无法删除默认规则，但其他规则可以覆盖它们。 要启用 Internet 流量，请创建允许特定端口的入站流量的规则 &mdash; 例如，将端口 80 用于 HTTP。
 
@@ -102,7 +103,7 @@ sudo mount /dev/sdc1 /data1
 
 ## <a name="availability-considerations"></a>可用性注意事项
 
-为了提高可用性，请在可用性集中部署多个 VM。 这样还可提供更高的[服务级别协议][vm-sla] (SLA)。
+为了提高可用性，请在可用性集中部署多个 VM。 这样还可提供更高的[服务级别协议 (SLA)][vm-sla]。
 
 VM 可能会受到[计划内维护][planned-maintenance]或[计划外维护][manage-vm-availability]的影响。 可以使用 [VM 重新启动日志][reboot-logs]来确定 VM 重新启动是否是由计划内维护导致的。
 
@@ -207,6 +208,7 @@ VHD 存储在 [Azure 存储][azure-storage]中。 将复制 Azure 存储以实�
 [data-disk]: /azure/virtual-machines/virtual-machines-linux-about-disks-vhds
 [disk-encryption]: /azure/security/azure-security-disk-encryption
 [enable-monitoring]: /azure/monitoring-and-diagnostics/insights-how-to-use-diagnostics
+[azure-dns]: /azure/dns/dns-overview
 [fqdn]: /azure/virtual-machines/virtual-machines-linux-portal-create-fqdn
 [git]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/single-vm
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/single-vm

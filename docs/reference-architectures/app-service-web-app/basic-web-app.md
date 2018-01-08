@@ -2,18 +2,18 @@
 title: "基本 Web 应用程序"
 description: "适用于 Microsoft Azure 中运行的基本 Web 应用程序的建议体系结构。"
 author: MikeWasson
-ms.date: 11/23/2016
+ms.date: 12/12/2017
 cardTitle: Basic web application
-ms.openlocfilehash: b7475c4087a184bb7608d0c45ffecee912c920d7
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 598eb547f0e96ae334af391183a792637caa8631
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="basic-web-application"></a>基本 Web 应用程序
 [!INCLUDE [header](../../_includes/header.md)]
 
-此参考体系结构演示使用 [Azure 应用服务][app-service]和 [Azure SQL 数据库][sql-db]的 Web 应用程序适用的一套成熟做法。 [**部署此解决方案。**](#deploy-the-solution)
+此参考体系结构演示使用 [Azure 应用服务][app-service]和 [Azure SQL 数据库][sql-db]的 Web 应用程序适用的一套成熟做法。 [部署此解决方案。](#deploy-the-solution)
 
 ![[0]][0]
 
@@ -29,20 +29,28 @@ ms.lasthandoff: 11/14/2017
 该体系结构包含以下组件：
 
 * 资源组。 [资源组](/azure/azure-resource-manager/resource-group-overview)是 Azure 资源的逻辑容器。
+
 * **应用服务应用**。 [Azure 应用服务][app-service]是用于创建和部署云应用程序的完全托管平台。     
+
 * **应用服务计划**。 [应用服务计划][app-service-plans]提供用于承载应用的托管虚拟机 (VM)。 与某个计划关联的所有应用在同一个 VM 实例上运行。
 
 * **部署槽位**。  使用[部署槽位][deployment-slots]可以分阶段完成部署，然后将阶段部署（过渡部署）交换为生产部署。 这样，便可以避免直接部署到生产环境。 有关具体的建议，请参阅[可管理性](#manageability-considerations)部分。
 
-* **IP 地址**。 应用服务应用具有一个公共 IP 地址和域名。 域名是 `azurewebsites.net` 的子域，例如 `contoso.azurewebsites.net`。 若要使用自定义域名（例如 `contoso.com`），请创建可将自定义域名映射到 IP 地址的域名服务 (DNS) 记录。 有关详细信息，请参阅[在 Azure 应用服务中配置自定义域名][custom-domain-name]。
+* **IP 地址**。 应用服务应用具有一个公共 IP 地址和域名。 域名是 `azurewebsites.net` 的子域，例如 `contoso.azurewebsites.net`。  
+
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 若要使用自定义域名（例如 `contoso.com`），请创建可将自定义域名映射到 IP 地址的 DNS 记录。 有关详细信息，请参阅[在 Azure 应用服务中配置自定义域名][custom-domain-name]。  
+
 * **Azure SQL 数据库**。 [SQL 数据库][sql-db]是云中的关系数据库即服务。
+
 * **逻辑服务器**。 在 Azure SQL 数据库中，逻辑服务器承载你的数据库。 可为每个逻辑服务器创建多个数据库。
+
 * **Azure 存储**。 创建一个包含 Blob 容器的 Azure 存储帐户用于存储诊断日志。
+
 * **Azure Active Directory** (Azure AD)。 使用 Azure AD 或其他标识提供者进行身份验证。
 
 ## <a name="recommendations"></a>建议
 
-你的要求可能与此处描述的体系结构不同。 请使用本部分中的建议作为入手点。
+你的要求可能不同于此处描述的体系结构。 请使用本部分中的建议作为入手点。
 
 ### <a name="app-service-plan"></a>应用服务计划
 使用标准或高级层，因为它们支持横向扩展、自动缩放和安全套接字层 (SSL)。 每个层支持若干种实例大小，具体数量根据核心数和内存而异。 创建计划后，可以更改层或实例大小。 有关应用服务计划的详细信息，请参阅[应用服务定价][app-service-plans-tiers]。
@@ -215,6 +223,7 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [app-service-security]: /azure/app-service-web/web-sites-security
 [app-settings]: /azure/app-service-web/web-sites-configure
 [arm-template]: /azure/azure-resource-manager/resource-group-overview#resource-groups
+[azure-dns]: /azure/dns/dns-overview
 [custom-domain-name]: /azure/app-service-web/web-sites-custom-domain-name
 [deploy]: /azure/app-service-web/web-sites-deploy
 [deploy-arm-template]: /azure/resource-group-template-deploy
@@ -223,7 +232,7 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [kudu]: https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/
 [monitoring-guidance]: ../../best-practices/monitoring.md
 [new-relic]: http://newrelic.com/
-[paas-basic-arm-template]: https://github.com/mspnp/reference-architectures/tree/master/app-service-web-app/basic-web-app/Paas-Basic/Templates
+[paas-basic-arm-template]: https://github.com/mspnp/reference-architectures/tree/master/managed-web-app/basic-web-app/Paas-Basic/Templates
 [perf-analysis]: https://github.com/mspnp/performance-optimization/blob/master/Performance-Analysis-Primer.md
 [rbac]: /azure/active-directory/role-based-access-control-what-is
 [resource-group]: /azure/azure-resource-manager/resource-group-overview

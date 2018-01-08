@@ -6,11 +6,11 @@ ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: 7f771f77c7fa7f266dcce9f5b45e5be658213b8d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 216c59a0a5912d0fe90011e49ad20eb017ada6be
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>将 Active Directory 域服务 (AD DS) 扩展到 Azure
 
@@ -24,7 +24,7 @@ AD DS 用来对安全域中包括的用户、计算机、应用程序或其他�
 
 如果本地网络和 Azure 虚拟网络通过 VPN 或 ExpressRoute 连接进行连接，通常会使用此体系结构。 此体系结构还支持双向复制，这意味着既可以在本地又可以在云中进行更改，并且两个源都将保持一致。 此体系结构的典型用途包括功能分布在本地和 Azure 中的混合应用程序以及使用 Active Directory 执行身份验证的应用程序和服务。
 
-有关其他注意事项，请参阅 [Choose a solution for integrating on-premises Active Directory with Azure][considerations]（选择用于将本地 Active Directory 与 Azure 进行集成的解决方案）。 
+有关其他注意事项，请参阅[选择用于将本地 Active Directory 与 Azure 相集成的解决方案][considerations]。 
 
 ## <a name="architecture"></a>体系结构 
 
@@ -100,9 +100,9 @@ AD DS 服务器提供身份验证服务并且是引入注目的攻击目标。 �
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[Github][github] 上提供了一个用于部署此参考体系结构的解决方案。 若要运行部署此解决方案的 Powershell 脚本，需要具有 [Azure CLI][azure-powershell] 的最新版本。 若要部署此参考体系结构，请执行以下步骤：
+[GitHub][github] 上提供了一个用于部署此参考体系结构的解决方案。 若要运行部署此解决方案的 Powershell 脚本，需要具有 [Azure CLI][azure-powershell] 的最新版本。 若要部署此参考体系结构，请执行以下步骤：
 
-1. 将解决方案文件夹从 [Github][github] 克隆到本地计算机。
+1. 将解决方案文件夹从 [GitHub][github] 克隆到本地计算机。
 
 2. 打开 Azure CLI 并导航到本地解决方案文件夹。
 

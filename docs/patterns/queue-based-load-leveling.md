@@ -10,11 +10,11 @@ pnp.pattern.categories:
 - availability
 - performance-scalability
 - resiliency
-ms.openlocfilehash: d8b010648d4ec0edcfbb24f9b03243a79a34a40b
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 99b226511fe14bffdab3cdcf65d4e6cffe89bba6
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="queue-based-load-leveling-pattern"></a>基于队列的负载调节模式
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/14/2017
 ![图 2 - 一个服务因来自 Web 角色实例的并发请求过多而出现过载的情况](./_images/queue-based-load-leveling-overwhelmed.png)
 
 
-若要解决此问题，可以使用一个队列，在 Web 角色实例和存储服务之间实现负载均衡。 但根据设计，存储服务是接受同步请求的，不能为了读取消息和管理吞吐量方便而轻易进行修改。 可以引入一个充当代理服务的辅助角色，让其在接收来自队列的请求后再转发给存储服务。 辅助角色中的应用程序逻辑可以控制该角色将请求传递给存储服务的速度，防止存储服务过载。 下图说明了如何通过队列和辅助角色在 Web 角色实例和服务之间实现负载均衡。
+若要解决此问题，可以使用一个队列，在 Web 角色实例和存储服务之间实现负载均衡。 但根据设计，存储服务是接受同步请求的，不能为了读取消息和管理吞吐量方便而轻易进行修改。 可以引入一个充当代理服务的辅助角色，让其在接收来自队列的请求后再转发给存储服务。 辅助角色中的应用程序逻辑可以控制该角色将请求传递给存储服务的速度，防止存储服务过载。 下图演示了如何通过队列和辅助角色在 Web 角色实例和服务之间实现负载均衡。
 
 ![图 3 - 通过队列和辅助角色在 Web 角色实例和服务之间实现负载均衡](./_images/queue-based-load-leveling-worker-role.png)
 

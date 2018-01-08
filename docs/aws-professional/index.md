@@ -5,11 +5,11 @@ keywords: "AWS 专家, Azure 比较, AWS 比较, azure 与 aws 之间的差别, 
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 75fda82ee5ca7ca3665501fe428d1d01995e7422
-ms.sourcegitcommit: c53adf50d3a787956fc4ebc951b163a10eeb5d20
+ms.openlocfilehash: b576b11bc152ef721f56e79609cb7a03f2d31dd3
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-for-aws-professionals"></a>面向 AWS 专业人员的 Azure
 
@@ -237,14 +237,12 @@ Azure 提供多个计算服务，在 AWS 中没有直接与此类似的服务：
 -   [队列存储](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - 为工作流处理和云服务组件之间的通信提供消息传送。
 
 -   [文件存储](https://azure.microsoft.com/documentation/articles/storage-java-how-to-use-file-storage/) - 使用标准服务器消息块 (SMB) 协议为传统应用程序提供共享存储。 文件存储的使用方式与 AWS 平台中的 EFS 类似。
-
-
-
-
  
 #### <a name="glacier-and-azure-storage"></a>Glacier 与 Azure 存储 
-[Azure 存储标准存档](/azure/storage/blobs/storage-blob-storage-tiers)提供与 AWS 的长期存档 Glacier 存储直接相同的功能。 针对不经常访问且长期留存的数据，Azure 提供 [Azure 冷 Blob 存储层](/azure/storage/blobs/storage-blob-storage-tiers)。
-与标准 Blob 存储相比，冷存储更经济节省但性能更低，类似于 AWS 的 S3 - Infrequent Access。
+
+[Azure 存档 Blob 存储](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier)相当于 AWS Glacier 存储服务。 它适用于已至少存储 180 天且极少访问的数据，并且可以容忍几个小时的检索延迟。 
+
+针对不经常访问，但访问时必须立即提供的数据，[Azure 冷 Blob 存储层](/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier)提供比标准 Blob 存储更经济节省的存储。 此存储层相当于 AWS S3 - Infrequent Access 存储服务。
 
 #### <a name="see-also"></a>另请参阅
 
@@ -254,7 +252,7 @@ Azure 提供多个计算服务，在 AWS 中没有直接与此类似的服务：
 
 -   [模式和做法：内容交付网络 (CDN) 指南](https://azure.microsoft.com/documentation/articles/best-practices-cdn/)
 
-### <a name="networking"></a>联网
+### <a name="networking"></a>网络
 
 #### <a name="elastic-load-balancing-azure-load-balancer-and-azure-application-gateway"></a>弹性负载均衡、Azure 负载均衡器和 Azure 应用程序网关
 

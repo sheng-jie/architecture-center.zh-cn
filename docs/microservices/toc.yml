@@ -1,0 +1,24 @@
+- name: Azure 体系结构中心
+  href: ../index.md
+- name: 在 Azure 上设计微服务
+  items:
+    - name: 介绍
+      href: index.md
+    - name: 域分析
+      href: domain-analysis.md
+    - name: 标识微服务边界
+      href: microservice-boundaries.md
+    - name: 数据注意事项
+      href: data-considerations.md
+    - name: 服务间通信
+      href: interservice-communication.md
+    - name: API 设计
+      href: api-design.md
+    - name: 引入和工作流
+      href: ingestion-workflow.md
+    - name: API 网关
+      href: gateway.md
+    - name: 日志记录和监视
+      href: logging-monitoring.md
+    - name: CI/CD
+      href: ci-cd.md

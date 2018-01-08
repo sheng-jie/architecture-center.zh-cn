@@ -4,11 +4,11 @@ description: "Azure 资源的命名约定。 如何命名虚拟机、存储帐�
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 5084fc2ba5a18707de1213276111c53203b6cdd7
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 20f090c4cc39f96887cd58ffd2a9c7736e77de57
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -60,7 +60,7 @@ Microsoft Azure 中任何资源的名称选择都很重要，因为：
 | 方面 | 示例 | 说明 |
 | --- | --- | --- |
 | 环境 |dev，prod，QA |标识资源的环境 |
-| 位置 |uw（美国西部），ue（美国东部） |标识要部署资源的区域 |
+| Location |uw（美国西部），ue（美国东部） |标识要部署资源的区域 |
 | 实例 |01，02 |适用于具有多个命名实例的资源（Web 服务器等）。 |
 | 产品或服务 |服务 |标识资源支持的产品、应用程序或服务 |
 | 角色 |sql，web，messaging |标识关联的资源的角色 |
@@ -73,38 +73,53 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 
 通常，应避免将任何特殊字符（`-` 或 `_`）作为任何名称的第一个或最后一个字符。 这些字符将导致大多数验证规则失败。
 
-| 类别 | 服务或实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 资源组 |资源组 |全局 |1-64 |不区分大小写 |字母数字、下划线、括号、连字符、句点（位于末尾的除外） |`<service short name>-<environment>-rg` |`profx-prod-rg` |
-| 资源组 |可用性集 |资源组 |1-80 |不区分大小写 |字母数字、下划线和连字符 |`<service-short-name>-<context>-as` |`profx-sql-as` |
-| 常规 |标记 |关联的实体 |512（名称）、256（值） |不区分大小写 |字母数字 |`"key" : "value"` |`"department" : "Central IT"` |
-| 计算 |虚拟机 |资源组 |1-15 (Windows)、1-64 (Linux) |不区分大小写 |字母数字、下划线和连字符 |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
-| 计算 |Function App | 全局 |1-60 |不区分大小写 |字母数字和连字符 |`<name>-func` |`calcprofit-func` |
-| 存储 |存储帐户名称（数据） |全局 |3-24 |小写 |字母数字 |`<globally unique name><number>`（使用函数计算命名存储帐户的唯一 Guid） |`profxdata001` |
-| 存储 |存储帐户名称（磁盘） |全局 |3-24 |小写 |字母数字 |`<vm name without dashes>st<number>` |`profxsql001st0` |
-| 存储 | 容器名称 |存储帐户 |3-63 |小写 |字母数字和短划线 |`<context>` |`logs` |
-| 存储 |Blob 名称 | 容器 |1-1024 |区分大小写 |任何 URL 字符 |`<variable based on blob usage>` |`<variable based on blob usage>` |
-| 存储 |队列名称 |存储帐户 |3-63 |小写 |字母数字和短划线 |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
-| 存储 |表名称 | 存储帐户 |3-63 |不区分大小写 |字母数字 |`<service short name><context>` |`awesomeservicelogs` |
-| 存储 |文件名 | 存储帐户 |3-63 |小写 | 字母数字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
-| 存储 |Data Lake Store | 全局 |3-24 |小写 | 字母数字 |`<name>-dtl` |`telemetry-dtl` |
-| 联网 |虚拟网络 (VNet) |资源组 |2-64 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service short name>-vnet` |`profx-vnet` |
-| 联网 |子网 |父级 VNet |2-80 |不区分大小写 |字母数字、下划线、短划线和句点 |`<descriptive context>` |`web` |
-| 联网 |网络接口 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<vmname>-nic<num>` |`profx-sql1-nic1` |
-| 联网 |网络安全组 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service short name>-<context>-nsg` |`profx-app-nsg` |
-| 联网 |网络安全组规则 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<descriptive context>` |`sql-allow` |
-| 联网 |公共 IP 地址 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<vm or service name>-pip` |`profx-sql1-pip` |
-| 联网 |负载均衡器 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service or role>-lb` |`profx-lb` |
-| 联网 |负载均衡规则配置 |负载均衡器 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<descriptive context>` |`http` |
-| 联网 |Azure 应用程序网关 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service or role>-agw` |`profx-agw` |
-| 联网 |流量管理器配置文件 |资源组 |1-63 |不区分大小写 |字母数字、短划线和句点 |`<descriptive context>` |`app1` |
+### <a name="general"></a>常规
+
+| 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|资源组 |订阅 |1-90 |不区分大小写 |字母数字、下划线、括号、连字符、句点（位于末尾的除外） |`<service short name>-<environment>-rg` |`profx-prod-rg` |
+|可用性集 |资源组 |1-80 |不区分大小写 |字母数字、下划线和连字符 |`<service-short-name>-<context>-as` |`profx-sql-as` |
+|标记 |关联的实体 |512（名称）、256（值） |不区分大小写 |字母数字 |`"key" : "value"` |`"department" : "Central IT"` |
+
+### <a name="compute"></a>计算
+
+| 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|虚拟机 |资源组 |1-15 (Windows)、1-64 (Linux) |不区分大小写 |字母数字、下划线和连字符 |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
+|Function App | 全局 |1-60 |不区分大小写 |字母数字和连字符 |`<name>-func` |`calcprofit-func` |
 
 > [!NOTE]
 > Azure 中的虚拟机具有两个不同的名称：虚拟机名称和主机名。 在门户中创建 VM 时，主机名和虚拟机资源名称使用相同的名称。 以上限制适用于主机名。 实际资源名称最多可包含 64 个字符。
 
-Microsoft 经常将新的服务添加到 Azure。 上表包含网络、计算和存储中最常用的服务。 对于其他服务，请考虑使用适当的 3 个字母的后缀。
+### <a name="storage"></a>存储
 
-## <a name="organizing-resources-with-tags"></a>使用标记组织资源
+| 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|存储帐户名称（数据） |全局 |3-24 |小写 |字母数字 |`<globally unique name><number>`（使用函数计算命名存储帐户的唯一 Guid） |`profxdata001` |
+|存储帐户名称（磁盘） |全局 |3-24 |小写 |字母数字 |`<vm name without dashes>st<number>` |`profxsql001st0` |
+| 容器名称 |存储帐户 |3-63 |小写 |字母数字和短划线 |`<context>` |`logs` |
+|Blob 名称 | 容器 |1-1024 |区分大小写 |任何 URL 字符 |`<variable based on blob usage>` |`<variable based on blob usage>` |
+|队列名称 |存储帐户 |3-63 |小写 |字母数字和短划线 |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
+|表名称 | 存储帐户 |3-63 |不区分大小写 |字母数字 |`<service short name><context>` |`awesomeservicelogs` |
+|文件名 | 存储帐户 |3-63 |小写 | 字母数字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
+|Data Lake Store | 全局 |3-24 |小写 | 字母数字 |`<name>-dls` |`telemetry-dls` |
+
+### <a name="networking"></a>网络
+
+| 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|虚拟网络 (VNet) |资源组 |2-64 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service short name>-vnet` |`profx-vnet` |
+|子网 |父级 VNet |2-80 |不区分大小写 |字母数字、下划线、短划线和句点 |`<descriptive context>` |`web` |
+|网络接口 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<vmname>-nic<num>` |`profx-sql1-nic1` |
+|网络安全组 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service short name>-<context>-nsg` |`profx-app-nsg` |
+|网络安全组规则 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<descriptive context>` |`sql-allow` |
+|公共 IP 地址 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<vm or service name>-pip` |`profx-sql1-pip` |
+|负载均衡器 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service or role>-lb` |`profx-lb` |
+|负载均衡规则配置 |负载均衡器 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<descriptive context>` |`http` |
+|Azure 应用程序网关 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service or role>-agw` |`profx-agw` |
+|流量管理器配置文件 |资源组 |1-63 |不区分大小写 |字母数字、短划线和句点 |`<descriptive context>` |`app1` |
+
+## <a name="organize-resources-with-tags"></a>使用标记组织资源
 
 Azure 资源管理器支持使用任意文本字符串标记实体，以标识上下文和简化自动化。  例如，`"sqlVersion: "sql2014ee"` 标记可以标识运行 SQL Server 2014 Enterprise Edition 的部署中的 VM，以针对其运行自动化脚本。  应将标记与所选的命名约定结合使用，以便增加和增强上下文。
 
@@ -130,8 +145,8 @@ Azure 资源管理器支持使用任意文本字符串标记实体，以标识�
 | --- | --- | --- | --- |
 | 付款人/内部退款 ID |付款人 |`IT-Chargeback-1234` |内部 I/O 或账单代码 |
 | 操作员或直接负责人 (DRI) |managedBy |`joe@contoso.com` |别名或电子邮件地址 |
-| 项目名称 |项目名称 |`myproject` |项目或产品系列的名称 |
-| 项目版本 |项目版本 |`3.4` |项目或产品系列的版本 |
+| 项目名称 |projectName |`myproject` |项目或产品系列的名称 |
+| 项目版本 |projectVersion |`3.4` |项目或产品系列的版本 |
 | 环境 |环境 |`<Production, Staging, QA >` |环境标识符 |
 | 层 |层 |`Front End, Back End, Data` |层或角色/上下文标识 |
 | 数据配置文件 |dataProfile |`Public, Confidential, Restricted, Internal` |存储在资源中的数据的敏感性 |

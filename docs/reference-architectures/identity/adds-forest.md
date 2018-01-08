@@ -7,11 +7,11 @@ pnp.series.title: Identity management
 pnp.series.prev: adds-extend-domain
 pnp.series.next: adfs
 cardTitle: Create an AD DS forest in Azure
-ms.openlocfilehash: bb7e57af2afacf1faa7679c854bf49217918eba8
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: b946afa91e8bd303c51f97e18be170c4105cc8c5
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>在 Azure 中创建 Active Directory 域服务 (AD DS) 资源林
 
@@ -25,7 +25,7 @@ Active Directory 域服务 (AD DS) 以分层结构存储标识信息。 分层�
 
 此体系结构的典型用途包括为云中拥有的对象和标识维护安全隔离，以及将各个域从本地迁移到云。 
 
-有关其他注意事项，请参阅 [Choose a solution for integrating on-premises Active Directory with Azure][considerations]（选择用于将本地 Active Directory 与 Azure 进行集成的解决方案）。 
+有关其他注意事项，请参阅[选择用于将本地 Active Directory 与 Azure 相集成的解决方案][considerations]。 
 
 ## <a name="architecture"></a>体系结构
 
@@ -39,7 +39,7 @@ Active Directory 域服务 (AD DS) 以分层结构存储标识信息。 分层�
 
 ## <a name="recommendations"></a>建议
 
-有关在 Azure 中实现 Active Directory 的具体建议，请参阅以下文章：
+有关在 Azure 中实施 Active Directory 的具体建议，请参阅以下文章：
 
 - [将 Active Directory 域服务 (AD DS) 扩展到 Azure][adds-extend-domain]。 
 - [在 Azure 虚拟机上部署 Windows Server Active Directory 的指南][ad-azure-guidelines]。
@@ -57,7 +57,7 @@ Active Directory 域服务 (AD DS) 以分层结构存储标识信息。 分层�
 
 下表总结了一些简单方案的信任配置：
 
-| 方案 | 本地信任 | 云信任 |
+| 场景 | 本地信任 | 云信任 |
 | --- | --- | --- |
 | 本地用户需要访问云中的资源，但云中的用户不需要访问本地资源 |单向、传入 |单向、传出 |
 | 云中的用户需要访问本地资源，本地用户不需要访问云中的资源 |单向、传出 |单向、传入 |
@@ -87,9 +87,9 @@ Active Directory 能够针对属于同一域的域控制器自动进行缩放。
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[Github][github] 上提供了一个用于部署此参考体系结构的解决方案。 若要运行部署此解决方案的 Powershell 脚本，需要具有 Azure CLI 的最新版本。 若要部署此参考体系结构，请执行以下步骤：
+[GitHub][github] 上提供了一个用于部署此参考体系结构的解决方案。 若要运行部署此解决方案的 Powershell 脚本，需要具有 Azure CLI 的最新版本。 若要部署此参考体系结构，请执行以下步骤：
 
-1. 将解决方案文件夹从 [Github][github] 克隆到本地计算机。
+1. 将解决方案文件夹从 [GitHub][github] 克隆到本地计算机。
 
 2. 打开 Azure CLI 并导航到本地解决方案文件夹。
 

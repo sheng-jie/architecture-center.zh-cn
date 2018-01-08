@@ -6,11 +6,11 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: tailspin
 pnp.series.next: claims
-ms.openlocfilehash: 74f4e85e282799b7eee92caf2da083fb264f8733
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: e85817626675cec4d126921c19a31a0983ecd62d
+ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a>使用 Azure AD 和 OpenID Connect 进行身份验证
 
@@ -131,7 +131,7 @@ ASP.NET 中的 OpenID Connect 中间件隐藏了大多数协议细节。 本部�
 如果身份验证成功，OIDC 中间件会创建一个身份验证票证，其中包含保存用户声明的声明主体。 可在 **AuthenticationValidated** 或 **TicketReceived** 事件内部访问该票证。
 
 > [!NOTE]
-> 在整个身份验证流完成之前，`HttpContext.User` 仍保存一个匿名主体，而*不是*经过身份验证的用户。 该匿名主体具有一个空的声明集合。 身份验证完成且应用重定向后，cookie 中间件反序列化身份验证 cookie，并将 `HttpContext.User` 设置为表示经过身份验证的用户的声明主体。
+> 在整个身份验证流完成之前，`HttpContext.User` 仍保存一个匿名主体，而**不是**经过身份验证的用户。 该匿名主体具有一个空的声明集合。 身份验证完成且应用重定向后，cookie 中间件反序列化身份验证 cookie，并将 `HttpContext.User` 设置为表示经过身份验证的用户的声明主体。
 > 
 > 
 
@@ -181,7 +181,7 @@ app.UseOpenIdConnectAuthentication(options =>
 }
 ```
 
-[下一篇][claims]
+[**下一篇**][claims]
 
 [claims]: claims.md
 [cookie-options]: /aspnet/core/security/authentication/cookie#controlling-cookie-options

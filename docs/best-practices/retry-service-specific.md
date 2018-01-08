@@ -4,13 +4,13 @@ description: "设置重试机制的服务指南。"
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 6aba60dc3a60e96e59e2034d4a1e380e0f1c996a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 0a416bc6297c7406de92fbc695b62c39c637de8f
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/02/2018
 ---
-# <a name="retry-guidance-for-specific-services"></a>特定服务重试指南
+# <a name="retry-guidance-for-specific-services"></a>特定服务的重试指南
 
 大多数 Azure 服务和客户端 SDK 都包括重试机制。 不过，这些重试机制各不相同，这是因为每个服务都有不同的特征和要求，这样一来，各个重试机制都会针对特定服务进行优化。 本指南汇总了大多数 Azure 服务的重试机制功能，并介绍了如何使用、适应或扩展相应服务的重试机制。
 
@@ -25,12 +25,12 @@ ms.lasthandoff: 11/14/2017
 | **[使用 Entity Framework Core 的 SQL 数据库](#sql-database-using-entity-framework-core-retry-guidelines)** |客户端原生 |编程 |每个应用域均为全局 |无 |
 | **[使用 ADO.NET 的 SQL 数据库](#sql-database-using-adonet-retry-guidelines)** |[Polly](#transient-fault-handling-with-polly) |声明性和编程 |各个语句或代码块 |“自定义” |
 | **[服务总线](#service-bus-retry-guidelines)** |客户端原生 |编程 |命名空间管理器、消息工厂和客户端 |ETW |
-| **[Azure Redis 缓存](#azure-redis-cache-retry-guidelines)** |客户端原生 |编程 |客户端 |TextWriter |
+| **[Azure Redis 缓存](#azure-redis-cache-retry-guidelines)** |客户端原生 |编程 |Client |TextWriter |
 | **[DocumentDB API](#documentdb-api-retry-guidelines)** |服务原生 |不可配置 |全局 |TraceSource |
-| **[Azure 搜索](#azure-storage-retry-guidelines)** |客户端原生 |编程 |客户端 |ETW 或自定义 |
+| **[Azure 搜索](#azure-storage-retry-guidelines)** |客户端原生 |编程 |Client |ETW 或自定义 |
 | **[Azure Active Directory](#azure-active-directory-retry-guidelines)** |ADAL 库原生 |嵌入到 ADAL 库 |内部 |无 |
-| **[Service Fabric](#service-fabric-retry-guidelines)** |客户端原生 |编程 |客户端 |无 | 
-| **[Azure 事件中心](#azure-event-hubs-retry-guidelines)** |客户端原生 |编程 |客户端 |无 |
+| **[Service Fabric](#service-fabric-retry-guidelines)** |客户端原生 |编程 |Client |无 | 
+| **[Azure 事件中心](#azure-event-hubs-retry-guidelines)** |客户端原生 |编程 |Client |无 |
 
 > [!NOTE]
 > 对于大多数 Azure 内置重试机制，目前尚无方法针对不同类型的错误或异常（不局限于重试策略功能）应用不同的重试策略。 因此，根据指南，最好在编写时配置可提供最佳平均性能和可用性的策略。 微调策略的一种方法是分析日志文件，以确定发生的临时故障的类型。 例如，如果大部分错误都与网络连接问题相关，那么可以立即尝试重试，而不是等待很长一段时间才进行首次重试。
@@ -59,7 +59,7 @@ TableRequestOptions interactiveRequestOption = new TableRequestOptions()
   // For Read-access geo-redundant storage, use PrimaryThenSecondary.
   // Otherwise set this to PrimaryOnly.
   LocationMode = LocationMode.PrimaryThenSecondary,
-  // Maximum execution time based on the business use case. Maximum value up to 10 seconds.
+  // Maximum execution time based on the business use case. 
   MaximumExecutionTime = TimeSpan.FromSeconds(2)
 };
 ```
@@ -94,13 +94,32 @@ var stats = await client.GetServiceStatsAsync(interactiveRequestOption, operatio
 
 除了指明故障是否适合重试，扩展的重试策略还会返回 **RetryContext** 对象，用于指明重试次数、上次请求结果、下次重试是在主要位置还是在辅助位置上发生（有关详细信息，请参阅下表）。 **RetryContext** 对象的属性可用于确定是否以及何时尝试进行重试。 如需了解更多详情，请参阅 [IExtendedRetryPolicy.Evaluate 方法](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx)。
 
-下表展示了内置重试策略的默认设置。
+下表显示了内置重试策略的默认设置。
 
-| **上下文** | **设置** | **默认值** | **含义** |
-| --- | --- | --- | --- |
-| 表 / Blob / 文件<br />QueueRequestOptions |MaximumExecutionTime<br /><br />ServerTimeOut<br /><br /><br /><br /><br />LocationMode<br /><br /><br /><br /><br /><br /><br />RetryPolicy |120 秒<br /><br />无<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />ExponentialPolicy |请求的最长执行时间，包括所有可能的重试尝试。<br />请求的服务器超时间隔（值四舍五入到秒）。 如果未指定，则会使用所有服务器请求的默认值。 通常情况下，最好忽略此设置，以便使用服务器默认值。<br />如果创建的存储帐户设置了读取访问异地冗余存储 (RA-GRS) 复制选项，则可以使用位置模式来指明哪个位置应接收请求。 例如，如果指定的是 **PrimaryThenSecondary**，则请求总是会先发送到主要位置。 如果某个请求失败，它将发送到辅助位置。<br />有关每个选项的详细信息，请参阅下文。 |
-| 指数策略 |maxAttempt<br />deltaBackoff<br /><br /><br />MinBackoff<br /><br />MaxBackoff |3<br />4 秒<br /><br /><br />3 秒<br /><br />120 秒 |重试的次数。<br />不同重试之间的回退时间间隔。 将针对后续的重试使用多个这样的时间跨度（包括随机元素）。<br />添加到从 deltaBackoff 计算的所有重试时间间隔。 不能更改此值。<br />如果计得的重试时间间隔大于 MaxBackoff，则使用 MaxBackoff。 不能更改此值。 |
-| 线性策略 |maxAttempt<br />deltaBackoff |3<br />30 秒 |重试的次数。<br />不同重试之间的回退时间间隔。 |
+**请求选项**
+
+| **设置** | **默认值** | **含义** |
+| --- | --- | --- |
+| MaximumExecutionTime | 120 秒 | 请求的最长执行时间，包括所有可能的重试尝试。 |
+| ServerTimeOut | 无 | 请求的服务器超时间隔（值四舍五入到秒）。 如果未指定，则会使用所有服务器请求的默认值。 通常情况下，最好忽略此设置，以便使用服务器默认值。 | 
+| LocationMode | 无 | 如果创建的存储帐户设置了读取访问异地冗余存储 (RA-GRS) 复制选项，则可以使用位置模式来指明哪个位置应接收请求。 例如，如果指定的是 **PrimaryThenSecondary**，则请求总是会先发送到主要位置。 如果某个请求失败，它将发送到辅助位置。 |
+| RetryPolicy | ExponentialPolicy | 有关每个选项的详细信息，请参阅下文。 |
+
+**指数策略** 
+
+| **设置** | **默认值** | **含义** |
+| --- | --- | --- |
+| maxAttempt | 3 | 重试的次数。 |
+| deltaBackoff | 4 秒 | 不同重试之间的回退时间间隔。 将针对后续的重试使用多个这样的时间跨度（包括随机元素）。 |
+| MinBackoff | 3 秒 | 添加到从 deltaBackoff 计算的所有重试时间间隔。 不能更改此值。
+| MaxBackoff | 120 秒 | 如果计得的重试时间间隔大于 MaxBackoff，则使用 MaxBackoff。 不能更改此值。 |
+
+**线性策略**
+
+| **设置** | **默认值** | **含义** |
+| --- | --- | --- |
+| maxAttempt | 3 | 重试的次数。 |
+| deltaBackoff | 30 秒 | 不同重试之间的回退时间间隔。 |
 
 ### <a name="retry-usage-guidance"></a>重试使用指南
 在使用存储客户端 API 访问 Azure 存储服务时，请注意以下指南：
@@ -149,7 +168,7 @@ namespace RetryCodeSamples
                 // For Read-access geo-redundant storage, use PrimaryThenSecondary.
                 // Otherwise set this to PrimaryOnly.
                 LocationMode = LocationMode.PrimaryThenSecondary,
-                // Maximum execution time based on the business use case. Maximum value up to 10 seconds.
+                // Maximum execution time based on the business use case. 
                 MaximumExecutionTime = TimeSpan.FromSeconds(2)
             };
 
@@ -270,7 +289,14 @@ public class BloggingContextConfiguration : DbConfiguration
 
 下表显示了使用 EF6 时的内置重试策略的默认设置。
 
-![重试指南表](./images/retry-service-specific/RetryServiceSpecificGuidanceTable4.png)
+| 设置 | 默认值 | 含义 |
+|---------|---------------|---------|
+| 策略 | 指数 | 指数退让。 |
+| MaxRetryCount | 5 | 最大重试次数。 |
+| MaxDelay | 30 秒 | 重试之间的最大延迟。 此值不影响延迟序列的计算方式。 它只定义上限。 |
+| DefaultCoefficient | 1 秒 | 指数退避计算的系数。 不能更改此值。 |
+| DefaultRandomFactor | 1.1 | 用于添加每个条目的随机延迟的乘数。 不能更改此值。 |
+| DefaultExponentialBase | #N/A | 用于计算下一次延迟的乘数。 不能更改此值。 |
 
 ### <a name="retry-usage-guidance"></a>重试使用指南
 访问使用 EF6 的 SQL 数据库时，请注意以下指南：
@@ -389,7 +415,7 @@ using (var db = new BloggingContext())
 ```
 
 ### <a name="more-information"></a>详细信息
-* [连接复原能力](/ef/core/miscellaneous/connection-resiliency)
+* [连接复原](/ef/core/miscellaneous/connection-resiliency)
 * [数据点 - EF Core 1.1](https://msdn.microsoft.com/en-us/magazine/mt745093.aspx)
 
 ## <a name="sql-database-using-adonet-retry-guidelines"></a>使用 ADO.NET 的 SQL 数据库重试指南
@@ -510,7 +536,15 @@ client.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 不能在各个操作级别设置重试策略。 它适用于消息客户端的所有操作。
 下表显示了内置重试策略的默认设置。
 
-![重试指南表](./images/retry-service-specific/RetryServiceSpecificGuidanceTable7.png)
+| 设置 | 默认值 | 含义 |
+|---------|---------------|---------|
+| 策略 | 指数 | 指数退让。 |
+| MinimalBackoff | 0 | 最小退让间隔。 此值将与通过 deltaBackoff 计算得出的重试间隔相加。 |
+| MaximumBackoff | 30 秒 | 最大退让间隔。 如果计算出的重试间隔大于 MaxBackoff，则使用 MaximumBackoff。 |
+| DeltaBackoff | 3 秒 | 不同重试之间的回退时间间隔。 将针对后续的重试使用多个这样的时间跨度。 |
+| TimeBuffer | 5 秒 | 与重试关联的终止时间缓冲区。 如果剩余时间小于 TimeBuffer，将放弃重试。 |
+| MaxRetryCount | 10 | 最大重试次数。 |
+| ServerBusyBaseSleepTime | 10 秒 | 如果遇到的最后一个异常为 **ServerBusyException**，则将此值与计算出的重试间隔相加。 不能更改此值。 |
 
 ### <a name="retry-usage-guidance"></a>重试使用指南
 使用服务总线时，请注意以下指南：
@@ -520,7 +554,12 @@ client.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 
 请考虑从下列重试操作设置入手。 这些都是通用设置，应监视操作，并对值进行微调以适应自己的方案。
 
-![重试指南表](./images/retry-service-specific/RetryServiceSpecificGuidanceTable8.png)
+| 上下文 | 示例最大延迟 | 重试策略 | 设置 | 工作原理 |
+|---------|---------|---------|---------|---------|
+| 交互、UI 或前台 | 2 秒*  | 指数 | MinimumBackoff = 0 <br/> MaximumBackoff = 30 秒 <br/> DeltaBackoff = 300 毫秒 <br/> TimeBuffer = 300 毫秒 <br/> MaxRetryCount = 2 | 第 1 次尝试：延迟 0 秒 <br/> 第 2 次尝试：延迟约 300 毫秒 <br/> 第 3 次尝试：延迟约 900 毫秒 |
+| 后台或批处理 | 30 秒 | 指数 | MinimumBackoff = 1 <br/> MaximumBackoff = 30 秒 <br/> DeltaBackoff = 1.75 秒 <br/> TimeBuffer = 5 秒 <br/> MaxRetryCount = 3 | 第 1 次尝试：延迟约 1 秒 <br/> 第 2 次尝试：延迟约 3 秒 <br/> 第 3 次尝试：延迟约 6 毫秒 <br/> 第 4 次尝试：延迟约 13 毫秒 |
+
+\* 不包括收到“服务器忙”响应时增加的附加延迟。
 
 ### <a name="telemetry"></a>遥测
 服务总线使用 **EventSource** 将重试记录为 ETW 事件。 必须将 **EventListener** 附加到事件源，才能捕获事件并在性能查看器中查看这些事件，或将这些事件写入合适的目标日志。 为此，可以使用[语义式日志记录应用程序块](http://msdn.microsoft.com/library/dn775006.aspx)。 重试事件具有以下形式：
@@ -826,7 +865,7 @@ Cosmos DB 是一种完全托管的多模型数据库，通过 [DocumentDB API][d
 ### <a name="retry-mechanism"></a>重试机制
 `DocumentClient` 类自动重试失败的尝试次数。 若要设置重试次数和最长等待时间，请配置 [ConnectionPolicy.RetryOptions]。 客户端引发的异常会超出重试策略，或不是暂时性错误。
 
-如果 Cosmos DB 限制客户端，它将返回 HTTP 429 错误。 请检查 `DocumentClientException` 中的状态代码。
+如果 Cosmos DB 限制客户端，它会返回 HTTP 429 错误。 请检查 `DocumentClientException` 中的状态代码。
 
 ### <a name="policy-configuration"></a>策略配置
 下表显示了 `RetryOptions` 类的默认设置。
@@ -880,7 +919,7 @@ Azure 搜索可用于向网站或应用程序添加功能强大且复杂的搜�
 Azure Active Directory (Azure AD) 是一项全面的标识和访问管理云解决方案，集成了核心目录服务、高级标识监管、安全性和应用程序访问管理等各种功能。 Microsoft Azure AD 还为开发人员提供了身份管理平台，以便他们可以根据集中的策略和规则，控制应用程序访问情况。
 
 ### <a name="retry-mechanism"></a>重试机制
-Active Directory 身份验证库 (ADAL) 提供适用于 Azure Active Directory 的内置重试机制。 为避免意外锁定，建议第三方库和应用程序代码*不要*重试失败的连接，而让 ADAL 处理重试。 
+Active Directory 身份验证库 (ADAL) 提供适用于 Azure Active Directory 的内置重试机制。 为避免意外锁定，建议第三方库和应用程序代码**不要**重试失败的连接，而让 ADAL 处理重试。 
 
 ### <a name="retry-usage-guidance"></a>重试使用指南
 使用 Azure Active Directory 时，请注意以下指南：

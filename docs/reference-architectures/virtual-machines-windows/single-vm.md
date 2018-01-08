@@ -2,15 +2,15 @@
 title: "在 Azure 上运行 Windows VM"
 description: "如何在 Azure 上运行 Windows VM，并注意可伸缩性、弹性、可管理性和安全性。"
 author: telmosampaio
-ms.date: 11/16/2017
+ms.date: 12/12/2017
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-vm
 pnp.series.prev: ./index
-ms.openlocfilehash: b519cb96c124a91d95fb5965f34b86026c95805c
-ms.sourcegitcommit: 115db7ee008a0b1f2b0be50a26471050742ddb04
+ms.openlocfilehash: 71eeebae1f557ecbb6f33c4a7e37a278204f3dcd
+ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="run-a-windows-vm-on-azure"></a>在 Azure 上运行 Windows VM
 
@@ -24,15 +24,16 @@ ms.lasthandoff: 11/17/2017
 
 预配 Azure VM 须使用其他组件，如计算、网络和存储资源。
 
-* **资源组。** [*资源组*][resource-manager-overview] 是保存相关资源的容器。 通常情况下，应基于解决方案中资源的生存期以及要管理资源的人员，为这些资源分组。 对于单一 VM 工作负荷，建议为所有资源创建单个资源组。
+* **资源组。** [资源组][resource-manager-overview]是保存相关资源的容器。 通常情况下，应基于解决方案中资源的生存期以及要管理资源的人员，为这些资源分组。 对于单一 VM 工作负荷，建议为所有资源创建单个资源组。
 * **VM**。 可以通过发布的映像列表或上传到 Azure Blob 存储的自定义托管映像或虚拟硬盘 (VHD) 文件来预配 VM。
 * **OS 磁盘。** OS 磁盘是存储在 [Azure 存储][azure-storage]中的 VHD，因此即使主机关闭，OS 磁盘也仍然存在。
 * **临时磁盘。** 使用临时磁盘（Windows 上的 `D:` 驱动器）创建 VM。 此磁盘存储在主机的物理驱动器上。 它不保存在 Azure 存储中，并且在重启期间以及发生其他 VM 生命周期事件期间可能会被删除。 只使用此磁盘存储临时数据，如页面文件或交换文件。
 * **数据磁盘。** [数据磁盘][data-disk]是用于保存应用程序数据的持久性 VHD。 数据磁盘像 OS 磁盘一样，存储在 Azure 存储中。
 * **虚拟网络 (VNet) 和子网。** 每个 Azure VM 都会部署到可细分为多个子网的 VNet 中。
-* **公共 IP 地址。** 须使用公共 IP 地址才能与 VM 通信 &mdash; 例如，通过远程桌面 (RDP)。
-* **网络接口 (NIC)**。 VM 可使用分配的 NIC 与虚拟网络进行通信。
-* **网络安全组 (NSG)**。 [NSG][nsg] 用于允许或拒绝网络资源的网络流量。 可以将 NSG 与单个 NIC 或与子网相关联。 如果将 NSG 与一个子网相关联，则 NSG 规则适用于该子网中的所有 VM。
+* **公共 IP 地址。** 须使用公共 IP 地址才能与 VM 通信 &mdash; 例如，通过远程桌面 (RDP)。  
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。  
+* **网络接口 (NIC)**。 VM 可使用分配的 NIC 与虚拟网络进行通信。  
+* **网络安全组 (NSG)**。 [网络安全组][nsg]用于允许或拒绝网络资源的网络流量。 可以将 NSG 与单个 NIC 或与子网相关联。 如果将 NSG 与一个子网相关联，则 NSG 规则适用于该子网中的所有 VM。
 * **诊断。** 诊断日志记录对于 VM 管理和故障排除至关重要。
 
 ## <a name="recommendations"></a>建议
@@ -86,7 +87,7 @@ az vm list-sizes --location <location>
 
 ## <a name="availability-considerations"></a>可用性注意事项
 
-为了提高可用性，请在可用性集中部署多个 VM。 这样还可提供更高的[服务级别协议][vm-sla] (SLA)。
+为了提高可用性，请在可用性集中部署多个 VM。 这样还可提供更高的[服务级别协议 (SLA)][vm-sla]。
 
 VM 可能会受到[计划内维护][planned-maintenance]或[计划外维护][manage-vm-availability]的影响。 可以使用 [VM 重新启动日志][reboot-logs]来确定 VM 重新启动是否是由计划内维护导致的。
 
@@ -180,6 +181,7 @@ VHD 存储在 [Azure 存储][azure-storage]中。 将复制 Azure 存储以实�
 [azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 [azbbv2]: https://github.com/mspnp/template-building-blocks
 [azure-cli-2]: /cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-dns]: /azure/dns/dns-overview
 [azure-storage]: /azure/storage/storage-introduction
 [blob-snapshot]: /azure/storage/storage-blob-snapshots
 [blob-storage]: /azure/storage/storage-introduction
