@@ -5,11 +5,11 @@ keywords: "AWS 专家, Azure 比较, AWS 比较, azure 与 aws 之间的差别, 
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: b576b11bc152ef721f56e79609cb7a03f2d31dd3
-ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
+ms.openlocfilehash: ac96110e3fe69b4bb69714e18fd0f193208bc244
+ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-for-aws-professionals"></a>面向 AWS 专业人员的 Azure
 
@@ -103,36 +103,45 @@ Azure 提供多种方式用于管理资源：
 
 ## <a name="regions-and-zones-high-availability"></a>区域 (Region) 和局部区域 (Zone)（高可用性）
 
-在 AWS 中，可用性是围绕可用性区域的概念建立的。 在 Azure 中，构建高可用性解决方案时，会同时涉及到容错域和可用性集。 配对的区域提供附加的灾难恢复功能。
+故障的影响范围各不相同。 某些硬件故障（例如磁盘故障）可能影响单个主机。 网络交换机故障可能影响整个服务器机架。 中断整个数据中心的故障（例如数据中心断电）不太常见。 在极少数情况下，整个区域可能不可用。
 
-### <a name="availability-zones-azure-fault-domains-and-availability-sets"></a>可用性区域、Azure 容错域和可用性集
+冗余是让应用程序保持弹性的方法之一。 但是，需要在计划应用程序时规划这种冗余。 此外，所需的冗余级别取决于业务要求 &mdash; 并非每个应用程序都需要跨区域的冗余才能防范区域性服务中断。 一般情况下，提高冗余和可靠性的弊端就是增大成本和复杂性。  
 
-在 AWS 中，一个区域划分为两个或更多个可用性区域。 可用性区域对应于某个地理区域中物理隔离的数据中心。
-如果将应用程序服务器部署到独立的可用性区域，发生影响到一个区域的硬件故障或连接中断时，不会影响到其他区域中托管的任何服务器。
+在 AWS 中，一个区域划分为两个或更多个可用性区域。 可用性区域对应于某个地理区域中物理隔离的数据中心。 为了使应用程序可在任何故障级别冗余，Azure 提供了许多功能，包括**可用性集**、**可用性区域**和**配对区域**。 
 
-在 Azure 中，[容错域](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-manage-availability/)定义一组共享物理电源和网络交换机的 VM。
-可以使用[可用性集](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-manage-availability/)将 VM 分散到多个容错域中。 如果将实例分配到同一个可用性集，Azure 会在多个容错域之间均匀分配这些实例。 如果一个容错域发生电源故障或网络中断，另一个容错域至少包含其中的一部分 VM，因此不受中断的影响。
+![](../resiliency/images/redundancy.svg)
 
-![AWS 可用性区域与 Azure 容错域和可用性集的比较](./images/zone-fault-domains.png "AWS 可用性区域与 Azure 容错域和可用性集的比较")
-<br/>*AWS 可用性区域与 Azure 容错域和可用性集的比较*
-<br/><br/>
+下表汇总了各个选项。
 
-应该根据实例在应用程序中的角色来组织可用性集，确保每个角色都有一个正常运行的实例。 例如，在标准的三层 Web 应用程序中，可以针对前端、应用程序和数据实例分别创建一个可用性集。
+| &nbsp; | 可用性集 | 可用性区域 | 配对区域 |
+|--------|------------------|-------------------|---------------|
+| 故障范围 | 机架 | 数据中心 | 区域 |
+| 请求路由 | 负载均衡器 | 跨区域负载均衡器 | 流量管理器 |
+| 网络延迟 | 极低 | 低 | 中到高 |
+| 虚拟网络  | VNet | VNet | 跨区域 VNet 对等互连（预览） |
+
+### <a name="availability-sets"></a>可用性集 
+
+若要防范局部性硬件故障（例如磁盘或网络交换机故障），请在可用性集中部署两个或更多个 VM。 可用性集包括两个或更多个容错域，它们共用一个电源和网络交换机。 可用性集中的 VM 分布在不同的容错域中，因此，如果硬件故障影响了一个容错域，仍可将网络流量路由到其他容错域中的 VM。 有关可用性集的详细信息，请参阅[在 Azure 中管理 Windows 虚拟机的可用性](/azure/virtual-machines/windows/manage-availability)。
+
+将 VM 实例添加到可用性集后，还会为这些实例分配一个[更新域](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-manage-availability/)。 更新域是针对同时执行的计划内维护事件设置的一组 VM。 在多个更新域之间分配 VM 可以确保在任意给定时间，计划内更新和修补事件只会影响其中的一部分 VM。
+
+应该根据实例在应用程序中的角色来组织可用性集，确保每个角色都有一个正常运行的实例。 例如，在三层 Web 应用程序中，为前端、应用程序和数据层创建单独的可用性集。
 
 ![每个应用程序角色的 Azure 可用性集](./images/three-tier-example.png "每个应用程序角色的可用性集")
-<br/>*每个应用程序角色的 Azure 可用性集*
-<br/><br/>
 
-将 VM 实例添加到可用性集后，还会为这些实例分配一个[更新域](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-manage-availability/)。
-更新域是针对同时执行的计划内维护事件设置的一组 VM。 在多个更新域之间分配 VM 可以确保在任意给定时间，计划内更新和修补事件只会影响其中的一部分 VM。
+### <a name="availability-zones-preview"></a>可用性区域（预览版）
+
+[可用性区域](/azure/availability-zones/az-overview)是 Azure 区域中在物理上独立的区域。 每个可用性区域有独立的电源、网络和散热设备。 跨可用性区域部署 VM 有助于在发生数据中心范围的故障时保护应用程序。 
 
 ### <a name="paired-regions"></a>配对区域
 
-在 Azure 中，可以使用[配对区域](https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/)来支持两个预定义地理区域之间的冗余，这样，即使服务中断影响了整个 Azure 区域，也能确保解决方案保持可用。
+若要使应用程序免受区域性服务中断的影响，可以[使用 Azure 流量管理器][traffic-manager]将 Internet 流量分配到不同的区域，从而跨多个区域部署应用程序。 每个 Azure 区域与另一个区域配对。 它们共同构成了[区域对][paired-regions]。 除巴西南部以外，区域对位于同一区域，以符合税务和执法管辖范围方面的数据驻留要求。
 
-配对区域通常至少相隔 300 英里的距离，这与 AWS 可用性区域不同，后者虽然是物理独立的数据中心，但可能位于相对邻近的地理区域中。 保持这种远距离的目的是确保大规模的灾难只会影响配对中的一个区域。 可将邻近的配对设置为同步数据库和存储服务数据，并对其进行适当的配置，以便每次只将平台更新部署到配对中的一个区域。
+配对区域通常至少相隔 300 英里，这与可用性区域不同，后者虽然是在物理上独立的数据中心，但可能位于相对邻近的地理区域中。 保持这种远距离的目的是确保大规模的灾难只会影响配对中的一个区域。 可将邻近的配对设置为同步数据库和存储服务数据，并对其进行适当的配置，以便每次只将平台更新部署到配对中的一个区域。
 
 Azure [异地冗余存储](https://azure.microsoft.com/documentation/articles/storage-redundancy/#geo-redundant-storage)会自动备份到相应的配对区域。 对于其他所有资源而言，使用配对区域创建完全冗余的解决方案意味着需要在两个区域中创建该解决方案的完整副本。
+
 
 ### <a name="see-also"></a>另请参阅
 
@@ -266,9 +275,9 @@ Azure 提供两个类似于弹性负载均衡的服务：
 
 在 AWS 中，Route 53 提供 DNS 名称管理，以及 DNS 级别的流量路由和故障转移服务。 在 Azure 中，这些功能通过两个服务进行处理：
 
--   [Azure DNS](https://azure.microsoft.com/documentation/services/dns/) - 提供域和 DNS 管理。
+-   [Azure DNS](https://azure.microsoft.com/documentation/services/dns/) 提供域和 DNS 管理。
 
--   [流量管理器](https://azure.microsoft.com/documentation/articles/traffic-manager-overview/) - 提供 DNS 级流量路由、负载均衡和故障转移功能。
+-   [流量管理器][traffic-manager]提供 DNS 级流量路由、负载均衡和故障转移功能。
 
 #### <a name="direct-connect-and-azure-expressroute"></a>直接连接和 Azure ExpressRoute
 
@@ -431,3 +440,9 @@ AWS 设备场提供跨设备测试服务。 在 Azure 中，[Xamarin Test Cloud]
 -   [模式和做法：Azure 指南](https://azure.microsoft.com/documentation/articles/guidance/)
 
 -   [免费在线课程：面向 AWS 专家的 Microsoft Azure](http://aka.ms/azureforaws)
+
+
+<!-- links -->
+
+[paired-regions]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
+[traffic-manager]: /azure/traffic-manager/

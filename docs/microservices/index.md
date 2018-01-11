@@ -3,17 +3,17 @@ title: "使用 Kubernetes 在 Azure 中设计、构建和操作微服务"
 description: "在 Azure 中设计、构建和操作微服务"
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: c279546552d731a01ed970e7942ad7d4a56157da
-ms.sourcegitcommit: 94c769abc3d37d4922135ec348b5da1f4bbcaa0a
+ms.openlocfilehash: 857e91a8eeefec18b459f2e66fde9a4f8bbe7b21
+ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="designing-building-and-operating-microservices-on-azure"></a>在 Azure 中设计、构建和操作微服务
 
 ![](./images/drone.svg)
 
-微服务已成为一种流行的体系结构样式，可用于构建弹性、高度可缩放且能快速演变的云应用程序。 但是，微服务不仅仅是一种潮流，我们还需要利用不同的方法来设计和构建应用程序。 
+微服务已成为一种流行的体系结构类型，可用于构建可复原、高度可缩放、可独立部署且能快速演变的云应用程序。 但是，微服务不仅仅是一种潮流，我们还需要利用不同的方法来设计和构建应用程序。 
 
 在本系列文章中，我们将探讨如何在 Azure 中构建和运行微服务体系结构。 主题包括：
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/13/2017
 在微服务体系结构中，应用程序由小型的独立服务构成。 下面是微服务的一些典型特征：
 
 - 每个微服务实现单个业务功能。
-- 微服务很小，一个小规模的开发人员团队（通常为 5 &ndash; 10 人）就能编写和维护它。
+- 微服务很小，一个小规模的开发人员团队就能编写和维护它。
 - 微服务在单独的进程中运行，通过妥善定义的 API 或消息传递模式进行通信。 
 - 微服务不共享数据存储或数据架构。 每个微服务负责管理自身的数据。 
 - 微服务有独立的代码库，且不共享源代码。 不过，它们共用实用工具库。
