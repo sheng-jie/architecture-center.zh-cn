@@ -7,11 +7,11 @@ pnp.series.prev: basic-web-app
 pnp.series.next: multi-region-web-app
 ms.date: 11/23/2016
 cardTitle: Improve scalability
-ms.openlocfilehash: b875b89b87edd5636d90da8b7f8211f965b39937
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 1fdaf6e3695cb814fa4c275a4a273f9fa9a7b71b
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="improve-scalability-in-a-web-application"></a>提高 Web 应用程序的可伸缩性
 
@@ -19,7 +19,7 @@ ms.lasthandoff: 11/14/2017
 
 ![[0]][0]
 
-下载此体系结构的 [Visio 文件][visio-download]。
+*下载此体系结构的 [Visio 文件][visio-download]。*
 
 ## <a name="architecture"></a>体系结构  
 
@@ -34,6 +34,7 @@ ms.lasthandoff: 11/14/2017
 * **数据存储**。 对关系数据使用 [Azure SQL 数据库][sql-db]。 对于非关系数据，可考虑使用 NoSQL 存储，例如 [Cosmos DB][documentdb]。
 * **Azure 搜索**。 使用 [Azure 搜索][azure-search]添加搜索功能，例如搜索建议、模糊搜索、特定于语言的搜索。 Azure 搜索通常与其他数据存储结合使用，尤其是在主数据存储对一致性要求严格的情况下。 此方法将权威数据存储在其他数据存储中，将搜索索引存储在 Azure 搜索中。 也可使用 Azure 搜索合并来自多个数据存储的单一搜索索引。  
 * **电子邮件/短信**。 使用第三方服务（例如 SendGrid 或 Twilio）发送电子邮件或短信，而不是将此功能直接内置到应用程序中。
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 
 ## <a name="recommendations"></a>建议
 
@@ -103,7 +104,7 @@ Azure 应用服务的主要优势是能够根据负载缩放应用程序。 下�
 Azure 搜索没有在主数据存储中执行复杂的数据搜索所需的开销，并可通过缩放来处理负载。 请参阅[在 Azure 搜索中缩放用于查询和索引工作负荷的资源级别][azure-search-scaling]。
 
 ## <a name="security-considerations"></a>安全注意事项
-此部分列出的安全注意事项特定于本文中描述的 Azure 服务。 它不是安全性最佳做法的完整列表。 至于其他安全注意事项，请参阅[在 Azure 应用服务中保护应用安全][app-service-security]。
+本部分列出专门与本文中所述 Azure 服务相关的安全注意事项， 内容并非安全最佳做法的完整列表。 有关其他一些安全注意事项，请参阅[保护 Azure 应用服务中的应用][app-service-security]。
 
 ### <a name="cross-origin-resource-sharing-cors"></a>跨源资源共享 (CORS)
 如果将网站和 Web API 作为独立应用创建，则网站不能向 API 进行客户端 AJAX 调用，除非启用 CORS。
@@ -127,6 +128,7 @@ Azure 搜索没有在主数据存储中执行复杂的数据搜索所需的开�
 [app-service-api-app]: /azure/app-service-api/app-service-api-apps-why-best-platform
 [app-service-pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [azure-cdn]: https://azure.microsoft.com/services/cdn/
+[azure-dns]: /azure/dns/dns-overview
 [azure-redis]: https://azure.microsoft.com/services/cache/
 [azure-search]: https://azure.microsoft.com/documentation/services/search/
 [azure-search-scaling]: /azure/search/search-capacity-planning

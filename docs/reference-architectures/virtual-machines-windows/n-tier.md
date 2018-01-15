@@ -6,11 +6,11 @@ ms.date: 11/22/2016
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: e25d10d661ac4759f209bd27384303dee2ee454e
-ms.sourcegitcommit: 583e54a1047daa708a9b812caafb646af4d7607b
+ms.openlocfilehash: 0654239a5bbd966a2aa776415b7f15ae723ffd63
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-windows-vms-for-an-n-tier-application"></a>运行用于 N 层应用程序的 Windows VM
 
@@ -18,7 +18,7 @@ ms.lasthandoff: 11/28/2017
 
 ![[0]][0]
 
-下载此体系结构的 [Visio 文件][visio-download]。
+*下载此体系结构的 [Visio 文件][visio-download]。*
 
 ## <a name="architecture"></a>体系结构 
 
@@ -32,6 +32,7 @@ ms.lasthandoff: 11/28/2017
 * **NSG。** 使用[网络安全组][nsg] (NSG) 来限制 VNet 中的网络流量。 例如，在此处显示的 3 层体系结构中，数据库层不接受来自 Web 前端的流量，仅接受来自业务层和管理子网的流量。
 * **SQL Server Always On 可用性组。** 通过启用复制和故障转移，在数据层提供高可用性。
 * **Active Directory 域服务 (AD DS) 服务器**。 在 Windows Server 2016 之前，SQL Server Always On 可用性组必须加入到域中。 这是因为可用性组依赖于 Windows Server 故障转移群集 (WSFC) 技术。 Windows Server 2016 引入了在没有 Active Directory 的情况下创建故障转移群集的能力，在这种情况下，AD DS 服务器不是此体系结构所必需的。 有关详细信息，请参阅 [What's new in Failover Clustering in Windows Server 2016][wsfc-whats-new]（Windows Server 2016 中的故障转移群集的新增功能）。
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 
 ## <a name="recommendations"></a>建议
 
@@ -130,7 +131,7 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 
 [GitHub][github-folder] 中提供了此参考体系结构的部署。 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
 
@@ -184,6 +185,7 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 [azure-availability-sets]: /azure/virtual-machines/virtual-machines-windows-manage-availability#configure-each-application-tier-into-separate-availability-sets
 [azure-cli]: /azure/virtual-machines-command-line-tools
 [azure-cli-2]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-dns]: /azure/dns/dns-overview
 [azure-key-vault]: https://azure.microsoft.com/services/key-vault
 [守护主机]: https://en.wikipedia.org/wiki/Bastion_host
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing

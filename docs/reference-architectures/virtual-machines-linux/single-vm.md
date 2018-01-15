@@ -6,11 +6,11 @@ ms.date: 12/12/2017
 pnp.series.title: Linux VM workloads
 pnp.series.next: multi-vm
 pnp.series.prev: ./index
-ms.openlocfilehash: a51e0d7ed4e35c5331241cf78d1715e63f9b4d86
-ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
+ms.openlocfilehash: 7caef46e53b42011b5a12ef53384c0352b9b9a72
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-a-linux-vm-on-azure"></a>在 Azure 上运行 Linux VM
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/02/2018
 * **数据磁盘。** [数据磁盘][data-disk]是用于保存应用程序数据的持久性 VHD。 数据磁盘像 OS 磁盘一样，存储在 Azure 存储中。
 * **虚拟网络 (VNet) 和子网。** 每个 Azure VM 都会部署到可细分为多个子网的 VNet 中。
 * **公共 IP 地址。** 需要使用公共 IP 地址与 VM 通信 &mdash; 例如，通过 SSH。
-* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。  
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 * **网络接口 (NIC)**。 VM 可使用分配的 NIC 与虚拟网络进行通信。
 * **网络安全组 (NSG)**。 [网络安全组][nsg]用于允许或拒绝网络资源的网络流量。 可以将 NSG 与单个 NIC 或与子网相关联。 如果将 NSG 与一个子网相关联，则 NSG 规则适用于该子网中的所有 VM。
 * **诊断。** 诊断日志记录对于 VM 管理和故障排除至关重要。
@@ -151,7 +151,7 @@ VHD 存储在 [Azure 存储][azure-storage]中。 将复制 Azure 存储以实�
   * 一个运行 Ubuntu 16.04.3 LTS 最新版本的 VM。
   * 一个示例自定义脚本扩展，它会格式化两个数据磁盘并将 Apache HTTP Server 部署到 Ubuntu VM。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
 

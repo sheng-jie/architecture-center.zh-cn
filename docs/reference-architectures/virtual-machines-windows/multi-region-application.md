@@ -5,11 +5,11 @@ author: MikeWasson
 ms.date: 11/22/2016
 pnp.series.title: Windows VM workloads
 pnp.series.prev: n-tier
-ms.openlocfilehash: b3f1fcf1403a5199191cb37dfed4fbe86695766d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 9c54959da96115e55ba8a5c9e0f3c358d29ce5dd
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-windows-vms-in-multiple-regions-for-high-availability"></a>在多个区域中运行 Windows VM 以实现高可用性
 
@@ -17,13 +17,14 @@ ms.lasthandoff: 11/14/2017
 
 [![0]][0] 
 
-下载此体系结构的 [Visio 文件][visio-download]。
+*下载此体系结构的 [Visio 文件][visio-download]。*
 
 ## <a name="architecture"></a>体系结构 
 
 此体系结构是在[运行用于 N 层应用程序的 Windows VM](n-tier.md) 中所示的体系结构的基础上构建的。 
 
-* **主要和次要区域**。 使用两个区域来实现更高的可用性。 其中一个是主要区域。 另一个区域用于故障转移。 
+* **主要和次要区域**。 使用两个区域来实现更高的可用性。 其中一个是主要区域。 另一个区域用于故障转移。
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 * **Azure 流量管理器**。 [流量管理器][traffic-manager]将传入请求路由到其中一个区域。 在正常运行期间，它将请求路由到主要区域。 如果该区域变得不可用，则流量管理器将故障转移到次要区域。 有关详细信息，请参阅[流量管理器配置](#traffic-manager-configuration)部分。
 * **资源组**。 为主要区域、次要区域和流量管理器创建单独的[资源组][resource groups]。 这允许你将每个区域作为单个资源集合灵活进行管理。 例如，可以重新部署一个区域而无需关闭另一个区域。 [链接资源组][resource-group-links]，以便可以运行查询来列出应用程序的所有资源。
 * **Vnet**。 为每个区域创建一个单独的 VNet。 请确保地址空间不重叠。 
@@ -164,7 +165,7 @@ azure network traffic-manager  endpoint set --resource-group <resource-group> --
 
 <!-- Links -->
 [hybrid-vpn]: ../hybrid-networking/vpn.md
-
+[azure-dns]: /azure/dns/dns-overview
 [azure-sla]: https://azure.microsoft.com/support/legal/sla/
 [azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx

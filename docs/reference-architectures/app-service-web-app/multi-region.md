@@ -4,11 +4,11 @@ description: "对于在 Microsoft Azure 中运行的具有高可用性的 Web �
 author: MikeWasson
 ms.date: 11/23/2016
 cardTitle: Run in multiple regions
-ms.openlocfilehash: 2d7d0c38bef3efc73a7ba2dd61e4190d07deb1b5
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 60caa121d0ce2f1aa2638650229bed8048804c22
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>在多个区域中运行 Web 应用程序
 [!INCLUDE [header](../../_includes/header.md)]
@@ -17,13 +17,14 @@ ms.lasthandoff: 11/14/2017
 
 ![参考体系结构：具有高可用性的 Web 应用程序](./images/multi-region-web-app-diagram.png) 
 
-下载此体系结构的 [Visio 文件][visio-download]。
+*下载此体系结构的 [Visio 文件][visio-download]。*
 
 ## <a name="architecture"></a>体系结构 
 
 此体系结构基于[提高 Web 应用程序中的可伸缩性][guidance-web-apps-scalability]中显示的体系结构。 它们的主要区别包括：
 
 * **主要和次要区域**。 此体系结构使用两个区域来实现更高的可用性。 应用程序部署到每个区域。 在正常运行期间，网络流量被路由到主要区域。 如果主要区域变得不可用，则流量将被路由到次要区域。 
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 * **Azure 流量管理器**。 [流量管理器][traffic-manager]将传入请求路由到主要区域。 如果在该区域中运行的应用程序变得不可用，则流量管理器将故障转移到次要区域。
 * SQL 数据库和 Cosmos DB 的**异地复制**。 
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="recommendations"></a>建议
 
-你的要求可能不同于此处描述的体系结构。 一开始可使用此部分的建议。
+你的要求可能不同于此处描述的体系结构。 请使用本部分中的建议作为入手点。
 
 ### <a name="regional-pairing"></a>区域配对
 每个 Azure 区域都与同一地域内的另一个区域配对。 通常，请选择同一区域对中的区域（例如“美国东部 2”和“美国中部”）。 这样做的好处包括：
@@ -80,7 +81,7 @@ Cosmos DB 支持跨区域的异地复制。 一个区域被指定为可写入的
 ### <a name="storage"></a>存储
 对于 Azure 存储，请使用[读取访问异地冗余存储][ra-grs] (RA-GRS)。 使用 RA-GRS 存储时，数据被复制到次要区域。 你可以通过一个单独的终结点以只读方式访问次要区域中的数据。 如果发生区域性中断或灾难，则 Azure 存储团队可以决定执行到次要区域的异地故障转移。 客户不需要为此故障转移执行任何操作。
 
-对于队列存储，请在次要区域中创建一个备份队列。 在故障转移期间，应用可以使用备份队列，直到主要区域变得重新可用。 这样，应用程序仍然可以处理新请求。
+对于队列存储，请在次要区域中创建一个备份队列。 在故障转移期间，应用可以使用备份队列，直到主要区域变得重新可用。 这样，应用程序仍可处理新请求。
 
 ## <a name="availability-considerations"></a>可用性注意事项
 
@@ -147,6 +148,7 @@ azure network traffic-manager endpoint set --name <endpoint> --profile-name <pro
 <!-- links -->
 
 [azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
+[azure-dns]: /azure/dns/dns-overview
 [docdb-geo]: /azure/documentdb/documentdb-distribute-data-globally
 [guidance-web-apps-scalability]: ./scalable-web-app.md
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx

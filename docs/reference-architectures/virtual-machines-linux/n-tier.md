@@ -6,11 +6,11 @@ ms.date: 11/22/2017
 pnp.series.title: Linux VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: 98814685e0f33f2a1258bf8307a86f92d8a81968
-ms.sourcegitcommit: 583e54a1047daa708a9b812caafb646af4d7607b
+ms.openlocfilehash: e875a58aa83339560fd1de5b03a960f071883927
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-linux-vms-for-an-n-tier-application"></a>运行用于 N 层应用程序的 Linux VM
 
@@ -18,7 +18,7 @@ ms.lasthandoff: 11/28/2017
 
 ![[0]][0]
 
-下载此体系结构的 [Visio 文件][visio-download]。
+*下载此体系结构的 [Visio 文件][visio-download]。*
 
 ## <a name="architecture"></a>体系结构
 
@@ -27,6 +27,7 @@ ms.lasthandoff: 11/28/2017
 * **可用性集。** 为每个层创建一个[可用性集][azure-availability-sets]，并且在每个层中至少预配两个 VM。  这样，VM 便可以满足 VM 的更高[服务级别协议 (SLA)][vm-sla]。 可在可用性集中部署单个 VM，但单个 VM 不具备 SLA 保证的资格，除非单个 VM 针对所有 OS 和数据磁盘使用 Azure 高级存储。  
 * **子网。** 为每个层创建一个单独的子网。 使用 [CIDR] 表示法指定地址范围和子网掩码。 
 * **负载均衡器。** 使用[面向 Internet 的负载均衡器][load-balancer-external]将传入的 Internet 流量分布到 Web 层，使用[内部负载均衡器][load-balancer-internal]将来自 Web 层的网络流量分布到业务层。
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 * **Jumpbox。** 也称为[守护主机]。 网络上的一个安全 VM，管理员使用它来连接到其他 VM。 Jumpbox 中的某个 NSG 只允许来自安全列表中的公共 IP 地址的远程流量。 NSG 应允许安全外壳 (SSH) 流量。
 * **监视。** 可以使用 [Nagios]、[Zabbix] 或 [Icinga] 等监视软件深入了解响应时间、VM 运行时间和系统的整体运行状况。 在置于单独的管理子网中的 VM 上安装监视软件。
 * **NSG。** 使用[网络安全组][nsg] (NSG) 来限制 VNet 中的网络流量。 例如，在此处显示的 3 层体系结构中，数据库层不接受来自 Web 前端的流量，仅接受来自业务层和管理子网的流量。
@@ -115,7 +116,7 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 
 [GitHub][github-folder] 中提供了此参考体系结构的部署。 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
 
@@ -160,6 +161,7 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 [azure-administration]: /azure/automation/automation-intro
 [azure-availability-sets]: /azure/virtual-machines/virtual-machines-linux-manage-availability
 [azure-cli-2]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-dns]: /azure/dns/dns-overview
 [守护主机]: https://en.wikipedia.org/wiki/Bastion_host
 [cassandra-in-azure]: https://docs.datastax.com/en/datastax_enterprise/4.5/datastax_enterprise/install/installAzure.html
 [cidr]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing

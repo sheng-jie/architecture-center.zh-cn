@@ -6,11 +6,11 @@ ms.date: 11/16/2017
 pnp.series.title: Windows VM workloads
 pnp.series.next: n-tier
 pnp.series.prev: single-vm
-ms.openlocfilehash: c9b1e52044d38348ecf1bd29cb24b3c20d1d6a45
-ms.sourcegitcommit: 115db7ee008a0b1f2b0be50a26471050742ddb04
+ms.openlocfilehash: 14e7e023afd7cb7cbe0e8db8e224ba777f6fe863
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="run-load-balanced-vms-for-scalability-and-availability"></a>运行负载均衡的 VM 以提高可伸缩性和可用性
 
@@ -18,7 +18,7 @@ ms.lasthandoff: 11/17/2017
 
 ![[0]][0]
 
-下载此体系结构的 [Visio 文件][visio-download]。
+*下载此体系结构的 [Visio 文件][visio-download]。*
 
 ## <a name="architecture"></a>体系结构
 
@@ -26,12 +26,13 @@ ms.lasthandoff: 11/17/2017
 
 在此体系结构中，工作负荷分布于多个 VM 实例上。 有单个公共 IP 地址，并且 Internet 流量通过负载均衡器分布到这些 VM。 此体系结构可用于单层应用程序，例如无状态 Web 应用程序。
 
-此体系结构具有以下组件：
+该体系结构包含以下组件：
 
 * **资源组。** [资源组][resource-manager-overview]用于对资源进行分组，以便可以按生存期、所有者或其他条件对其进行管理。
 * **虚拟网络 (VNet) 和子网。** 每个 Azure VM 都会部署到可细分为多个子网的 VNet 中。
 * **Azure 负载均衡器**。 [负载均衡器][load-balancer]将传入 Internet 请求分布到各个 VM 实例。 
 * **公共 IP 地址**。 负载均衡器需要使用一个公共 IP 地址来接收 Internet 流量。
+* **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 * **VM 规模集**。 [VM 规模集][vm-scaleset]是一组用于托管工作负荷的相同 VM。 规模集允许根据预定义规则以手动或自动方式增加或减少 VM 的数量。
 * **可用性集**。 [可用性集][availability-set]包含 VM，使 VM 符合更高[服务级别协议 (SLA)][vm-sla] 的要求。 要应用更高级别的 SLA，可用性集必须包含至少两个 VM。 可用性集隐含于规模集中。 如果在规模集外创建 VM，需要独立创建可用性集。
 * **托管磁盘**。 Azure 托管磁盘管理 VM 磁盘的虚拟硬盘 (VHD) 文件。 
@@ -124,7 +125,7 @@ ms.lasthandoff: 11/17/2017
   * 一个位于 VM 规模集前面的负载均衡器。
   * 一个 NSG，其中包含用于允许 HTTP 流量发送到 VM 规模集的传入规则。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
 
@@ -169,6 +170,7 @@ ms.lasthandoff: 11/17/2017
 [azure-automation]: /azure/automation/automation-intro
 [azure-cli]: /azure/virtual-machines-command-line-tools
 [azure-cli-2]: /azure/install-azure-cli?view=azure-cli-latest
+[azure-dns]: /azure/dns/dns-overview
 [git]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/multi-vm
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/multi-vm
 [health-probe-log]: /azure/load-balancer/load-balancer-monitor-log

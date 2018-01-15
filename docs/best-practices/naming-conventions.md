@@ -4,11 +4,11 @@ description: "Azure 资源的命名约定。 如何命名虚拟机、存储帐�
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 20f090c4cc39f96887cd58ffd2a9c7736e77de57
-ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
+ms.openlocfilehash: 364735dec9658b4d2a9d21330f38c57f6fa694bd
+ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -109,7 +109,7 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 | 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |虚拟网络 (VNet) |资源组 |2-64 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service short name>-vnet` |`profx-vnet` |
-|子网 |父级 VNet |2-80 |不区分大小写 |字母数字、下划线、短划线和句点 |`<descriptive context>` |`web` |
+|子网 |父级 VNet |2-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<descriptive context>` |`web` |
 |网络接口 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<vmname>-nic<num>` |`profx-sql1-nic1` |
 |网络安全组 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service short name>-<context>-nsg` |`profx-app-nsg` |
 |网络安全组规则 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<descriptive context>` |`sql-allow` |
