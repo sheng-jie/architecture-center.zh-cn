@@ -4,11 +4,11 @@ description: "有关配置缓存以提高性能和伸缩性的指南。"
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: f8bc25ef10847e8308e830b745e87a176438d200
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 7968c1578dfef2c7ad28576b9aafbbe2b6672cd9
+ms.sourcegitcommit: 3d6dba524cc7661740bdbaf43870de7728d60a01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="caching"></a>缓存
 
@@ -185,23 +185,13 @@ ms.lasthandoff: 11/14/2017
 还必须在数据流入或流出缓存时保护数据。 为此，可以依赖于客户端应用程序用来连接缓存的网络基础结构所提供的安全功能。 如果在托管客户端应用程序的同一组织中使用现场服务器来实施缓存，则网络本身的隔离可能不需要用户采取任何其他措施。 如果缓存位于远程，且需要基于公共网络（例如 Internet）的 TCP 或 HTTP 连接，请考虑实施 SSL。
 
 ## <a name="considerations-for-implementing-caching-with-microsoft-azure"></a>使用 Microsoft Azure 实现缓存的注意事项
-Azure 提供 Azure Redis 缓存。 这是开源 Redis 缓存的一种实现，可在 Azure 数据中心作为服务运行。 它提供可从任何 Azure 应用程序访问的缓存服务，无论应用程序是实施为云服务、网站，还是在 Azure 虚拟机中。 拥有适当访问密钥的客户端应用程序可以共享缓存。
+
+[Azure Redis 缓存](/azure/redis-cache/)是开源 Redis 缓存的一种实现，可在 Azure 数据中心作为服务运行。 它提供可从任何 Azure 应用程序访问的缓存服务，无论应用程序是实施为云服务、网站，还是在 Azure 虚拟机中。 拥有适当访问密钥的客户端应用程序可以共享缓存。
 
 Azure Redis 缓存是高性能缓存解决方案，提供可用性、伸缩性和安全性。 它通常作为分散在一个或多个专用计算机上的服务运行， 并尝试在内存中存储尽量多的信息以确保快速访问。 这种体系结构旨在通过减少执行缓慢 I/O 操作的需要，提供低延迟和高吞吐量。
 
  Azure Redis 缓存与客户端应用程序使用的多种 API 兼容。 如果现有应用程序已使用运行本地的 Azure Redis 缓存，Azure Redis 缓存可在云中提供缓存的快速迁移路径。
 
-> [!NOTE]
-> Azure 还提供托管缓存服务。 此服务基于 Azure Service Fabric 缓存引擎。 使用它可以创建可由松散耦合应用程序共享的分布式缓存。 缓存托管在 Azure 数据中心内运行的高性能服务器上。
-> 但是，不再建议使用此选项，提供此选项只是为了支持构建为使用此选项的现有应用程序。 针对所有新的开发，请改用 Azure Redis 缓存。
-> 
-> 此外，Azure 支持角色中缓存。 可使用此功能创建特定于云服务的缓存。
-> 缓存由 Web 角色或辅助角色的实例托管，只能由以同一云服务部署单位的一部分来操作的角色进行访问。 （部署单位是作为云服务部署到特定区域的角色实例集合。）缓存已组建群集，托管缓存的同一部署单位中的所有角色实例将成为同一缓存群集的一部分。 但是，不再建议使用此选项，提供此选项只是为了支持构建为使用此选项的现有应用程序。 针对所有新的开发，请改用 Azure Redis 缓存。
-> 
-> Azure 托管缓存服务和 Azure 角色中缓存目前已预定于 2016 年 11 月 16 日停用。
-> 建议迁移到 Azure Redis 缓存，以便为这次停用做好准备。 有关详细信息，请参阅[应使用哪种 Azure Redis 缓存产品和大小？](/azure/redis-cache/cache-faq#what-redis-cache-offering-and-size-should-i-use)。
-> 
-> 
 
 ### <a name="features-of-redis"></a>Redis 的功能
  Redis 不仅是简单的缓存服务器。 它还提供分布式内存中数据库，其中包含用于支持许多常见方案的广泛命令集。 本文档后面的“使用 Redis 缓存”部分中将提供介绍。 本部分汇总了 Redis 提供的一些重要功能。

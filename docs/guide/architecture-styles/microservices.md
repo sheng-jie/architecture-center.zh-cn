@@ -2,15 +2,15 @@
 title: "微服务体系结构样式"
 description: "介绍 Azure 上微服务体系结构的好处、挑战和最佳做法"
 author: MikeWasson
-ms.openlocfilehash: 6426b3342a319832baf5eec35e9c783ba9348bdd
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 08fd39b6cf0b3c88af654b27e21b2d7dd9fb19b1
+ms.sourcegitcommit: 7764a804f000180c37a4f8dbab946b525f784f58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="microservices-architecture-style"></a>微服务体系结构样式
 
-微服务体系结构由一系列小型的自治服务组成。 每个服务都是自包含服务，并且应实现单个业务功能。 
+微服务体系结构由一系列小型的自治服务组成。 每个服务都是自包含服务，并且应实现单个业务功能。 有关在 Azure 上构建微服务体系结构的详细指导，请参阅[在 Azure 中设计、构建和操作微服务](../../microservices/index.md)。
 
 ![](./images/microservices-logical.svg)
  
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/14/2017
 
 - API 网关可执行身份验证、日志记录、SSL 终止和负载均衡等其他跨领域功能。
 
-## <a name="when-to-use-this-architecture"></a>此体系结构适用的情况
+## <a name="when-to-use-this-architecture"></a>何时使用此体系结构
 
 请对以下情况考虑使用此体系结构样式：
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="microservices-using-azure-container-service"></a>使用 Azure 容器服务的微服务 
 
-Azure 容器服务可用于配置和预配 Docker 群集。 Azure 容器服务支持多种常用容器业务流程协调程序，包括 Kubernetes、DC/OS 和 Docker Swarm。
+可以使用 [Azure 容器服务](/azure/container-service/)来配置和预配 Docker 群集。 Azure 容器服务支持多种常用容器业务流程协调程序，包括 Kubernetes、DC/OS 和 Docker Swarm。
 
 ![](./images/microservices-acs.png)
  
@@ -133,7 +133,7 @@ Azure 容器服务可用于配置和预配 Docker 群集。 Azure 容器服务�
 
 ## <a name="microservices-using-azure-service-fabric"></a>使用 Azure Service Fabric 的微服务
 
-下图展示使用 Azure Service Fabric 的微服务体系结构。
+下图展示使用 [Azure Service Fabric](/azure/service-fabric/) 的微服务体系结构。
 
 ![](./images/service-fabric.png)
 

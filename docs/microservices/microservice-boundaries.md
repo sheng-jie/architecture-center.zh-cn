@@ -3,11 +3,11 @@ title: "标识微服务边界"
 description: "标识微服务边界"
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: 046749191bd565813218b3834cb4674c4c5100e2
-ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
+ms.openlocfilehash: e4f11da9f970724c55ad99824f808a10c4558971
+ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="designing-microservices-identifying-microservice-boundaries"></a>设计微服务：标识微服务边界
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 12/29/2017
 
 **可移植性**。 此处列出的所有业务流程协调程序（Kubernetes、DC/OS、Docker Swarm 和 Service Fabric）都可以在本地或多个公有云中运行。 
 
-**应用程序集成**。 使用无服务器体系结构构建复杂应用程序可能有难度。 在 Azure 中，一种做法是使用 [Azure 逻辑应用](/azure/logic-apps/)来协调一组 Azure 函数。 有关此方法的示例，请参阅[创建与 Azure 逻辑应用集成的函数](/azure/azure-functions/functions-twitter-email.)
+**应用程序集成**。 使用无服务器体系结构构建复杂应用程序可能有难度。 在 Azure 中，一种做法是使用 [Azure 逻辑应用](/azure/logic-apps/)来协调一组 Azure 函数。 有关此方法的示例，请参阅[创建与 Azure 逻辑应用集成的函数](/azure/azure-functions/functions-twitter-email)。
 
 **成本**。 使用业务流程协调程序时，需要为群集中运行的 VM 付费。 使用无服务器应用程序时，只需为实际消耗的计算资源付费。 在这两种情况下，都需要考虑到任何附加服务（例如存储、数据库和消息传递服务）的成本。
 

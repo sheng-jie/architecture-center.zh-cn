@@ -1,17 +1,17 @@
 ---
 title: "用于前端的后端模式"
-description: "创建单独的后端服务，以供特定的前端应用程序或接口使用。"
+description: "创建单独的后端服务，供特定的前端应用程序或接口使用。"
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: dd71b65e99ae21dff1443f5728ae5f0f54f8122c
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 87acd39d021c5e44594a2e7c9574e4dd363ce83b
+ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="backends-for-frontends-pattern"></a>用于前端的后端模式
 
-创建单独的后端服务，以供特定的前端应用程序或接口使用。 要避免为多个接口自定义一个后端时，此模式十分有用。
+创建单独的后端服务，供特定的前端应用程序或接口使用。 要避免为多个接口自定义一个后端时，此模式十分有用。 此模式最先是由 Sam Newman 描述的。
 
 ## <a name="context-and-problem"></a>上下文和问题
 
@@ -32,6 +32,8 @@ ms.lasthandoff: 11/14/2017
 ![](./_images/backend-for-frontend-example.png) 
 
 每个后端特定于一个接口，因此可针对该接口优化后端。 因此，与试图满足所有接口的需求的泛型后端相比，它更小、复杂性更低并且速度可能更快。 每个接口团队可自主控制其后端，无需依赖于集中式后端开发团队。 这向接口团队提供了后端的语言选择、发布节奏、工作负载优先顺序和功能集成方面的灵活性。
+
+有关详细信息，请参阅[模式：用于前端的后端](http://samnewman.io/patterns/architectural/bff/)。
 
 ## <a name="issues-and-considerations"></a>问题和注意事项
 

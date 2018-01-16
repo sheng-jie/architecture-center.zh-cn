@@ -4,18 +4,17 @@ description: "有关如何实现 API 的指南。"
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: b4d197719380bf55033942b3ebcad384170d950d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: cc28864de36afdeed2f8a7155a307e312c3a398e
+ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="api-implementation"></a>API 实现
-[!INCLUDE [header](../_includes/header.md)]
 
 精心设计的 REST 样式 Web API 定义了客户端应用程序可以访问的资源、关系和导航方案。 实现和部署 Web API 时，应考虑托管该 Web API 的环境的物理要求以及构造该 Web API 的方式，而不是考虑数据的逻辑结构。 本指南重点介绍实现 Web API 并发布它，使其可供客户端应用程序使用的最佳实践。 有关 Web API 设计的详细信息，请参阅 [API 设计指南](/azure/architecture/best-practices/api-design)。
 
-## <a name="considerations-for-processing-requests"></a>有关处理请求的注意事项
+## <a name="processing-requests"></a>处理请求
 
 在实现处理请求的代码时，请考虑以下几点。
 
@@ -126,7 +125,7 @@ HTTP 响应的示例中所示的 HATEOAS 链接指示客户端应用程序可以
 * 向 URI `http://adventure-works.com/customers/2/orders` 发出 HTTP GET 请求以查找客户的所有订单。 数据可以 XML 或 JSON 格式返回。
 * 向 URI `http://adventure-works.com/customers/2/orders` 发出 HTTP PUT 请求以为此客户创建新订单。 必须在请求消息中以 x-www-form-urlencoded 格式提供数据。
 
-## <a name="considerations-for-handling-exceptions"></a>有关处理异常的注意事项
+## <a name="handling-exceptions"></a>处理异常
 
 如果操作引发未捕获的异常，请考虑以下几点。
 
@@ -190,7 +189,7 @@ public IHttpActionResult DeleteCustomer(int id)
 
 HTTP 协议可区分因客户端应用程序发生的错误（HTTP 4xx 状态代码）和因服务器上的事故导致的错误（HTTP 5xx 状态代码）。 请确保在任何错误响应消息中遵守此约定。
 
-## <a name="considerations-for-optimizing-client-side-data-access"></a>有关优化客户端数据访问的注意事项
+## <a name="optimizing-client-side-data-access"></a>优化客户端数据访问
 例如，在分布式环境（例如，涉及 Web 服务器和客户端应用程序）中，主要问题源之一是网络。 这可能表现为值得注意的瓶颈问题，尤其当客户端应用程序频繁地将发送请求或接收数据时。 因此，目标应是将网络间流动的通信量降到最低。 在实现检索和维护数据的代码时，请考虑以下几点：
 
 ### <a name="support-client-side-caching"></a>支持客户端缓存
@@ -541,7 +540,7 @@ public class OrdersController : ApiController
 >
 >
 
-## <a name="considerations-for-handling-large-requests-and-responses"></a>有关处理大型请求和响应的注意事项
+## <a name="handling-large-requests-and-responses"></a>处理大型请求和响应
 可能会有这样的情况：客户端应用程序需要发出用于发送或接收大小可能为几兆字节（或更大）的数据的请求。 等待传输如此大量的数据可能会导致客户端应用程序停止响应。 在需要处理包含大量数据的请求时，请考虑以下几点：
 
 ### <a name="optimize-requests-and-responses-that-involve-large-objects"></a>优化涉及大型对象的请求和响应
@@ -608,7 +607,7 @@ public class OrdersController : ApiController
 >
 >
 
-## <a name="considerations-for-maintaining-responsiveness-scalability-and-availability"></a>有关保持响应能力、可伸缩性和可用性的注意事项
+## <a name="maintaining-responsiveness-scalability-and-availability"></a>保持响应能力、可伸缩性和可用性
 同一 Web API 可能由世界任何地方运行的许多客户端应用程序利用。 请务必确保将 Web API 实现为在重负载下保持响应能力、可扩展以支持高度变化的工作负荷，并保证执行关键业务操作的客户端的可用性。 确定如何满足这些要求时，请考虑以下几点：
 
 ### <a name="provide-asynchronous-support-for-long-running-requests"></a>为长时间运行的请求提供异步支持
@@ -652,7 +651,7 @@ HTTP 协议支持永久 HTTP 连接（在这些连接可用时）。 HTTP 1.0 �
 >
 >
 
-## <a name="considerations-for-publishing-and-managing-a-web-api"></a>有关发布和管理 Web API 的注意事项
+## <a name="publishing-and-managing-a-web-api"></a>发布和管理 Web API
 要使 Web API 可供客户端应用程序使用，Web API 必须部署到主机环境中。 此环境通常是 Web 服务器，尽管它可能是某种其他类型的主机进程。 发布 Web API 时，应考虑以下几点：
 
 * 所有请求都必须经过身份验证和授权，必须强制实施相应的访问控制级别。
@@ -668,7 +667,7 @@ HTTP 协议支持永久 HTTP 连接（在这些连接可用时）。 HTTP 1.0 �
 * 转换消息并转换使用不同技术生成的客户端的通信协议。
 * 缓存请求和响应以减少托管 Web API 的服务器上的负载。
 
-## <a name="considerations-for-testing-a-web-api"></a>有关测试 Web API 的注意事项
+## <a name="testing-a-web-api"></a>测试 Web API
 Web API 应和软件的任何其他部分一样进行全面测试。 应考虑创建单元测试来验证其功能。Web API 的性质使它在验证操作是否正确方面具有它自有的额外要求。 应特别注意以下几个方面：
 
 * 测试所有路由以验证它们是否调用正确的操作。 特别要注意意外返回的 HTTP 状态代码 405（不允许的方法），因为这可能指示路由与可分派给该路由的 HTTP 方法（GET、POST、PUT、DELETE）不匹配。
@@ -699,8 +698,9 @@ Web API 应和软件的任何其他部分一样进行全面测试。 应考虑�
 
 还应创建并运行性能测试以检查 Web API 在压力下令人满意地运行。 可以使用 Visual Studio Ultimate 构建一个 Web 性能和负载测试项目。 有关详细信息，请参阅 [Run performance tests on an application before a release](https://msdn.microsoft.com/library/dn250793.aspx)（在发布前对应用程序运行性能测试）。
 
-## <a name="publish-and-manage-a-web-api-using-the-azure-api-management-service"></a>使用 Azure API 管理服务发布和管理 Web API
-Azure 提供了 [API 管理服务](https://azure.microsoft.com/documentation/services/api-management/)，可以用来发布和管理 Web API。 使用此工具，可以生成一个充当一个或多个 Web API 的外观的服务。 该服务本身是一个可缩放的 Web 服务，可以使用 Azure 管理门户创建和配置它。 可以使用此服务发布和管理 Web API，如下所示：
+## <a name="using-azure-api-management"></a>使用 Azure API 管理 
+
+在 Azure 上，可以考虑使用 [Azue API 管理](https://azure.microsoft.com/documentation/services/api-management/)来发布和管理 Web API。 使用此工具，可以生成一个充当一个或多个 Web API 的外观的服务。 该服务本身是一个可缩放的 Web 服务，可以使用 Azure 管理门户创建和配置它。 可以使用此服务发布和管理 Web API，如下所示：
 
 1. 将 Web API 部署到网站、Azure 云服务或 Azure 虚拟机。
 2. 将 API 管理服务连接到 Web API。 发送到管理 API 的 URL 的请求将映射到 Web API 中的 URI。 同一 API 管理服务可以将请求路由到多个 Web API。 这样便可以将多个 Web API 聚合为单个管理服务。 同样，如果需要限制或分隔可用于不同应用程序的功能，则可以从多个 API 管理服务引用同一 Web API。
@@ -729,7 +729,7 @@ Azure 提供了 [API 管理服务](https://azure.microsoft.com/documentation/ser
 > 在此结构中，如果要对网站使用自定义 DNS 名称，则应将每个网站的相应 CNAME 记录配置为指向 Azure 流量管理器网站的 DNS 名称。
 >
 
-## <a name="support-developers-building-client-applications"></a>为构建客户端应用程序的开发人员提供支持
+## <a name="supporting-client-side-developers"></a>为客户端开发人员提供支持
 构造客户端应用程序的开发人员通常需要了解有关如何访问 Web API 和与参数、数据类型、返回类型和返回代码（描述 Web 服务和客户端应用程序之间的不同请求和响应）相关的文档的信息。
 
 ### <a name="document-the-rest-operations-for-a-web-api"></a>记录 Web API 的 REST 操作

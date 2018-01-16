@@ -1,17 +1,17 @@
 ---
 title: "防损层模式"
-description: "在新式应用程序与旧系统之间实施外层或适配器层。"
+description: "在现代应用程序与旧系统之间实施外观或适配器层。"
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 590d5f3676c92f5f18661360106e2b2fdd4efbe1
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: e41f080abbef772596ee7f8b10ad72bb03a3b829
+ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="anti-corruption-layer-pattern"></a>防损层模式
 
-在新式应用程序和它所依赖的旧系统之间实施外层或适配器层。 此层将转换新式应用程序与旧系统之间的请求。 使用此模式以确保应用程序的设计不受旧系统上的依赖项的限制。
+在新式应用程序和它所依赖的旧系统之间实施外层或适配器层。 此层将转换新式应用程序与旧系统之间的请求。 使用此模式以确保应用程序的设计不受旧系统上的依赖项的限制。 此模式最先由 Eric Evans 在 *Domain-Driven Design*（域驱动的设计）中描述。
 
 ## <a name="context-and-problem"></a>上下文和问题
 
