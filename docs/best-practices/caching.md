@@ -4,11 +4,11 @@ description: "有关配置缓存以提高性能和伸缩性的指南。"
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 7968c1578dfef2c7ad28576b9aafbbe2b6672cd9
-ms.sourcegitcommit: 3d6dba524cc7661740bdbaf43870de7728d60a01
+ms.openlocfilehash: fde1c3e8c65d357746e4ccaddebeebace943cf9d
+ms.sourcegitcommit: 441185360db49cfb3cf39527b68f318d17d4cb3d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="caching"></a>缓存
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 01/11/2018
 
 请小心不要将共享缓存服务可用性的重要依赖性引入解决方案。 如果提供共享缓存的服务不可用，应用程序应能继续工作。 应用程序应该不会在等待缓存服务恢复时停止响应或失败。
 
-因此，应用程序必须准备好检测缓存服务的可用性，并在无法访问缓存时回退到原始数据存储。 [断路器模式](http://msdn.microsoft.com/library/dn589784.aspx)可用于处理这种情况。 提供缓存的服务可以恢复，当服务可用时，缓存会在从原始数据存储读取数据时，遵循[缓存端模式](http://msdn.microsoft.com/library/dn589799.aspx)等策略重新填充。
+因此，应用程序必须准备好检测缓存服务的可用性，并在无法访问缓存时回退到原始数据存储。 [断路器模式](http://msdn.microsoft.com/library/dn589784.aspx)可用于处理这种情况。 提供缓存的服务可以恢复，当该服务可用后，缓存会在从原始数据存储读取数据时，遵循[缓存端模式](http://msdn.microsoft.com/library/dn589799.aspx)等策略重新填充。
 
 但是，在缓存暂时不可用的情况下应用程序回退到原始数据存储可能会影响系统的伸缩性。
 在恢复数据存储时，原始数据存储可能忙于处理数据请求，导致超时和连接失败。
