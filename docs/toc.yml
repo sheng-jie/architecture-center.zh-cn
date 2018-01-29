@@ -17,12 +17,14 @@
 - name: 参考体系结构
   href: reference-architectures/index.md
   items:
-    - name: 身份管理
-      href: reference-architectures/identity/index.md
-    - name: 混合网络
-      href: reference-architectures/hybrid-networking/index.md
     - name: 应用服务 Web 应用程序
       href: reference-architectures/app-service-web-app/index.md
+    - name: 混合网络
+      href: reference-architectures/hybrid-networking/index.md
+    - name: 身份管理
+      href: reference-architectures/identity/index.md
+    - name: Jenkins 服务器
+      href: reference-architectures/jenkins/index.md
     - name: 外围网络
       href: reference-architectures/dmz/index.md
     - name: SAP NetWeaver 和 SAP HANA
