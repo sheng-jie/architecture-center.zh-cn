@@ -5,11 +5,11 @@ keywords: "AWS 专家, Azure 比较, AWS 比较, azure 与 aws 之间的差别, 
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: ac96110e3fe69b4bb69714e18fd0f193208bc244
-ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
+ms.openlocfilehash: e5f7cb5062b0b4a8526f3b29a9fa4ddaff399fc0
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="azure-for-aws-professionals"></a>面向 AWS 专业人员的 Azure
 
@@ -311,7 +311,7 @@ AWS RDS 的费用根据实例使用的硬件资源确定，例如 CPU、RAM、�
 
 -   [使用 Azure 门户为 Azure SQL 数据库配置异地复制](https://azure.microsoft.com/documentation/articles/sql-database-geo-replication-portal/)
 
--   [DocumentDB 简介：一种 NoSQL JSON 数据库](https://azure.microsoft.com/documentation/articles/documentdb-introduction/)
+-   [DocumentDB 简介：一种 NoSQL JSON 数据库](/azure/cosmos-db/sql-api-introduction)
 
 -   [如何通过 Node.js 使用 Azure 表存储](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-table-storage/)
 
