@@ -3,11 +3,11 @@ title: "最大程度减少协调"
 description: "最大程度减少应用程序服务之间的协调以获得可伸缩性"
 author: MikeWasson
 layout: LandingPage
-ms.openlocfilehash: 1f8caa8b7cd85593c937f1d99d582492d4cf9a8b
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 3cab05b539612234fd8e66517b140ac5257c3e70
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="minimize-coordination"></a>最大程度减少协调 
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/14/2017
 
 如果可能，请使用乐观并发。 悲观并发控件使用数据库锁定来防止冲突。 这可能会导致性能不佳，可用性降低。 对于乐观并发控件，每个事务修改数据的副本或快照。 提交事务时，数据库引擎会验证事务并拒绝会影响数据库一致性的任何事务。 
 
-通过[快照隔离][sql-snapshot-isolation]，Azure SQL 数据库和 SQL Server 支持乐观并发。 通过使用 [DocumentDB API][docdb-faq] 和 [Azure 存储][storage-concurrency]等 Etag，一些 Azure 存储服务支持乐观并发。
+通过[快照隔离][sql-snapshot-isolation]，Azure SQL 数据库和 SQL Server 支持乐观并发。 通过使用 [Azure Cosmos DB][cosmosdb-faq] 和 [Azure 存储][storage-concurrency]等 Etag，一些 Azure 存储服务支持乐观并发。
 
 请考虑使用 MapReduce、其他并行或分布式算法。 根据要执行的工作的数据和类型，可将工作拆分为独立的任务，这些任务可以由并行工作的多个节点执行。 请参阅[大计算的体系结构样式][big-compute]。
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 11/14/2017
 [compensating-transaction]: ../../patterns/compensating-transaction.md
 [cqrs-style]: ../architecture-styles/cqrs.md
 [cqrs-pattern]: ../../patterns/cqrs.md
-[docdb-faq]: /azure/documentdb/documentdb-faq
+[cosmosdb-faq]: /azure/cosmos-db/faq
 [domain-event]: https://martinfowler.com/eaaDev/DomainEvent.html
 [event-sourcing]: ../../patterns/event-sourcing.md
 [leader-election]: ../../patterns/leader-election.md
