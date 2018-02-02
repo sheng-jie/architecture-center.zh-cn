@@ -4,11 +4,11 @@ description: "为设计过程中的复原能力考虑因素提供指导的查检
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 66ff802c1f7b35db147ffe4279982c827570c3c1
-ms.sourcegitcommit: 3d6dba524cc7661740bdbaf43870de7728d60a01
+ms.openlocfilehash: 51f807715d0ac929806b9a5a13da4efa00566592
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="resiliency-checklist"></a>复原能力查检表
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 01/11/2018
 
 ### <a name="cosmos-db"></a>Cosmos DB
 
-**跨区域复制数据库。** Cosmos DB 允许将任意数量的 Azure 区域与 Cosmos DB 数据库帐户关联。 Cosmos DB 数据库可以包含一个写入区域和多个读取区域。 如果写入区域发生故障，可以从另一个副本读取。 客户端 SDK 会自动处理此操作。 还可以将写入区域故障转移到另一个区域。 有关详细信息，请参阅[如何使用 Azure Cosmos DB 在全球范围内分发数据？](/azure/documentdb/documentdb-distribute-data-globally)
+**跨区域复制数据库。** Cosmos DB 允许将任意数量的 Azure 区域与 Cosmos DB 数据库帐户关联。 Cosmos DB 数据库可以包含一个写入区域和多个读取区域。 如果写入区域发生故障，可以从另一个副本读取。 客户端 SDK 会自动处理此操作。 还可以将写入区域故障转移到另一个区域。 有关详细信息，请参阅[如何使用 Azure Cosmos DB 进行全局数据分配](/azure/cosmos-db/distribute-data-globally)。
 
 ### <a name="redis-cache"></a>Redis 缓存
 

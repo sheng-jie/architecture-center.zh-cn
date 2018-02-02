@@ -7,11 +7,11 @@ pnp.series.prev: basic-web-app
 pnp.series.next: multi-region-web-app
 ms.date: 11/23/2016
 cardTitle: Improve scalability
-ms.openlocfilehash: 1fdaf6e3695cb814fa4c275a4a273f9fa9a7b71b
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 4ad12fb041a79fcb706530c9968fd0f96211d7f9
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="improve-scalability-in-a-web-application"></a>提高 Web 应用程序的可伸缩性
 
@@ -19,7 +19,7 @@ ms.lasthandoff: 01/08/2018
 
 ![[0]][0]
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 ## <a name="architecture"></a>体系结构  
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/08/2018
 * **队列**。 在此处显示的体系结构中，应用程序通过向 [Azure 队列存储][queue-storage]队列放置消息，将后台任务排队。 消息触发 WebJob 中的函数。 也可使用服务总线队列。 如需比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照][queues-compared]。
 * **缓存**。 在 [Azure Redis 缓存][azure-redis]中存储半静态数据。  
 * **CDN**。 使用 [Azure 内容交付网络][azure-cdn] (CDN) 缓存公开提供的内容，以便降低延迟并加快内容交付速度。
-* **数据存储**。 对关系数据使用 [Azure SQL 数据库][sql-db]。 对于非关系数据，可考虑使用 NoSQL 存储，例如 [Cosmos DB][documentdb]。
+* **数据存储**。 对关系数据使用 [Azure SQL 数据库][sql-db]。 对于非关系数据，可考虑使用 NoSQL 存储，例如 [Cosmos DB][cosmosdb]。
 * **Azure 搜索**。 使用 [Azure 搜索][azure-search]添加搜索功能，例如搜索建议、模糊搜索、特定于语言的搜索。 Azure 搜索通常与其他数据存储结合使用，尤其是在主数据存储对一致性要求严格的情况下。 此方法将权威数据存储在其他数据存储中，将搜索索引存储在 Azure 搜索中。 也可使用 Azure 搜索合并来自多个数据存储的单一搜索索引。  
 * **电子邮件/短信**。 使用第三方服务（例如 SendGrid 或 Twilio）发送电子邮件或短信，而不是将此功能直接内置到应用程序中。
 * **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
@@ -140,7 +140,7 @@ Azure 搜索没有在主数据存储中执行复杂的数据搜索所需的开�
 [cdn-storage-account]: /azure/cdn/cdn-create-a-storage-account-with-cdn
 [cdn-guidance]: ../../best-practices/cdn.md
 [cors]: /azure/app-service-api/app-service-api-cors-consume-javascript
-[documentdb]: https://azure.microsoft.com/documentation/services/documentdb/
+[cosmosdb]: /azure/cosmos-db/
 [queue-storage]: /azure/storage/storage-dotnet-how-to-use-queues
 [queues-compared]: /azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
 [resource-group]: /azure/azure-resource-manager/resource-group-overview#resource-groups

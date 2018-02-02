@@ -4,11 +4,11 @@ description: "有关独立于用户界面运行的后台任务的指南。"
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: d8c1d4dfe12208b72fd6991def805f90a830b5f0
-ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
+ms.openlocfilehash: 10c24afee4b880cfbf8ee534f4d7f945d2b046a9
+ms.sourcegitcommit: 3426a9c5ed937f097725c487cf3d073ae5e2a347
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="background-jobs"></a>后台作业
 [!INCLUDE [header](../_includes/header.md)]
@@ -244,7 +244,7 @@ Web 角色和辅助角色在启动、运行和停止时会经历一组不同的�
     }
     ```
     
-    * 对于角色，将 Freeze 设置的定义作为布尔值添加到 ServiceDefinition.csdef 和 ServiceConfiguration.*.cscfg 文件，并将它设置为 false。 如果角色进入重复重新启动模式，可以将设置更改为 true 以冻结角色的执行，并允许他与以前的版本交换。
+  * 对于角色，请将 **Freeze** 设置的定义作为布尔值添加到 ServiceDefinition.csdef 和 ServiceConfiguration.\*.cscfg 文件，并将它设置为 **false**。 如果角色进入重复重新启动模式，可以将设置更改为 true 以冻结角色的执行，并允许他与以前的版本交换。
 
 #### <a name="more-information"></a>详细信息
 * [计算资源整合模式](http://msdn.microsoft.com/library/dn589778.aspx)

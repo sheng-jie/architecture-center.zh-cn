@@ -5,11 +5,11 @@ keywords: "云服务比较, 比较云服务, 多云, 比较 azure aws, 比较 az
 author: lbrader
 ms.date: 11/30/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 0f0d103407c78b224f427f96b0f10aa216ebc0bd
-ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
+ms.openlocfilehash: f54df7b3a8d69b6ac5b1458cd4e27e914c39e4f9
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="aws-to-azure-services-comparison"></a>AWS 和 Azure 服务比较
 
@@ -85,7 +85,7 @@ Azure 和 AWS 作为领先的公有云平台，各自都在全球范围内为企
 | 区域                    | AWS 服务                          | Azure 服务                                                                                                         | 说明                                                                                                                                             |
 |-------------------------|--------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 关系型数据库     | RDS                                  | [SQL 数据库](https://azure.microsoft.com/services/sql-database/)<br/><br/>[Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/)<br/><br/>[Azure Database for PostgreSQL](https://azure.microsoft.com/en-us/services/postgresql/)                                       | 一种关系数据库即服务 (DBaaS)，其中数据库恢复能力、规模和维护会由平台首先处理。                   |
-| NoSQL - 文档存储  | DynamoDB                             | [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)                                                  | 一个全局分布式多模型数据库，它本身支持多个数据模型：键值、文档、图和纵栏式数据模型。         |
+| NoSQL - 文档存储  | DynamoDB                             | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                                                  | 一个全局分布式多模型数据库，它本身支持多个数据模型：键值、文档、图和纵栏式数据模型。         |
 | NoSQL - 键/值存储 | DynamoDB 和 SimpleDB                | [表存储](https://azure.microsoft.com/services/storage/tables/)                                           | 半结构化数据的非关系型数据存储。 开发人员通过 Web 服务请求存储和查询数据项。                                   |
 | 缓存                 | ElastiCache                          | [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)                                                | 一种基于内存中的分布式缓存服务，提供高性能存储，通常用于从数据库中卸载非事务性工作。 |
 | 数据库迁移      | Database Migration Service（预览版） | [Azure 数据库迁移服务](https://azure.microsoft.com/en-us/campaigns/database-migration/) | 通常专注于云端的数据库架构和数据从一个数据库格式迁移至特定数据库技术。              |

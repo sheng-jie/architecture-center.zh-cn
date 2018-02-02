@@ -3,11 +3,11 @@ title: "实现全面冗余"
 description: "在应用程序中构建冗余，避免出现单一故障点。"
 author: MikeWasson
 layout: LandingPage
-ms.openlocfilehash: 89a1e6d2d3b1217ab07c9a99a4c4fb3e8cd2cd29
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 05ccf78c2cfbcd4e2d26200e70463d388d54f671
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="make-all-things-redundant"></a>实现全面冗余
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/14/2017
 
 **复制数据库**。 Azure SQL 数据库和 Cosmos DB 自动复制区域内的数据，且可以跨区域启用异地复制。 如果使用的是 IaaS 数据库解决方案，请选择支持复制和故障转移的解决方案，如 [SQL Server AlwaysOn 可用性组][sql-always-on]。 
 
-**启用异地复制**。 [Azure SQL 数据库][sql-geo-replication]和 [Cosmos DB][docdb-geo-replication] 的异地复制在一个或多个次要区域中创建数据的可读次要副本。 出现故障时，数据库可以故障转移到供写入的次要区域。
+**启用异地复制**。 [Azure SQL 数据库][sql-geo-replication]和 [Cosmos DB][cosmosdb-geo-replication] 的异地复制在一个或多个次要区域中创建数据的可读次要副本。 出现故障时，数据库可以故障转移到供写入的次要区域。
 
 **为提高可用性而分区**。 数据库分区通常用于提高可伸缩性，但它还可以提高可用性。 如果一个分片出现故障，仍可以访问其他分片。 一个分片中的故障仅中断总事务的子集。 
 
@@ -46,6 +46,6 @@ ms.lasthandoff: 11/14/2017
 [multi-vm-blueprint]: ../../reference-architectures/virtual-machines-windows/multi-vm.md
 
 [cassandra]: http://cassandra.apache.org/
-[docdb-geo-replication]: /azure/documentdb/documentdb-distribute-data-globally
+[cosmosdb-geo-replication]: /azure/cosmos-db/distribute-data-globally
 [sql-always-on]: https://msdn.microsoft.com/library/hh510230.aspx
 [sql-geo-replication]: /azure/sql-database/sql-database-geo-replication-overview

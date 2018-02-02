@@ -4,16 +4,16 @@ description: "有关使用内容交付网络 (CDN) 传送 Azure 中托管的高�
 author: dragon119
 ms.date: 09/30/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 94036c803552d5e7061f99e6dd0ca9e563a32690
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: fffe0b0523c0a9c817f4346744ff3b5e3f11dede
+ms.sourcegitcommit: cf207fd10110f301f1e05f91eeb9f8dfca129164
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="content-delivery-network"></a>内容传送网络
 [!INCLUDE [header](../_includes/header.md)]
 
-Microsoft Azure 内容交付网络 (CDN) 为开发人员提供一个全局解决方案用于传递 Azure 或其他任何位置中托管的高带宽内容。 使用 CDN，可以缓存从 Azure Blob 存储、Web 应用程序、虚拟机、应用程序文件夹或其他 HTTP/HTTPS 位置加载的公开对象。 可以将 CDN 缓存定位在战略性的位置上，以便提供最大的带宽向用户传送内容。 CDN 通常用于传送静态内容，例如图像、样式表、文档、文件、客户端脚本和 HTML 页面。
+Microsoft Azure [内容交付网络 (CDN)](/azure/cdn/cdn-overview) 为开发人员提供一个全局解决方案，用于传递 Azure 或其他任何位置中托管的高带宽内容。 使用 CDN，可以缓存从 Azure Blob 存储、Web 应用程序、虚拟机、应用程序文件夹或其他 HTTP/HTTPS 位置加载的公开对象。 可以将 CDN 缓存定位在战略性的位置上，以便提供最大的带宽向用户传送内容。 CDN 通常用于传送静态内容，例如图像、样式表、文档、文件、客户端脚本和 HTML 页面。
 
 还可以使用 CDN 作为提供动态内容的缓存（例如，基于指定输入的 PDF 报告或图表）；如果不同的用户提供了相同的输入值，结果应该相同。
 
@@ -74,7 +74,7 @@ CDN 用处不大的应用场景包括：
 使用 CDN 是最小化应用程序负载和最大化可用性与性能的良好做法。 考虑为应用程序使用的所有适当内容和资源采用此策略。 设计使用 CDN 的策略时，请注意以下部分中所述的要点：  
 
 ### <a name="origin"></a>源
-通过 CDN 部署内容时，只需指定 CDN 服务用于访问和缓存内容的 HTTP 和/或 HTTPS 终结点。
+通过 CDN 部署内容时，只需指定 CDN 服务用于访问和缓存内容的 HTTP 和/或 HTTPS [终结点](/azure/cdn/cdn-create-new-endpoint)。
 
 终结点可以指定 Azure Blob 存储容器，包括要通过 CDN 传送的静态内容。 容器必须标记为公共。 只能通过 CDN 获取公共容器中具有公共读取权限的 Blob。
 
@@ -128,7 +128,7 @@ CDN 用处不大的应用场景包括：
 
 如果动态创建 CDN 的内容（例如，在应用程序代码中），请确保在每个页面上指定 *Cache.SetExpires* 属性。 CDN 不会缓存使用默认可缓存性设置 (*public*) 的页面的输出。  将缓存过期期限设置为适当值，以确保不会在极短时间内从应用程序丢弃和重新加载内容。  
 
-### <a name="security"></a>安全
+### <a name="security"></a>“安全”
 CDN 可以使用 CDN 提供的证书通过 HTTPS (SSL) 传送内容，也可以通过标准 HTTP 传送内容。 若要避免浏览器发出有关内容混合的警告，可能需要使用 HTTPS 来请求通过 HTTPS 加载的页面所显示的静态内容。
 
 使用 CDN 传送静态资产（如字体文件）时，如果使用 XMLHttpRequest 调用来从不同的域请求这些资源，则可能会遇到同源策略问题。 许多 Web 浏览器会阻止跨源资源共享 (CORS)，除非 Web 服务器已配置为设置相应的响应标头。 可使用以下任一方法配置 CDN 以支持 CORS：

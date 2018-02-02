@@ -5,11 +5,11 @@ author: MikeWasson
 ms.date: 03/24/2017
 ms.custom: resiliency
 pnp.series.title: Design for Resiliency
-ms.openlocfilehash: 09d09468eebe5c6fe1c9cdab14e142ff46cf0b25
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: aca2088cb007728c5717a968969000c0a19bcd07
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="failure-mode-analysis"></a>故障模式分析
 [!INCLUDE [header](../_includes/header.md)]
@@ -133,7 +133,7 @@ Application_End 日志记录将捕获应用域关闭（软进程崩溃），它�
 * SDK 自动重试失败的尝试。 若要设置重试次数和最长等待时间，请配置 `ConnectionPolicy.RetryOptions`。 客户端引发的异常会超出重试策略，或不是暂时性错误。
 * 如果 Cosmos DB 限制客户端，它会返回 HTTP 429 错误。 请检查 `DocumentClientException` 中的状态代码。 如果一直收到错误 429，请考虑增加集合的吞吐量值。
     * 如果使用的是 MongoDB API，该服务会在进行限制时返回错误代码 16500。
-* 跨两个或更多区域复制 Cosmos DB 数据库。 所有副本都是可读的。 使用客户端 SDK 指定 `PreferredLocations` 参数。 这是一个已排序的 Azure 区域列表。 所有读取请求将发送到列表中的第一个可用区域。 如果请求失败，客户端会按顺序尝试发送到列表中的其他区域。 有关详细信息，请参阅[如何使用 DocumentDB API 设置 Azure Cosmos DB 全局分发][docdb-multi-region]。
+* 跨两个或更多区域复制 Cosmos DB 数据库。 所有副本都是可读的。 使用客户端 SDK 指定 `PreferredLocations` 参数。 这是一个已排序的 Azure 区域列表。 所有读取请求将发送到列表中的第一个可用区域。 如果请求失败，客户端会按顺序尝试发送到列表中的其他区域。 有关详细信息，请参阅[如何使用 SQL API 设置 Azure Cosmos DB 全局分发][cosmosdb-multi-region]。
 
 **诊断**。 记录客户端上的所有错误。
 
@@ -145,7 +145,7 @@ Application_End 日志记录将捕获应用域关闭（软进程崩溃），它�
 * SDK 自动重试失败的尝试。 若要设置重试次数和最长等待时间，请配置 `ConnectionPolicy.RetryOptions`。 客户端引发的异常会超出重试策略，或不是暂时性错误。
 * 如果 Cosmos DB 限制客户端，它会返回 HTTP 429 错误。 请检查 `DocumentClientException` 中的状态代码。 如果一直收到错误 429，请考虑增加集合的吞吐量值。
 * 跨两个或更多区域复制 Cosmos DB 数据库。 如果主要区域发生故障，将提升另一个区域用于写入。 也可以手动触发故障转移。 SDK 执行自动发现和路由，以便应用程序代码在故障转移后继续工作。 在故障转移期间（通常按分钟计），写入操作将有更高的延迟，因为 SDK 会查找新的写入区域。
-  有关详细信息，请参阅[如何使用 DocumentDB API 设置 Azure Cosmos DB 全局分发][docdb-multi-region]。
+  有关详细信息，请参阅[如何使用 SQL API 设置 Azure Cosmos DB 全局分发][cosmosdb-multi-region]。
 * 作为回退策略，可将文档暂留到备份队列中，稍后再处理该队列。
 
 **诊断**。 记录客户端上的所有错误。
@@ -453,7 +453,7 @@ Application_End 日志记录将捕获应用域关闭（软进程崩溃），它�
 [BrokeredMessage.TimeToLive]: https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx
 [cassandra-error-handling]: http://www.datastax.com/dev/blog/cassandra-error-handling-done-right
 [circuit-breaker]: https://msdn.microsoft.com/library/dn589784.aspx
-[docdb-multi-region]: /azure/documentdb/documentdb-developing-with-multiple-regions/
+[cosmosdb-multi-region]: /azure/cosmos-db/tutorial-global-distribution-sql-api
 [elasticsearch-azure]: ../elasticsearch/index.md
 [elasticsearch-client]: https://www.elastic.co/guide/en/elasticsearch/client/index.html
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx

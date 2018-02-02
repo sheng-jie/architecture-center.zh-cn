@@ -4,14 +4,13 @@ description: "有关如何隔离分区，以便单独进行管理和访问的指
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: c139fd1ef59ea94235cd9519dd064d0722cee3c9
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: aa59a99ae87328424379e1f9c6fee8cc5887e61c
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="data-partitioning"></a>数据分区
-[!INCLUDE [header](../_includes/header.md)]
 
 在许多大型解决方案中，数据分割成独立的分区，而这些分区可以单独进行管理和访问。 必须慎重选择分区策略，才能最大程度地提高效益，将负面影响降到最低。 分区可以帮助改善缩放性、减少争用，以及优化性能。 分区的附带好处是还能提供一种机制，用于通过使用模式来分割数据。 例如，可以将较旧的、活动性不高（冷）的数据存档在成本较低的数据存储中。
 
@@ -360,44 +359,31 @@ Azure 服务总线使用消息中转站处理发送到服务总线队列或主�
 * 无法将分区的队列或主题配置为在空闲状态时自动删除。
 * 如果要构建跨平台解决方案或混合解决方案，当前无法将分区的队列和主题与高级消息队列协议 (AMQP) 配合使用。
 
-## <a name="partitioning-strategies-for-documentdb-api"></a>DocumentDB API 的分区策略
-Azure Cosmos DB 是可以使用 [DocumentDB API][documentdb-api] 存储文档的 NoSQL 数据库。 Cosmos DB 数据库中的文档是对象或其他数据片段的 JSON 序列化表示形式。 没有强制实施固定的架构，但是每个文档必须包含唯一 ID。
+## <a name="partitioning-strategies-for-cosmos-db"></a>Cosmos DB 的分区策略
+
+Azure Cosmos DB 是可以使用 [Azure Cosmos DB SQL API][cosmosdb-sql-api] 存储 JSON 文档的 NoSQL 数据库。 Cosmos DB 数据库中的文档是对象或其他数据片段的 JSON 序列化表示形式。 没有强制实施固定的架构，但是每个文档必须包含唯一 ID。
 
 文档已组织成集合。 可将相关的文档统一分组在集合中。 例如，在维护博客文章的系统中，可以将每篇博客文章的内容存储为某个集合中的文档。 还可以为每个主题类型创建集合。 或者，在多租户应用程序（例如可让不同作者控制和管理自己的博客文章的系统）中，可以根据作者将博客分区，并为每位作者创建独立的集合。 分配给集合的存储空间有弹性，并且可以根据需要缩小或增大。
 
-文档集合提供一个自然机制用于在单一数据库中将数据分区。 在内部，Cosmos DB 数据库可以跨多台服务器，并可以尝试跨服务器分布集合以分散负载。 实施分片的最简单方法是为每个分片创建一个集合。
+Cosmos DB 支持按应用程序定义的分区键对数据自动分区。 “逻辑分区”是指用于存储单个分区键值对应的所有数据的分区。 分区键值相同的所有文档放置在同一逻辑分区内。 Cosmos DB 根据分区键的哈希来分配值。 逻辑分区的最大大小为 10 GB。 因此，选择分区键是设计时的重要决定。 请选择值甚至访问模式的范围广的属性。 有关详细信息，请参阅 [Azure Cosmos DB 中的分区和规模](/azure/cosmos-db/partition-data)。
 
 > [!NOTE]
-> 每个 Cosmos DB 数据库都有一个性能级别用于确定它所获取的资源量。 性能级别与*请求单位* (RU) 比率限制关联。 RU 比率限制指定要保留的并可供该集合独占使用的资源量。 集合的成本取决于为该集合选择的性能级别。 性能级别（以及 RU 比率限制）越高，则费用就越高。 可以使用 Azure 门户来调整集合的性能级别。 有关详细信息，请参阅 Microsoft 网站上的 [Cosmos DB 中的性能级别]。
+> 每个 Cosmos DB 数据库都有一个性能级别用于确定它所获取的资源量。 性能级别与*请求单位* (RU) 比率限制关联。 RU 比率限制指定要保留的并可供该集合独占使用的资源量。 集合的成本取决于为该集合选择的性能级别。 性能级别（以及 RU 比率限制）越高，则费用就越高。 可以使用 Azure 门户来调整集合的性能级别。 有关详细信息，请参阅 [Azure Cosmos DB 中的请求单位][cosmos-db-ru]。
 >
 >
+
+如果 Cosmos DB 提供的分区机制不够用，则可能需要在应用程序级别进行数据分片。 文档集合提供一个自然机制用于在单一数据库中将数据分区。 实施分片的最简单方法是为每个分片创建一个集合。 容器是逻辑资源，可以跨一个或多个服务器。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 不限大小的容器没有最大存储大小，但必须指定分区键。 使用应用程序分片时，客户端应用程序必须将请求定向到适当的分片，这通常是根据定义分片键的某些数据属性，通过实施自身的映射机制来实现的。 
 
 所有数据库在 Cosmos DB 数据库帐户的上下文中创建。 单个帐户可以包含多个数据库，并指定要在其中创建数据库的区域。 每个帐户还强制实施自身访问控制。 可以使用 Cosmos DB 帐户异地查找靠近需要访问帐户的用户的分片（数据库中的集合），并强制实施限制，以便只有这些用户才能连接到这些帐户。
 
-每个 Cosmos DB 帐户都有配额，用于限制其包含的数据库和集合数目，以及可用的文档存储量。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束][azure-limits]。 如果实施的系统中所有分片都属于同一数据库，则理论上有可能会达到帐户的存储容量限制。
+确定如何使用 Cosmos DB SQL API 将数据分区时，请注意以下几点：
 
-在此情况下，可能需要创建更多帐户和数据库，并跨这些数据库分布分片。 但是，即使不太可能会达到数据库的存储容量，使用多个数据库也是个不错的做法。 这是因为，每个数据库都有自身的用户和权限集，可以使用这种机制按数据库隔离对集合的访问。
-
-图 8 演示了 DocumentDB API 的高级别结构。
-
-![DocumentDB API 的结构](./images/data-partitioning/DocumentDBStructure.png)
-
-*图 8.DocumentDB API 架构的结构*
-
-客户端应用程序负责将请求定向到适当的分片，这通常是根据定义分片键的某些数据属性，通过实施自身的映射机制来实现的。 图 9 显示了两个 DocumentDB API 数据库，每个数据库包含两个充当分片的集合。 数据按租户 ID 分片，并包含特定租户的数据。 数据库在独立的 Cosmos DB 帐户中创建。 这些帐户与数据所在的租户位于相同的区域。 客户端应用程序中的路由逻辑使用租户 ID 作为分片键。
-
-![使用 DocumentDB API 实施分片](./images/data-partitioning/DocumentDBPartitions.png)
-
-*图 9.使用 DocumentDB API 实施分片*
-
-确定如何使用 DocumentDB API 将数据分区时，请注意以下几点：
-
-* **DocumentDB API 数据库的可用资源受限于帐户的配额限制**。 每个数据库可以保存许多集合（同样存在限制），每个集合都与控制该集合 RU 比率限制（保留吞吐量）的性能级别相关联。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束]。
+* **Cosmos DB 数据库的可用资源受限于帐户的配额限制**。 每个数据库可以保存许多集合，每个集合都与控制该集合 RU 比率限制（保留吞吐量）的性能级别相关联。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束][azure-limits]。
 * **每个文档必须有一个可用于在保存该文档的集合中唯一标识该文档的属性**。 此属性与分片键不同，后者定义文档要保存在哪个集合中。 一个集合可以包含大量的文档。 理论上只受限于文档 ID 的最大长度。 文档 ID 最多可包含 255 个字符。
 * **针对文档的所有操作都在事务的上下文中执行。事务的范围包含该文档的集合。** 如果操作失败，已执行的工作会回滚。 当文档正在接受某项操作时，所做的任何更改将受限于快照级隔离。 例如，如果创建新文档的请求失败，此机制将保证另一个同时查询数据库的用户不会看到当时删除的部分文档。
 * **数据库查询的范围也限于集合级别**。 单个查询只能从一个集合检索数据。 如果需要从多个集合检索数据，则必须分别查询每个集合，并将结果合并到应用程序代码中。
-* **DocumentDB API 数据库支持所有可与文档一起存储在集合中的可编程项**。 这包括存储过程、用户定义的函数和触发器（以 JavaScript 编写）。 这些项可以访问同一集合中的任何文档。 此外，这些项在环境事务的范围内运行（如果是由于针对文档执行了创建、删除或替换操作而激发了触发器），或者通过启动新的事务执行（如果是由于显式客户端请求结果而运行的存储过程）。 如果可编程项中的代码引发异常，事务会回滚。 可以使用存储过程和触发器来维护文档之间的完整性和一致性，但这些文档必须属于同一集合。
-* **要在数据库中保存的集合应该不太可能会超过由集合的性能级别定义的吞吐量限制**。 有关详细信息，请参阅 Azure Cosmos DB][cosmos-db-ru] 中的请求单位。 如果预计会达到这些限制，请考虑在不同的帐户中跨数据库拆分集合，以减少每个集合的负载。
+* **Cosmos DB 支持可与文档一起全部存储在集合中的可编程项**。 这包括存储过程、用户定义的函数和触发器（以 JavaScript 编写）。 这些项可以访问同一集合中的任何文档。 此外，这些项在环境事务的范围内运行（如果是由于针对文档执行了创建、删除或替换操作而激发了触发器），或者通过启动新的事务执行（如果是由于显式客户端请求结果而运行的存储过程）。 如果可编程项中的代码引发异常，事务会回滚。 可以使用存储过程和触发器来维护文档之间的完整性和一致性，但这些文档必须属于同一集合。
+* **要在数据库中保存的集合应该不太可能会超过由集合的性能级别定义的吞吐量限制**。 有关详细信息，请参阅 [Azure Cosmos DB 中的请求单位][cosmos-db-ru]。 如果预计会达到这些限制，请考虑在不同的帐户中跨数据库拆分集合，以减少每个集合的负载。
 
 ## <a name="partitioning-strategies-for-azure-search"></a>Azure 搜索的分区策略
 搜索数据的功能通常是许多 web 应用程序提供的主要导航和浏览方法。 它可以帮助用户根据搜索条件的组合快速查找资源（例如，电子商务应用程序中的产品）。 Azure 搜索服务针对 Web 内容提供全文搜索功能，并包括自动提示、根据近似的匹配内容建议查询，以及分面导航等功能。 有关这些功能的完整说明，请参阅 Microsoft 网站上的 [What is Azure Search?]（什么是 Azure 搜索？）页。
@@ -454,11 +440,11 @@ Redis 网站上的 [Partitioning: how to split data among multiple Redis instanc
   * 列表等聚合类型（可充当队列和堆栈）
   * 集（已排序和未排序）
   * 哈希（可将相关的字段分组在一起，例如表示对象中字段的项）
-* 聚合类型可让你将许多相关值与同一个键相关联。 Redis 键标识列表、集或哈希，而不是它包含的数据项。 可以在 Azure Redis 缓存中使用这些类型，Redis 网站上的 [Data types]（数据类型）页已提供了说明。 例如，跟踪客户所下订单的电子商务系统部件中，每位客户的详细信息可能存储在 Redis 哈希中，使用客户 ID 键控。 每个哈希可以保存该客户的订单 ID 集合。 一个独立的 Redis 集可以保存订单（同样已结构化为哈希），使用订单 ID 键控。 图 10 显示了此结构。 请注意，Redis 不实施任何形式的引用完整性，因此开发人员需要负责维护客户与订单之间的关系。
+* 聚合类型可让你将许多相关值与同一个键相关联。 Redis 键标识列表、集或哈希，而不是它包含的数据项。 可以在 Azure Redis 缓存中使用这些类型，Redis 网站上的 [Data types]（数据类型）页已提供了说明。 例如，跟踪客户所下订单的电子商务系统部件中，每位客户的详细信息可能存储在 Redis 哈希中，使用客户 ID 键控。 每个哈希可以保存该客户的订单 ID 集合。 一个独立的 Redis 集可以保存订单（同样已结构化为哈希），使用订单 ID 键控。 图 8 显示了此结构。 请注意，Redis 不实施任何形式的引用完整性，因此开发人员需要负责维护客户与订单之间的关系。
 
 ![记录客户订单及其详细信息的 Redis 存储中的建议结构](./images/data-partitioning/RedisCustomersandOrders.png)
 
-*图 10.记录客户订单及其详细信息的 Redis 存储中的建议结构*
+*图 8.记录客户订单及其详细信息的 Redis 存储中的建议结构*
 
 > [!NOTE]
 > 在 Redis 中，所有键都是二进制数据值（例如 Redis 字符串），最多可包含 512 MB 的数据。 在理论上，键几乎可以包含任何信息。 但是，我们建议为键采用可以描述数据类型并标识实体的一致命名约定，但是该约定不可过长。 常见的做法是使用“entity_type:ID”形式的键。 例如，可以使用“customer:99”来表示客户 ID 99 的键。
@@ -562,18 +548,18 @@ Azure Service Fabric 是在云中提供分布式应用程序的运行时的微�
 * Redis 网站上的 [Data types]（数据类型）页介绍了可在 Redis 和 Azure Redis 缓存中使用的数据类型。
 
 [事件中心中的可用性和一致性]: /azure/event-hubs/event-hubs-availability-and-consistency
-[azure-limits]: /azure/azure-subscription-service-limit
+[azure-limits]: /azure/azure-subscription-service-limits
 [Azure 内容交付网络]: /azure/cdn/cdn-overview
 [Azure Redis Cache]: http://azure.microsoft.com/services/cache/
 [Azure 存储可伸缩性和性能目标]: /azure/storage/storage-scalability-targets
 [Azure 存储表设计指南]: /azure/storage/storage-table-design-guide
 [构建多语言解决方案]: https://msdn.microsoft.com/library/dn313279.aspx
-[cosmos-db-ru]: /azure/documentdb/documentdb-request-units
+[cosmos-db-ru]: /azure/cosmos-db/request-units
 [针对高度可伸缩解决方案的数据访问：使用 SQL、NoSQL 和多语言持久性]: https://msdn.microsoft.com/library/dn271399.aspx
 [Data consistency primer]: http://aka.ms/Data-Consistency-Primer
 [数据分区指南]: https://msdn.microsoft.com/library/dn589795.aspx
 [数据类型]: http://redis.io/topics/data-types
-[documentdb-api]: /azure/documentdb/documentdb-introduction
+[cosmosdb-sql-api]: /azure/cosmos-db/sql-api-introduction
 [Elastic Database features overview]: /azure/sql-database/sql-database-elastic-scale-introduction
 [event-hubs]: /azure/event-hubs
 [Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1

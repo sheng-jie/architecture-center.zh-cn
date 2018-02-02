@@ -1,12 +1,12 @@
 ---
-title: "软件质量的构成要素"
+title: "软件质量的要素"
 description: "介绍软件质量的五大构成要素：可伸缩性、可用性、复原能力、管理和安全性。"
 author: MikeWasson
-ms.openlocfilehash: 78e613368a07718f5923d619ace335d399b0cc80
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 1d5e30602cafa0d39f92de3101974e77ae258595
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="pillars-of-software-quality"></a>软件质量的构成要素 
 
@@ -18,7 +18,7 @@ ms.lasthandoff: 11/14/2017
 | 可用性 | 系统正常工作时间所占的比例。 |
 | 复原能力 | 系统从故障中恢复并继续正常运行的能力。 |
 | 管理 | 让系统在生产环境中持续运行的操作过程。 |
-| 安全 | 保护应用程序和数据免受威胁。 |
+| “安全” | 保护应用程序和数据免受威胁。 |
 
 ## <a name="scalability"></a>可伸缩性
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 11/14/2017
 - [管理和监视的设计模式][management-patterns]
 - 最佳做法：[监视和诊断][monitoring]
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 
 你必须考虑从设计和实现到部署和操作的整个应用程序生命周期的安全性。 Azure 平台会提供保护以应对各种威胁，如网络入侵和 DDoS 攻击。 但你仍需在应用程序和 DevOps 过程中构建安全性。
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 11/14/2017
 
 使用 Azure 的高可用性时，确保数据一直位于正确的地缘政治区域中。 Azure 的异地复制存储采用了同一地缘政治区域中的[配对区域][paired-region]这一概念。 
 
-使用 Key Vault 保护加密密钥和密码。 通过使用 Key Vault，可以利用受硬件安全模块 (HSM) 保护的密钥来加密密钥和密码。 许多 Azure 存储和 DB 服务支持静态数据加密，包括 [Azure 存储][storage-encryption]、[Azure SQL 数据库][sql-db-encryption]、[Azure SQL 数据仓库][data-warehouse-encryption]和 [Cosmos DB][documentdb-encryption]。
+使用 Key Vault 保护加密密钥和密码。 通过使用 Key Vault，可以利用受硬件安全模块 (HSM) 保护的密钥来加密密钥和密码。 许多 Azure 存储和 DB 服务支持静态数据加密，包括 [Azure 存储][storage-encryption]、[Azure SQL 数据库][sql-db-encryption]、[Azure SQL 数据仓库][data-warehouse-encryption]和 [Cosmos DB][cosmosdb-encryption]。
 
 ### <a name="security-resources"></a>安全性资源
 
@@ -171,7 +171,7 @@ ms.lasthandoff: 11/14/2017
 
 [ad-subscriptions]: /azure/active-directory/active-directory-how-subscriptions-associated-directory
 [data-warehouse-encryption]: /azure/data-lake-store/data-lake-store-security-overview#data-protection
-[documentdb-encryption]: /azure/documentdb/documentdb-nosql-database-security
+[cosmosdb-encryption]: /azure/cosmos-db/database-security
 [rbac]: /azure/active-directory/role-based-access-control-what-is
 [paired-region]: /azure/best-practices-availability-paired-regions
 [resource-manager-auditing]: /azure/azure-resource-manager/resource-group-audit

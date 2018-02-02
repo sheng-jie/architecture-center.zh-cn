@@ -4,11 +4,11 @@ description: "对于在 Microsoft Azure 中运行的具有高可用性的 Web �
 author: MikeWasson
 ms.date: 11/23/2016
 cardTitle: Run in multiple regions
-ms.openlocfilehash: 60caa121d0ce2f1aa2638650229bed8048804c22
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 50ac9636e1e3c25bd0403c89281a3a06915d065f
+ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>在多个区域中运行 Web 应用程序
 [!INCLUDE [header](../../_includes/header.md)]
@@ -17,7 +17,7 @@ ms.lasthandoff: 01/08/2018
 
 ![参考体系结构：具有高可用性的 Web 应用程序](./images/multi-region-web-app-diagram.png) 
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 ## <a name="architecture"></a>体系结构 
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 01/08/2018
 ### <a name="cosmos-db"></a>Cosmos DB
 Cosmos DB 支持跨区域的异地复制。 一个区域被指定为可写入的，其他区域是只读副本。
 
-如果发生区域性中断，可以通过选择另一个区域作为写入区域来进行故障转移。 客户端 SDK 会自动将写入请求发送到当前写入区域，因此，在故障转移后不需要更新客户端配置。 有关详细信息，请参阅[如何使用 Azure Cosmos DB 在全球范围内分发数据？][docdb-geo]
+如果发生区域性中断，可以通过选择另一个区域作为写入区域来进行故障转移。 客户端 SDK 会自动将写入请求发送到当前写入区域，因此，在故障转移后不需要更新客户端配置。 有关详细信息，请参阅[如何使用 Azure Cosmos DB 进行全局数据分配][cosmosdb-geo]。
 
 > [!NOTE]
 > 所有副本都属于同一资源组。
@@ -149,7 +149,7 @@ azure network traffic-manager endpoint set --name <endpoint> --profile-name <pro
 
 [azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
 [azure-dns]: /azure/dns/dns-overview
-[docdb-geo]: /azure/documentdb/documentdb-distribute-data-globally
+[cosmosdb-geo]: /azure/cosmos-db/distribute-data-globally
 [guidance-web-apps-scalability]: ./scalable-web-app.md
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx
 [ra-grs]: /azure/storage/storage-redundancy#read-access-geo-redundant-storage
