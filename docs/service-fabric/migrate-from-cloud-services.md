@@ -3,11 +3,11 @@ title: "将 Azure 云服务应用程序迁移到 Azure Service Fabric"
 description: "如何将 Azure 云服务中的应用程序迁移到 Azure Service Fabric。"
 author: MikeWasson
 ms.date: 04/27/2017
-ms.openlocfilehash: 22b6cca0d4714dd4cde0fd7449340d6e1f45e65b
-ms.sourcegitcommit: fbcf9a1c25db13b2627a8a58bbc985cd01ea668d
+ms.openlocfilehash: 73e34c53ffd2f2eeb466d12a5f6c65dcfdaae389
+ms.sourcegitcommit: 2c9a8edf3e44360d7c02e626ea8ac3b03fdfadba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="migrate-an-azure-cloud-services-application-to-azure-service-fabric"></a>将 Azure 云服务应用程序迁移到 Azure Service Fabric 
 
@@ -198,7 +198,7 @@ Application package
 
 Service Fabric 应用程序包含以下配置文件：
 
-| 文件 | 位置 | 说明 |
+| 文件 | Location | 说明 |
 |------|----------|-------------|
 | ApplicationManifest.xml | 应用程序包 | 定义构成应用程序的服务。 |
 | ServiceManifest.xml | 服务包| 描述一个或多个服务。 |
@@ -289,9 +289,9 @@ Service Fabric 群集部署到 [VM 规模集][vm-scale-sets]。 规模集是一�
 
 另外，将部署从云服务更改为在 VM 规模集中运行的 Service Fabric 群集。
 
-不过，应用程序此时还未获得微服务的所有优势，比如独立的服务部署和版本控制。 若要充分利用 Service Fabric，Tailspin 需要再做进一步优化。
+## <a name="next-steps"></a>后续步骤
 
-
+成功移植 Surveys 应用程序后，Tailspin 可以利用独立服务部署和版本控制等 Service Fabric 功能。 [重构从 Azure 云服务迁移的 Azure Service Fabric 应用程序][refactor-surveys]中介绍了 Tailspin 如何将这些服务分解成更精细的体系结构，以利用这些 Service Fabric 功能
 
 <!-- links -->
 
@@ -308,6 +308,7 @@ Service Fabric 群集部署到 [VM 规模集][vm-scale-sets]。 规模集是一�
 [kestrel]: https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel
 [lb-probes]: /azure/load-balancer/load-balancer-custom-probe-overview
 [owin]: https://www.asp.net/aspnet/overview/owin-and-katana
+[refactor-surveys]: refactor-migrated-app.md
 [sample-code]: https://github.com/mspnp/cloud-services-to-service-fabric
 [sf-application-model]: /azure/service-fabric/service-fabric-application-model
 [sf-aspnet-core]: /azure/service-fabric/service-fabric-add-a-web-frontend
