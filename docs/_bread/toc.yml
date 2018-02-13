@@ -32,6 +32,9 @@
         - name: 资源
           tocHref: /azure/architecture/resources
           topicHref: /azure/architecture/resources
+        - name: 采用指南
+          tocHref: /azure/architecture/cloud-adoption-guide/
+          topicHref: /azure/architecture/cloud-adoption-guide
         - name: 指南
           tocHref: /azure/architecture/guide
           topicHref: /azure/architecture/guide
