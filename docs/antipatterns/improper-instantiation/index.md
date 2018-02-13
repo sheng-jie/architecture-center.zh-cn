@@ -3,11 +3,11 @@ title: "不当实例化对立模式"
 description: "避免连续创建本应一次性创建，然后共享的对象的新实例。"
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 4b217f7fc644901eb5c3e77319d151caed30eef1
-ms.sourcegitcommit: cf207fd10110f301f1e05f91eeb9f8dfca129164
+ms.openlocfilehash: 8955f37e76c8b5e66c1ed7737d200d11ed321612
+ms.sourcegitcommit: 9ba82cf84cee06ccba398ec04c51dab0e1ca8974
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="improper-instantiation-antipattern"></a>不当实例化对立模式
 
@@ -128,7 +128,7 @@ public class SingleHttpClientInstanceController : ApiController
 
 ### <a name="identify-points-of-slow-down-or-failure"></a>识别速度减慢或发生故障的位置
 
-下图显示使用 [New Relic APM][new-relic] 生成的结果，其中显示了响应时间不佳的操作。 在本例中，值得进一步调查 `NewHttpClientInstancePerRequest` 控制器中的 `GetProductAsync` 方法。 请注意，在运行这些操作时，错误率也会增多。 
+下图显示使用 [New Relic APM][new-relic] 生成的结果，其中显示了响应时间不佳的操作。 在本例中，`NewHttpClientInstancePerRequest` 控制器中的 `GetProductAsync` 方法值得进一步调查。 请注意，在运行这些操作时，错误率也会增多。 
 
 ![New Relic 监视仪表板，其中显示示例应用程序正在针对每个请求创建 HttpClient 对象的新实例][dashboard-new-HTTPClient-instance]
 
