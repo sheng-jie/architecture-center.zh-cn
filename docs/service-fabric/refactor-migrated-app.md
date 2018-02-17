@@ -3,11 +3,11 @@ title: "重构从 Azure 云服务迁移的 Azure Service Fabric 应用程序"
 description: "如何重构从 Azure 云服务迁移的现有 Azure Service Fabric 应用程序"
 author: petertay
 ms.date: 01/30/2018
-ms.openlocfilehash: 4889fae8f157b0f1205e7d8223f125974be59ba9
-ms.sourcegitcommit: 2c9a8edf3e44360d7c02e626ea8ac3b03fdfadba
+ms.openlocfilehash: 18af7c7fe0c0933b1a2a132ee2ee0d8479d41b2a
+ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>重构从 Azure 云服务迁移的 Azure Service Fabric 应用程序
 
@@ -15,7 +15,7 @@ ms.lasthandoff: 02/03/2018
 
 本文介绍如何将现有的 Azure Service Fabric 应用程序重构为更精细的体系结构。 本文侧重于重构的 Service Fabric 应用程序的设计、打包、性能和部署注意事项。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 前一篇文章[将 Azure 云服务应用程序迁移到 Azure Service Fabric][migrate-from-cloud-services] 中已经提到，模式和实践团队在 2012 年编写了一篇指南，其中阐述了在 Azure 中设计和实施云服务应用程序的流程。 该指南介绍了一家名为 Tailspin 的虚构公司，他们想要创建一个名为 **Surveys** 的云服务应用程序。 用户可以通过 Surveys 应用程序创建和发布可让公众回答的调查表。 下图展示了此 Surveys 应用程序版本的体系结构：
 
@@ -64,15 +64,15 @@ Tailspin 认识到了将 Surveys 应用程序转换成更精细体系结构所�
 
 **Tailspin.Web** 是一个无状态服务，它自我托管一个可让 Tailspin 客户访问的、以便创建调查表和查看调查表结果的 ASP.NET MVC 应用程序。 此服务与已移植的 Service Fabric 应用程序中的 *Tailspin.Web* 服务共享其大部分代码。 如前所述，此服务使用 ASP.NET Core，并改用 Kestrel 作为 Web 前端来实现 WebListener。
 
-**Tailspin.Web.Surveys.Public** 是一个无状态服务，它同样自我托管一个 ASP.NET MVC 站点。 用户可以访问此站点，从列表中选择调查表，然后填写调查表。此服务与已移植的 Service Fabric 应用程序中的 *Tailspin.Web.Survey.Public* 服务共享其大部分代码。 此服务也使用 ASP.NET Core，并改用 Kestrel 作为 Web 前端来实现 WebListener。
+**Tailspin.Web.Survey.Public** 是一个无状态服务，它同样自我托管一个 ASP.NET MVC 站点。 用户可以访问此站点，从列表中选择调查表，然后填写调查表。此服务与已移植的 Service Fabric 应用程序中的 *Tailspin.Web.Survey.Public* 服务共享其大部分代码。 此服务也使用 ASP.NET Core，并改用 Kestrel 作为 Web 前端来实现 WebListener。
 
-**Tailspin.SurveyResponseService** 是一个有状态服务，它在 Azure Blob 存储中存储调查表答案。 此外，它还将答案合并到调查表分析数据中。 之所以将该服务实现为有状态服务，是因为它使用 [ReliableConcurrentQueue][reliable-concurrent-queue] 来分批处理调查表答案。 此功能最初是在移植的 Service Fabric 应用程序中的 *Tailspin.Web.Survey.Public* 服务中实现的。 Tailspin 将原始功能重构为此服务，使其能够独立缩放。
+**Tailspin.SurveyResponseService** 是一个有状态服务，它在 Azure Blob 存储中存储调查表答案。 此外，它还将答案合并到调查表分析数据中。 之所以将该服务实现为有状态服务，是因为它使用 [ReliableConcurrentQueue][reliable-concurrent-queue] 来分批处理调查表答案。 此功能最初在移植的 Service Fabric 应用程序中的 *Tailspin.AnswerAnalysisService* 服务中实现。
 
-**Tailspin.SurveyManagementService** 是一个无状态服务，用于存储和检索调查表与调查表的问题。 服务使用 Azure Blob 存储。 此功能最初也在移植的 Service Fabric 应用程序中的 *Tailspin.AnswerAnalysisService* 服务中实现。 Tailspin 将原始功能重构为此服务，使其也能独立缩放。
+**Tailspin.SurveyManagementService** 是一个无状态服务，用于存储和检索调查表与调查表的问题。 服务使用 Azure Blob 存储。 此功能最初也在移植的 Service Fabric 应用程序中的 *Tailspin.Web* 和 *Tailspin.Web.Survey.Public* 服务的数据访问组件中实现。 Tailspin 将原始功能重构为此服务，使其能够独立缩放。
 
-**Tailspin.SurveyAnswerService** 是一个无状态服务，用于检索调查表答案和调查表分析。 该服务也使用 Azure Blob 存储。 此功能最初也在移植的 Service Fabric 应用程序中的 *Tailspin.AnswerAnalysisService* 服务中实现。 Tailspin 将原始功能重构为此服务，因为它预期负载更小，因此希望使用更少的实例以节省资源。
+**Tailspin.SurveyAnswerService** 是一个无状态服务，用于检索调查表答案和调查表分析。 该服务也使用 Azure Blob 存储。 此功能最初也在移植的 Service Fabric 应用程序中的 *Tailspin.Web* 服务的数据访问组件中实现。 Tailspin 将原始功能重构为此服务，因为它预期负载更小，因此希望使用更少的实例以节省资源。
 
-**Tailspin.SurveyAnalysisService** 是一个无状态服务，用于在 Redis 缓存中保存调查表答案摘要数据，以提高检索的速度。 每当回答了某份调查表并将新的调查表答案数据合并到摘要数据中时，*Tailspin.SurveyResponseService* 就会调用此服务。 此服务包括已移植的 Service Fabric 应用程序的 *Tailspin.SurveyAnalysisService* 服务中剩余的功能。
+**Tailspin.SurveyAnalysisService** 是一个无状态服务，用于在 Redis 缓存中保存调查表答案摘要数据，以提高检索的速度。 每当回答了某份调查表并将新的调查表答案数据合并到摘要数据中时，*Tailspin.SurveyResponseService* 就会调用此服务。 此服务包括最初在移植的 Service Fabric 应用程序中的 *Tailspin.AnswerAnalysisService* 服务中实现的功能。
 
 ## <a name="stateless-versus-stateful-services"></a>无状态服务与有状态服务
 
@@ -82,7 +82,7 @@ Azure Service Fabric 支持以下编程模型：
 * Reliable Services 编程模型允许创建可与所有 Service Fabric 平台功能集成的无状态服务或有状态服务。 有状态服务允许将复制状态存储在 Service Fabric 群集中， 而无状态服务则不允许。
 * Reliable Actors 编程模型允许创建可实现虚拟执行组件模式的服务。
 
-在 Surveys 应用程序中，除 *Tailspin.SurveyResponseService* 服务以外，其他所有服务都是无状态的 Reliable Services。 此服务实现 [ReliableConcurrentQueue][reliable-concurrent-queue] 来处理收到的调查表答案。 ReliableConcurrentQueue 中的响应保存到 Azure Blob 存储，并传递给 *Tailspin.SurveyAnalysisService* 进行分析。 Tailspin 之所以选择基于 ReliableConcurrentQueue 的模式，是因为响应不需要遵循队列（例如 Azure 服务总线）提供的严格先进先出 (FIFO) 排序规则。 ReliableConcurrentQueue 在设计上还能提供高吞吐量和低延迟来执行排队与取消排队操作。
+在 Surveys 应用程序中，除 *Tailspin.SurveyResponseService* 服务以外，其他所有服务都是无状态的 Reliable Services。 此服务实现 [ReliableConcurrentQueue][reliable-concurrent-queue] 来处理收到的调查表答案。 ReliableConcurrentQueue 中的响应保存到 Azure Blob 存储，并传递给 *Tailspin.SurveyAnalysisService* 进行分析。 Tailspin 之所以选择 ReliableConcurrentQueue，是因为响应不需要遵循队列（例如 Azure 服务总线）提供的严格先进先出 (FIFO) 排序规则。 ReliableConcurrentQueue 在设计上还能提供高吞吐量和低延迟来执行排队与取消排队操作。
 
 请注意，保存已在 ReliableConcurrentQueue 中取消排队的项的操作最好是幂等的。 如果在处理队列中的某个项期间引发了异常，可以多次处理同一个项。 在 Surveys 应用程序中，将调查表答案合并到 *Tailspin.SurveyAnalysisService* 的操作不是幂等的，因为 Tailspin 判定调查表分析数据只是当前分析数据的快照，而不需要保持一致。 保存到 Azure Blob 存储的调查表答案最终是一致的，因此，始终能够基于这些数据正确地重新计算调查表最终分析结果。
 

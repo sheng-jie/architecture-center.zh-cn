@@ -4,11 +4,11 @@ description: "Azure 资源的命名约定。 如何命名虚拟机、存储帐�
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 364735dec9658b4d2a9d21330f38c57f6fa694bd
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: f814201901af69b816d7f1588e58057b252b22db
+ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -96,10 +96,10 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 | 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- | --- |
 |存储帐户名称（数据） |全局 |3-24 |小写 |字母数字 |`<globally unique name><number>`（使用函数计算命名存储帐户的唯一 Guid） |`profxdata001` |
-|存储帐户名称（磁盘） |全局 |3-24 |小写 |字母数字 |`<vm name without dashes>st<number>` |`profxsql001st0` |
-| 容器名称 |存储帐户 |3-63 |小写 |字母数字和短划线 |`<context>` |`logs` |
+|存储帐户名称（磁盘） |全局 |3-24 |小写 |字母数字 |`<vm name without hyphens>st<number>` |`profxsql001st0` |
+| 容器名称 |存储帐户 |3-63 |小写 |字母数字和连字符 |`<context>` |`logs` |
 |Blob 名称 | 容器 |1-1024 |区分大小写 |任何 URL 字符 |`<variable based on blob usage>` |`<variable based on blob usage>` |
-|队列名称 |存储帐户 |3-63 |小写 |字母数字和短划线 |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
+|队列名称 |存储帐户 |3-63 |小写 |字母数字和连字符 |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
 |表名称 | 存储帐户 |3-63 |不区分大小写 |字母数字 |`<service short name><context>` |`awesomeservicelogs` |
 |文件名 | 存储帐户 |3-63 |小写 | 字母数字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
 |Data Lake Store | 全局 |3-24 |小写 | 字母数字 |`<name>-dls` |`telemetry-dls` |
@@ -108,16 +108,16 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 
 | 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- | --- |
-|虚拟网络 (VNet) |资源组 |2-64 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service short name>-vnet` |`profx-vnet` |
-|子网 |父级 VNet |2-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<descriptive context>` |`web` |
-|网络接口 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<vmname>-nic<num>` |`profx-sql1-nic1` |
-|网络安全组 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service short name>-<context>-nsg` |`profx-app-nsg` |
-|网络安全组规则 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<descriptive context>` |`sql-allow` |
-|公共 IP 地址 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<vm or service name>-pip` |`profx-sql1-pip` |
-|负载均衡器 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service or role>-lb` |`profx-lb` |
-|负载均衡规则配置 |负载均衡器 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<descriptive context>` |`http` |
-|Azure 应用程序网关 |资源组 |1-80 |不区分大小写 |字母数字、短划线、下划线和句点 |`<service or role>-agw` |`profx-agw` |
-|流量管理器配置文件 |资源组 |1-63 |不区分大小写 |字母数字、短划线和句点 |`<descriptive context>` |`app1` |
+|虚拟网络 (VNet) |资源组 |2-64 |不区分大小写 |字母数字、连字符、下划线和句点 |`<service short name>-vnet` |`profx-vnet` |
+|子网 |父级 VNet |2-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<descriptive context>` |`web` |
+|网络接口 |资源组 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<vmname>-nic<num>` |`profx-sql1-nic1` |
+|网络安全组 |资源组 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<service short name>-<context>-nsg` |`profx-app-nsg` |
+|网络安全组规则 |资源组 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<descriptive context>` |`sql-allow` |
+|公共 IP 地址 |资源组 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<vm or service name>-pip` |`profx-sql1-pip` |
+|负载均衡器 |资源组 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<service or role>-lb` |`profx-lb` |
+|负载均衡规则配置 |负载均衡器 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<descriptive context>` |`http` |
+|Azure 应用程序网关 |资源组 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<service or role>-agw` |`profx-agw` |
+|流量管理器配置文件 |资源组 |1-63 |不区分大小写 |字母数字、连字符和句点 |`<descriptive context>` |`app1` |
 
 ## <a name="organize-resources-with-tags"></a>使用标记组织资源
 

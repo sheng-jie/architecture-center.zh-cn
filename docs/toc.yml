@@ -19,6 +19,8 @@
       href: guide/pillars.md
     - name: 设计模式
       href: patterns/index.md?toc=/azure/architecture/guide/toc.json
+- name: 数据体系结构指南
+  href: data-guide/index.md
 - name: 参考体系结构
   href: reference-architectures/index.md
   items:

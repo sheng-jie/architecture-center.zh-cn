@@ -1,3 +1,15 @@
+---
+title: "DevOps 清单"
+description: "提供与 DevOps 相关指南的清单。"
+author: dragon119
+ms.date: 01/10/2018
+ms.custom: checklist
+ms.openlocfilehash: c435ea0aed9571cb6508d7d23f93414a138998fe
+ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/14/2018
+---
 # <a name="devops-checklist"></a>DevOps 查检表
 
 DevOps 是指将开发、质量保证和 IT 运营集成到统一的环境以及软件交付过程中。 评估 DevOps 的环境和过程时，可从此查检表着手。

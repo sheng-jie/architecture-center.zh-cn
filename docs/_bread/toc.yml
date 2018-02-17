@@ -38,6 +38,9 @@
         - name: 指南
           tocHref: /azure/architecture/guide
           topicHref: /azure/architecture/guide
+        - name: 数据体系结构指南
+          tocHref: /azure/architecture/data-guide
+          topicHref: /azure/architecture/data-guide
         - name: 性能对立模式
           tocHref: /azure/architecture/antipatterns
           topicHref: /azure/architecture/
