@@ -1,0 +1,25 @@
+---
+title: "说明：什么是 Azure 资源管理器？"
+description: "说明 Azure 资源管理器的内部功能"
+author: petertay
+ms.openlocfilehash: 60f09901bdc4b292abd73335b78c7d56a76f27a6
+ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/09/2018
+---
+# <a name="explainer-what-is-azure-resource-manager"></a><span data-ttu-id="749dd-103">说明：什么是 Azure 资源管理器？</span><span class="sxs-lookup"><span data-stu-id="749dd-103">Explainer: what is Azure Resource Manager?</span></span>
+
+<span data-ttu-id="749dd-104">在 [Azure 的工作原理](azure-explainer.md)说明中，你已了解 Azure 的内部体系结构。</span><span class="sxs-lookup"><span data-stu-id="749dd-104">In the [how does Azure work?](azure-explainer.md) explainer, you learned about the internal architecture of Azure.</span></span> <span data-ttu-id="749dd-105">此体系结构包括托管分布式应用程序（管理内部 Azure 服务）的前端。</span><span class="sxs-lookup"><span data-stu-id="749dd-105">This architecture includes a front end that hosts the distributed applications that manage internal Azure services.</span></span>
+
+<span data-ttu-id="749dd-106">Azure 前端包括一个称为 Azure 资源管理器的服务。</span><span class="sxs-lookup"><span data-stu-id="749dd-106">The Azure front end includes a service called Azure Resource Manager.</span></span> <span data-ttu-id="749dd-107">Azure 资源管理器负责管理 Azure 中托管的资源从创建到删除的生命周期。</span><span class="sxs-lookup"><span data-stu-id="749dd-107">Azure Resource Manager is responsible for the lifecycle of resources hosted in Azure from creation to deletion.</span></span> <span data-ttu-id="749dd-108">有多种方法可与 Azure 资源管理器进行交互 &mdash; 使用 Powershell、Azure 命令行接口，SDK &mdash;，但上述每个工具都只是 Azure 资源管理器托管的 RESTful API 的包装。</span><span class="sxs-lookup"><span data-stu-id="749dd-108">There are many ways to interact with Azure Resource Manager &mdash; using Powershell, the Azure command-line interface, SDKs &mdash; but each of these tools is simply a wrapper over a RESTful API hosted by Azure Resource Manager.</span></span>
+
+<span data-ttu-id="749dd-109">Azure 资源管理器提供的 RESTful API 通过一组**资源提供程序**成为一致的接口。</span><span class="sxs-lookup"><span data-stu-id="749dd-109">The RESTful API provided by Azure Resource Manager is a consistent interface over a set of **resource providers**.</span></span> <span data-ttu-id="749dd-110">资源提供程序只是在 Azure 中创建、读取、更新和删除资源的服务。</span><span class="sxs-lookup"><span data-stu-id="749dd-110">Resource providers are simply Azure services that create, read, update, and delete resources in Azure.</span></span> <span data-ttu-id="749dd-111">事实上，RESTful API 包括上述每种功能的方法。</span><span class="sxs-lookup"><span data-stu-id="749dd-111">In fact, the RESTful API includes methods for each of these functions.</span></span> 
+
+<span data-ttu-id="749dd-112">RESTful API 需要用户访问令牌、**订阅 ID** 和一项新内容（即 **资源组 ID**）。</span><span class="sxs-lookup"><span data-stu-id="749dd-112">The RESTful API requires an access token for the user, a **subscription ID**, and something new - a **resource group ID**.</span></span> <span data-ttu-id="749dd-113">我们将在[资源组说明](resource-group-explainer.md)一文中介绍资源组。</span><span class="sxs-lookup"><span data-stu-id="749dd-113">We'll cover resource groups in the [resource group explainer](resource-group-explainer.md) article.</span></span> <span data-ttu-id="749dd-114">Azure 资源管理器还需要**租户 ID**，该 ID 作为访问令牌的一部分进行编码。</span><span class="sxs-lookup"><span data-stu-id="749dd-114">Azure Resource Manager also requires the **tenant ID**, which is encoded as part of the access token.</span></span> 
+
+<span data-ttu-id="749dd-115">收到创建资源的有效 API 调用时，Azure 资源管理器将在指定的区域中查找容量，并将任何所需的文件复制到暂存位置。</span><span class="sxs-lookup"><span data-stu-id="749dd-115">When a valid API call to create a resource is received, Azure Resource Manager finds capacity in the specified region and copies any required files to a staging location.</span></span> <span data-ttu-id="749dd-116">然后，将请求发送到机架中的结构控制器，结构控制器将分配资源。</span><span class="sxs-lookup"><span data-stu-id="749dd-116">The request is then sent to the fabric controller in the rack, and the fabric controller allocates the resources.</span></span> <span data-ttu-id="749dd-117">结构控制器以成功或失败通知以及新创建的资源的**资源 ID** 对请求做出响应。</span><span class="sxs-lookup"><span data-stu-id="749dd-117">The fabric controller responds to the request with a success or failure notification, along with a **resource ID** for the newly created resource.</span></span> <span data-ttu-id="749dd-118">这四个 ID 存储在 Azure 内部，并一起作为已部署资源的唯一标识符。</span><span class="sxs-lookup"><span data-stu-id="749dd-118">These four IDs are stored internally in Azure and together serve as a unique identifier for a deployed resource.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="749dd-119">后续步骤</span><span class="sxs-lookup"><span data-stu-id="749dd-119">Next steps</span></span>
+
+* <span data-ttu-id="749dd-120">现在你已了解 Azure 资源管理器的内部功能，了解[资源组](resource-group-explainer.md)可帮助你创建第一个资源组。</span><span class="sxs-lookup"><span data-stu-id="749dd-120">Now that you understand the internal functioning of Azure Resource Manager, learn [about resource groups](resource-group-explainer.md) to assist you in creating your first resource group.</span></span>
