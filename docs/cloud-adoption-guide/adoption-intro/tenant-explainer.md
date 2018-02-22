@@ -1,0 +1,28 @@
+---
+title: "说明：Azure Active Directory 租户是什么？"
+description: "介绍了在 Azure 中提供标识即服务 (IDaaS) 的 Azure Active Directory 的内部运行"
+author: petertay
+ms.openlocfilehash: ce5a33b92047e1f360eee8fcbc7a726bcf8cd19f
+ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/09/2018
+---
+# <a name="explainer-what-is-an-azure-active-directory-tenant"></a><span data-ttu-id="42306-103">说明：Azure Active Directory 租户是什么？</span><span class="sxs-lookup"><span data-stu-id="42306-103">Explainer: What is an Azure Active Directory tenant?</span></span>
+
+<span data-ttu-id="42306-104">在 [Azure 如何工作？](azure-explainer.md)说明文章中，我们已知道了 Azure 是在虚拟化硬件和软件中以用户身份运行的服务器和网络硬件的集合。</span><span class="sxs-lookup"><span data-stu-id="42306-104">In the [how does Azure work?](azure-explainer.md) explainer article, you learned that Azure is a collection of servers and networking hardware running virtualized hardware and software on behalf of users.</span></span> <span data-ttu-id="42306-105">我们还知道了这些服务器中有一些运行分布式业务流程应用程序来管理 Azure 资源的创建、读取、更新和删除。</span><span class="sxs-lookup"><span data-stu-id="42306-105">You also learned that some of these servers run a distributed orchestration application to manage creating, reading, updating, and deleting Azure resources.</span></span>
+
+<span data-ttu-id="42306-106">但是，如你所料，Azure 不允许任何人对资源执行这些操作之一。</span><span class="sxs-lookup"><span data-stu-id="42306-106">However, as you would expect - Azure doesn't allow just anyone to perform one of these operations on a resource.</span></span> <span data-ttu-id="42306-107">Azure 仅允许使用称作 **Azure Active Directory** (Azure AD) 的可信数字标识服务来访问这些操作。</span><span class="sxs-lookup"><span data-stu-id="42306-107">Azure restricts access to these operations using a trusted digital identity service called **Azure Active Directory** (Azure AD).</span></span> <span data-ttu-id="42306-108">Azure AD 存储着用户名、密码、配置文件数据和其他信息。</span><span class="sxs-lookup"><span data-stu-id="42306-108">Azure AD stores user name, passwords, profile data, and other information.</span></span> <span data-ttu-id="42306-109">Azure AD 用户划分到各个**租户**中。</span><span class="sxs-lookup"><span data-stu-id="42306-109">Azure AD users are segmented into **tenants**.</span></span> <span data-ttu-id="42306-110">租户是一个逻辑构造，它代表通常与组织关联的一个安全专用的 Azure AD 实例。</span><span class="sxs-lookup"><span data-stu-id="42306-110">A tenant is a logical construct that represents a secure, dedicated instance of Azure AD typically associated with an organization.</span></span>
+
+<span data-ttu-id="42306-111">为了创建租户，Azure 需要一个**特权帐户**。</span><span class="sxs-lookup"><span data-stu-id="42306-111">In order to create a tenant, Azure requires a **privileged account**.</span></span> <span data-ttu-id="42306-112">此特权帐户与一个 Azure 帐户或企业协议相关联。</span><span class="sxs-lookup"><span data-stu-id="42306-112">This privileged account is associated with either an Azure account or an enterprise agreement.</span></span> <span data-ttu-id="42306-113">这两者都是计费构造，并且不存储在 Azure AD 中 &mdash; 这些帐户存储在高度安全的计费数据库中。</span><span class="sxs-lookup"><span data-stu-id="42306-113">Both of these are billing constructs and are not stored in Azure AD &mdash; these accounts are stored in a highly secure billing database.</span></span> 
+
+<span data-ttu-id="42306-114">在创建租户后，会为租户生成一个**租户 ID** 并且会将其保存在高度安全的内部 Azure AD 数据库中。</span><span class="sxs-lookup"><span data-stu-id="42306-114">Once the tenant has been created, a **tenant ID** is generated for the tenant and saved in a highly secure internal Azure AD database.</span></span> <span data-ttu-id="42306-115">然后，特权帐户所有者可以登录到 Azure 门户并向新创建的 Azure AD 租户添加用户。</span><span class="sxs-lookup"><span data-stu-id="42306-115">A privileged account owner can then log in to an Azure portal and add users to the newly created Azure AD tenant.</span></span> 
+
+<span data-ttu-id="42306-116">大多数企业已经有至少一个标识管理服务，通常是 Active Directory 域服务 (AD DS)。</span><span class="sxs-lookup"><span data-stu-id="42306-116">Most enterprises already have at least one identity management service, typically Active Directory Domain Services (AD DS).</span></span> <span data-ttu-id="42306-117">Azure AD 能够同步或联合来自 AD DS 的用户标识，因此企业不需要分别在两个环境中管理标识。</span><span class="sxs-lookup"><span data-stu-id="42306-117">Azure AD is capable of synchronizing or federating user identity from AD DS, so enterprises do not need to manage identity separately in the two environments.</span></span> <span data-ttu-id="42306-118">在有关数字标识的中级和高级采用阶段的文章中将更详细地介绍这方面的内容。</span><span class="sxs-lookup"><span data-stu-id="42306-118">This will be described in more detail in the intermediate and advanced adoption stage articles for digital identity.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="42306-119">后续步骤</span><span class="sxs-lookup"><span data-stu-id="42306-119">Next steps</span></span>
+
+* <span data-ttu-id="42306-120">现在，你已了解了 Azure AD 租户，基础采用阶段中的第一个步骤是了解[如何获取 Azure Active Directory 租户][how-to-get-aad-tenant]。</span><span class="sxs-lookup"><span data-stu-id="42306-120">Now that you have learned about Azure AD tenants, the first step in the foundational adoption stage is to learn [how to get an Azure Active Directory tenant][how-to-get-aad-tenant].</span></span> <span data-ttu-id="42306-121">然后，查看 [Azure AD 租户设计指南](tenant.md)。</span><span class="sxs-lookup"><span data-stu-id="42306-121">Then review the [design guidance for Azure AD tenants](tenant.md).</span></span>
+
+<!-- Links -->
+[how-to-get-aad-tenant]: /azure/active-directory/develop/active-directory-howto-tenant?toc=/azure/architecture/cloud-adoption-guide/toc.json
