@@ -2,14 +2,14 @@
 title: "在 Azure 中实现中心辐射型网络拓扑"
 description: "如何在 Azure 中实现中心辐射型网络拓扑。"
 author: telmosampaio
-ms.date: 05/05/2017
+ms.date: 02/14/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: e6f07a7962dd5728226b023700268340590d97a3
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: c03ecd4ba5ddbe50cfb17e56d75c18102b751cfb
+ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>在 Azure 中实现中心辐射型网络拓扑
 
@@ -339,68 +339,6 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
   ```bash
   ping 10.1.1.37
-  ```
-
-### <a name="add-connectivity-between-spokes"></a>添加辐射之间的连接
-
-如果要允许各个辐射连接到彼此，必须为每个辐射部署 UDR，用以将以其他辐射为目的地的流量转发到中心 VNet 中的网关。 执行以下步骤来验证当前是否能够从一个辐射连接到另一个辐射，然后部署 UDR 并再次测试连接。
-
-1. 如果不再连接到 jumpbox VM，请重复上面的步骤 1 到 4。
-
-2. 连接到 spoke 1 中的 Web 服务器之一。
-
-  ```bash
-  ssh 10.1.1.37
-  ```
-
-3. 测试 spoke 1 与 spoke 2 之间的连接。 它应当会失败。
-
-  ```bash
-  ping 10.1.2.37
-  ```
-
-4. 切换回你的计算机的命令提示符。
-
-5. 切换到已在前面的先决条件步骤中下载的存储库的 `hybrid-networking\hub-spoke\spokes` 文件夹。
-
-6. 运行下面的 bash 或 PowerShell 命令来为第一个辐射部署 UDR。 将各个值替换为你的订阅、资源组名称和 Azure 区域。
-
-  ```bash
-  sh ./spoke.udr.deploy.sh --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    --resourcegroup ra-spoke1-rg \
-    --location westus \
-    --spoke 1
-  ```
-
-  ```powershell
-  ./spoke.udr.deploy.ps1 -Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx `
-    -ResourceGroup ra-spoke1-rg `
-    -Location westus `
-    -Spoke 1
-  ```
-
-7. 运行下面的 bash 或 PowerShell 命令来为第二个辐射部署 UDR。 将各个值替换为你的订阅、资源组名称和 Azure 区域。
-
-  ```bash
-  sh ./spoke.udr.deploy.sh --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    --resourcegroup ra-spoke2-rg \
-    --location westus \
-    --spoke 2
-  ```
-
-  ```powershell
-  ./spoke.udr.deploy.ps1 -Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx `
-    -ResourceGroup ra-spoke2-rg `
-    -Location westus `
-    -Spoke 2
-  ```
-
-8. 切换回 ssh 终端。
-
-9. 测试 spoke 1 与 spoke 2 之间的连接。 它应当会成功。
-
-  ```bash
-  ping 10.1.2.37
   ```
 
 <!-- links -->
