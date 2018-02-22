@@ -6,15 +6,15 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: token-cache
 pnp.series.next: client-assertion
-ms.openlocfilehash: bf385ccc988a709a61d9bee5fb1ee084a133138d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: a5dc25a4b61ffd13d86f1abb2b839054e5fb4c7f
+ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>与客户的 AD FS 联合
 
-本文介绍了多租户 SaaS 应用程序如何通过 Active Directory 联合身份验证服务 (AD FS) 支持身份验证，以便与客户的 AD FS 联合。
+本文介绍了多租户 SaaS 应用程序如何支持通过 Active Directory 联合身份验证服务 (AD FS) 进行的身份验证，以便与客户的 AD FS 联合。
 
 ## <a name="overview"></a>概述
 Azure Active Directory (Azure AD) 让从 Azure AD 租户（包括 Office365 和 Dynamics CRM Online 客户）登录用户变得简便易行。 但是，在公司 Intranet 使用本地 Active Directory 的客户该怎么办？
@@ -50,7 +50,7 @@ Azure Active Directory (Azure AD) 让从 Azure AD 租户（包括 Office365 和 
 1. 用户单击"登录"时，应用程序会重定向到 SaaS 提供程序 AD FS 上的 OpenID Connect 终结点。
 2. 用户输入所在组织中的用户名 ("`alice@corp.contoso.com`")。 AD FS 使用主领域发现重定向到客户的 AD FS，用户在此处输入其凭据。
 3. 客户的 AD FS 使用 WF 联合身份验证（或 SAML）将用户声明发送到 SaaS 提供程序的 AD FS。
-4. 声明可使用 OpenID Connect 从 AD FS 流动到应用。 这需要 WS 联合身份验证的协议转换。
+4. 声明使用 OpenID Connect 从 AD FS 流动到应用。 这需要 WS 联合身份验证的协议转换。
 
 ## <a name="limitations"></a>限制
 默认情况下，信赖方应用程序仅接收一组在 id_token 中提供的固定声明，如下表所示。 通过 AD FS 2016，可以在 OpenID Connect 方案中自定义 id_token。 有关详细信息，请参阅[在 AD FS 中自定义 ID 令牌](/windows-server/identity/ad-fs/development/customize-id-token-ad-fs-2016)。
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) 让从 Azure AD 租户（包括 Office365 和 
 | 声明 | 说明 |
 | --- | --- |
 | aud |目标受众。 为其发出声明的应用程序。 |
-| authenticationinstant |[即时身份验证]。 发生即时身份验证的时间。 |
+| authenticationinstant |[身份验证时刻]。 身份验证的发生时间。 |
 | c_hash |代码哈希值。 这是令牌内容的哈希值。 |
 | exp |[过期时间]。 此后将不再接受令牌。 |
 | iat |颁发时间。 颁发令牌的时间。 |
@@ -70,14 +70,14 @@ Azure Active Directory (Azure AD) 让从 Azure AD 租户（包括 Office365 和 
 | pwd_exp |密码过期时段。 用户密码或类似的身份验证机密（例如 PIN）过期前的 秒数。 |
 
 > [!NOTE]
-> “iss”声明包含合作伙伴的 AD FS（通常，此声明将SaaS 提供程序标识为颁发者）。 它不会标识客户的 AD FS。 你可以发现客户的域名是 UPN 的一部分。
+> “iss”声明包含合作伙伴的 AD FS（通常，此声明将 SaaS 提供程序标识为颁发者）。 它不会标识客户的 AD FS。 你可以发现客户的域名是 UPN 的一部分。
 > 
 > 
 
 本文的其余部分介绍如何设置 RP（应用）和帐户伙伴（客户）之间的信任关系。
 
 ## <a name="ad-fs-deployment"></a>AD FS 部署
-SaaS 提供程序可以在本地或 Azure VM 上部署 AD FS。 有关安全性和可用性，以下准则非常重要：
+SaaS 提供程序可以在本地或 Azure VM 上部署 AD FS。 为了确保安全性和可用性，以下准则非常重要：
 
 * 至少部署两个 AD FS 服务器和两个 AD FS 代理服务器，以获得 AD FS 服务的最佳可用性。
 * 域控制器和 AD FS 服务器一定不能直接向 Internet 公开，而应置于可以直接访问它们的虚拟网络中。
@@ -122,7 +122,7 @@ SaaS 提供程序必须为每个想通过 ADFS 连接的客户执行下列操作
 9. 单击“确定”完成本向导。
 
 ### <a name="enable-home-realm-discovery"></a>启用主领域发现
-在以下 PowerShell 脚本中运行：
+运行以下 PowerShell 脚本：
 
 ```
 Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("suffix")
@@ -183,7 +183,7 @@ Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("s
 [联合身份验证信任]: https://technet.microsoft.com/library/cc770993(v=ws.11).aspx
 [帐户伙伴]: https://technet.microsoft.com/library/cc731141(v=ws.11).aspx
 [资源伙伴]: https://technet.microsoft.com/library/cc731141(v=ws.11).aspx
-[即时身份验证]: https://msdn.microsoft.com/library/system.security.claims.claimtypes.authenticationinstant%28v=vs.110%29.aspx
+[身份验证时刻]: https://msdn.microsoft.com/library/system.security.claims.claimtypes.authenticationinstant%28v=vs.110%29.aspx
 [过期时间]: http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25#section-4.1.
 [名称标识符]: https://msdn.microsoft.com/library/system.security.claims.claimtypes.nameidentifier(v=vs.110).aspx
 [active-directory-on-azure]: https://msdn.microsoft.com/library/azure/jj156090.aspx
