@@ -3,15 +3,15 @@ title: "选择数据存储技术"
 description: 
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: a51c8d990818e0b0efb04dd7686b065e5b98338a
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: d8f831e758ddc8604758392644a68b56dc51cf57
+ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>在 Azure 中选择大数据存储技术
 
-本主题将大数据解决方案的数据存储选项进行比较 &mdash; 具体而言，将用于批量数据引入和批处理的数据存储，与用于[分析数据存储](./analytical-data-stores.md)或[实时流引入](./real-time-ingestion.md)的数据存储进行比较
+本主题将大数据解决方案的数据存储选项进行比较 &mdash; 具体而言，将用于批量数据引入和批处理的数据存储，与用于[分析数据存储](./analytical-data-stores.md)或[实时流引入](./real-time-ingestion.md)的数据存储进行比较。
 
 ## <a name="what-are-your-options-when-choosing-data-storage-in-azure"></a>在 Azure 中选择数据存储时有哪些选项？
 
