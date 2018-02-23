@@ -2,13 +2,16 @@
 title: "Azure 参考体系结构"
 description: "适用于 Azure 上的常见工作负荷的参考体系结构、蓝图和规范性实施指南。"
 layout: LandingPage
-NOTE: edit the template in ./build/reference-architectures !!!
-ms.openlocfilehash: e513e2545fb95b486b11a067479e879f4abd4a8f
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: cd7f4b066ba7a4af16767db013c607bc0697dd98
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/23/2018
 ---
+<!-- This file is generated! -->
+<!-- See the templates in ./build/reference-architectures  -->
+<!-- See data in index.json -->
+
 # <a name="azure-reference-architectures"></a>Azure 参考体系结构
 
 我们的参考体系结构已根据方案进行编制，相关的体系结构已分组到一起。 每个体系结构包括建议的做法，以及有关可伸缩性、可用性、可管理性和安全性的注意事项。 大多数体系结构还包括一个可部署的解决方案。

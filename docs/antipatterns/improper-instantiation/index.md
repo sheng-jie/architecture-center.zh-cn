@@ -3,11 +3,11 @@ title: "不当实例化对立模式"
 description: "避免连续创建本应一次性创建，然后共享的对象的新实例。"
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 8955f37e76c8b5e66c1ed7737d200d11ed321612
-ms.sourcegitcommit: 9ba82cf84cee06ccba398ec04c51dab0e1ca8974
+ms.openlocfilehash: 4d5ef9ad9e675b46df94b51e81d7a4bd4c1b25e9
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="improper-instantiation-antipattern"></a>不当实例化对立模式
 
@@ -22,9 +22,7 @@ ms.lasthandoff: 02/13/2018
 - `Microsoft.Azure.Documents.Client.DocumentClient`。 连接到 Cosmos DB 实例
 - `StackExchange.Redis.ConnectionMultiplexer`。 连接到 Redis，包括 Azure Redis 缓存。
 
-这些类应该只实例化一次，并在应用程序的整个生存期内重复使用。 但是，一个常见的误解是，只能在有必要时才获取这些类，并应快速将其释放。 （此处正好列出了 .NET 库，但模式不是 .NET 特有的）。
-
-以下 ASP.NET 示例创建一个 `HttpClient` 实例来与远程服务通信。 可在[此处][sample-app]找到完整示例。
+这些类应该只实例化一次，并在应用程序的整个生存期内重复使用。 但是，一个常见的误解是，只能在有必要时才获取这些类，并应快速将其释放。 （此处正好列出了 .NET 库，但模式不是 .NET 特有的）。以下 ASP.NET 示例创建一个 `HttpClient` 实例来与远程服务通信。 可在[此处][sample-app]找到完整示例。
 
 ```csharp
 public class NewHttpClientInstancePerRequestController : ApiController
@@ -76,18 +74,18 @@ public class ExpensiveToCreateService
 ```csharp
 public class SingleHttpClientInstanceController : ApiController
 {
-    private static readonly HttpClient HttpClient;
+    private static readonly HttpClient httpClient;
 
     static SingleHttpClientInstanceController()
     {
-        HttpClient = new HttpClient();
+        httpClient = new HttpClient();
     }
 
     // This method uses the shared instance of HttpClient for every call to GetProductAsync.
     public async Task<Product> GetProductAsync(string id)
     {
         var hostName = HttpContext.Current.Request.Url.Host;
-        var result = await HttpClient.GetStringAsync(string.Format("http://{0}:8080/api/...", hostName));
+        var result = await httpClient.GetStringAsync(string.Format("http://{0}:8080/api/...", hostName));
         return new Product { Name = result };
     }
 }

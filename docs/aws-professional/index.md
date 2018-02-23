@@ -5,11 +5,11 @@ keywords: "AWS 专家, Azure 比较, AWS 比较, azure 与 aws 之间的差别, 
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: e5f7cb5062b0b4a8526f3b29a9fa4ddaff399fc0
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: b8698675efa42bb3fae73cefe7b078942549b412
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-for-aws-professionals"></a>面向 AWS 专业人员的 Azure
 
@@ -351,7 +351,7 @@ AWS 简单队列服务 (SQS) 提供一个消息传送系统用于连接 AWS 平�
 
 -   [队列存储](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - 一个云消息传送服务，可在 Azure 平台中的应用程序组件之间实现通信。
 
--   [服务总线](https://azure.microsoft.com/en-us/services/service-bus/) - 一个更可靠的消息传送系统，用于连接应用程序、服务和设备。 使用相关的[服务总线中继](https://docs.microsoft.com/en-us/azure/service-bus-relay/relay-what-is-it)，服务总线还可以连接到远程托管的应用程序和服务。
+-   [服务总线](https://azure.microsoft.com/services/service-bus/) - 一个更可靠的消息传送系统，用于连接应用程序、服务和设备。 使用相关的[服务总线中继](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it)，服务总线还可以连接到远程托管的应用程序和服务。
 
 #### <a name="device-farm"></a>设备场
 

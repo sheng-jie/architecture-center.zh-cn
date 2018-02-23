@@ -2,92 +2,104 @@
 title: "Linux VM 工作负荷"
 description: "介绍部署 VM 用于在 Azure 中托管企业级应用程序时可用的一些常用体系结构。"
 layout: LandingPage
-ms.openlocfilehash: 002808e3fcbd9de9f033825291f4db1b0c613db0
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: ef06fb93355f4676f44954930bcfeb2c2d012d43
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="running-linux-vm-workloads"></a>运行 Linux VM 工作负荷
+<!-- This file is generated! -->
+<!-- See the templates in ./build/reference-architectures  -->
+<!-- See data in index.json -->
 
-这些参考体系结构介绍了有关在 Azure 中运行 Linux VM 的成熟做法。 
+# <a name="linux-vm-workloads"></a>Linux VM 工作负荷
 
-<ul class="panelContent">
-    <li>
-        <a href="./single-vm.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="./images/single-vm.svg"/>
-                            </div>
+这些参考体系结构介绍了有关在 Azure 中运行 Linux VM 的成熟做法。
+
+<section class="series">
+    <ul class="panelContent">
+    <!-- Single VM -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./single-vm.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./images/single-vm.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>单个 VM</h3>
-                            <p>有关在 Azure 中运行任何 Linux VM 的基线建议。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>单个 VM</h3>
+                        <p>有关在 Azure 中运行任何 Linux VM 的基线建议。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
-    <li>
-        <a href="./multi-vm.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                            <img src="./images/multi-vm.svg">
-                            </div>
+        </div>
+    </a>
+</li>
+    <!-- Load balanced VMs -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./multi-vm.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./images/multi-vm.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>负载均衡的 VM</h3>
-                            <p>将多个 VM 放在负载均衡器的后面以实现可伸缩性和可用性。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>负载均衡的 VM</h3>
+                        <p>将多个 VM 放在负载均衡器的后面以实现可伸缩性和可用性。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
-    <li>
-        <a href="./n-tier.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                            <img src="./images/n-tier.svg">
-                            </div>
+        </div>
+    </a>
+</li>
+    <!-- N-tier application -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./n-tier.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./images/n-tier.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>N 层应用程序</h3>
-                            <p>为 N 层应用程序配置的包含 Apache Cassandra 的 VM。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>N 层应用程序</h3>
+                        <p>为 N 层应用程序配置的包含 Apache Cassandra 的 VM。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
-    <li>
-        <a href="./multi-region-application.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                            <img src="./images/multi-region-application.svg">
-                            </div>
+        </div>
+    </a>
+</li>
+    <!-- Multi-region application -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./multi-region-application.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./images/multi-region-application.svg" height="140px" />
                         </div>
-                        <div class="cardText">
-                            <h3>多区域应用程序</h3>
-                            <p>部署到两个区域以实现高可用性的 N 层应用程序。</p>
-                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>多区域应用程序</h3>
+                        <p>部署到两个区域以实现高可用性的 N 层应用程序。</p>
                     </div>
                 </div>
             </div>
-        </a>
-    </li>
+        </div>
+    </a>
+</li>
+    </ul>
+</section>
+
+<ul class="panelContent cardsI">
 </ul>
-

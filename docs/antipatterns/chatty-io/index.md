@@ -2,11 +2,11 @@
 title: "琐碎 I/O 对立模式"
 description: "发出大量的 I/O 请求可能会损害性能和响应能力。"
 author: dragon119
-ms.openlocfilehash: 50001316939b56c9b57a119f6ae20f0878f54c0f
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 4f0e0e455ceb58317d3029d8ab4631d476802499
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="chatty-io-antipattern"></a>琐碎 I/O 对立模式
 
@@ -215,7 +215,7 @@ await SaveCustomerListToFileAsync(customers);
 
 - 写入数据时，请避免将资源锁定超过必要的时间，以减少在执行冗长操作期间发生资源争用的可能性。 如果写入操作跨多个数据存储、文件或服务，则采用最终一致性方法。 请参阅[数据一致性指南][data-consistency-guidance]。
 
-- 如果在写入数据之前在内存中缓冲数据，则发生进程崩溃时，数据易受攻击。 如果数据率通常出现喷发或相对稀疏，在[事件中心](http://azure.microsoft.com/en-us/services/event-hubs/)等外部持久队列中缓冲数据可能会更安全。
+- 如果在写入数据之前在内存中缓冲数据，则发生进程崩溃时，数据易受攻击。 如果数据率通常出现喷发或相对稀疏，在[事件中心](http://azure.microsoft.com/services/event-hubs/)等外部持久队列中缓冲数据可能会更安全。
 
 - 请考虑缓存从服务或数据库检索的数据。 这可以避免针对相同的数据发出重复请求，从而帮助减少 I/O 数量。 有关详细信息，请参阅[有关缓存的最佳做法][caching-guidance]。
 
