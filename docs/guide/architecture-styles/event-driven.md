@@ -2,11 +2,11 @@
 title: "事件驱动的体系结构样式"
 description: "介绍 Azure 上事件驱动和 IoT 体系结构的优点、挑战和最佳做法"
 author: MikeWasson
-ms.openlocfilehash: ff7f936ceabefe7079a1ebbfa717ff4095bf133b
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 3289bf784b02d62e3d0c1a29b4839c9be3501134
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="event-driven-architecture-style"></a>事件驱动的体系结构样式
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/14/2017
 
 在上面的逻辑图中，每种类型的使用者都显示为单个框。 实际情况中通常有多个使用者实例，可避免使用者成为系统中的单点故障。 处理事件的容量和频率可能还需要多个实例。 此外，单个使用者可以处理多个线程上的事件。 如果必须按照顺序处理事件，或者需要“恰一次”语义，这就会带来一些挑战。 请参阅[尽量减少协调][minimize-coordination]。 
 
-## <a name="when-to-use-this-architecture"></a>此体系结构适用的情况
+## <a name="when-to-use-this-architecture"></a>何时使用此体系结构
 
 - 多个子系统必须处理相同的事件。 
 - 延迟时间最短的实时处理。
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/14/2017
  <!-- links -->
 
 [competing-consumers]: ../../patterns/competing-consumers.md
-[iot-ref-arch]: https://azure.microsoft.com/en-us/updates/microsoft-azure-iot-reference-architecture-available/
+[iot-ref-arch]: https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/
 [minimize-coordination]: ../design-principles/minimize-coordination.md
 
 

@@ -3,11 +3,11 @@ title: "选择实时消息引入技术"
 description: 
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 4f76e63a50c1d689ea3a37219a44aa94477a2e2e
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 2e6578b779950b5ef11bda7b8ba1fb2e45e09f4e
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="choosing-a-real-time-message-ingestion-technology-in-azure"></a>在 Azure 中选择实时消息引入技术
 
@@ -43,7 +43,7 @@ IoT 中心的功能包括：
 
 Kafka 的一些常见用例包括：
 
-* **消息传送**。 由于 Kafka 支持发布-订阅消息模式，因此它经常用作消息中转站。
+* **消息**。 由于 Kafka 支持发布-订阅消息模式，因此它经常用作消息中转站。
 * **活动跟踪**。 由于 Kafka 提供了按顺序将记录记入日志的功能，因此它还可用来跟踪和重新创建活动。
 * **聚合**。 使用流处理可从不同的流中聚合信息，将信息合并和集中到运营数据中。
 * **转换**。 使用流处理可将多个输入主题中的数据合并到一个或多个输出主题中，丰富其内容。
@@ -66,8 +66,8 @@ Kafka 的一些常见用例包括：
 | 设备启动的文件上传 | 是 | 否 | 否 |
 | 设备状态信息 | [设备孪生](/azure/iot-hub/iot-hub-devguide-device-twins) | 否 | 否 |
 | 协议支持 | MQTT、AMQP、HTTPS <sup>1</sup> | AMQP、HTTPS | [Kafka 协议](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol) |
-| 安全性 | 每设备标识；可撤销的访问控制权限。 | 共享访问策略；通过发布者策略实现有限的撤销。 | 使用 SASL 的身份验证；可插拔身份验证；与受支持的外部身份验证服务集成。 |
+| “安全” | 每设备标识；可撤销的访问控制权限。 | 共享访问策略；通过发布者策略实现有限的撤销。 | 使用 SASL 的身份验证；可插拔身份验证；与受支持的外部身份验证服务集成。 |
 
 [1] 还可以使用 [Azure IoT 协议网关](/azure/iot-hub/iot-hub-protocol-gateway)作为自定义网关，来为 IoT 中心启用协议自适应。
 
-有关详细信息，请参阅 [Azure IoT 中心与 Azure 事件中心的比较](/azure/iot-hub/iot-hub-compare-event-hubss)。
+有关详细信息，请参阅 [Azure IoT 中心与 Azure 事件中心的比较](/azure/iot-hub/iot-hub-compare-event-hubs)。

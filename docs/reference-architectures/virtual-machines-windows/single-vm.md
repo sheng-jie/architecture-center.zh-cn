@@ -6,11 +6,11 @@ ms.date: 12/12/2017
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-vm
 pnp.series.prev: ./index
-ms.openlocfilehash: 71eeebae1f557ecbb6f33c4a7e37a278204f3dcd
-ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
+ms.openlocfilehash: ffc8ddcbdd5422f1e38922fc6735ab1579289c7b
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="run-a-windows-vm-on-azure"></a>在 Azure 上运行 Windows VM
 
@@ -42,9 +42,9 @@ ms.lasthandoff: 01/02/2018
 
 ### <a name="vm-recommendations"></a>VM 建议
 
-Azure 提供多种不同虚拟机大小。 建议使用[高级存储][premium-storage]，因为它具有高性能和低延迟，并且[受到特定 VM 大小的支持][premium-storage-supported]。 除非运行专用工作负荷（例如高性能计算），否则请选择其中一种大小。 有关详细信息，请参阅[虚拟机大小][virtual-machine-sizes]。
+Azure 提供多种不同的虚拟机大小。 建议使用[高级存储][premium-storage]，因为它具有高性能和低延迟，并且[可以在 VM 具有指定大小时使用][premium-storage-supported]。 除非运行专用工作负荷（例如高性能计算），否则请选择其中一种大小。 有关详细信息，请参阅[虚拟机大小][virtual-machine-sizes]。
 
-如果要将现有工作负荷转移到 Azure，开始时请先使用与本地服务器最匹配的 VM 大小。 然后测量与 CPU、内存和每秒磁盘输入/输出操作次数 (IOPS) 有关的实际工作负荷的性能，并根据需要调整大小。 如果 VM 需要多个 NIC，请注意 NIC 的最大数量取决于每个 [VM 大小][vm-size-tables]。
+如果要将现有工作负荷转移到 Azure，开始时请先使用与本地服务器最匹配的 VM 大小。 然后从 CPU、内存和每秒磁盘输入/输出操作次数 (IOPS) 等方面测量实际工作负荷的性能，并根据需要调整大小。 如果 VM 需要多个 NIC，请注意每种 [VM 大小][vm-size-tables]都定义了最大 NIC 数量。
 
 在预配 Azure 资源时，必须指定区域。 通常，请选择离内部用户或客户最近的区域。 但是，并非所有 VM 大小都可在所有区域中使用。 有关详细信息，请参阅[每个区域的服务][services-by-region]。 要获取特定区域中可用 VM 大小的列表，请从 Azure 命令行接口 (CLI) 运行以下命令：
 
@@ -193,7 +193,7 @@ VHD 存储在 [Azure 存储][azure-storage]中。 将复制 Azure 存储以实�
 [fqdn]: /azure/virtual-machines/virtual-machines-windows-portal-create-fqdn
 [git]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/single-vm
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/single-vm
-[group-policy]: https://technet.microsoft.com/en-us/library/dn595129.aspx
+[group-policy]: https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn595129(v=ws.11)
 [log-collector]: https://azure.microsoft.com/blog/simplifying-virtual-machine-troubleshooting-using-azure-log-collector/
 [manage-vm-availability]: /azure/virtual-machines/virtual-machines-windows-manage-availability
 [multi-vm]: multi-vm.md

@@ -4,11 +4,11 @@ description: "有关使用内容交付网络 (CDN) 传送 Azure 中托管的高�
 author: dragon119
 ms.date: 02/02/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: 73da41edec246b672564dd4a52b317eacf8ad649
-ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.openlocfilehash: 9ee9099c85818af9486408f6ece41d3f6fcd9b44
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="best-practices-for-using-content-delivery-networks-cdns"></a>使用内容交付网络 (CDN) 的最佳做法
 
@@ -83,7 +83,7 @@ CDN 用处不大的应用场景包括：
 
 要防止对象在 CDN 上可用，可以从来源中删除这些对象、移除或删除 CDN 终结点，或者在使用 Blob 存储的情况下，将容器或 Blob 设为专用的。 但是，在生存时间到期之前，不会将项移除。 还可以手动清除 CDN 终结点。
 
-### <a name="security"></a>安全性
+### <a name="security"></a>“安全”
 
 CDN 可以使用 CDN 提供的证书通过 HTTPS (SSL) 传送内容，也可以通过标准 HTTP 传送内容。 若要避免浏览器发出有关内容混合的警告，可能需要使用 HTTPS 来请求通过 HTTPS 加载的页面所显示的静态内容。
 
@@ -95,5 +95,3 @@ CDN 可以使用 CDN 提供的证书通过 HTTPS (SSL) 传送内容，也可以�
 
 ### <a name="cdn-fallback"></a>CDN 回退
 考虑应用程序如何处理 CDN 失败或暂时不可用的情况。 如果 CDN 不可用，客户端应用程序可以使用执行前面请求期间的本地缓存资源的副本（位于客户端），或者可以添加代码来检测失败，而不是从来源请求资源（应用程序文件夹或保留资源的 Azure Blob 容器）。
-
-以下示例显示了一种回退机制

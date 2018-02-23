@@ -6,11 +6,11 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: token-cache
 pnp.series.next: client-assertion
-ms.openlocfilehash: a5dc25a4b61ffd13d86f1abb2b839054e5fb4c7f
-ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
+ms.openlocfilehash: 08bf567085a940287de310f61b9f447d0ce5d5ec
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>与客户的 AD FS 联合
 
@@ -63,10 +63,10 @@ Azure Active Directory (Azure AD) 让从 Azure AD 租户（包括 Office365 和 
 | exp |[过期时间]。 此后将不再接受令牌。 |
 | iat |颁发时间。 颁发令牌的时间。 |
 | iss |颁发者。 此声明的值一直是资源伙伴的 AD FS。 |
-| 名称 |用户名。 示例：`john@corp.fabrikam.com`。 |
+| 名称 |用户名。 示例：`john@corp.fabrikam.com` |
 | NameIdentifier |[名称标识符]。 为其颁发令牌的实体的名称标识符。 |
 | nonce |会话 nonce。 AD FS 生成的唯一值，用于帮助防止遭受重播攻击。 |
-| upn |用户主体名称 (UPN)。 示例：john@corp.fabrikam.com |
+| upn |用户主体名称 (UPN)。 示例：`john@corp.fabrikam.com` |
 | pwd_exp |密码过期时段。 用户密码或类似的身份验证机密（例如 PIN）过期前的 秒数。 |
 
 > [!NOTE]

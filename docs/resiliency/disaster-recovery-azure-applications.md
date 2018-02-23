@@ -3,11 +3,11 @@ title: "Azure 应用程序灾难恢复"
 description: "有关在Microsoft Azure 上设计应用程序以实现灾难恢复的技术概述和深入信息。"
 author: adamglick
 ms.date: 05/26/2017
-ms.openlocfilehash: 5ed6e2cec149571724f1545b40f628d6bbe1ad71
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 7235e752cf1b96e392a700b223d63b07c0f85b66
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="disaster-recovery-for-azure-applications"></a>Azure 应用程序灾难恢复
 
@@ -268,7 +268,7 @@ IaaS 解决方案还为本地应用程序使用 Azure 作为故障转移选项�
 如果 DR 策略依赖于多个云平台，那么，在解决方案设计中加入抽象层就很有用。 这样就不必为各种云平台开发和维护同一应用程序的两个不同版本来应对灾难。 和混合方案一样，在这些情况下使用 Azure 虚拟机或 Azure 容器服务可能比云特定的 PaaS 设计更加方便。
 
 ## <a name="automation"></a>自动化
-我们刚刚讨论的某些模式需要迅速激活脱机部署以及还原系统的特定部分。 自动化脚本可按需激活资源以及迅速部署解决方案。 下面的 DR 相关自动化示例使用 [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)，不过，使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) 或[服务管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) 也是不错的选择。
+我们刚刚讨论的某些模式需要迅速激活脱机部署以及还原系统的特定部分。 自动化脚本可按需激活资源以及迅速部署解决方案。 下面的 DR 相关自动化示例使用 [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)，不过，使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 或[服务管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) 也是不错的选择。
 
 自动化脚本可管理 Azure 以非透明方式处理的各个 DR 环节。 这会生成一致且可重复的结果，最大程度减少人为错误。 预先定义的 DR 脚本还可缩短在发生灾难期间重新生成系统及其组成部分的时间。 不想尝试自己解决如何在停机时还原站点，因为分分秒秒都在损失金钱。
 
@@ -277,7 +277,7 @@ IaaS 解决方案还为本地应用程序使用 Azure 作为故障转移选项�
 自动化的最佳实践是为 Azure 灾难恢复创建 PowerShell 脚本或命令行接口 (CLI) 的存储库。 请明确标注这些脚本并对它们分类，以便快速访问。 指派专人来管理脚本的存储库和版本控制。 请通过参数解释和脚本使用示例，妥善记录这些脚本。 另外请确保将此文档与 Azure 部署保持同步。 这就是让专人全权管理整个存储库的意图所在。
 
 ## <a name="failure-detection"></a>故障检测
-若要正确地处理可用性和灾难恢复的问题，必须可检测和诊断故障。 请执行高级服务器和部署监视，以便在系统或其组件突然变得不可用时快速发现该问题。 评估云服务及其依赖项的总体运行状况的监视工具可完成这其中的一部分工作。 [System Center 2016](https://www.microsoft.com/en-us/server-cloud/products/system-center-2016/) 就是一款合适的 Microsoft 工具。 第三方工具也可提供监视功能。 大多数监视解决方案跟踪关键的性能计数器和服务可用性。
+若要正确地处理可用性和灾难恢复的问题，必须可检测和诊断故障。 请执行高级服务器和部署监视，以便在系统或其组件突然变得不可用时快速发现该问题。 评估云服务及其依赖项的总体运行状况的监视工具可完成这其中的一部分工作。 [System Center 2016](https://www.microsoft.com/server-cloud/products/system-center-2016/) 就是一款合适的 Microsoft 工具。 第三方工具也可提供监视功能。 大多数监视解决方案跟踪关键的性能计数器和服务可用性。
 
 尽管这些工具很重要，但必须规划云服务中的故障检测和报告。 此外还必须规划正确使用 Azure 诊断。 自定义性能计数器或事件日志条目也可成为总体策略的一部分。 这样可在故障期间提供更多数据以迅速诊断问题并恢复所有功能。 它还为监视工具提供其他指标，用于确定应用程序的运行状况。 有关详细信息，请参阅[在 Azure 云服务中启用 Azure 诊断](/azure/cloud-services/cloud-services-dotnet-diagnostics/)。 有关如何规划总体“运行状况模型”的讨论，请参阅[防故障：弹性云体系结构指南](https://channel9.msdn.com/Series/FailSafe)。
 

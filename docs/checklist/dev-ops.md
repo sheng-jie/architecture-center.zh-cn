@@ -4,11 +4,11 @@ description: "提供与 DevOps 相关指南的清单。"
 author: dragon119
 ms.date: 01/10/2018
 ms.custom: checklist
-ms.openlocfilehash: c435ea0aed9571cb6508d7d23f93414a138998fe
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 356fef2415347ae132915695a25fd9b50779bd8b
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="devops-checklist"></a>DevOps 查检表
 
@@ -126,7 +126,7 @@ DevOps 是指将开发、质量保证和 IT 运营集成到统一的环境以及
 
 **使用配置管理。** 应该计划、向操作人员显示并记录配置更改。 这可以采用配置管理数据库的形式或配置即代码方法。 应定期审核配置，确保预期的配置已实际部署到位。
 
-**获取 Azure 支持计划并了解相关过程。** Azure 提供许多[支持计划][azure-support-plans]。 确定符合需要的计划，并确保整个团队了解其用法。 团队成员应了解该计划的细节、支持过程的工作方式，以及如何使用 Azure 开具支持票证。 如果你预期会发生大规模的事件，Azure 支持人员可以帮助你提高服务限制。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/en-us/support/faq/)。
+**获取 Azure 支持计划并了解相关过程。** Azure 提供许多[支持计划][azure-support-plans]。 确定符合需要的计划，并确保整个团队了解其用法。 团队成员应了解该计划的细节、支持过程的工作方式，以及如何使用 Azure 开具支持票证。 如果你预期会发生大规模的事件，Azure 支持人员可以帮助你提高服务限制。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 **授予资源访问权限时，请遵循最低特权原则。** 谨慎管理资源的访问权限。 除非要显式授予某个用户对某个资源的访问权限，否则应默认拒绝访问。 只向用户授予完成其任务所需的访问权限。 跟踪用户权限并执行定期安全审核。
 

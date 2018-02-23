@@ -4,11 +4,11 @@ description: "设置重试机制的服务指南。"
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: da1145e2f2f91befd69505ae9ef2734d6110c1d0
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: 6bb623bd8be89573178f250570407bf83d62c098
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定服务的重试指南
 
@@ -296,7 +296,7 @@ public class BloggingContextConfiguration : DbConfiguration
 | MaxDelay | 30 秒 | 重试之间的最大延迟。 此值不影响延迟序列的计算方式。 它只定义上限。 |
 | DefaultCoefficient | 1 秒 | 指数退避计算的系数。 不能更改此值。 |
 | DefaultRandomFactor | 1.1 | 用于添加每个条目的随机延迟的乘数。 不能更改此值。 |
-| DefaultExponentialBase | #N/A | 用于计算下一次延迟的乘数。 不能更改此值。 |
+| DefaultExponentialBase | 2 | 用于计算下一次延迟的乘数。 不能更改此值。 |
 
 ### <a name="retry-usage-guidance"></a>重试使用指南
 访问使用 EF6 的 SQL 数据库时，请注意以下指南：
@@ -416,7 +416,7 @@ using (var db = new BloggingContext())
 
 ### <a name="more-information"></a>详细信息
 * [连接复原](/ef/core/miscellaneous/connection-resiliency)
-* [数据点 - EF Core 1.1](https://msdn.microsoft.com/en-us/magazine/mt745093.aspx)
+* [数据点 - EF Core 1.1](https://msdn.microsoft.com/magazine/mt745093.aspx)
 
 ## <a name="sql-database-using-adonet-retry-guidelines"></a>使用 ADO.NET 的 SQL 数据库重试指南
 SQL 数据库是一种托管的 SQL 数据库，具有各种大小，可作为标准（共享）和高级（非共享）服务提供。

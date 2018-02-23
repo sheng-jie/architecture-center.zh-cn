@@ -1,11 +1,11 @@
 ---
 title: "体系结构关系图的图标和其他资产"
 description: "对于生成自己的体系结构关系图十分有用的图标、Viso 模板、PNG 文件和 SVG 文件"
-ms.openlocfilehash: 863c5cd479e6c4b6d57299176b80d02661e5466b
-ms.sourcegitcommit: 662f27f37d45f778ad1b6355fb6fb66e3c65558c
+ms.openlocfilehash: 58a2046c0d463c1f331ea3f950f0c11c273ffc36
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="icons-and-diagrams"></a>图标和关系图
 
@@ -18,7 +18,7 @@ ms.lasthandoff: 12/11/2017
 
 ![云和企业符号/图标集](./_images/CnESymbols.png)
 
-[Microsoft Office Visio 模具](http://www.microsoft.com/en-us/download/details.aspx?id=35772)中提供了用于 Microsoft Office 和相关技术的更多符号。 这些符号未针对体系结构关系图进行优化。   
+[Microsoft Office Visio 模具](http://www.microsoft.com/download/details.aspx?id=35772)中提供了用于 Microsoft Office 和相关技术的更多符号。 这些符号未针对体系结构关系图进行优化。   
 
 > [!NOTE]
 > 这些资产不应在用户界面中使用。 第三方符号不归 Microsoft 拥有。

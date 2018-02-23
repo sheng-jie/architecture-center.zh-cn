@@ -4,11 +4,11 @@ description: "有关如何自动缩放以动态分配应用程序所需的资源
 author: dragon119
 ms.date: 05/17/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: f2d42e9d6f4baa2da111c61fe12b48fdec785b92
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: a8489aaabab2b8523fbc9f026f4f435bb6d1ad29
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="autoscaling"></a>自动缩放
 [!INCLUDE [header](../_includes/header.md)]
@@ -78,7 +78,7 @@ Azure 为大多数计算选项提供内置自动缩放功能。
 * 配置自动缩放规则，然后监视应用程序在一段时间内的性能。 如果需要，请使用这种监视的结果来调整系统的缩放方式。 但请记住，自动缩放不是即时起效的过程。 它需要时间来对指标（例如平均 CPU 利用率超过或低于指定的阈值）做出反应。
 * 使用基于测得触发器属性（例如 CPU 使用量或队列长度）的检测机制的自动缩放规则使用一段时间内的聚合值而不是即时值来触发自动缩放操作。 默认情况下，聚合是值的平均值。 这可以防止系统反应太快，或导致快速震荡。 这还可以使自动启动的新实例顺利进入运行模式，避免当新实例正在启动时，又发生其他自动缩放操作。 对于 Azure 云服务和 Azure 虚拟机，聚合的默认期限为 45 分钟，指标需要经过这段时间后才为了响应需求高峰而触发自动缩放。 可以使用 SDK 更改聚合期限，但请注意，低于 25 分钟可能导致不可预测的结果（有关详细信息，请参阅 [Auto Scaling Cloud Services on CPU Percentage with the Azure Monitoring Services Management Library](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)（使用 Azure 监视服务管理库根据 CPU 百分比自动缩放云服务））。 对于 Web 应用，平均期限要短得多，这样便可以在平均触发测量值更改约五分钟后提供新实例。
 * 如果使用 SDK 而不是门户配置自动缩放，则可以指定更详细的计划，在执行该计划期间，规则将处于活动状态。 还可以创建自己的度量值，并将其与自动缩放规则中的现有度量值一起使用，或单独使用。 例如，建议使用备选计数器，如每秒的请求数或平均内存可用性，或使用测量特定业务流程的自定义计数器。
-* 自动缩放 Service Fabric 时，由于群集中的节点类型由后端的 VM 规模集构成，因此需要为每个节点类型设置自动缩放规则。 在设置自动缩放之前请考虑必须具有的节点数。 对于主节点类型所必须具有的最小节点数受所选择的可靠性级别影响。 有关详细信息，请参阅[使用自动缩放规则扩大或缩小 Service Fabric 群集](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-scale-up-down)。
+* 自动缩放 Service Fabric 时，由于群集中的节点类型由后端的 VM 规模集构成，因此需要为每个节点类型设置自动缩放规则。 在设置自动缩放之前请考虑必须具有的节点数。 对于主节点类型所必须具有的最小节点数受所选择的可靠性级别影响。 有关详细信息，请参阅[使用自动缩放规则扩大或缩小 Service Fabric 群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down)。
 * 可以使用门户将 SQL 数据库实例和队列等资源链接到云服务实例。 这样，便可以更轻松地访问每个链接资源的各个手动和自动缩放配置选项。 有关详细信息，请参阅[如何：将资源链接到云服务](/azure/cloud-services/cloud-services-how-to-manage)。
 * 配置多个策略和规则时，它们可能相互冲突。 自动缩放使用以下冲突解决规则来确保始终有足量的运行中实例：
   * 向外缩放操作始终优先于向内缩放操作。
