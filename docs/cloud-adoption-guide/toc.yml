@@ -1,6 +1,6 @@
 - name: Azure 体系结构中心
   href: /azure/architecture
-- name: Azure 云采用指南
+- name: 云采用指南
   href: index.md
   items:
     - name: 基础 Azure 采用
