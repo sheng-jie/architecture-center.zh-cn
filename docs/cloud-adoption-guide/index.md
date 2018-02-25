@@ -1,12 +1,12 @@
 ---
 layout: LandingPage
-ms.openlocfilehash: e39a744b6f0226a5b0bb14d03a0b8a3d4479e01b
-ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.openlocfilehash: b5c88ac0307c7d47f5bde73322bedd7063136576
+ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="azure-cloud-adoption-guide"></a>Azure 云采用指南
+# <a name="cloud-adoption-guide"></a>云采用指南
 
 云提供一种至关重要的过渡方式，可让企业采购和利用技术资源。 在过去，企业必须全权拥有技术，并承担各种程度的责任，包括从基础结构到软件等各个方面。 现在，云提供了变革的潜力，可让企业通过预配和使用所需的资源来利用技术。
 
