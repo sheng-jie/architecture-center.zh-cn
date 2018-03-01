@@ -3,11 +3,11 @@ title: "大数据体系结构"
 description: 
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 6ee44c6d94ae7ac5cb67cb5f16337deb1ffd4b70
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 2a1336faea81470b082d4eef8e2cc53a082c63c7
+ms.sourcegitcommit: 023d88e781f7fe64c62b247d876441ee40921b1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="big-data-architectures"></a>大数据体系结构
 
@@ -55,19 +55,6 @@ ms.lasthandoff: 02/14/2018
 * **分析和报告**。 大多数大数据解决方案的目的是通过分析和报告提供对数据的见解。 若要使用户能够对数据进行分析，体系结构可以包括一个数据建模层，例如 Azure Analysis Services 中的多维 OLAP 多维数据集或表格数据模型。 它还可以使用 Microsoft Power BI 或 Microsoft Excel 中的建模和可视化技术支持自助式 BI。 分析和报告还可以采用适用于数据科学家或数据分析人员的交互式数据浏览形式。 对于这些方案，许多 Azure 服务都支持分析笔记本（例如 Jupyter），这允许这些用户通过 Python 或 R 利用其现有技能。对于大规模数据浏览，可以使用 Microsoft R Server，可以独立使用，也可以将其与 Spark 一起使用。
 
 * **业务流程**。 大多数大数据解决方案都包括重复的数据处理操作（封装在工作流中），这些操作对源数据进行转换、在多个源和接收器之间移动数据、将已处理的数据加载到分析数据存储中，或者直接将结果推送到报表或仪表板。 若要自动执行这些工作流，可以使用诸如 Azure 数据工厂或 Apache Oozie 和 Sqoop 的业务流程技术。
-
-## <a name="data-lake"></a>Data Lake
-
-如果你阅读过有关大数据的文章，则可能已见过 _Data Lake_ 这个术语。 你可能已见过该词用于与存储大量数据相关的产品或概念的名称。 
-
-Data Lake 由存储和处理两部分组成。 生成 Data Lake 存储有多个目的：容错、确保无限可伸缩性，以及在引入不同形状和大小的数据时实现高吞吐量。 Data Lake 处理涉及生成一个或多个用于实现此类目的的处理引擎，可以对存储在 Data Lake 中的数据进行大规模的处理。
-
-Data Lake 存储通常用于事件流式处理或 IoT 方案，因为此类存储可以保存大量的关系数据和非关系数据，不需进行转换，也不需架构定义。 此类存储可以在低延迟的状况下处理大量的小型写入数据，并已针对大规模的吞吐量进行了优化。
-
-另一常用于数据方案的术语是“数据市场”。 通常情况下，数据市场是一种可以进行清理、打包和结构化操作的数据存储，目的是方便使用。 与数据市场不同，Data Lake 旨在引入原始数据，让其保留原始形式或尽量少处理的形式，这样就可以采用不同方式在不同的时间提问问题。 如果像在数据市场中那样采用特定方式对数据进行清理和结构化操作，则在将来出现新问题或新工具时，就会难以适应数据的处理和分析方式。 这就是 Data Lake 包含存储和处理两个不同实体的原因。
-
-相关的 Azure 服务：
-- [Azure Data Lake](https://azure.microsoft.com/scenarios/data-lake/)
 
 ## <a name="lambda-architecture"></a>Lambda 体系结构
 
