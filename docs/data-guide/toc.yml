@@ -39,6 +39,8 @@
               href: concepts/non-relational-data.md
             - name: 使用 CSV 和 JSON 文件
               href: concepts/csv-and-json.md
+            - name: Data Lake
+              href: concepts/data-lake.md
             - name: 大数据体系结构
               href: concepts/big-data.md
             - name: 高级分析

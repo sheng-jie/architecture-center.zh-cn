@@ -3,11 +3,11 @@ title: "在 Azure 上运行 Jenkins 服务器"
 description: "本参考体系结构演示如何在 Azure 上部署和运行使用单一登录 (SSO) 保护的可伸缩企业级 Jenkins 服务器。"
 author: njray
 ms.date: 01/21/18
-ms.openlocfilehash: 9cab4990b259695f310da339bfef3060b0905640
-ms.sourcegitcommit: 3426a9c5ed937f097725c487cf3d073ae5e2a347
+ms.openlocfilehash: 724185e43ed743013f52ded04b779552dd8e48c1
+ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="run-a-jenkins-server-on-azure"></a>在 Azure 上运行 Jenkins 服务器
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 02/01/2018
 
 -   **Azure Blob 存储**。 [Windows Azure 存储插件][configure-storage]使用 Azure Blob 存储来存储所创建的并与其他 Jenkins 生成组件共享的生成项目。
 
--   **Azure Active Directory (Azure AD)**。 [Azure AD][azure-ad] 支持用户身份验证，并允许设置 SSO。 Azure AD [服务主体][service-principal]通过[基于角色的访问控制][rbac] (RBAC) 为工作流中的每个角色授权定义策略和权限。 每个服务主体与某个 Jenkins 作业相关联。
+-   **Azure Active Directory (Azure AD)**。 [Azure AD][azure-ad] 支持用户身份验证，并允许设置 SSO。 Azure AD [服务主体][service-principal]使用[基于角色的访问控制][rbac] (RBAC) 为工作流中的每个角色授权定义策略和权限。 每个服务主体与某个 Jenkins 作业相关联。
 
 -   **Azure Key Vault**。 为了在需要机密时管理用于预配 Azure 资源的机密和加密密钥，本体系结构使用了 [Key Vault][key-vault]。 有关存储与管道中应用程序关联的机密的其他帮助，请参阅适用于 Jenkins 的 [Azure 凭据][configure-credential]插件。
 
@@ -139,7 +139,7 @@ Azure 上的 Jenkins 解决方案模板会安装多个 Azure 插件。 Azure Dev
 
 -   安装 [Azure 凭据][configure-credential]插件，使用 Key Vault 来处理 Azure 资产、管道中的代理以及第三方组件的机密。
 
--   创建一个安全配置文件，用于定义用户、服务和管道代理在完成其作业时所需的资源 — 但不会定义更多的资源。 在规划安全设置时，此步骤至关重要。
+-   使用 RBAC 将服务主体的访问权限限制为运行作业的最低必需权限。 这样可以限制恶意作业造成的损害的范围。
 
 Jenkins 作业通常需要使用机密来访问需要授权的 Azure 服务，例如 Azure 容器服务。 结合 [Azure 凭据插件][configure-credential]使用 [Key Vault][key-vault] 来安全管理这些机密。 使用 Key Vault 存储服务主体凭据、密码、令牌和其他机密。
 

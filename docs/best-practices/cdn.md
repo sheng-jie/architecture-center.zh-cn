@@ -4,11 +4,11 @@ description: "有关使用内容交付网络 (CDN) 传送 Azure 中托管的高�
 author: dragon119
 ms.date: 02/02/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: 9ee9099c85818af9486408f6ece41d3f6fcd9b44
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 42b73db08ecef858f5279ea292cf8c0df77b847c
+ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="best-practices-for-using-content-delivery-networks-cdns"></a>使用内容交付网络 (CDN) 的最佳做法
 
@@ -91,7 +91,7 @@ CDN 可以使用 CDN 提供的证书通过 HTTPS (SSL) 传送内容，也可以�
 
 * 对 CDN 进行配置来将 CORS 标头添加到响应。 有关详细信息，请参阅[将 Azure CDN 与 CORS 一起使用](/azure/cdn/cdn-cors)。 
 * 如果源是 Azure blob 存储，请将 CORS 规则添加到存储终结点。 有关详细信息，请参阅 [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services](http://msdn.microsoft.com/library/azure/dn535601.aspx)（Azure 存储服务的跨域资源共享 (CORS) 支持）。
-* 对应用程序进行配置来设置 CORS 标头。 有关示例，请参阅 ASp.NET Core 文档中的[启用跨源请求 (CORS)](/aspnet/core/security/cors)。
+* 对应用程序进行配置来设置 CORS 标头。 有关示例，请参阅 ASP.NET Core 文档中的[启用跨源请求 (CORS)](/aspnet/core/security/cors)。
 
 ### <a name="cdn-fallback"></a>CDN 回退
 考虑应用程序如何处理 CDN 失败或暂时不可用的情况。 如果 CDN 不可用，客户端应用程序可以使用执行前面请求期间的本地缓存资源的副本（位于客户端），或者可以添加代码来检测失败，而不是从来源请求资源（应用程序文件夹或保留资源的 Azure Blob 容器）。
