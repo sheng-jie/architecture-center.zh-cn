@@ -18,9 +18,6 @@
         - name: 设计评审查检表
           tocHref: /azure/architecture/checklist
           topicHref: /azure/architecture/checklist
-        - name: Elasticsearch
-          tocHref: /azure/architecture/elasticsearch
-          topicHref: /azure/architecture/elasticsearch
         - name: 管理多租户应用程序中的标识
           tocHref: /azure/architecture/multitenant-identity
         - name: 参考体系结构
