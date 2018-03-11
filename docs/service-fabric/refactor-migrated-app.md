@@ -3,11 +3,11 @@ title: "重构从 Azure 云服务迁移的 Azure Service Fabric 应用程序"
 description: "如何重构从 Azure 云服务迁移的现有 Azure Service Fabric 应用程序"
 author: petertay
 ms.date: 01/30/2018
-ms.openlocfilehash: 450648fbd0b19cdc7585738701914a1ebc1ed779
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 08ef3af68b8eaba36a5b871449f0aba764fe5a04
+ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>重构从 Azure 云服务迁移的 Azure Service Fabric 应用程序
 
@@ -78,7 +78,7 @@ Tailspin 认识到了将 Surveys 应用程序转换成更精细体系结构所�
 
 Azure Service Fabric 支持以下编程模型：
 * 来宾可执行文件模式允许将任何可执行文件打包成服务并将其部署到 Service Fabric 群集。 Service Fabric 协调和管理来宾可执行文件的执行。
-* 容器模型允许在容器映像中部署服务。 Service Fabric 支持在 Linux 内核容器以及 Windows Server 容器的顶层创建和管理容器。 
+* 容器模型允许在容器映像中部署服务。 Service Fabric 支持在 Linux 内核容器和 Windows Server 容器的基础上创建和管理容器。 
 * Reliable Services 编程模型允许创建可与所有 Service Fabric 平台功能集成的无状态服务或有状态服务。 有状态服务允许将复制状态存储在 Service Fabric 群集中， 而无状态服务则不允许。
 * Reliable Actors 编程模型允许创建可实现虚拟执行组件模式的服务。
 

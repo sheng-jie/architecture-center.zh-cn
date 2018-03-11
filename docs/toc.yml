@@ -110,8 +110,10 @@
       href: checklist/availability.md
     - name: DevOps
       href: checklist/dev-ops.md
-    - name: 复原能力
+    - name: 复原能力（常规用途）
       href: checklist/resiliency.md
+    - name: 复原能力（Azure 服务）
+      href: checklist/resiliency-per-service.md
     - name: 可伸缩性
       href: checklist/scalability.md
 - name: 复原设计
@@ -132,8 +134,6 @@
       href: service-fabric/migrate-from-cloud-services.md
     - name: 重构从 Azure 云服务迁移的 Azure Service Fabric 应用程序
       href: service-fabric/refactor-migrated-app.md
-    - name: 在 Azure 上运行 Elasticsearch
-      href: elasticsearch/index.md
     - name: 扩展 Azure 资源管理器模板功能
       href: building-blocks/extending-templates/index.md
 - name: 资源

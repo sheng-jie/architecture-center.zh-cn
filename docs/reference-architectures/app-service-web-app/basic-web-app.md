@@ -4,11 +4,11 @@ description: "适用于 Microsoft Azure 中运行的基本 Web 应用程序的�
 author: MikeWasson
 ms.date: 12/12/2017
 cardTitle: Basic web application
-ms.openlocfilehash: 598eb547f0e96ae334af391183a792637caa8631
-ms.sourcegitcommit: 1c0465cea4ceb9ba9bb5e8f1a8a04d3ba2fa5acd
+ms.openlocfilehash: 38b0739cc61d679742b610b99e92aaad8d3b394d
+ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="basic-web-application"></a>基本 Web 应用程序
 [!INCLUDE [header](../../_includes/header.md)]
@@ -17,7 +17,7 @@ ms.lasthandoff: 01/02/2018
 
 ![[0]][0]
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 ## <a name="architecture"></a>体系结构 
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/02/2018
 >
 >
 
-该体系结构包含以下组件：
+此体系结构具有以下组件：
 
 * 资源组。 [资源组](/azure/azure-resource-manager/resource-group-overview)是 Azure 资源的逻辑容器。
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/02/2018
 
 * **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 若要使用自定义域名（例如 `contoso.com`），请创建可将自定义域名映射到 IP 地址的 DNS 记录。 有关详细信息，请参阅[在 Azure 应用服务中配置自定义域名][custom-domain-name]。  
 
-* **Azure SQL 数据库**。 [SQL 数据库][sql-db]是云中的关系数据库即服务。
+* **Azure SQL 数据库**。 [SQL 数据库][sql-db]是云中的关系数据库即服务。 SQL 数据库与 Microsoft SQL Server 数据库引擎共享其代码库。 也可使用 [Azure Database for MySQL](/azure/mysql) 或 [Azure Database for PostgreSQL](/azure/postgresql)，具体取决于应用程序要求。 这些是完全托管的数据库服务，分别基于开源 MySQL 服务器和 Postgres 数据库引擎。
 
 * **逻辑服务器**。 在 Azure SQL 数据库中，逻辑服务器承载你的数据库。 可为每个逻辑服务器创建多个数据库。
 

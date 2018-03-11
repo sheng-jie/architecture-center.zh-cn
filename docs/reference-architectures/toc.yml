@@ -25,6 +25,8 @@
           href: hybrid-networking/expressroute-vpn-failover.md
         - name: 中心辐射型拓扑
           href: hybrid-networking/hub-spoke.md
+        - name: 带共享服务的中心辐射型拓扑
+          href: hybrid-networking/shared-services.md
     - name: 身份管理
       href: identity/index.md
       items:

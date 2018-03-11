@@ -3,15 +3,15 @@ title: "事务数据"
 description: 
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 6277badde1845c42858e69f6c8ecc73331e7a945
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: b7fdbb403d2a438ebc59e40ef58ed8067489dddc
+ms.sourcegitcommit: 943e671a8d522cef5ddc8c6e04848134b03c2de4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="transactional-data"></a>事务数据
 
-事务数据是指用于跟踪与组织活动相关的交互的信息。 这些交互通常是业务事务，如从客户收到的付款、对供应商进行的付款、从库存移动的产品、接受的订单或交付的服务。 表示事务本身的事务事件通常包含时间维度、一些数值和对其他数据的引用。 
+事务数据是指一种信息，用于跟踪与组织活动相关的交互。 这些交互通常是业务事务，如从客户收到的付款、对供应商进行的付款、从库存移动的产品、接受的订单或交付的服务。 表示事务本身的事务事件通常包含时间维度、一些数值和对其他数据的引用。 
 
 事务通常需要*原子性*和*一致性*。 原子性意味着整个事务始终作为一个工作单元成功或失败，永远不会处于半完成状态。 如果无法完成某个事务，数据库系统必须回退任何已作为该事务的一部分完成的步骤。 在传统 RDBMS 中，如果某个事务无法完成，这种回退会自动发生。 一致性意味着事务始终让数据处于有效状态。 （这些是原子性和一致性的非常不正式的说明。 这些属性有更正式的定义，如 [ACID](https://en.wikipedia.org/wiki/ACID)。）
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/14/2018
 | 要求 | 说明 |
 | --- | --- |
 | 规范化 | 高度规范化 |
-| 架构 | 写入架构，强制执行|
+| 架构 | 写入时架构，强制实施|
 | 一致性 | 强一致性，保证 ACID |
 | 完整性 | 高完整性 |
 | 使用事务 | 是 |

@@ -4,8 +4,10 @@
   items:
     - name: 设计可复原的应用程序
       href: index.md
-    - name: 复原能力查检表
+    - name: 复原能力检查表（常规用途）
       href: ../checklist/resiliency.md?toc=/azure/architecture/resiliency/toc.json
+    - name: 复原能力检查表（Azure 服务）
+      href: ../checklist/resiliency-per-service.md?toc=/azure/architecture/resiliency/toc.json
     - name: 故障模式分析
       href: failure-mode-analysis.md
     - name: 其他指南

@@ -1,24 +1,23 @@
 ---
-title: "在 Azure 中实现中心辐射型网络拓扑"
-description: "如何在 Azure 中实现中心辐射型网络拓扑。"
+title: "在 Azure 中使用共享服务实现中心辐射型网络拓扑"
+description: "如何在 Azure 中使用共享服务实现中心辐射型网络拓扑。"
 author: telmosampaio
-ms.date: 02/23/2018
-pnp.series.title: Implement a hub-spoke network topology in Azure
-pnp.series.prev: expressroute
-ms.openlocfilehash: 1a2855f0d4a903fc4d7a022aef20ea73fe763e2c
+ms.date: 02/25/2018
+pnp.series.title: Implement a hub-spoke network topology with shared services in Azure
+pnp.series.prev: hub-spoke
+ms.openlocfilehash: c0fb1d1ddd7c70ed914d58e7c73b10475b91aedf
 ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
 ---
-# <a name="implement-a-hub-spoke-network-topology-in-azure"></a>在 Azure 中实现中心辐射型网络拓扑
+# <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a>在 Azure 中使用共享服务实现中心辐射型网络拓扑
 
-此参考体系结构展示了如何在 Azure 中实现中心辐射型拓扑。 *中心*是 Azure 中的一个虚拟网络 (VNet)，充当到本地网络的连接的中心点。 *辐射*是与中心对等互连的 VNet，可用于隔离工作负荷。 流量通过 ExpressRoute 或 VPN 网关连接在本地数据中心与中心之间流动。  [**部署此解决方案**](#deploy-the-solution)。
+此参考体系结构在[中心辐射型][guidance-hub-spoke]参考体系结构的基础上生成，在中心包括了可供所有辐射 VNet 使用的共享服务。 首先需要共享第一批服务，即标识和安全性，然后才能将数据中心迁移到云并生成[虚拟数据中心]。 此参考体系结构显示了如何将 Active Directory 服务从本地数据中心扩展到 Azure，以及如何在中心辐射型拓扑中添加可以充当防火墙的网络虚拟设备 (NVA)。  [**部署此解决方案**](#deploy-the-solution)。
 
 ![[0]][0]
 
 *下载此体系结构的 [Visio 文件][visio-download]*
-
 
 此拓扑的好处包括：
 
@@ -47,7 +46,11 @@ ms.lasthandoff: 03/08/2018
 
 * **中心 VNet**。 用作中心辐射型拓扑中的中心的 Azure VNet。 中心是到本地网络的连接的中心点，它还托管着可以由辐射 VNet 中托管的各种工作负荷使用的服务。
 
-* **网关子网**。 虚拟网络网关保留在同一子网中。
+* **网关子网**。 各个虚拟网络网关都放在同一子网中。
+
+* **共享服务子网**。 中心 VNet 中的子网，用来托管可以在所有辐射之间共享的服务，例如 DNS 或 AD DS。
+
+* **外围网络子网**。 中心 VNet 中的子网，用于托管的 NVA 可以充当安全设备，例如防火墙。
 
 * **辐射 VNet**。 用作中心辐射型拓扑中的辐射的一个或多个 Azure VNet。 辐射可以用来隔离其自己的 VNet 中的工作负荷，独立于其他辐射进行管理。 每个工作负荷可以包括多个层，并具有通过 Azure 负载均衡器连接的多个子网。 有关应用程序基础结构的详细信息，请参阅[运行 Windows VM 工作负荷][windows-vm-ra]和[运行 Linux VM 工作负荷][linux-vm-ra]。
 
@@ -58,46 +61,26 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="recommendations"></a>建议
 
-以下建议适用于大多数方案。 除非有优先于这些建议的特定要求，否则请遵循这些建议。
+针对[中心辐射型][guidance-hub-spoke]参考体系结构的所有建议也适用于共享服务参考体系结构。 
 
-### <a name="resource-groups"></a>资源组
+另外，以下建议适用于共享服务中的大多数方案。 除非有优先于这些建议的特定要求，否则请遵循这些建议。
 
-中心 VNet 和每个辐射 VNet 可以在不同的资源组中实现，甚至可以在不同的订阅中实现，只要它们属于同一 Azure 区域中的同一 Azure Active Directory (Azure AD) 租户即可。 这样，可以对各个工作负荷进行非集中管理，同时在中心 VNet 内维护共享服务。
+### <a name="identity"></a>标识
 
-### <a name="vnet-and-gatewaysubnet"></a>VNet 和 GatewaySubnet
+大多数企业组织在其本地数据中心都有 Active Directory 目录服务 (ADDS) 环境。 为了便于管理从本地网络移到 Azure 且依赖于 ADDS 的资产，建议将 ADDS 域控制器托管在 Azure 中。
 
-创建一个名为 *GatewaySubnet* 的子网，使其地址范围为 /27。 此子网是虚拟网络网关所必需的。 向此子网分配 32 个地址将有助于防止将来达到网关大小限制。
+如果使用需要针对 Azure 和本地环境分开进行控制的组策略对象，请针对每个 Azure 区域使用不同的 AD 站点。 将域控制器置于可供依赖性工作负荷访问的中心 VNet（简称“中心”）。
 
-有关设置网关的详细信息，请根据你的连接类型参阅以下参考体系结构：
+### <a name="security"></a>“安全”
 
-- [使用 ExpressRoute 的混合网络][guidance-expressroute]
-- [使用 VPN 网关的混合网络][guidance-vpn]
+将工作负荷从本地环境移到 Azure 时，其中的某些工作负荷将需要托管在 VM 中。 出于符合性考虑，可能需要对流经这些工作负荷的流量强制实施限制。 
 
-要实现更高的可用性，可以将 ExpressRoute 外加 VPN 用于故障转移。 请参阅[将本地网络连接到 Azure 并将 ExpressRoute 和 VPN 用于故障转移][hybrid-ha]。
+可以在 Azure 中使用网络虚拟设备 (NVA) 来托管各类安全和性能服务。 如果熟悉当前在本地使用的特定设备组，建议在 Azure 中也使用相同的虚拟化设备，如果适用的话。
 
-如果不需要与本地网络的连接，还可以在不使用网关的情况下使用中心辐射型拓扑。 
-
-### <a name="vnet-peering"></a>VNet 对等互连
-
-VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将各个辐射彼此连接，请考虑在这些辐射之间添加一个单独的对等互连连接。
-
-不过，如果有多个辐射需要彼此连接，则你可能会由于[每个 VNet 的 VNet 对等互连数限制][vnet-peering-limit]而很快耗尽可能的对等互连连接。 在这种情况下，请考虑使用用户定义的路由 (UDR) 强制将目的地为辐射的流量发送到在中心 VNet 中充当路由器的 NVA。 这将允许各个辐射彼此连接。
-
-还可以将辐射配置为使用中心 VNet 网关与远程网络进行通信。 若要允许网关流量从辐射流动到中心，以及允许连接到远程网络，必须：
-
-  - 在中心内配置 VNet 对等互连连接以**允许网关中转**。
-  - 在每个辐射中配置 VNet 对等互连连接以**使用远程网关**。
-  - 配置所有 VNet 对等互连连接以**允许转发的流量**。
+> [!NOTE]
+> 针对此参考体系结构的部署脚本使用已启用 IP 转发功能的 Ubuntu VM，以便模拟网络虚拟设备。
 
 ## <a name="considerations"></a>注意事项
-
-### <a name="spoke-connectivity"></a>辐射连接
-
-如果辐射之间需要存在连接，请考虑在中心内实现一个用于路由的 NVA，并在辐射中使用 UDR 将流量转发到中心。
-
-![[2]][2]
-
-在这种情况下，必须配置对等互连连接以**允许转发的流量**。
 
 ### <a name="overcoming-vnet-peering-limits"></a>克服 VNet 对等互连限制
 
@@ -131,18 +114,16 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 若要将模拟的本地数据中心部署为 Azure VNet，请执行以下步骤：
 
-1. 导航到已在前面的先决条件步骤中下载的存储库的 `hybrid-networking\hub-spoke\` 文件夹。
+1. 导航到已在前面的先决条件步骤中下载的存储库的 `hybrid-networking\shared-services-stack\` 文件夹。
 
-2. 打开 `onprem.json` 文件，在第 36 行和第 37 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
+2. 打开 `onprem.json` 文件，在第 45 行和第 46 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
 
   ```bash
   "adminUsername": "XXX",
   "adminPassword": "YYY",
   ```
 
-3. 在第 38 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
-
-4. 运行 `azbb` 以部署模拟的本地环境，如下所示。
+3. 运行 `azbb` 以部署模拟的本地环境，如下所示。
 
   ```bash
   azbb -s <subscription_id> -g onprem-vnet-rg - l <location> -p onoprem.json --deploy
@@ -150,22 +131,22 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
   > [!NOTE]
   > 如果决定使用其他资源组名称（而非 `onprem-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
-5. 等待部署完成。 此部署创建虚拟网络、虚拟机和 VPN 网关。 VPN 网关创建可能需要 40 多分钟才能完成。
+4. 等待部署完成。 此部署创建虚拟网络、运行 Windows 的虚拟机和 VPN 网关。 VPN 网关创建可能需要 40 多分钟才能完成。
 
 ### <a name="azure-hub-vnet"></a>Azure 中心 VNet
 
 若要部署中心 VNet 并连接到前面创建的模拟的本地 VNet，请执行以下步骤。
 
-1. 打开 `hub-vnet.json` 文件，在第 39 行和第 40 行中输入括在引号中的用户名和密码，如下所示。
+1. 打开 `hub-vnet.json` 文件，在第 50 行和第 51 行中输入括在引号中的用户名和密码，如下所示。
 
   ```bash
   "adminUsername": "XXX",
   "adminPassword": "YYY",
   ```
 
-2. 在第 41 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
+2. 在第 52 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
 
-3. 在第 72 行中输入括在引号中的共享密钥，如下所示，然后保存文件。
+3. 在第 83 行中输入括在引号中的共享密钥，如下所示，然后保存文件。
 
   ```bash
   "sharedKey": "",
@@ -181,54 +162,59 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 5. 等待部署完成。 此部署创建虚拟网络、虚拟机、VPN 网关和到上一部分创建的网关的连接。 VPN 网关创建可能需要 40 多分钟才能完成。
 
-### <a name="optional-test-connectivity-from-onprem-to-hub"></a>（可选）测试从本地到中心的连接
+### <a name="adds-in-azure"></a>Azure 中的 ADDS
 
-若要使用 Windows VM 测试从模拟的本地环境到中心 VNet 的连接，请执行以下步骤。
+若要在 Azure 中部署 ADDS 域控制器，请执行以下步骤。
 
-1. 从 Azure 门户导航到 `onprem-jb-rg` 资源组，然后单击 `jb-vm1` 虚拟机资源。
-
-2.  在门户中的 VM 边栏选项卡的左上角单击 `Connect`，然后按提示使用远程桌面连接到 VM。 确保使用在 `onprem.json` 文件的第 36 行和 37 行中指定的用户名和密码。
-
-3. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到中心 Jumpbox VM，如下所示。
-
-  ```powershell
-  Test-NetConnection 10.0.0.68 -CommonTCPPort RDP
-  ```
-  > [!NOTE]
-  > 默认情况下，Windows Server VM 不允许 Azure 中的 ICMP 响应。 若要使用 `ping` 来测试连接，需在“Windows 高级防火墙”中为每个 VM 启用 ICMP 流量。
-
-若要使用 Linux VM 测试从模拟的本地环境到中心 VNet 的连接，请执行以下步骤：
-
-1. 从 Azure 门户导航到 `onprem-jb-rg` 资源组，然后单击 `jb-vm1` 虚拟机资源。
-
-2. 在门户的 VM 边栏选项卡的左上角单击`Connect`，然后复制门户中显示的 `ssh` 命令。 
-
-3. 在 Linux 提示符处运行 `ssh`，以便使用在上面的步骤 2 中复制的信息连接到模拟的本地环境 Jumpbox，如下所示。
-
-  ```bash
-  ssh <your_user>@<public_ip_address>
-  ```
-
-4. 使用在 `onprem.json` 文件的第 37 行中指定的密码连接到 VM。
-
-5. 使用 `ping` 命令测试到中心 Jumpbox 的连接，如下所示。
-
-  ```bash
-  ping 10.0.0.68
-  ```
-
-### <a name="azure-spoke-vnets"></a>Azure 辐射 VNet
-
-若要部署辐射 VNet，请执行以下步骤。
-
-1. 打开 `spoke1.json` 文件，在第 47 行和第 48 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
+1. 打开 `hub-adds.json` 文件，在第 14 行和第 15 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
 
   ```bash
   "adminUsername": "XXX",
   "adminPassword": "YYY",
   ```
 
-2. 在第 49 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
+2. 运行 `azbb`，以便部署 ADDS 域控制器，如下所示。
+
+  ```bash
+  azbb -s <subscription_id> -g hub-adds-rg - l <location> -p hub-adds.json --deploy
+  ```
+  
+  > [!NOTE]
+  > 如果决定使用其他资源组名称（而非 `hub-adds-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+
+  > [!NOTE]
+  > 这部分的部署可能需要数分钟的时间，因为需要将两个 VM 加入到域中，而该域托管在模拟的本地数据中心，然后需要在其上安装 AD DS。
+
+### <a name="nva"></a>NVA
+
+若要在 `dmz` 子网中部署 NVA，请执行以下步骤：
+
+1. 打开 `hub-nva.json` 文件，在第 13 行和第 14 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
+
+  ```bash
+  "adminUsername": "XXX",
+  "adminPassword": "YYY",
+  ```
+2. 运行 `azbb`，以便部署 NVA VM 和用户定义的路由。
+
+  ```bash
+  azbb -s <subscription_id> -g hub-nva-rg - l <location> -p hub-nva.json --deploy
+  ```
+  > [!NOTE]
+  > 如果决定使用其他资源组名称（而非 `hub-nva-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+
+### <a name="azure-spoke-vnets"></a>Azure 辐射 VNet
+
+若要部署辐射 VNet，请执行以下步骤。
+
+1. 打开 `spoke1.json` 文件，在第 52 行和第 53 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
+
+  ```bash
+  "adminUsername": "XXX",
+  "adminPassword": "YYY",
+  ```
+
+2. 在第 54 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
 
 3. 运行 `azbb` 以部署第一个辐射 VNet 环境，如下所示。
 
@@ -264,64 +250,11 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
   > [!NOTE]
   > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
-### <a name="test-connectivity"></a>测试连接
-
-若要使用 Windows VM 测试从模拟的本地环境到辐射 VNet 的连接，请执行以下步骤。
-
-1. 从 Azure 门户导航到 `onprem-jb-rg` 资源组，然后单击 `jb-vm1` 虚拟机资源。
-
-2.  在门户中的 VM 边栏选项卡的左上角单击 `Connect`，然后按提示使用远程桌面连接到 VM。 确保使用在 `onprem.json` 文件的第 36 行和 37 行中指定的用户名和密码。
-
-3. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到中心 Jumpbox VM，如下所示。
-
-  ```powershell
-  Test-NetConnection 10.1.0.68 -CommonTCPPort RDP
-  Test-NetConnection 10.2.0.68 -CommonTCPPort RDP
-  ```
-
-若要使用 Linux VM 测试从模拟的本地环境到辐射 VNet 的连接，请执行以下步骤：
-
-1. 从 Azure 门户导航到 `onprem-jb-rg` 资源组，然后单击 `jb-vm1` 虚拟机资源。
-
-2. 在门户的 VM 边栏选项卡的左上角单击`Connect`，然后复制门户中显示的 `ssh` 命令。 
-
-3. 在 Linux 提示符处运行 `ssh`，以便使用在上面的步骤 2 中复制的信息连接到模拟的本地环境 Jumpbox，如下所示。
-
-  ```bash
-  ssh <your_user>@<public_ip_address>
-  ```
-
-5. 使用在 `onprem.json` 文件的第 37 行中指定的密码连接到 VM。
-
-6. 使用 `ping` 命令测试到每个辐射 VNet 中的 Jumpbox VM 的连接，如下所示。
-
-  ```bash
-  ping 10.1.0.68
-  ping 10.2.0.68
-  ```
-
-### <a name="add-connectivity-between-spokes"></a>添加辐射之间的连接
-
-如果需要允许辐射 VNet 互相进行连接，则需使用网络虚拟设备 (NVA) 作为中心虚拟网络中的路由器，并在尝试连接到另一辐射 VNet 时强制流量从辐射 VNet 流向路由器。 若要将基本的示例 NVA 部署为单个 VM 并部署必需的用户定义的路由，以便让这两个辐射 VNet 进行连接，请执行以下步骤：
-
-1. 打开 `hub-nva.json` 文件，在第 13 行和第 14 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
-
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
-2. 运行 `azbb`，以便部署 NVA VM 和用户定义的路由。
-
-  ```bash
-  azbb -s <subscription_id> -g hub-nva-rg - l <location> -p hub-nva.json --deploy
-  ```
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `hub-nva-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
-
 <!-- links -->
 
 [azure-cli-2]: /azure/install-azure-cli
 [azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
+[guidance-hub-spoke]: ./hub-spoke.md
 [azure-vpn-gateway]: /azure/vpn-gateway/vpn-gateway-about-vpngateways
 [best-practices-security]: /azure/best-practices-network-securit
 [connect-to-an-Azure-vnet]: https://technet.microsoft.com/library/dn786406.aspx
@@ -331,6 +264,7 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 [hybrid-ha]: ./expressroute-vpn-failover.md
 [naming conventions]: /azure/guidance/guidance-naming-conventions
 [resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview
+[虚拟数据中心]: https://aka.ms/vdc
 [vnet-peering]: /azure/virtual-network/virtual-network-peering-overview
 [vnet-peering-limit]: /azure/azure-subscription-service-limits#networking-limits
 [vpn-appliance]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
@@ -338,8 +272,6 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 [visio-download]: https://archcenter.azureedge.net/cdn/hybrid-network-hub-spoke.vsdx
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
-[0]: ./images/hub-spoke.png "Azure 中的中心辐射型拓扑"
-[1]: ./images/hub-spoke-gateway-routing.svg "Azure 中的具有可传递路由的中心辐射型拓扑"
-[2]: ./images/hub-spoke-no-gateway-routing.svg "Azure 中的具有使用 NVA 的可传递路由的中心辐射型拓扑"
+[0]: ./images/shared-services.png "Azure 中的共享服务拓扑"
 [3]: ./images/hub-spokehub-spoke.svg "Azure 中的中心-辐射-中心-辐射型拓扑"
 [ARM-Templates]: https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/
