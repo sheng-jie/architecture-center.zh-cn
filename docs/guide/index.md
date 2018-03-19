@@ -1,10 +1,10 @@
 ---
 layout: LandingPage
-ms.openlocfilehash: 00abbfdeac89a9006517195bd4bbc514d587fe74
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 9bd86f1b3527f1116d4f5169baf76f8a5b9a385b
+ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-application-architecture-guide"></a>Azure 应用程序体系结构指南
 
@@ -46,7 +46,7 @@ Polyglot 持久性（存储技术的混合）<br/>
 </tbody>
 </table>
 
-本指南面向应用程序架构师、开发人员和运营团队。 它并不是一份介绍如何使用单个 Azure 服务的操作说明指南。 阅读本指南后，将会了解体系结构模式，以及有关在 Azure 云平台上生成解决方案时的最佳做法。
+本指南面向应用程序架构师、开发人员和运营团队。 它并不是一份介绍如何使用单个 Azure 服务的操作说明指南。 阅读本指南后，将会了解体系结构模式，以及有关在 Azure 云平台上生成解决方案时的最佳做法。 也可以下载[电子书版本的指南][ebook]。
 
 ## <a name="how-this-guide-is-structured"></a>本指南的结构
 
@@ -78,6 +78,7 @@ Polyglot 持久性（存储技术的混合）<br/>
 [checklists]: ../checklist/index.md
 [compute-options]: ./technology-choices/compute-comparison.md
 [design-principles]: ./design-principles/index.md
+[ebook]: https://azure.microsoft.com/campaigns/cloud-application-architecture-guide/
 [patterns]: ../patterns/index.md?toc=/azure/architecture/guide/toc.json
 [pillars]: ./pillars.md
 [ref-archs]: ../reference-architectures/index.md
