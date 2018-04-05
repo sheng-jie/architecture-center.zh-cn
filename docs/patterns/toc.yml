@@ -2,7 +2,7 @@
   href: /azure/architecture
 - name: 云设计模式
   href: index.md
-- name: Categories
+- name: 类别
   items:
     - name: 可用性
       href: category/availability.md
@@ -74,11 +74,11 @@
   href: scheduler-agent-supervisor.md
 - name: 分片
   href: sharding.md
-- name: Sidecar
+- name: 挎斗
   href: sidecar.md
 - name: 静态内容托管
   href: static-content-hosting.md
-- name: Strangler
+- name: 绞杀者
   href: strangler.md
 - name: 限制
   href: throttling.md
