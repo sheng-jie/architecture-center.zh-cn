@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 资源管理器模板中实现属性转换器和收集器"
-description: "描述如何在 Azure 资源管理器模板中实现属性转换器和收集器"
+title: 在 Azure 资源管理器模板中实现属性转换器和收集器
+description: 描述如何在 Azure 资源管理器模板中实现属性转换器和收集器
 author: petertay
 ms.date: 06/09/2017
 ms.openlocfilehash: 893779e652b845b3d936d11936dc767ef632fa43

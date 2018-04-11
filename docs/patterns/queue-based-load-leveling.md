@@ -1,7 +1,7 @@
 ---
-title: "基于队列的负载调节"
-description: "使用队列在任务与所调用的服务之间充当缓冲，从而缓解间歇性负载过大现象。"
-keywords: "设计模式"
+title: 基于队列的负载调节
+description: 使用队列在任务与所调用的服务之间充当缓冲，从而缓解间歇性负载过大现象。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

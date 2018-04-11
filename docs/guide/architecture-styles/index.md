@@ -1,6 +1,6 @@
 ---
-title: "体系结构样式"
-description: "云应用程序的常见体系结构样式"
+title: 体系结构样式
+description: 云应用程序的常见体系结构样式
 layout: LandingPage
 ms.openlocfilehash: 15a316f9ebf7cfe4e72a6992f264a68abb904819
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60

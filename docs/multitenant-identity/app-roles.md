@@ -1,6 +1,6 @@
 ---
-title: "应用程序角色"
-description: "如何使用应用程序角色执行授权"
+title: 应用程序角色
+description: 如何使用应用程序角色执行授权
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

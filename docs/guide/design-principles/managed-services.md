@@ -1,6 +1,6 @@
 ---
-title: "使用托管服务"
-description: "如果可能，请使用平台即为服务 (PaaS)，而不是基础结构即服务 (IaaS)"
+title: 使用托管服务
+description: 如果可能，请使用平台即为服务 (PaaS)，而不是基础结构即服务 (IaaS)
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 7156c073db3e047fb38e031309ddb637a9e44c02

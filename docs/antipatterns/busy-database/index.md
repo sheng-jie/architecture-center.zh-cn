@@ -1,6 +1,6 @@
 ---
-title: "繁忙数据库对立模式"
-description: "将处理工作量卸载到数据库服务器可能导致性能和可伸缩性出现问题。"
+title: 繁忙数据库对立模式
+description: 将处理工作量卸载到数据库服务器可能导致性能和可伸缩性出现问题。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: 9fdbde0731a1be570ef611894a9d23a1be87f4e7

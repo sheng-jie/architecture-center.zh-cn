@@ -1,6 +1,6 @@
 ---
-title: "同步 I/O 对立模式"
-description: "在完成 I/O 时阻塞调用线程可能会降低性能并影响纵向可伸缩性。"
+title: 同步 I/O 对立模式
+description: 在完成 I/O 时阻塞调用线程可能会降低性能并影响纵向可伸缩性。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: d5b3635565c6b71ef7716f54ee8cccc76093c3a3

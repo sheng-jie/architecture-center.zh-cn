@@ -1,6 +1,6 @@
 ---
-title: "与客户的 AD FS 联合"
-description: "如何在多租户应用程序中与客户的 AD FS 联合"
+title: 与客户的 AD FS 联合
+description: 如何在多租户应用程序中与客户的 AD FS 联合
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

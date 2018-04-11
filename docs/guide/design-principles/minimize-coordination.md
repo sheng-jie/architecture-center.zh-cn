@@ -1,6 +1,6 @@
 ---
-title: "最大程度减少协调"
-description: "最大程度减少应用程序服务之间的协调以获得可伸缩性"
+title: 最大程度减少协调
+description: 最大程度减少应用程序服务之间的协调以获得可伸缩性
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 3cab05b539612234fd8e66517b140ac5257c3e70

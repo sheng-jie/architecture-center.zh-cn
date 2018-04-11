@@ -1,6 +1,6 @@
 ---
-title: "说明：Azure Active Directory 租户是什么？"
-description: "介绍了在 Azure 中提供标识即服务 (IDaaS) 的 Azure Active Directory 的内部运行"
+title: 说明：Azure Active Directory 租户是什么？
+description: 介绍了在 Azure 中提供标识即服务 (IDaaS) 的 Azure Active Directory 的内部运行
 author: petertay
 ms.openlocfilehash: ce5a33b92047e1f360eee8fcbc7a726bcf8cd19f
 ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242

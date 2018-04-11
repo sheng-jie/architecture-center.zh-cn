@@ -1,6 +1,6 @@
 ---
-title: "说明：什么是 Azure 订阅？"
-description: "说明 Azure 订阅、帐户和产品/服务"
+title: 说明：什么是 Azure 订阅？
+description: 说明 Azure 订阅、帐户和产品/服务
 author: alexbuckgit
 ms.openlocfilehash: 1650d90d6f78b46b7fe4128d2dab6a80bd6cca78
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

@@ -1,6 +1,6 @@
 ---
-title: "使用工作的最佳数据存储"
-description: "选择最适合数据的存储技术，并了解如何使用该技术"
+title: 使用工作的最佳数据存储
+description: 选择最适合数据的存储技术，并了解如何使用该技术
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: ef9439f7a3766d13b498eac915e0f5afd23de4e2

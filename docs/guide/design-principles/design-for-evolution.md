@@ -1,6 +1,6 @@
 ---
-title: "变化型设计"
-description: "进化型设计是持续创新的关键。"
+title: 变化型设计
+description: 进化型设计是持续创新的关键。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 35e91228f3fb0a303594ec06f05b6865008e3a4f

@@ -1,6 +1,6 @@
 ---
-title: "说明：什么是 Azure 资源管理器？"
-description: "说明 Azure 资源管理器的内部功能"
+title: 说明：什么是 Azure 资源管理器？
+description: 说明 Azure 资源管理器的内部功能
 author: petertay
 ms.openlocfilehash: 60f09901bdc4b292abd73335b78c7d56a76f27a6
 ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242

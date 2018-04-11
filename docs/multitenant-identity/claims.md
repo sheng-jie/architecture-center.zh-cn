@@ -1,6 +1,6 @@
 ---
-title: "在多租户应用程序中使用基于声明的标识"
-description: "如何使用声明进行颁发者验证和授权"
+title: 在多租户应用程序中使用基于声明的标识
+description: 如何使用声明进行颁发者验证和授权
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

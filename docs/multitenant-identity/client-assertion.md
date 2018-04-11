@@ -1,6 +1,6 @@
 ---
-title: "使用客户端断言从 Azure AD 获取访问令牌"
-description: "如何使用客户端断言从 Azure AD 获取访问令牌。"
+title: 使用客户端断言从 Azure AD 获取访问令牌
+description: 如何使用客户端断言从 Azure AD 获取访问令牌。
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

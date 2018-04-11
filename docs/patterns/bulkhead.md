@@ -1,6 +1,6 @@
 ---
-title: "隔舱模式"
-description: "将应用程序的元素隔离到池中，这样，如果一个元素发生故障，其他元素可继续工作"
+title: 隔舱模式
+description: 将应用程序的元素隔离到池中，这样，如果一个元素发生故障，其他元素可继续工作
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: a2c499d77fafc4bee6b74ee0e0d84e6c23b47851

@@ -1,6 +1,6 @@
 ---
-title: "使用 Key Vault 保护应用程序机密"
-description: "如何使用 Key Vault 服务来存储应用程序机密"
+title: 使用 Key Vault 保护应用程序机密
+description: 如何使用 Key Vault 服务来存储应用程序机密
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

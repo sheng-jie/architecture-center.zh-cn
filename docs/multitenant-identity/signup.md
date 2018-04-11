@@ -1,6 +1,6 @@
 ---
-title: "在多租户应用程序中注册和加入租户"
-description: "如何在多租户应用程序中加入租户"
+title: 在多租户应用程序中注册和加入租户
+description: 如何在多租户应用程序中加入租户
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

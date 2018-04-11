@@ -1,6 +1,6 @@
 ---
-title: "Linux VM 工作负荷"
-description: "介绍部署 VM 用于在 Azure 中托管企业级应用程序时可用的一些常用体系结构。"
+title: Linux VM 工作负荷
+description: 介绍部署 VM 用于在 Azure 中托管企业级应用程序时可用的一些常用体系结构。
 layout: LandingPage
 ms.openlocfilehash: ef06fb93355f4676f44954930bcfeb2c2d012d43
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

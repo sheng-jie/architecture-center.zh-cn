@@ -1,6 +1,6 @@
 ---
-title: "多租户应用程序的标识管理"
-description: "有关多租户应用程序中的身份验证、授权和标识管理的最佳做法。"
+title: 多租户应用程序的标识管理
+description: 有关多租户应用程序中的身份验证、授权和标识管理的最佳做法。
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

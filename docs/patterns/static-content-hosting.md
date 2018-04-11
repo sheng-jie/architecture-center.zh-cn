@@ -1,7 +1,7 @@
 ---
-title: "静态内容托管"
-description: "将静态内容部署到基于云的存储服务，再由后者将它们直接传送给客户端。"
-keywords: "设计模式"
+title: 静态内容托管
+description: 将静态内容部署到基于云的存储服务，再由后者将它们直接传送给客户端。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

@@ -1,6 +1,6 @@
 ---
-title: "扩大式设计"
-description: "云应用程序应设计为适合水平缩放。"
+title: 扩大式设计
+description: 云应用程序应设计为适合水平缩放。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 8f9b3e99a53f5941f708b0de124f37e6ff7e5ab2

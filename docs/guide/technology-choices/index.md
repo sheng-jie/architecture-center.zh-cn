@@ -1,6 +1,6 @@
 ---
-title: "为 Azure 应用程序选择适当的技术"
-description: "为 Azure 应用程序选择适当的技术"
+title: 为 Azure 应用程序选择适当的技术
+description: 为 Azure 应用程序选择适当的技术
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 7681aeb7a6064d06674e781292c444dba9d410f2

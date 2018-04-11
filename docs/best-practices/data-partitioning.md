@@ -1,6 +1,6 @@
 ---
-title: "数据分区指南"
-description: "有关如何隔离分区，以便单独进行管理和访问的指导。"
+title: 数据分区指南
+description: 有关如何隔离分区，以便单独进行管理和访问的指导。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices

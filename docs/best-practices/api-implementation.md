@@ -1,6 +1,6 @@
 ---
-title: "API 实现指南"
-description: "有关如何实现 API 的指南。"
+title: API 实现指南
+description: 有关如何实现 API 的指南。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices

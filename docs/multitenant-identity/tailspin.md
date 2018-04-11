@@ -1,6 +1,6 @@
 ---
-title: "关于 Tailspin Surveys 应用程序"
-description: "Tailspin Surveys 应用程序概述"
+title: 关于 Tailspin Surveys 应用程序
+description: Tailspin Surveys 应用程序概述
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

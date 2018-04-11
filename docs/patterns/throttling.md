@@ -1,7 +1,7 @@
 ---
-title: "限制"
-description: "控制应用程序实例、单个租户或整个服务使用的资源的消耗。"
-keywords: "设计模式"
+title: 限制
+description: 控制应用程序实例、单个租户或整个服务使用的资源的消耗。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

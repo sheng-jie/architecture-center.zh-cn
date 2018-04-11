@@ -1,6 +1,6 @@
 ---
-title: "繁忙前端对立模式"
-description: "大量后台线程中的异步工作可能会耗尽其他前台任务的资源。"
+title: 繁忙前端对立模式
+description: 大量后台线程中的异步工作可能会耗尽其他前台任务的资源。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: cedb80ddac5ceb1eb901455df3165993fd28a138

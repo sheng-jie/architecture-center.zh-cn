@@ -1,6 +1,6 @@
 ---
-title: "选择 Azure 计算选项的条件"
-description: "跨多个轴比较 Azure 计算服务。"
+title: 选择 Azure 计算选项的条件
+description: 跨多个轴比较 Azure 计算服务。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 36b57d1fb674b5a1452a0e8208de836963b2b01b

@@ -1,6 +1,6 @@
 ---
-title: "将 Azure 云服务应用程序迁移到 Azure Service Fabric"
-description: "如何将 Azure 云服务中的应用程序迁移到 Azure Service Fabric。"
+title: 将 Azure 云服务应用程序迁移到 Azure Service Fabric
+description: 如何将 Azure 云服务中的应用程序迁移到 Azure Service Fabric。
 author: MikeWasson
 ms.date: 04/27/2017
 ms.openlocfilehash: ce9c138a6b093fb7f0329c619c75bd4f4aacc2e7

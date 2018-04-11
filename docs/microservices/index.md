@@ -1,6 +1,6 @@
 ---
-title: "使用 Kubernetes 在 Azure 中设计、构建和操作微服务"
-description: "在 Azure 中设计、构建和操作微服务"
+title: 使用 Kubernetes 在 Azure 中设计、构建和操作微服务
+description: 在 Azure 中设计、构建和操作微服务
 author: MikeWasson
 ms.date: 12/08/2017
 ms.openlocfilehash: 857e91a8eeefec18b459f2e66fde9a4f8bbe7b21

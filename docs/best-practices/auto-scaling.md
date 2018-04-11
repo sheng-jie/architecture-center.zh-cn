@@ -1,6 +1,6 @@
 ---
-title: "自动缩放指南"
-description: "有关如何自动缩放以动态分配应用程序所需的资源的指南。"
+title: 自动缩放指南
+description: 有关如何自动缩放以动态分配应用程序所需的资源的指南。
 author: dragon119
 ms.date: 05/17/2017
 pnp.series.title: Best Practices

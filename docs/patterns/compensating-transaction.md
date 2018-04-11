@@ -1,11 +1,12 @@
 ---
-title: "补偿事务"
-description: "撤销一系列会共同定义最终一致操作的工作。"
-keywords: "设计模式"
+title: 补偿事务
+description: 撤销一系列会共同定义最终一致操作的工作。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories: resiliency
+pnp.pattern.categories:
+- resiliency
 ms.openlocfilehash: a822de990d6ce933024207073b110e98f8da40bf
 ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
 ms.translationtype: HT

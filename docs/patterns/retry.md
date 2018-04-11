@@ -1,7 +1,7 @@
 ---
-title: "重试"
-description: "当应用程序尝试连接到服务或网络资源时，使应用程序能够通过以透明方式重试先前失败的操作来处理预期的临时故障。"
-keywords: "设计模式"
+title: 重试
+description: 当应用程序尝试连接到服务或网络资源时，使应用程序能够通过以透明方式重试先前失败的操作来处理预期的临时故障。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

@@ -1,6 +1,6 @@
 ---
-title: "通过分区解决限制"
-description: "使用分区来解决数据库、网络和计算限制"
+title: 通过分区解决限制
+description: 使用分区来解决数据库、网络和计算限制
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 4371490385b24230551bf17db0075052f320b574

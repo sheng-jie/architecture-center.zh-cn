@@ -1,6 +1,6 @@
 ---
-title: "网关路由模式"
-description: "使用单个终结点将请求路由到多个服务。"
+title: 网关路由模式
+description: 使用单个终结点将请求路由到多个服务。
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: 53239b23cfd98fad1edc38ca37c2274d5a9d7a0f

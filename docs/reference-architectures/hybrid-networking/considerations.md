@@ -1,6 +1,6 @@
 ---
-title: "选择用于将本地网络连接到 Azure 的解决方案"
-description: "比较用于将本地网络连接到 Azure 的参考体系结构。"
+title: 选择用于将本地网络连接到 Azure 的解决方案
+description: 比较用于将本地网络连接到 Azure 的参考体系结构。
 author: telmosampaio
 ms.date: 04/06/2017
 ms.openlocfilehash: 274b9df1817632a7f3eaafa8bf02e965fdc3feea

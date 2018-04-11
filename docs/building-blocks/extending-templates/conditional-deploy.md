@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 资源管理器模板中有条件地部署资源"
-description: "介绍如何扩展 Azure 资源管理器模板的功能，根据参数的值有条件地部署资源"
+title: 在 Azure 资源管理器模板中有条件地部署资源
+description: 介绍如何扩展 Azure 资源管理器模板的功能，根据参数的值有条件地部署资源
 author: petertay
 ms.date: 06/09/2017
 ms.openlocfilehash: e911e7dc41b4f71ebfaf13a00f8cdbb5b4e2578b

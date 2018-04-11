@@ -1,6 +1,6 @@
 ---
-title: "Azure 资源的命名约定"
-description: "Azure 资源的命名约定。 如何命名虚拟机、存储帐户、网络、虚拟网络、子网和其他 Azure 实体"
+title: Azure 资源的命名约定
+description: Azure 资源的命名约定。 如何命名虚拟机、存储帐户、网络、虚拟网络、子网和其他 Azure 实体
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices

@@ -1,6 +1,6 @@
 ---
-title: "Azure 应用程序灾难恢复"
-description: "有关在Microsoft Azure 上设计应用程序以实现灾难恢复的技术概述和深入信息。"
+title: Azure 应用程序灾难恢复
+description: 有关在Microsoft Azure 上设计应用程序以实现灾难恢复的技术概述和深入信息。
 author: adamglick
 ms.date: 05/26/2017
 ms.openlocfilehash: 7235e752cf1b96e392a700b223d63b07c0f85b66

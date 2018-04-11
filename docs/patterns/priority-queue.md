@@ -1,7 +1,7 @@
 ---
-title: "优先级队列"
-description: "为发送到服务的请求确定优先级，以便高优先级请求能够得到比低优先级请求更快速地接收和处理。"
-keywords: "设计模式"
+title: 优先级队列
+description: 为发送到服务的请求确定优先级，以便高优先级请求能够得到比低优先级请求更快速地接收和处理。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

@@ -1,7 +1,7 @@
 ---
-title: "附属密钥"
-description: "使用令牌或密钥，向客户端授予对特定资源或服务的受限直接访问权限。"
-keywords: "设计模式"
+title: 附属密钥
+description: 使用令牌或密钥，向客户端授予对特定资源或服务的受限直接访问权限。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

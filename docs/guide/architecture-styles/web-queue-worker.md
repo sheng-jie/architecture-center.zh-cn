@@ -1,6 +1,6 @@
 ---
-title: "Web 队列辅助角色体系结构样式"
-description: "介绍 Azure 上的 Web 队列辅助角色的体系结构的优点、难题和最佳做法"
+title: Web 队列辅助角色体系结构样式
+description: 介绍 Azure 上的 Web 队列辅助角色的体系结构的优点、难题和最佳做法
 author: MikeWasson
 ms.openlocfilehash: 545472e71ffcd43717ad24af0dc9218a221ca910
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60

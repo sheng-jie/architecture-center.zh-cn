@@ -1,6 +1,6 @@
 ---
-title: "缓存指南"
-description: "有关配置缓存以提高性能和伸缩性的指南。"
+title: 缓存指南
+description: 有关配置缓存以提高性能和伸缩性的指南。
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
