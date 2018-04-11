@@ -1,6 +1,6 @@
 ---
-title: "Azure 服务的复原能力检查表"
-description: "一个检查表，提供各种 Azure 服务的复原能力指南。"
+title: Azure 服务的复原能力检查表
+description: 一个检查表，提供各种 Azure 服务的复原能力指南。
 author: petertaylor9999
 ms.date: 03/02/2018
 ms.custom: resiliency, checklist

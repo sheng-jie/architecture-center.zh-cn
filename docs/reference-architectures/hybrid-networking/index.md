@@ -1,6 +1,6 @@
 ---
-title: "将本地网络连接到 Azure"
-description: "本地网络与 Azure 之间的安全可靠网络连接的建议体系结构。"
+title: 将本地网络连接到 Azure
+description: 本地网络与 Azure 之间的安全可靠网络连接的建议体系结构。
 layout: LandingPage
 ms.openlocfilehash: 372efb8ecf69245a5895c51e3da156a348bd665e
 ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
