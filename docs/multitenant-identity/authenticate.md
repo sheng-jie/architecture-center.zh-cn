@@ -1,6 +1,6 @@
 ---
-title: "多租户应用程序中的身份验证"
-description: "多租户应用程序如何从 Azure AD 验证用户身份"
+title: 多租户应用程序中的身份验证
+description: 多租户应用程序如何从 Azure AD 验证用户身份
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

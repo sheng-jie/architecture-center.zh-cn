@@ -1,7 +1,7 @@
 ---
-title: "具体化视图"
-description: "当未针对所需的查询操作完美设置数据的格式时，在一个或多个数据存储中基于数据生成预填充的视图。"
-keywords: "设计模式"
+title: 具体化视图
+description: 当未针对所需的查询操作完美设置数据的格式时，在一个或多个数据存储中基于数据生成预填充的视图。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

@@ -1,6 +1,6 @@
 ---
-title: "云应用程序的性能对立模式"
-description: "可能导致可伸缩性问题的常见做法。"
+title: 云应用程序的性能对立模式
+description: 可能导致可伸缩性问题的常见做法。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: 423fe6533e57268610f625f523714cd1bce89546

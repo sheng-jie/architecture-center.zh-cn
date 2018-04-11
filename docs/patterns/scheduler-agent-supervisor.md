@@ -1,7 +1,7 @@
 ---
-title: "计划程序代理监督程序"
-description: "跨一组分布式服务和其他远程资源协调一组操作。"
-keywords: "设计模式"
+title: 计划程序代理监督程序
+description: 跨一组分布式服务和其他远程资源协调一组操作。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

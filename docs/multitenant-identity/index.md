@@ -1,6 +1,6 @@
 ---
-title: "多租户应用程序的标识管理"
-description: "有关多租户应用程序中的身份验证、授权和标识管理的最佳做法。"
+title: 多租户应用程序的标识管理
+description: 有关多租户应用程序中的身份验证、授权和标识管理的最佳做法。
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -96,6 +96,7 @@ ms.lasthandoff: 11/14/2017
 [AzureAD]: /azure/active-directory
 
 [与客户的 AD FS 联合]: adfs.md
+[Federating with a customer's AD FS]: adfs.md
 [tailpin]: tailspin.md
 
 [running-the-app]: ./run-the-app.md

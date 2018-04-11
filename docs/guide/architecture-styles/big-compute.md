@@ -1,6 +1,6 @@
 ---
-title: "大计算的体系结构样式"
-description: "介绍 Azure 上大计算的体系结构的优点、挑战和最佳做法"
+title: 大计算的体系结构样式
+description: 介绍 Azure 上大计算的体系结构的优点、挑战和最佳做法
 author: MikeWasson
 ms.openlocfilehash: b16be4133143d7d73062eeb280b44779c390f387
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60

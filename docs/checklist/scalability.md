@@ -1,6 +1,6 @@
 ---
-title: "可伸缩性清单"
-description: "Azure 自动缩放设计注意事项：可伸缩性清单指南。"
+title: 可伸缩性清单
+description: Azure 自动缩放设计注意事项：可伸缩性清单指南。
 author: dragon119
 ms.date: 01/10/2018
 ms.custom: checklist

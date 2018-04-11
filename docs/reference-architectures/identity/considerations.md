@@ -1,6 +1,6 @@
 ---
-title: "选择用于将本地 Active Directory 与 Azure 相集成的解决方案。"
-description: "比较用于将本地 Active Directory 与 Azure 相集成的参考体系结构。"
+title: 选择用于将本地 Active Directory 与 Azure 相集成的解决方案。
+description: 比较用于将本地 Active Directory 与 Azure 相集成的参考体系结构。
 ms.date: 04/06/2017
 ms.openlocfilehash: 413a5463d90547197c4b6834d353b4ecf61483ee
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60

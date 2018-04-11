@@ -1,6 +1,6 @@
 ---
-title: "运营设计"
-description: "合理设计应用程序，使运营团队获得所需的工具。"
+title: 运营设计
+description: 合理设计应用程序，使运营团队获得所需的工具。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 76338cc27daf82ccb99df4e4c51c7a5ac6f26065

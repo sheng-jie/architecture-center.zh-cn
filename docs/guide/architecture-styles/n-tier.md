@@ -1,6 +1,6 @@
 ---
-title: "N 层体系结构样式"
-description: "介绍 Azure 上 N 层体系结构的优点、挑战和最佳做法"
+title: N 层体系结构样式
+description: 介绍 Azure 上 N 层体系结构的优点、挑战和最佳做法
 author: MikeWasson
 ms.openlocfilehash: 8333b789e03a9da2b021abe7d7c193cd2af8d6bf
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60

@@ -1,6 +1,6 @@
 ---
-title: "实现全面冗余"
-description: "在应用程序中构建冗余，避免出现单一故障点。"
+title: 实现全面冗余
+description: 在应用程序中构建冗余，避免出现单一故障点。
 author: MikeWasson
 layout: LandingPage
 ms.openlocfilehash: 05ccf78c2cfbcd4e2d26200e70463d388d54f671

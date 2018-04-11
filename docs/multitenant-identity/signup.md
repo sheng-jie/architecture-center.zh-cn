@@ -1,6 +1,6 @@
 ---
-title: "在多租户应用程序中注册和加入租户"
-description: "如何在多租户应用程序中加入租户"
+title: 在多租户应用程序中注册和加入租户
+description: 如何在多租户应用程序中加入租户
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -260,4 +260,5 @@ private async Task<Tenant> SignUpTenantAsync(BaseControlContext context, TenantM
 
 [state]: http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
 [身份验证]: authenticate.md
+[Authentication]: authenticate.md
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance

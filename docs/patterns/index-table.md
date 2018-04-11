@@ -1,7 +1,7 @@
 ---
-title: "索引表"
-description: "基于数据存储中经常由查询引用的字段创建索引。"
-keywords: "设计模式"
+title: 索引表
+description: 基于数据存储中经常由查询引用的字段创建索引。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

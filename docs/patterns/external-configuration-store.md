@@ -1,7 +1,7 @@
 ---
-title: "外部配置存储"
-description: "将配置信息从应用程序部署包移出，移到一个集中的位置。"
-keywords: "设计模式"
+title: 外部配置存储
+description: 将配置信息从应用程序部署包移出，移到一个集中的位置。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

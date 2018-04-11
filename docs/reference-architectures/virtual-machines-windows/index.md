@@ -1,6 +1,6 @@
 ---
-title: "Windows VM 工作负荷"
-description: "介绍部署 VM 用于在 Azure 中托管企业级应用程序时可用的一些常用体系结构。"
+title: Windows VM 工作负荷
+description: 介绍部署 VM 用于在 Azure 中托管企业级应用程序时可用的一些常用体系结构。
 layout: LandingPage
 ms.openlocfilehash: 972a307c129598ecfab161d5246d0eb2abf7c7e5
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

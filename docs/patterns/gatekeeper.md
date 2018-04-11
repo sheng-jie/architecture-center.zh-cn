@@ -1,11 +1,12 @@
 ---
-title: "守护程序"
-description: "通过使用专用的主机实例保护应用程序和服务，该实例用于充当客户端和应用程序或服务之间的中转站、验证和整理请求，并在它们之间传递请求和数据。"
-keywords: "设计模式"
+title: 守护程序
+description: 通过使用专用的主机实例保护应用程序和服务，该实例用于充当客户端和应用程序或服务之间的中转站、验证和整理请求，并在它们之间传递请求和数据。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories: security
+pnp.pattern.categories:
+- security
 ms.openlocfilehash: 39f8548bbccb5e19d433f65b2e7e09147d676996
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
 ms.translationtype: HT

@@ -1,6 +1,6 @@
 ---
-title: "可用性核对清单"
-description: "为设计过程中的可用性考虑因素提供指导的核对清单。"
+title: 可用性核对清单
+description: 为设计过程中的可用性考虑因素提供指导的核对清单。
 author: dragon119
 ms.date: 01/10/2018
 ms.custom: checklist

@@ -1,6 +1,6 @@
 ---
-title: "设计适用于 Azure 的可复原应用程序"
-description: "如何在 Azure 中生成可复原应用程序，以实现高可用性和灾难恢复。"
+title: 设计适用于 Azure 的可复原应用程序
+description: 如何在 Azure 中生成可复原应用程序，以实现高可用性和灾难恢复。
 author: MikeWasson
 ms.date: 05/26/2017
 ms.custom: resiliency

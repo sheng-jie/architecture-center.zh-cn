@@ -1,6 +1,6 @@
 ---
-title: "微服务中的日志记录和监视"
-description: "微服务中的日志记录和监视"
+title: 微服务中的日志记录和监视
+description: 微服务中的日志记录和监视
 author: MikeWasson
 ms.date: 12/08/2017
 ms.openlocfilehash: 1da67047daa9ae87cda5dd7dd581d6081183c428

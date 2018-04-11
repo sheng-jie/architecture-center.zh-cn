@@ -1,7 +1,7 @@
 ---
-title: "限制"
-description: "控制应用程序实例、单个租户或整个服务使用的资源的消耗。"
-keywords: "设计模式"
+title: 限制
+description: 控制应用程序实例、单个租户或整个服务使用的资源的消耗。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
@@ -103,3 +103,4 @@ ms.lasthandoff: 11/14/2017
 - <span data-ttu-id="47fd5-197">[优先级队列模式][]。</span><span class="sxs-lookup"><span data-stu-id="47fd5-197">[Priority Queue pattern][].</span></span> <span data-ttu-id="47fd5-198">系统可以使用优先级队列作为其限制策略的一部分来保持关键或高值应用程序的性能，同时降低不太重要的应用程序的性能。</span><span class="sxs-lookup"><span data-stu-id="47fd5-198">A system can use priority queuing as part of its throttling strategy to maintain performance for critical or higher value applications, while reducing the performance of less important applications.</span></span>
 
 [优先级队列模式]: priority-queue.md
+[Priority Queue pattern]: priority-queue.md

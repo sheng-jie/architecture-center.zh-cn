@@ -1,6 +1,6 @@
 ---
-title: "标识微服务边界"
-description: "标识微服务边界"
+title: 标识微服务边界
+description: 标识微服务边界
 author: MikeWasson
 ms.date: 12/08/2017
 ms.openlocfilehash: e4f11da9f970724c55ad99824f808a10c4558971

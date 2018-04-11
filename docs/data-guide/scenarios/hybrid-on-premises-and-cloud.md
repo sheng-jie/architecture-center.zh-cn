@@ -1,6 +1,6 @@
 ---
-title: "将本地数据解决方案扩展到云"
-description: 
+title: 将本地数据解决方案扩展到云
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
 ms.openlocfilehash: 66fc225dc123202ba587d82f15ea0883e1bbf3b5

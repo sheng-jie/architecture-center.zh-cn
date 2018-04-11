@@ -1,11 +1,12 @@
 ---
-title: "让使用者竞争"
-description: "使多个并发使用者能够处理同一消息通道上收到的消息。"
-keywords: "设计模式"
+title: 让使用者竞争
+description: 使多个并发使用者能够处理同一消息通道上收到的消息。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories: messaging
+pnp.pattern.categories:
+- messaging
 ms.openlocfilehash: d72a09ef7613bebe3701634e4eac0716400e471d
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
 ms.translationtype: HT

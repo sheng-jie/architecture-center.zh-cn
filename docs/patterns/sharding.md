@@ -1,7 +1,7 @@
 ---
-title: "分片"
-description: "将数据存储划分为一组水平分区或分片。"
-keywords: "设计模式"
+title: 分片
+description: 将数据存储划分为一组水平分区或分片。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

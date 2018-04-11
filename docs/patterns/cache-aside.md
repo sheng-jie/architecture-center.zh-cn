@@ -1,7 +1,7 @@
 ---
-title: "缓存端"
-description: "将数据按需从数据存储加载到缓存中"
-keywords: "设计模式"
+title: 缓存端
+description: 将数据按需从数据存储加载到缓存中
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns

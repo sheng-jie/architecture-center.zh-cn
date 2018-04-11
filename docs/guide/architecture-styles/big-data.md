@@ -1,6 +1,6 @@
 ---
-title: "大数据体系结构样式"
-description: "介绍了 Azure 上的大数据体系结构的好处、挑战和最佳做法"
+title: 大数据体系结构样式
+description: 介绍了 Azure 上的大数据体系结构的好处、挑战和最佳做法
 author: MikeWasson
 ms.openlocfilehash: 4e8b58d5fa0f6a441d70e05ec7d6a0e668712563
 ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60

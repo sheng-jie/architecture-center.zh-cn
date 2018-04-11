@@ -1,6 +1,6 @@
 ---
-title: "说明 - 什么是 Azure 资源组？"
-description: "说明资源组的内部 Azure 功能"
+title: 说明 - 什么是 Azure 资源组？
+description: 说明资源组的内部 Azure 功能
 author: petertay
 ms.openlocfilehash: e7c7334bd88c28f57498486bd2bed3c349565222
 ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242

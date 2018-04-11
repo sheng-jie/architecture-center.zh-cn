@@ -1,6 +1,6 @@
 ---
-title: "无缓存对立模式"
-description: "反复提取相同的数据可能会降低性能和可伸缩性。"
+title: 无缓存对立模式
+description: 反复提取相同的数据可能会降低性能和可伸缩性。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: 8a2bc3b473a30536cc1bef9e1dcad87acb46c4a9

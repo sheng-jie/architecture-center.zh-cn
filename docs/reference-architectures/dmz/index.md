@@ -1,6 +1,6 @@
 ---
-title: "外围网络"
-description: "介绍并比较用于防范 Azure 中运行的、属于混合系统的应用程序和组件遭受未授权入侵的各种方法。"
+title: 外围网络
+description: 介绍并比较用于防范 Azure 中运行的、属于混合系统的应用程序和组件遭受未授权入侵的各种方法。
 layout: LandingPage
 ms.openlocfilehash: 98df0a25767c7a7282e67381c6465fe3263ce1fa
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

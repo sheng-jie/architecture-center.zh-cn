@@ -1,6 +1,6 @@
 ---
-title: "在多租户应用程序中使用基于声明的标识"
-description: "如何使用声明进行颁发者验证和授权"
+title: 在多租户应用程序中使用基于声明的标识
+description: 如何使用声明进行颁发者验证和授权
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -117,9 +117,13 @@ ms.lasthandoff: 11/14/2017
 <!-- Links -->
 
 [范围参数]: http://nat.sakimura.org/2012/01/26/scopes-and-claims-in-openid-connect/
+[scope parameter]: http://nat.sakimura.org/2012/01/26/scopes-and-claims-in-openid-connect/
 [支持的令牌和声明类型]: /azure/active-directory/active-directory-token-and-claims/
+[Supported Token and Claim Types]: /azure/active-directory/active-directory-token-and-claims/
 [颁发者]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[issuer]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
 [身份验证事件]: authenticate.md#authentication-events
+[Authentication events]: authenticate.md#authentication-events
 [signup]: signup.md
 [Claims-Based Authorization]: /aspnet/core/security/authorization/claims
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance

@@ -1,6 +1,6 @@
 ---
-title: "身份管理"
-description: "介绍并比较可用于在跨本地/Azure 云边界的混合系统中管理标识的各种方法。"
+title: 身份管理
+description: 介绍并比较可用于在跨本地/Azure 云边界的混合系统中管理标识的各种方法。
 layout: LandingPage
 ms.openlocfilehash: de98ee30306f5e712759ab7140bd430cb6d4cd75
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

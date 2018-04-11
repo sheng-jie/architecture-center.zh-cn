@@ -1,6 +1,6 @@
 ---
-title: "事件驱动的体系结构样式"
-description: "介绍 Azure 上事件驱动和 IoT 体系结构的优点、挑战和最佳做法"
+title: 事件驱动的体系结构样式
+description: 介绍 Azure 上事件驱动和 IoT 体系结构的优点、挑战和最佳做法
 author: MikeWasson
 ms.openlocfilehash: 3289bf784b02d62e3d0c1a29b4839c9be3501134
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

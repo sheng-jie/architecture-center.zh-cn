@@ -1,6 +1,6 @@
 ---
-title: "在多租户应用程序中缓存访问令牌"
-description: "缓存用于调用后端 Web API 的访问令牌"
+title: 在多租户应用程序中缓存访问令牌
+description: 缓存用于调用后端 Web API 的访问令牌
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications

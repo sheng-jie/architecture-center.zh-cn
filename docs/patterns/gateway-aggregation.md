@@ -1,6 +1,6 @@
 ---
-title: "网关聚合模式"
-description: "使用网关可将多个单独请求聚合成一个请求。"
+title: 网关聚合模式
+description: 使用网关可将多个单独请求聚合成一个请求。
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: f59c8b8b02c6db28024d13621b782997e63a4e9e

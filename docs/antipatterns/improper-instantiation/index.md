@@ -1,6 +1,6 @@
 ---
-title: "不当实例化对立模式"
-description: "避免连续创建本应一次性创建，然后共享的对象的新实例。"
+title: 不当实例化对立模式
+description: 避免连续创建本应一次性创建，然后共享的对象的新实例。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: 4d5ef9ad9e675b46df94b51e81d7a4bd4c1b25e9

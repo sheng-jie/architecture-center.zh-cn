@@ -1,6 +1,6 @@
 ---
-title: "应用服务 Web 应用程序"
-description: "适用于 Microsoft Azure 中运行的 Web 应用程序的建议体系结构。"
+title: 应用服务 Web 应用程序
+description: 适用于 Microsoft Azure 中运行的 Web 应用程序的建议体系结构。
 layout: LandingPage
 ms.openlocfilehash: ea5ca6f0a1e2995ab35333095260d8f2c3db2600
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

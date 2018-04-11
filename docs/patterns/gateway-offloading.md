@@ -1,6 +1,6 @@
 ---
-title: "网关卸载模式"
-description: "将共享或专用服务功能卸载到网关代理。"
+title: 网关卸载模式
+description: 将共享或专用服务功能卸载到网关代理。
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: 6b3e4541aae77349ca91c18c788ddb508912361d

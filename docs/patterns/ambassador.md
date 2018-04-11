@@ -1,6 +1,6 @@
 ---
-title: "代表模式"
-description: "创建代表客户服务或应用程序发送网络请求的帮助程序服务。"
+title: 代表模式
+description: 创建代表客户服务或应用程序发送网络请求的帮助程序服务。
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: 6c545619aab6a5817e55854350e3769834df27cd

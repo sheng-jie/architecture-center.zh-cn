@@ -1,6 +1,6 @@
 ---
-title: "琐碎 I/O 对立模式"
-description: "发出大量的 I/O 请求可能会损害性能和响应能力。"
+title: 琐碎 I/O 对立模式
+description: 发出大量的 I/O 请求可能会损害性能和响应能力。
 author: dragon119
 ms.openlocfilehash: 4f0e0e455ceb58317d3029d8ab4631d476802499
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb

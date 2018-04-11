@@ -1,6 +1,6 @@
 ---
-title: "指南：Azure AD 租户设计"
-description: "作为基础云采用策略一部分的 Azure 租户设计指南"
+title: 指南：Azure AD 租户设计
+description: 作为基础云采用策略一部分的 Azure 租户设计指南
 author: telmosampaio
 ms.openlocfilehash: 9ac52e9fd44bd8b9c777625002d5960f4f269be2
 ms.sourcegitcommit: 29fbcb1eec44802d2c01b6d3bcf7d7bd0bae65fc

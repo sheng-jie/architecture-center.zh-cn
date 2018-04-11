@@ -1,6 +1,6 @@
 ---
-title: "监视和诊断指南"
-description: "有关在云中监视分布式应用程序的最佳实践。"
+title: 监视和诊断指南
+description: 有关在云中监视分布式应用程序的最佳实践。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices

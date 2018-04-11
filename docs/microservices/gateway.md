@@ -1,6 +1,6 @@
 ---
-title: "API 网关"
-description: "微服务中的 API 网关"
+title: API 网关
+description: 微服务中的 API 网关
 author: MikeWasson
 ms.date: 12/08/2017
 ms.openlocfilehash: 6483d416363e24f4084d6b856847a740bf4054d9

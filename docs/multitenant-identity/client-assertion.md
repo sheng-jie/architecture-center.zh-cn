@@ -1,6 +1,6 @@
 ---
-title: "使用客户端断言从 Azure AD 获取访问令牌"
-description: "如何使用客户端断言从 Azure AD 获取访问令牌。"
+title: 使用客户端断言从 Azure AD 获取访问令牌
+description: 如何使用客户端断言从 Azure AD 获取访问令牌。
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -103,6 +103,7 @@ public class CertificateCredentialService : ICredentialService
 [configure-web-app]: /azure/app-service-web/web-sites-configure/
 [azure-management-portal]: https://portal.azure.com
 [客户端断言]: https://tools.ietf.org/html/rfc7521
+[client assertion]: https://tools.ietf.org/html/rfc7521
 [key vault]: key-vault.md
 [Setup-KeyVault]: https://github.com/mspnp/multitenant-saas-guidance/blob/master/scripts/Setup-KeyVault.ps1
 [Surveys]: tailspin.md

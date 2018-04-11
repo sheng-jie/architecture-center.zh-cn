@@ -1,6 +1,6 @@
 ---
-title: "Strangler 模式"
-description: "通过将特定的功能片断逐渐取代为新的应用程序和服务，逐步迁移旧系统。"
+title: Strangler 模式
+description: 通过将特定的功能片断逐渐取代为新的应用程序和服务，逐步迁移旧系统。
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: d03e8a1ef9077b6e00ea5a17423bf7e09b68111a

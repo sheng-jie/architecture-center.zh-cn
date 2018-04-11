@@ -1,6 +1,6 @@
 ---
-title: "有关重试的一般性指南"
-description: "有关暂时性故障重试处理的指南。"
+title: 有关重试的一般性指南
+description: 有关暂时性故障重试处理的指南。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices

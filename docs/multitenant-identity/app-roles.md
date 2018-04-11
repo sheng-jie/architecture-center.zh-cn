@@ -1,6 +1,6 @@
 ---
-title: "应用程序角色"
-description: "如何使用应用程序角色执行授权"
+title: 应用程序角色
+description: 如何使用应用程序角色执行授权
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -166,6 +166,9 @@ if (context.User.HasClaim(ClaimTypes.Role, "Admin")) { ... }
 [Tailspin]: tailspin.md
 
 [授权]: authorize.md
+[authorization]: authorize.md
 [保护后端 Web API]: web-api.md
+[Securing a backend web API]: web-api.md
 [应用程序清单]: /azure/active-directory/active-directory-application-manifest/
+[application manifest]: /azure/active-directory/active-directory-application-manifest/
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance

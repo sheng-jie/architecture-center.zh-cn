@@ -1,6 +1,6 @@
 ---
-title: "指南：Azure 资源组设计"
-description: "作为基础云采用策略一部分的 Azure 资源组设计指南"
+title: 指南：Azure 资源组设计
+description: 作为基础云采用策略一部分的 Azure 资源组设计指南
 author: petertay
 ms.openlocfilehash: ac6cbb03be8cdba020641d3b9034ad9d20101acf
 ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242

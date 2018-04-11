@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 资源管理器模板上更新资源"
-description: "介绍了如何扩展 Azure 资源管理器模板的功能来更新资源"
+title: 在 Azure 资源管理器模板上更新资源
+description: 介绍了如何扩展 Azure 资源管理器模板的功能来更新资源
 author: petertay
 ms.date: 06/09/2017
 ms.openlocfilehash: fc2565819c66ee7695224ef5793e7276e6e552e0

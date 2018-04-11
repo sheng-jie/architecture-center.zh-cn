@@ -1,6 +1,6 @@
 ---
-title: "软件质量的要素"
-description: "介绍软件质量的五大构成要素：可伸缩性、可用性、复原能力、管理和安全性。"
+title: 软件质量的要素
+description: 介绍软件质量的五大构成要素：可伸缩性、可用性、复原能力、管理和安全性。
 author: MikeWasson
 ms.openlocfilehash: 1d5e30602cafa0d39f92de3101974e77ae258595
 ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f

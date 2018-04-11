@@ -1,6 +1,6 @@
 ---
-title: "挎斗模式"
-description: "将应用程序的组件部署到单独的进程或容器中，以提供隔离和封装。"
+title: 挎斗模式
+description: 将应用程序的组件部署到单独的进程或容器中，以提供隔离和封装。
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: ec168009aa99f412c3f1222a1c404ea4ea5cb669
