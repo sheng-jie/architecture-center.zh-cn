@@ -1,6 +1,6 @@
 ---
-title: "复原能力查检表"
-description: "为设计过程中的复原能力考虑因素提供指导的查检表。"
+title: 复原能力查检表
+description: 为设计过程中的复原能力考虑因素提供指导的查检表。
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist

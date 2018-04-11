@@ -1,6 +1,6 @@
 ---
-title: "内容交付网络指南"
-description: "有关使用内容交付网络 (CDN) 传送 Azure 中托管的高带宽内容的指南。"
+title: 内容交付网络指南
+description: 有关使用内容交付网络 (CDN) 传送 Azure 中托管的高带宽内容的指南。
 author: dragon119
 ms.date: 02/02/2018
 pnp.series.title: Best Practices

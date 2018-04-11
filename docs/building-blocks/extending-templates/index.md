@@ -1,6 +1,6 @@
 ---
-title: "扩展 Azure 资源管理器模板功能"
-description: "介绍有关如何扩展 Azure 资源管理器模板功能的提示和技巧"
+title: 扩展 Azure 资源管理器模板功能
+description: 介绍有关如何扩展 Azure 资源管理器模板功能的提示和技巧
 author: petertay
 ms.date: 06/09/2017
 ms.openlocfilehash: 33ae6850ffa5b28108f30475804be5347859f0c3
