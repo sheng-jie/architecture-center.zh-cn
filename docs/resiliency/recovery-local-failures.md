@@ -1,15 +1,16 @@
 ---
-title: "技术指南：在 Azure 中从本地故障进行恢复"
-description: "本文可帮助了解和设计有复原能力和高可用性的容错应用程序，以及对重点关注 Azure 中本地故障的灾难恢复进行规划。"
+title: 技术指南：在 Azure 中从本地故障进行恢复
+description: 本文可帮助了解和设计有复原能力和高可用性的容错应用程序，以及对重点关注 Azure 中本地故障的灾难恢复进行规划。
 author: adamglick
 ms.date: 08/18/2016
-ms.openlocfilehash: 180eb465e5f82406bb03924a29d5b06d43bbaa24
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 5fc929bd1affe3dd6616f908bae0e7d2fefb89d5
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [header](../_includes/header.md)]
+
 # <a name="azure-resiliency-technical-guidance-recovery-from-local-failures-in-azure"></a>Azure 复原技术指南：Azure 中发生局部故障后进行恢复
 
 应用程序可用性主要面临两大威胁：

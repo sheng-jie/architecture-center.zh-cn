@@ -1,16 +1,19 @@
 ---
-title: "在 Azure 中实现 Active Directory 联合身份验证服务 (AD FS)"
-description: "如何在 Azure 中实现采用 Active Directory 联合身份验证服务授权的安全混合网络体系结构。\n指南,vpn 网关,ExpressRoute,负载均衡器,虚拟网络,active-directory"
+title: 在 Azure 中实现 Active Directory 联合身份验证服务 (AD FS)
+description: >-
+  如何在 Azure 中实现采用 Active Directory 联合身份验证服务授权的安全混合网络体系结构。
+
+  指南,vpn 网关,ExpressRoute,负载均衡器,虚拟网络,active-directory
 author: telmosampaio
 ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: adds-forest
 cardTitle: Extend AD FS to Azure
-ms.openlocfilehash: b8c9ae0621c087c68d449dd13e60046104c01513
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 87489b7b81cf323c221466c539ee14ea90e23c14
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="extend-active-directory-federation-services-ad-fs-to-azure"></a>将 Active Directory 联合身份验证服务 (AD FS) 扩展到 Azure
 
@@ -18,7 +21,7 @@ ms.lasthandoff: 12/08/2017
 
 [![0]][0]
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 AD FS 可以在本地进行承载，但是如果应用程序是其中某些部分在 Azure 中实现的混合体，则在云中复制 AD FS 可能会更加高效。 
 
@@ -137,7 +140,7 @@ AD FS 可以在本地进行承载，但是如果应用程序是其中某些部�
 
 文章[部署联合服务器场][Deploying_a_federation_server_farm]提供了有关安装和配置 AD FS 的详细说明。 在场中配置第一台 AD FS 服务器之前执行以下任务：
 
-1. 获取用于执行服务器身份验证的公开受信任证书。 使用者名称必须包含客户端用于访问联合身份验证服务的名称。 这可以是为负载均衡器注册的 DNS 名称，例如 adfs.contoso.com（出于安全原因，请避免使用通配符名称，如 \*.contoso.com）。 在所有 AD FS 服务器 VM 上使用相同证书。 可以从受信任证书颁发机构购买证书，但如果组织使用 Active Directory 证书服务，则可以创建自己的证书。 
+1. 获取用于执行服务器身份验证的公开受信任证书。 使用者名称必须包含客户端用于访问联合身份验证服务的名称。 这可以是为负载均衡器注册的 DNS 名称，例如 adfs.contoso.com（出于安全原因，请避免使用通配符名称，如 *.contoso.com）。 在所有 AD FS 服务器 VM 上使用相同证书。 可以从受信任证书颁发机构购买证书，但如果组织使用 Active Directory 证书服务，则可以创建自己的证书。 
    
     使用者可选名称由设备注册服务 (DRS) 用于启用从外部设备进行的访问。 这应采用 enterpriseregistration.contoso.com 的形式。
    
@@ -319,5 +322,5 @@ AD FS 使用 HTTPS 协议，因此请确保包含 Web 层 VM 的子网的 NSG �
 [github]: https://github.com/mspnp/reference-architectures/tree/master/identity/adfs
 [adfs_certificates]: https://technet.microsoft.com/library/dn781428(v=ws.11).aspx
 [considerations]: ./considerations.md
-[visio-download]: https://archcenter.azureedge.net/cdn/identity-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
 [0]: ./images/adfs.png "使用 Active Directory 保护混合网络体系结构的安全"

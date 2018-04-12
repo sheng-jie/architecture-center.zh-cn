@@ -1,15 +1,16 @@
 ---
-title: "从 Azure 区域的损失恢复"
-description: "本文可帮助了解和设计有复原能力和高可用性的容错应用程序，以及对灾难恢复进行规划"
+title: 从 Azure 区域的损失恢复
+description: 本文可帮助了解和设计有复原能力和高可用性的容错应用程序，以及对灾难恢复进行规划
 author: adamglick
 ms.date: 08/18/2016
-ms.openlocfilehash: 42a7d865e101b43279f3198f3dd75df1b15a8565
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: f551e8af8aece8aa30abfba2438c41c3944209bd
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [header](../_includes/header.md)]
+
 # <a name="azure-resiliency-technical-guidance-recovery-from-a-region-wide-service-disruption"></a>Azure 复原技术指南：在发生区域范围的服务中断后进行恢复
 Azure 在物理上和逻辑上划分为称为区域的单位。 一个区域由一个或多个邻近的数据中心组成。 
 

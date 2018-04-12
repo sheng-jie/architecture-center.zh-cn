@@ -1,18 +1,18 @@
 ---
-title: "管道和筛选器"
-description: "将一个执行复杂处理的任务分解为一系列可重复使用的单个元素。"
-keywords: "设计模式"
+title: 管道和筛选器
+description: 将一个执行复杂处理的任务分解为一系列可重复使用的单个元素。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
 - messaging
-ms.openlocfilehash: b41f3e46ad5982a3a4ec6635918481cb440c5e02
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 2c17504f594843c10fcfe221f0087f1087a73fb8
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="pipes-and-filters-pattern"></a>管道和筛选器模式
 
@@ -274,7 +274,7 @@ public class FinalReceiverRoleEntry : RoleEntryPoint
 }
 ```
 
-##<a name="related-patterns-and-guidance"></a>相关模式和指南
+## <a name="related-patterns-and-guidance"></a>相关模式和指南
 
 实现此模式时，可能也会与以下模式和指南相关：
 - 演示此模式的示例可在 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/pipes-and-filters) 上找到。

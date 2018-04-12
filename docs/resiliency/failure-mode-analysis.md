@@ -1,15 +1,15 @@
 ---
-title: "故障模式分析"
-description: "基于 Azure 为云解决方案执行故障模式分析的相关准则。"
+title: 故障模式分析
+description: 基于 Azure 为云解决方案执行故障模式分析的相关准则。
 author: MikeWasson
 ms.date: 03/24/2017
 ms.custom: resiliency
 pnp.series.title: Design for Resiliency
-ms.openlocfilehash: aca2088cb007728c5717a968969000c0a19bcd07
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: 8786c411249267e502003a90d5f2ff5e4c786803
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="failure-mode-analysis"></a>故障模式分析
 [!INCLUDE [header](../_includes/header.md)]
@@ -122,7 +122,7 @@ Application_End 日志记录将捕获应用域关闭（软进程崩溃），它�
 ### <a name="web-or-worker-roles-are-unexpectedlybeing-shut-down"></a>Web 角色或辅助角色意外关闭。
 **检测**。 触发了 [RoleEnvironment.Stopping][RoleEnvironment.Stopping] 事件。
 
-**恢复**。 重写 [RoleEntryPoint.OnStop][RoleEntryPoint.OnStop] 方法以便正常清理。 有关详细信息，请参阅[处理 Azure OnStop 事件的正确方式][onstop-events]（博客）。
+<strong>恢复</strong>。 重写 [RoleEntryPoint.OnStop][RoleEntryPoint.OnStop] 方法以便正常清理。 有关详细信息，请参阅[处理 Azure OnStop 事件的正确方式][onstop-events]（博客）。
 
 ## <a name="cosmos-db"></a>Cosmos DB 
 ### <a name="reading-data-fails"></a>读取数据失败。

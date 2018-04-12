@@ -3,11 +3,11 @@ title: 批处理
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: d3d3b92034c251586ecc9caff2785ecd0808b2a7
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: d6843bf4e20c3eb26e61cfa09300ad533e969c2e
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="batch-processing"></a>批处理
 
@@ -19,7 +19,7 @@ ms.lasthandoff: 03/31/2018
 
 ## <a name="when-to-use-this-solution"></a>何时使用此解决方案
 
-从简单的数据转换到更完整的 ETL（提取-转换-加载）管道等各种场合，都可以使用批处理。 在大数据上下文中，批处理可以处理极大的数据集，其中的计算会消耗很长时间。 （有关示例，请参阅 [Lambda 体系结构](../concepts/big-data.md#lambda-architecture)。）批处理通常促成进一步的交互式探索，为机器学习提供随时可建模的数据，或者将数据写入针对分析和可视化进行优化的数据存储。
+从简单的数据转换到更完整的 ETL（提取-转换-加载）管道等各种场合，都可以使用批处理。 在大数据上下文中，批处理可以处理极大的数据集，其中的计算会消耗很长时间。 （有关示例，请参阅 [Lambda 体系结构](../big-data/index.md#lambda-architecture)。）批处理通常促成进一步的交互式探索，为机器学习提供随时可建模的数据，或者将数据写入针对分析和可视化进行优化的数据存储。
 
 批处理的一个示例是将大量的平面半结构化 CSV 或 JSON 文件转换为架构化和结构化格式供进一步查询。 通常，会将数据从用于引入的原始格式（例如 CSV）转换为查询性能更好的二进制格式，因为二进制以纵栏表格式存储数据，并且通常提供索引和有关数据的内联统计信息。
 

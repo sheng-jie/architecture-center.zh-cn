@@ -1,19 +1,19 @@
 ---
-title: "选择流处理技术"
-description: 
+title: 选择流处理技术
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 23d9849c14964b0905300f191a41084b589fd127
-ms.sourcegitcommit: 943e671a8d522cef5ddc8c6e04848134b03c2de4
+ms.openlocfilehash: 29e4cd3d5ea6e10f036bfe226152290512dafa65
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-a-stream-processing-technology-in-azure"></a>在 Azure 中选择流处理技术
 
 本文对 Azure 中用于实时流处理的各种技术选择进行了比较。
 
-实时流处理使用来自队列或基于文件的存储的消息，对消息进行处理，并将结果转发到其他消息队列、文件存储或数据库。 处理可能包括对消息进行查询、筛选和聚合。 流处理引擎必须能够使用无限的数据流并以最低的延迟生成结果。 有关详细信息，请参阅[实时处理](../scenarios/real-time-processing.md)。
+实时流处理使用来自队列或基于文件的存储的消息，对消息进行处理，并将结果转发到其他消息队列、文件存储或数据库。 处理可能包括对消息进行查询、筛选和聚合。 流处理引擎必须能够使用无限的数据流并以最低的延迟生成结果。 有关详细信息，请参阅[实时处理](../big-data/real-time-processing.md)。
 
 ## <a name="what-are-your-options-when-choosing-a-technology-for-real-time-processing"></a>选择用于实时处理的技术时有哪些选项？
 在 Azure 中，下列所有数据存储都将满足支持实时处理的核心要求：
@@ -41,6 +41,7 @@ ms.lasthandoff: 03/05/2018
 以下各表汇总了功能上的关键差异。 
 
 ### <a name="general-capabilities"></a>常规功能
+
 | | Azure 流分析 | 基于 Spark Streaming 的 HDInsight | Azure Databricks 中的 Apache Spark | 基于 Storm 的 HDInsight | Azure Functions | Azure 应用服务 Web 作业 |
 | --- | --- | --- | --- | --- | --- | --- | 
 | 可编程性 | 流分析查询语言，JavaScript | Scala、Python、Java | Scala、Python、Java、R | Java、C# | C#、F#、Node.js | C#、Node.js、PHP、Java、Python |
@@ -48,12 +49,14 @@ ms.lasthandoff: 03/05/2018
 | 定价模型 | [流单元](https://azure.microsoft.com/pricing/details/stream-analytics/) | 按群集小时 | [Databricks 单元](https://azure.microsoft.com/pricing/details/databricks/) | 按群集小时 | 按函数执行和资源消耗 | 按应用服务计划小时 |  
 
 ### <a name="integration-capabilities"></a>集成功能
+
 | | Azure 流分析 | 基于 Spark Streaming 的 HDInsight | Azure Databricks 中的 Apache Spark | 基于 Storm 的 HDInsight | Azure Functions | Azure 应用服务 Web 作业 |
 | --- | --- | --- | --- | --- | --- | --- | 
 | 输入 | [流分析输入](/azure/stream-analytics/stream-analytics-define-inputs)  | 事件中心、IoT 中心、Kafka、HDFS、存储 Blob、Azure Data Lake Store  | 事件中心、IoT 中心、Kafka、HDFS、存储 Blob、Azure Data Lake Store  | 事件中心、IoT 中心、存储 Blob、Azure Data Lake Store  | [支持的绑定](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | 服务总线、存储队列、存储 Blob、事件中心、WebHook、Cosmos DB、文件 |
 | 接收器 |  [流分析输出](/azure/stream-analytics/stream-analytics-define-outputs) | HDFS、Kafka、存储 Blob、Azure Data Lake Store、Cosmos DB | HDFS、Kafka、存储 Blob、Azure Data Lake Store、Cosmos DB | 事件中心、服务总线、Kafka | [支持的绑定](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | 服务总线、存储队列、存储 Blob、事件中心、WebHook、Cosmos DB、文件 | 
 
 ### <a name="processing-capabilities"></a>处理功能
+
 | | Azure 流分析 | 基于 Spark Streaming 的 HDInsight | Azure Databricks 中的 Apache Spark | 基于 Storm 的 HDInsight | Azure Functions | Azure 应用服务 Web 作业 |
 | --- | --- | --- | --- | --- | --- | --- | 
 | 内置临时/窗口化支持 | 是 | 是 | 是 | 是 | 否 | 否 |
@@ -65,4 +68,4 @@ ms.lasthandoff: 03/05/2018
 
 - [选择实时消息引入技术](./real-time-ingestion.md)
 - [比较 Apache Storm 和 Azure 流分析](/azure/stream-analytics/stream-analytics-comparison-storm)
-- [实时处理](../scenarios/real-time-processing.md)
+- [实时处理](../big-data/real-time-processing.md)

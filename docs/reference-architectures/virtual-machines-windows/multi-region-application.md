@@ -1,15 +1,15 @@
 ---
-title: "在多个 Azure 区域中运行 Windows VM 以实现高可用性"
-description: "如何在 Azure 上的多个区域中部署 VM 以实现高可用性和复原能力。"
+title: 在多个 Azure 区域中运行 Windows VM 以实现高可用性
+description: 如何在 Azure 上的多个区域中部署 VM 以实现高可用性和复原能力。
 author: MikeWasson
 ms.date: 11/22/2016
 pnp.series.title: Windows VM workloads
 pnp.series.prev: n-tier
-ms.openlocfilehash: 9c54959da96115e55ba8a5c9e0f3c358d29ce5dd
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 9772d57e6a11711d77032b049168565d52d919b8
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-windows-vms-in-multiple-regions-for-high-availability"></a>在多个区域中运行 Windows VM 以实现高可用性
 
@@ -17,7 +17,7 @@ ms.lasthandoff: 01/08/2018
 
 [![0]][0] 
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 ## <a name="architecture"></a>体系结构 
 
@@ -114,9 +114,9 @@ azure network traffic-manager  endpoint set --resource-group <resource-group> --
 * 创建一个 [Windows Server 故障转移群集][wsfc] (WSFC) 群集，使其包括两个区域中的 SQL Server 实例。 
 * 创建一个 SQL Server Always On 可用性组，使其包括主要区域和次要区域中的 SQL Server 实例。 有关步骤，请参阅[将 Always On 可用性组扩展到远程 Azure 数据中心 (PowerShell)](https://blogs.msdn.microsoft.com/sqlcat/2014/09/22/extending-alwayson-availability-group-to-remote-azure-datacenter-powershell/)。
 
-    * 将主要副本放置在主要区域中。
-    * 将一个或多个次要副本放置在主要区域中。 对它们进行配置以将同步提交与自动故障转移一起使用。
-    * 将一个或多个次要副本放置在次要区域中。 出于性能方面的原因，请对它们进行配置以使用*异步*提交。 （否则，所有 T-SQL 事务必须等待通过网络到次要区域的往返旅程。）
+  * 将主要副本放置在主要区域中。
+  * 将一个或多个次要副本放置在主要区域中。 对它们进行配置以将同步提交与自动故障转移一起使用。
+  * 将一个或多个次要副本放置在次要区域中。 出于性能方面的原因，请对它们进行配置以使用*异步*提交。 （否则，所有 T-SQL 事务必须等待通过网络到次要区域的往返旅程。）
 
     > [!NOTE]
     > 异步提交副本不支持自动故障转移。
@@ -182,7 +182,7 @@ azure network traffic-manager  endpoint set --resource-group <resource-group> --
 [tm-routing]: /azure/traffic-manager/traffic-manager-routing-methods
 [tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
 [traffic-manager]: https://azure.microsoft.com/services/traffic-manager/
-[visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [vnet-dns]: /azure/virtual-network/virtual-networks-manage-dns-in-vnet
 [vnet-to-vnet]: /azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps
 [vpn-gateway]: /azure/vpn-gateway/vpn-gateway-about-vpngateways

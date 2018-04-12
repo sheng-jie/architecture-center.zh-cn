@@ -1,7 +1,7 @@
 ---
 title: CQRS
-description: "使用独立接口将读取数据的操作与更新数据的操作分离。"
-keywords: "设计模式"
+description: 使用独立接口将读取数据的操作与更新数据的操作分离。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
@@ -9,11 +9,11 @@ pnp.pattern.categories:
 - data-management
 - design-implementation
 - performance-scalability
-ms.openlocfilehash: 80f4a8880cf2212acf82dadb67b0181e1cbae099
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: ce8d20ae82ae7d5ba00b4bc264a5c4d90fc383bd
+ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>命令和查询责任分离 (CQRS) 模式
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 01/30/2018
 
 - 请考虑将 CQRS 应用于系统中最能实现其价值的有限部分。
 
-- 部署最终一致性的典型方法是结合使用事件溯源和 CQRS，以便写入模型是由命令执行驱动的仅限附加事件流。 这些事件用于更新充当读取模型的具体化视图。 有关详细信息请参阅 [Event Sourcing and CQRS](https://msdn.microsoft.com/library/dn568103.aspx#EventSourcingandCQRS)（事件溯源和 CQRS）。
+- 部署最终一致性的典型方法是结合使用事件溯源和 CQRS，以便写入模型是由命令执行驱动的仅限附加事件流。 这些事件用于更新充当读取模型的具体化视图。 有关详细信息请参阅 [Event Sourcing and CQRS](/azure/architecture/patterns/cqrs#event-sourcing-and-cqrs)（事件溯源和 CQRS）。
 
 ## <a name="when-to-use-this-pattern"></a>何时使用此模式
 

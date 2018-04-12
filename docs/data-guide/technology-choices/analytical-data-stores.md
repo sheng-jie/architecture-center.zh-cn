@@ -1,19 +1,19 @@
 ---
-title: "选择分析数据存储"
-description: 
+title: 选择分析数据存储
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: b2e5e63982d4b89b95cd28e596d3b882a4a2263e
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: cdc32c16e30aec5e1c0cb6959182215f99d56b56
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-an-analytical-data-store-in-azure"></a>在 Azure 中选择分析数据存储
 
-在[大数据](../concepts/big-data.md)体系结构中，通常需要使用分析数据存储以可供使用分析工具进行查询的结构化格式提供处理的数据。 同时支持对热路径和冷路径进行查询的分析数据存储统称为服务层或数据服务存储。
+在[大数据](../big-data/index.md)体系结构中，通常需要使用分析数据存储以可供使用分析工具进行查询的结构化格式提供处理的数据。 同时支持对热路径和冷路径进行查询的分析数据存储统称为服务层或数据服务存储。
 
-服务层对来自热路径和冷路径的已处理数据进行处理。 在 [lambda 体系结构](../concepts/big-data.md#lambda-architecture)中，服务层又细分为一个_速度服务_层（该层存储着以增量方式处理的数据）和一个_批处理服务_层（该层包含已进行批处理的输出）。 服务层要求强力支持低延迟的随机读取。 速度层的数据存储还应当支持随机写入，因为将数据批量加载到此存储中会引起非期望的延迟。 另一方面，批处理层的数据存储不需要支持随机写入，但需要支持批量写入。
+服务层对来自热路径和冷路径的已处理数据进行处理。 在 [lambda 体系结构](../big-data/index.md#lambda-architecture)中，服务层又细分为一个_速度服务_层（该层存储着以增量方式处理的数据）和一个_批处理服务_层（该层包含已进行批处理的输出）。 服务层要求强力支持低延迟的随机读取。 速度层的数据存储还应当支持随机写入，因为将数据批量加载到此存储中会引起非期望的延迟。 另一方面，批处理层的数据存储不需要支持随机写入，但需要支持批量写入。
 
 没有通用于所有数据存储任务的单一最佳数据管理选项。 不同的数据管理解决方案针对不同的任务进行了优化。 大多数实际云应用和大数据流程都具有各种数据存储要求，并且通常使用各种数据存储解决方案的组合。
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 02/14/2018
 
 ### <a name="general-capabilities"></a>常规功能
 
-| | SQL 数据库 | SQL 数据仓库 | HBase/Phoenix on HDInsight | Hive LLAP on HDInsight | Azure Analysis Services | Cosmos DB |
+| | SQL 数据库 | SQL 数据仓库 | HBase/Phoenix on HDInsight | HDInsight 上的 Hive LLAP | Azure Analysis Services | Cosmos DB |
 | --- | --- | --- | --- | --- | --- | --- |
 | 是托管服务 | 是 | 是 | 是 <sup>1</sup> | 是 <sup>1</sup> | 是 | 是 |
 | 主数据库模型 | 关系（使用列存储索引时的纵栏格式） | 具有纵栏存储的关系表 | 宽列存储 | Hive/内存中 | 表格/MOLAP 语义模型 | 文档存储、图形、键-值存储、宽列存储 |
@@ -65,16 +65,16 @@ ms.lasthandoff: 02/14/2018
  
 ### <a name="scalability-capabilities"></a>可伸缩性功能
 
-| | SQL 数据库 | SQL 数据仓库 | HBase/Phoenix on HDInsight | Hive LLAP on HDInsight | Azure Analysis Services | Cosmos DB |
-| --- | --- | --- | --- | --- | --- | --- |
-| 用于实现高可用性的的冗余区域服务器  | 是 | 是 | 是 | 否 | 否 | 是 | 是 |
-| 支持查询横向扩展  | 否 | 是 | 是 | 是 | 是 | 是 |
-| 动态可伸缩性（纵向扩展）  | 是 | 是 | 否 | 否 | 是 | 是 |
-| 支持数据的内存中缓存 | 是 | 是 | 否 | 是 | 是 | 否 |
+|                                                  | SQL 数据库 | SQL 数据仓库 | HBase/Phoenix on HDInsight | HDInsight 上的 Hive LLAP | Azure Analysis Services | Cosmos DB |
+|--------------------------------------------------|--------------|--------------------|----------------------------|------------------------|-------------------------|-----------|
+| 用于实现高可用性的的冗余区域服务器 |     是      |        是         |            是             |           否           |           否            |    是    |
+|             支持查询横向扩展             |      否      |        是         |            是             |          是           |           是           |    是    |
+|          动态可伸缩性（纵向扩展）          |     是      |        是         |             否             |           否           |           是           |    是    |
+|        支持数据的内存中缓存        |     是      |        是         |             否             |          是           |           是           |    否     |
 
 ### <a name="security-capabilities"></a>安全功能
 
-| | SQL 数据库 | SQL 数据仓库 | HBase/Phoenix on HDInsight | Hive LLAP on HDInsight | Azure Analysis Services | Cosmos DB |
+| | SQL 数据库 | SQL 数据仓库 | HBase/Phoenix on HDInsight | HDInsight 上的 Hive LLAP | Azure Analysis Services | Cosmos DB |
 | --- | --- | --- | --- | --- | --- | --- |
 | 身份验证  | SQL / Azure Active Directory (Azure AD) | SQL / Azure AD | 本地 / Azure AD <sup>1</sup> | 本地 / Azure AD <sup>1</sup> | Azure AD | 数据库用户 / Azure AD，通过访问控制 (IAM) |
 | 静态数据加密 | 是 <sup>2</sup> | 是 <sup>2</sup> | 是 <sup>1</sup> | 是 <sup>1</sup> | 是 | 是 |

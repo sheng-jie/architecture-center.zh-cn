@@ -1,16 +1,16 @@
 ---
-title: "多租户应用程序中的授权"
-description: "如何在多租户应用程序中执行授权"
+title: 多租户应用程序中的授权
+description: 如何在多租户应用程序中执行授权
 author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: app-roles
 pnp.series.next: web-api
-ms.openlocfilehash: 86c308d21f19bb3ac2a4a2240a9a03a504de5cf4
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 03c4d5fa10c75437a7b066534619ba9a123c350c
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="role-based-and-resource-based-authorization"></a>基于角色和基于资源的授权
 
@@ -102,7 +102,6 @@ public IActionResult Create()
 ```csharp
 // old way
 [Authorize(Roles = "SurveyCreator")]
-
 ```
 
 这在 ASP.NET Core 中仍受支持，但与授权策略相比，它有一些缺点：
@@ -158,7 +157,7 @@ if (await _authorizationService.AuthorizeAsync(User, survey, Operations.Read) ==
 * 参与者
 * 创建者
 * 所有者
-* 读者
+* 读取器
 
 该应用程序还定义了一组可能的调查操作：
 
@@ -245,7 +244,7 @@ static readonly Dictionary<OperationAuthorizationRequirement, Func<List<UserPerm
     };
 ```
 
-[下一篇][web-api]
+[**下一篇**][web-api]
 
 <!-- Links -->
 [Tailspin]: tailspin.md

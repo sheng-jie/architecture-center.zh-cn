@@ -1,18 +1,18 @@
 ---
-title: "领导选拔"
-description: "通过选拔一个实例作为领导来负责管理其他实例，对分布式应用程序中协作性任务实例集合所执行的操作进行协调。"
-keywords: "设计模式"
+title: 领导选拔
+description: 通过选拔一个实例作为领导来负责管理其他实例，协调分布式应用程序中协作性任务实例集合所执行的操作。
+keywords: 设计模式
 author: dragon119
 ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
 - resiliency
-ms.openlocfilehash: ddb61097ed3229ed0ed517b94c280d3ef892c999
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 3e7d47f70f660f2507f0619e1c41bf9a32a25be4
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="leader-election-pattern"></a>领导选拔模式
 
@@ -70,9 +70,9 @@ ms.lasthandoff: 11/14/2017
 LeaderElection 解决方案中的 DistributedMutex 项目（[GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/leader-election) 上提供的演示了此模式的示例）展示了如何在 Azure 存储 blob 上使用租约来提供用于实现共享的分布式互斥体的机制。 可以使用此互斥体从 Azure 云服务中的一组角色实例中选拨领导。 第一个获得租约的角色实例被选拨为领导，并且它一直保持为领导，直到它释放租约或者无法续订租约。 其他角色实例可以继续监视 blob 租约，以防领导不再可用。
 
 >  Blob 租约是一个针对 blob 的排他写入锁。 单个 blob 在任一时刻只能是一个租约的主题。 角色实例可以请求针对指定 blob 的租约，并且如果没有其他角色实例持有针对同一 blob 的租约，则会向其授予租约。 否则，请求将引发异常。
-
+> 
 > 为避免出现错误的角色实例无限期地保留租约，请指定租约的生存期。 当生存期过期时，租约将变得可用。 不过，当角色实例持有租约时，它可以请求续订租约，并且将会授权它在更长的一段时间内使用该租约。 如果角色实例希望保留租约，则它可以不断重复此过程。
-有关如何租用 blob 的详细信息，请参阅 [Lease Blob (REST API)](https://msdn.microsoft.com/library/azure/ee691972.aspx)（租用 Blob (REST API)）。
+> 有关如何租用 blob 的详细信息，请参阅 [Lease Blob (REST API)](https://msdn.microsoft.com/library/azure/ee691972.aspx)（租用 Blob (REST API)）。
 
 下面的 C# 示例中的 `BlobDistributedMutex` 类包含 `RunTaskWhenMutexAquired` 方法，该方法使得角色实例能够尝试获得针对指定 blob 的租约。 当创建 `BlobDistributedMutex` 对象时（此对象是示例代码中包括的一个简单结构），会将该 blob 的详细信息（名称、容器和存储帐户）传递给 `BlobSettings` 对象中的构造函数。 该构造函数还接受一个 `Task`，后者引用了角色实例在成功获得针对 blob 的租约并被选拨为领导后应当运行的代码。 请注意，名为 `BlobLeaseManager` 的一个单独的帮助程序类中实现了用于处理有关获得租约的低层详细信息的代码。
 
@@ -194,7 +194,7 @@ private static async Task MyLeaderCoordinatorTask(CancellationToken token)
 
 实现此模式时，以下指南可能也比较有用：
 - 此模式具有可下载的[示例应用程序](https://github.com/mspnp/cloud-design-patterns/tree/master/leader-election)。
-- [自动缩放指南](https://msdn.microsoft.com/library/dn589774.aspx)。 可以根据应用程序上负载的变化来启动和停止任务主机的实例。 自动缩放有助于在峰值处理期间保持吞吐量和性能。
+- [Autoscaling Guidance](https://msdn.microsoft.com/library/dn589774.aspx)（自动缩放指南）。 可以根据应用程序上负载的变化来启动和停止任务主机的实例。 自动缩放有助于在峰值处理期间保持吞吐量和性能。
 - [计算分区指南](https://msdn.microsoft.com/library/dn589773.aspx)。 本指南介绍了如何将任务分配给云服务中的主机，以便最大程度地降低运行成本，同时保持服务的可伸缩性、性能、可用性和安全性。
 - [基于任务的异步模式](https://msdn.microsoft.com/library/hh873175.aspx)。
 - 展示了[欺负算法](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html)的示例。

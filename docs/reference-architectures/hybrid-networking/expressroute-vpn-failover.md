@@ -1,16 +1,16 @@
 ---
-title: "实施高可用性混合网络体系结构"
-description: "如何实施这样一个安全站点到站点网络体系结构：跨 Azure 虚拟网络，以及使用 ExpressRoute 和 VPN 网关故障转移建立连接的本地网络。"
+title: 实施高可用性混合网络体系结构
+description: 如何实施这样一个安全站点到站点网络体系结构：跨 Azure 虚拟网络，以及使用 ExpressRoute 和 VPN 网关故障转移建立连接的本地网络。
 author: telmosampaio
 ms.date: 11/28/2016
 pnp.series.title: Connect an on-premises network to Azure
 pnp.series.prev: expressroute
 cardTitle: Improving availability
-ms.openlocfilehash: 4c101f17e5e91085b61178f9efb2bc5acb61189c
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 81298215c814cee805eff57fdc28f7c127148b5f
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute-with-vpn-failover"></a>使用 ExpressRoute 和 VPN 故障转移将本地网络连接到 Azure
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/14/2017
 
 * **网关子网**。 虚拟网络网关保留在同一子网中。
 
-* **云应用程序**。 Azure 中托管的应用程序。 它可以包含多个层，以及通过 Azure 负载均衡器连接的多个子网。 有关应用程序基础结构的详细信息，请参阅[运行 Windows VM 工作负载][windows-vm-ra]和[运行 Linux VM 工作负载][linux-vm-ra]。
+* **云应用程序**。 Azure 中托管的应用程序。 它可以包含多个层，以及通过 Azure 负载均衡器连接的多个子网。 有关应用程序基础结构的详细信息，请参阅[运行 Windows VM 工作负荷][windows-vm-ra]和[运行 Linux VM 工作负荷][linux-vm-ra]。
 
 ## <a name="recommendations"></a>建议
 
@@ -134,5 +134,5 @@ Remove-AzureRmVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <
 [guidance-expressroute]: ./expressroute.md
 [guidance-vpn]: ./vpn.md
 [best-practices-security]: /azure/best-practices-network-security
-[visio-download]: https://archcenter.azureedge.net/cdn/hybrid-network-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-architectures.vsdx
 [0]: ./images/expressroute-vpn-failover.png "使用 ExpressRoute 和 VPN 网关的高可用性混合网络体系结构"

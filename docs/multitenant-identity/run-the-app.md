@@ -1,13 +1,13 @@
 ---
-title: "运行 Surveys 应用程序"
-description: "如何在本地运行 Surveys 示例应用程序"
+title: 运行 Surveys 应用程序
+description: 如何在本地运行 Surveys 示例应用程序
 author: MikeWasson
 ms:date: 07/21/2017
-ms.openlocfilehash: d17cd939c1172edd0947b30ea13657806060b5f1
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 28d976374e5d6dbad434873eef149704f26a1f3f
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-the-surveys-application"></a>运行 Surveys 应用程序
 
@@ -40,7 +40,7 @@ Tailspin 是虚构的公司，它托管着 Surveys 应用程序。 Tailspin 使�
 
     ![](./images/running-the-app/new-tenant.png)
 
-4. 单击“创建” 。 创建新目录可能需要花费几分钟时间。
+4. 单击“创建”。 创建新目录可能需要花费几分钟时间。
 
 若要完成端到端方案，你将需要另一个 Azure AD 目录来表示向应用程序进行注册的客户。 对于此用途，可以使用默认的 Azure AD 目录（不是 Tailspin），也可以创建一个新目录。 在示例中，我们使用 Contoso 作为虚构的客户。
 
@@ -52,17 +52,17 @@ Tailspin 是虚构的公司，它托管着 Surveys 应用程序。 Tailspin 使�
 
 3. 单击“应用注册” > “新建应用程序注册”。
 
-4.  在“创建”边栏选项卡中，输入以下信息：
+4. 在“创建”边栏选项卡中，输入以下信息：
 
-  - **名称**：`Surveys.WebAPI`
+   - **名称**：`Surveys.WebAPI`
 
-  - **应用程序类型**：`Web app / API`
+   - **应用程序类型**：`Web app / API`
 
-  - **登录 URL**：`https://localhost:44301/`
+   - **登录 URL**：`https://localhost:44301/`
    
-  ![](./images/running-the-app/register-web-api.png) 
+   ![](./images/running-the-app/register-web-api.png) 
 
-5. 单击“创建” 。
+5. 单击“创建”。
 
 6. 在“应用注册”边栏选项卡中，选择新的“Surveys.WebAPI”应用程序。
  
@@ -74,21 +74,21 @@ Tailspin 是虚构的公司，它托管着 Surveys 应用程序。 Tailspin 使�
 
 9. 将“多租户”设置为“是”。
 
-10. 单击“保存” 。
+10. 单击“ **保存**”。
 
 ## <a name="register-the-surveys-web-app"></a>注册 Surveys Web 应用 
 
-1.  返回到“应用注册”边栏选项卡，单击“新建应用程序注册”。
+1. 返回到“应用注册”边栏选项卡，单击“新建应用程序注册”。
 
-2.  在“创建”边栏选项卡中，输入以下信息：
+2. 在“创建”边栏选项卡中，输入以下信息：
 
-  - **名称**：`Surveys`
-  - **应用程序类型**：`Web app / API`
-  - **登录 URL**：`https://localhost:44300/`
+   - **名称**：`Surveys`
+   - **应用程序类型**：`Web app / API`
+   - **登录 URL**：`https://localhost:44300/`
    
-    注意，登录 URL 具有与上一步骤中的 `Surveys.WebAPI` 应用不同的端口号。
+   注意，登录 URL 具有与上一步骤中的 `Surveys.WebAPI` 应用不同的端口号。
 
-3. 单击“创建” 。
+3. 单击“创建”。
  
 4. 在“应用注册”边栏选项卡中，选择新的“Surveys”应用程序。
  
@@ -104,13 +104,13 @@ Tailspin 是虚构的公司，它托管着 Surveys 应用程序。 Tailspin 使�
 
 8. 将“多租户”设置为“是”。
 
-9. 单击“保存” 。
+9. 单击“ **保存**”。
 
 10. 在“设置”边栏选项卡中，单击“回复 URL”。
  
 11. 添加以下回复 URL：`https://localhost:44300/signin-oidc`。
 
-12. 单击“保存” 。
+12. 单击“ **保存**”。
 
 13. 在“API 访问”下，单击“密钥”。
 
@@ -118,7 +118,7 @@ Tailspin 是虚构的公司，它托管着 Surveys 应用程序。 Tailspin 使�
 
 15. 在“选择持续时间”下拉列表中，选择“1 年”。 
 
-16. 单击“保存” 。 保存时，将生成密钥。
+16. 单击“ **保存**”。 保存时，将生成密钥。
 
 17. 在离开此边栏选项卡之前，复制密钥的值。
 
@@ -150,36 +150,36 @@ Tailspin 是虚构的公司，它托管着 Surveys 应用程序。 Tailspin 使�
 
     ![](./images/running-the-app/manifest.png)
  
-3.  将以下 JSON 添加到 `appRoles` 元素。 为 `id` 属性生成新的 GUID。
+3. 将以下 JSON 添加到 `appRoles` 元素。 为 `id` 属性生成新的 GUID。
 
-    ```json
-    {
-      "allowedMemberTypes": ["User"],
-      "description": "Creators can create surveys",
-      "displayName": "SurveyCreator",
-      "id": "<Generate a new GUID. Example: 1b4f816e-5eaf-48b9-8613-7923830595ad>",
-      "isEnabled": true,
-      "value": "SurveyCreator"
-    },
-    {
-      "allowedMemberTypes": ["User"],
-      "description": "Administrators can manage the surveys in their tenant",
-      "displayName": "SurveyAdmin",
-      "id": "<Generate a new GUID>",  
-      "isEnabled": true,
-      "value": "SurveyAdmin"
-    }
-    ```
+   ```json
+   {
+     "allowedMemberTypes": ["User"],
+     "description": "Creators can create surveys",
+     "displayName": "SurveyCreator",
+     "id": "<Generate a new GUID. Example: 1b4f816e-5eaf-48b9-8613-7923830595ad>",
+     "isEnabled": true,
+     "value": "SurveyCreator"
+   },
+   {
+     "allowedMemberTypes": ["User"],
+     "description": "Administrators can manage the surveys in their tenant",
+     "displayName": "SurveyAdmin",
+     "id": "<Generate a new GUID>",  
+     "isEnabled": true,
+     "value": "SurveyAdmin"
+   }
+   ```
 
-5.  在 `knownClientApplications` 属性中，添加 Surveys Web 应用程序的应用程序 ID，该 ID 是在前面注册 Surveys 应用程序时获取的。 例如：
+4. 在 `knownClientApplications` 属性中，添加 Surveys Web 应用程序的应用程序 ID，该 ID 是在前面注册 Surveys 应用程序时获取的。 例如：
 
-  ```json
-  "knownClientApplications": ["be2cea23-aa0e-4e98-8b21-2963d494912e"],
-  ```
+   ```json
+   "knownClientApplications": ["be2cea23-aa0e-4e98-8b21-2963d494912e"],
+   ```
 
-  此设置将 Surveys 应用添加到被授权调用 Web API 的客户端列表。
+   此设置将 Surveys 应用添加到被授权调用 Web API 的客户端列表。
 
-6.  单击“保存” 。
+5. 单击“ **保存**”。
 
 现在，为 Surveys 应用重复相同的步骤，但是不要添加 `knownClientApplications` 的条目。 使用相同的角色定义，但是为 ID 生成新的 GUID。
 
@@ -191,7 +191,7 @@ Surveys 应用程序使用 Redis 来缓存 OAuth 2 访问令牌。 若要创建�
 
 2.  填写所需的信息，包括 DNS 名称、资源组、位置和定价层。 可以创建新的资源组，也可以使用现有资源组。
 
-3. 单击“创建” 。
+3. 单击“创建”。
 
 4. 在创建 Resis 缓存后，在门户中导航到该资源。
 

@@ -1,22 +1,22 @@
 ---
-title: "部署高可用性网络虚拟设备"
-description: "如何部署具有高可用性的网络虚拟设备。"
+title: 部署高可用性网络虚拟设备
+description: 如何部署具有高可用性的网络虚拟设备。
 author: telmosampaio
 ms.date: 12/06/2016
 pnp.series.title: Network DMZ
 pnp.series.prev: secure-vnet-dmz
 cardTitle: Deploy highly available network virtual appliances
-ms.openlocfilehash: 844c87f535d2a8cb415489cb2c8e840f8c585d7d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: fe279eea3f9cb024d6c6c14943013b9b9a87bc9c
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-highly-available-network-virtual-appliances"></a>部署具有高可用性的网络虚拟设备。
 
 本文展示了如何在 Azure 中部署一组网络虚拟设备 (NVA) 以实现高可用性。 NVA 通常用来控制从外围网络（也称为 DMZ）到其他网络或子网的网络流量流。 若要了解如何在 Azure 中实现外围网络，请参阅 [Microsoft cloud services and network security][cloud-security]（Microsoft 云服务和网络安全）。 本文包括了仅用于入口、仅用于出口和同时用于入口和出口的示例体系结构。 
 
-**先决条件：**本文假定读者对 Azure 网络、[Azure 负载均衡器][lb-overview]和[用户定义的路由][udr-overview] (UDR) 有一个基本了解。 
+<strong>先决条件：</strong>本文假定读者对 Azure 网络、[Azure 负载均衡器][lb-overview]和[用户定义的路由][udr-overview] (UDR) 有一个基本了解。 
 
 
 ## <a name="architecture-diagrams"></a>体系结构示意图

@@ -1,17 +1,20 @@
 ---
-title: "在 Azure 中创建 AD DS 资源林"
-description: "如何在 Azure 中创建受信任的 Active Directory 域。\n指南,vpn 网关,ExpressRoute,负载均衡器,虚拟网络,active-directory"
+title: 在 Azure 中创建 AD DS 资源林
+description: >-
+  如何在 Azure 中创建受信任的 Active Directory 域。
+
+  指南,vpn 网关,ExpressRoute,负载均衡器,虚拟网络,active-directory
 author: telmosampaio
 ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: adds-extend-domain
 pnp.series.next: adfs
 cardTitle: Create an AD DS forest in Azure
-ms.openlocfilehash: b946afa91e8bd303c51f97e18be170c4105cc8c5
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: e32a6420821e70c84e77d2c39614f0c45efbb7e2
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>在 Azure 中创建 Active Directory 域服务 (AD DS) 资源林
 
@@ -19,7 +22,7 @@ ms.lasthandoff: 12/08/2017
 
 [![0]][0] 
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 Active Directory 域服务 (AD DS) 以分层结构存储标识信息。 分层结构中的顶层节点称为林。 林包含域，域包含其他类型的对象。 此参考体系结构在 Azure 中创建与本地域之间具有单向传出信任关系的 AD DS 林。 Azure 中的林包含本地不存在的一个域。 由于信任关系，将信任针对本地域的登录，允许其访问该单独 Azure 域中的资源。 
 
@@ -57,7 +60,7 @@ Active Directory 域服务 (AD DS) 以分层结构存储标识信息。 分层�
 
 下表总结了一些简单方案的信任配置：
 
-| 场景 | 本地信任 | 云信任 |
+| 方案 | 本地信任 | 云信任 |
 | --- | --- | --- |
 | 本地用户需要访问云中的资源，但云中的用户不需要访问本地资源 |单向、传入 |单向、传出 |
 | 云中的用户需要访问本地资源，本地用户不需要访问云中的资源 |单向、传出 |单向、传入 |
@@ -117,8 +120,8 @@ Active Directory 能够针对属于同一域的域控制器自动进行缩放。
      
 5. 如果使用模拟的本地配置，请配置传入信任关系：
    
-   1. 连接到 jumpbox（*ra-adtrust-security-rg* 资源组中的 *ra-adtrust-mgmt-vm1*）。 以 *testuser* 身份和密码 *AweS0me@PW* 登录。
-   2. 在 jumpbox 上，在 *contoso.com* 域（本地域）中的第一个 VM 上打开一个 RDP 会话。 此 VM 具有 IP 地址 192.168.0.4。 用户名为 *contoso\testuser*，密码为 *AweS0me@PW*。
+   1. 连接到 jumpbox（<em>ra-adtrust-security-rg</em> 资源组中的 <em>ra-adtrust-mgmt-vm1</em>）。 以 <em>testuser</em> 身份和密码 <em>AweS0me@PW</em> 登录。
+   2. 在 jumpbox 上，在 <em>contoso.com</em> 域（本地域）中的第一个 VM 上打开一个 RDP 会话。 此 VM 具有 IP 地址 192.168.0.4。 用户名为 <em>contoso\testuser</em>，密码为 <em>AweS0me@PW</em>。
    3. 下载 [incoming-trust.ps1][incoming-trust] 脚本并运行它来创建来自 *treyresearch.com* 域的传入信任。
 
 6. 如果你使用自己的本地基础结构：
@@ -127,7 +130,7 @@ Active Directory 能够针对属于同一域的域控制器自动进行缩放。
    2. 编辑脚本并将 `$TrustedDomainName` 变量的值替换为你自己的域的值。
    3. 运行该脚本。
 
-7. 从 jumpbox 中，连接到 *treyresearch.com* 域（云中的域）中的第一个 VM。 此 VM 具有 IP 地址 10.0.4.4。 用户名为 *treyresearch\testuser*，密码为 *AweS0me@PW*。
+7. 从 jumpbox 中，连接到 <em>treyresearch.com</em> 域（云中的域）中的第一个 VM。 此 VM 具有 IP 地址 10.0.4.4。 用户名为 <em>treyresearch\testuser</em>，密码为 <em>AweS0me@PW</em>。
 
 8. 下载 [outgoing-trust.ps1][outgoing-trust] 脚本并运行它来创建来自 *treyresearch.com* 域的传入信任。 如果你在使用自己的本地计算机，请先编辑该脚本。 将 `$TrustedDomainName` 变量设置为你的本地域的名称，在 `$TrustedDomainDnsIpAddresses` 变量中指定此域的 Active Directory DS 服务器的 IP 地址。
 
@@ -162,5 +165,5 @@ Active Directory 能够针对属于同一域的域控制器自动进行缩放。
 [standby-operations-masters]: https://technet.microsoft.com/library/cc794737(v=ws.10).aspx
 [outgoing-trust]: https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/adds-forest/extensions/outgoing-trust.ps1
 [verify-a-trust]: https://technet.microsoft.com/library/cc753821.aspx
-[visio-download]: https://archcenter.azureedge.net/cdn/identity-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
 [0]: ./images/adds-forest.png "使用独立的 Active Directory 域保护混合网络体系结构的安全"

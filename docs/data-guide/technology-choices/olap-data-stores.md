@@ -1,13 +1,13 @@
 ---
-title: "选择 OLAP 数据存储"
-description: 
+title: 选择 OLAP 数据存储
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
 ms.openlocfilehash: f3041b95696c9408a2c9ab747fe1ec3041db0743
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/31/2018
 ---
 # <a name="choosing-an-olap-data-store-in-azure"></a>在 Azure 中选择 OLAP 数据存储
 

@@ -1,15 +1,16 @@
 ---
-title: "Azure 应用程序的高可用性"
-description: "有关在 Microsoft Azure 上设计和构建应用程序以实现高可用性的技术概述与深入信息。"
+title: Azure 应用程序的高可用性
+description: 有关在 Microsoft Azure 上设计和构建应用程序以实现高可用性的技术概述与深入信息。
 author: adamglick
 ms.date: 05/31/2017
-ms.openlocfilehash: 46b7b802326a8de03546528aaeb1a1c6419d41db
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: f116b9e64f1722b5141ae90239d5c8a8b4a89487
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [header](../_includes/header.md)]
+
 # <a name="high-availability-for-applications-built-on-microsoft-azure"></a>构建在 Microsoft Azure 基础之上的应用程序高可用性
 高度可用的应用程序可消减依赖的服务和硬件在可用性、负载和临时故障方面的波动。 应用程序以可接受的性能继续运行，如业务要求或应用程序服务级别协议 (SLA) 所定义。
 

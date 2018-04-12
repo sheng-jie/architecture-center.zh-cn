@@ -1,14 +1,14 @@
 ---
-title: "DevOps 清单"
-description: "提供与 DevOps 相关指南的清单。"
+title: DevOps 清单
+description: 提供与 DevOps 相关指南的清单。
 author: dragon119
 ms.date: 01/10/2018
 ms.custom: checklist
-ms.openlocfilehash: 356fef2415347ae132915695a25fd9b50779bd8b
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 2e338d2f2e61b404223001a61f44e06e89e7f563
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="devops-checklist"></a>DevOps 查检表
 
@@ -130,7 +130,7 @@ DevOps 是指将开发、质量保证和 IT 运营集成到统一的环境以及
 
 **授予资源访问权限时，请遵循最低特权原则。** 谨慎管理资源的访问权限。 除非要显式授予某个用户对某个资源的访问权限，否则应默认拒绝访问。 只向用户授予完成其任务所需的访问权限。 跟踪用户权限并执行定期安全审核。
 
-**使用基于角色的访问控制。** 分配用户帐户和资源访问权限不应是手动过程。 请使用[基于角色的访问控制][rbac] (RBAC)，基于 [Azure Active Directory][azure-ad] 标识和组来授予访问权限。 
+<strong>使用基于角色的访问控制。</strong> 分配用户帐户和资源访问权限不应是手动过程。 请使用[基于角色的访问控制][rbac] (RBAC)，基于 [Azure Active Directory][azure-ad] 标识和组来授予访问权限。 
 
 **使用 bug 跟踪系统来跟踪问题。** 如果没有适当的问题跟踪方法，则很容易丢失项、产生重复工作，或造成其他问题。 不要依赖于非正式的人际交流来跟踪 bug 状态。 请使用 bug 跟踪工具来记录有关问题的详细信息、分配资源来解决问题，并提供进度和状态的审核线索。 
 

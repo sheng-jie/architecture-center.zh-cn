@@ -1,17 +1,17 @@
 ---
-title: "将本地 AD 域与 Azure Active Directory 集成"
-description: "如何使用 Active Directory 实施安全的混合网络体系结构。"
+title: 将本地 AD 域与 Azure Active Directory 集成
+description: 如何使用 Active Directory 实施安全的混合网络体系结构。
 author: telmosampaio
 pnp.series.title: Identity management
 ms.date: 11/28/2016
 pnp.series.next: adds-extend-domain
 pnp.series.prev: ./index
 cardTitle: Integrate on-premises AD with Azure AD
-ms.openlocfilehash: dd4cf0369974ea68d240ed294b1c50972d361d74
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 431de4b2e08c79f70cc9830fda8315e07bf22c64
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>将本地 Active Directory 域与 Azure Active Directory 集成
 
@@ -19,7 +19,7 @@ Azure Active Directory (Azure AD) 是一种基于云的多租户目录和标识�
 
 [![0]][0] 
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 > [!NOTE]
 > 为简单起见，此图仅展示了与 Azure AD 直接相关的连接，而未展示在身份验证和联合身份验证过程中可能产生的协议相关流量。 例如，Web 应用程序可能重定向 Web 浏览器，以便通过 Azure AD 对请求进行身份验证。 经过身份验证后，可以将带有相应标识信息的请求传递回 Web 应用程序。
@@ -260,7 +260,7 @@ GitHub 上提供了可实施这些建议和注意事项的参考体系结构部�
 [considerations]: ./considerations.md
 [resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview
 [sla-aad]: https://azure.microsoft.com/support/legal/sla/active-directory/v1_0/
-[visio-download]: https://archcenter.azureedge.net/cdn/identity-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
 
 
 [0]: ./images/azure-ad.png "使用 Azure Active Directory 的云标识体系结构"

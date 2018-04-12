@@ -1,13 +1,13 @@
 ---
-title: "将对象用作 Azure 资源管理器模板中的参数"
-description: "介绍如何扩展 Azure 资源管理器模板的功能，以便将对象用作参数"
+title: 将对象用作 Azure 资源管理器模板中的参数
+description: 介绍如何扩展 Azure 资源管理器模板的功能，以便将对象用作参数
 author: petertay
 ms.date: 06/09/2017
-ms.openlocfilehash: 08ee1cf2924f78ce366c58e20e84a512785f85cc
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 76f8b9d459f4ab3147b52762b7c26552ec92c7a3
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-an-object-as-a-parameter-in-an-azure-resource-manager-template"></a>将对象用作 Azure 资源管理器模板中的参数
 
@@ -294,7 +294,6 @@ ms.lasthandoff: 11/14/2017
   ],          
   "outputs": {}
 }
-
 ```
 
 让我们详细了解如何在 `securityRules` 子资源中指定属性值。 所有的属性都使用 `parameter()` 函数进行引用，然后我们使用点运算符引用根据迭代的当前值建立索引的 `securityRules` 数组。 最后，使用另一个点运算符引用对象名称。 

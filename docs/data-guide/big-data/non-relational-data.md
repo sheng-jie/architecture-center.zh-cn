@@ -3,17 +3,17 @@ title: 非关系数据和 NoSQL
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 8dd8f2b9dfef680f99c9c6b32aacf019c13095b0
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 2c284099bd7e8bbb85f1252a24d699d9fca09eae
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="non-relational-data-and-nosql"></a>非关系数据和 NoSQL
 
 非关系数据库是一种不使用表格架构的数据库，这种包含行和列的架构在传统的数据库系统中很常见。 与传统数据库相反，非关系数据库使用经过优化的存储模型，符合所存储数据类型的具体要求。 例如，可以将数据存储为简单的键值对、JSON 文档或者由边缘和顶点组成的图形。 
 
-所有这些数据存储的共同点是不使用[关系模型](./relational-data.md)。 另外，这些数据存储会尽量细化所支持的数据类型以及所允许的数据查询方式。 例如，时序数据存储适用于对基于时间的数据序列进行查询，而图形数据存储则适用于对实体之间的权重关系进行分析。 这两种格式都不适合事务数据管理任务。 
+所有这些数据存储的共同点是不使用[关系模型](../relational-data/index.md)。 另外，这些数据存储会尽量细化所支持的数据类型以及所允许的数据查询方式。 例如，时序数据存储适用于对基于时间的数据序列进行查询，而图形数据存储则适用于对实体之间的权重关系进行分析。 这两种格式都不适合事务数据管理任务。 
 
 *NoSQL* 这个术语是指一类数据存储，此类存储不使用 SQL 而是使用其他编程语言和构造来查询数据。 在实践中，“NoSQL”是指“非关系数据库”，虽然许多此类数据库支持 SQL 兼容查询。 但是，其基础查询执行策略通常与传统 RDBMS 执行 SQL 查询的方式有很大的不同。
 

@@ -1,13 +1,13 @@
 ---
-title: "在 Azure 上部署 SAP NetWeaver 和 SAP HANA"
-description: "有关在 Azure 上的高可用性环境中运行 SAP HANA 的成熟做法。"
+title: 在 Azure 上部署 SAP NetWeaver 和 SAP HANA
+description: 有关在 Azure 上的高可用性环境中运行 SAP HANA 的成熟做法。
 author: njray
 ms.date: 06/29/2017
-ms.openlocfilehash: 27a97103c0c6f305cb8e830d670c8d0ba7e22aa5
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 33171164c59a520a87ef3209c5bb1b208377221c
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="deploy-sap-netweaver-and-sap-hana-on-azure"></a>在 Azure 上部署 SAP NetWeaver 和 SAP HANA
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="recommendations"></a>建议
 
-你的要求可能与此处描述的体系结构不同。 请使用以下建议作为入手点。
+你的要求可能不同于此处描述的体系结构。 请使用以下建议作为入手点。
 
 ### <a name="load-balancers"></a>负载均衡器
 
@@ -235,7 +235,7 @@ SAP 具有自身的用户管理引擎 (UME)，可在 SAP 应用程序中控制�
 [sap-hana-on-azure]: https://azure.microsoft.com/services/virtual-machines/sap-hana/
 [sap-netweaver-dr]: http://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx
 [sap-security]: https://archive.sap.com/documents/docs/DOC-62943
-[visio-download]: https://archcenter.azureedge.net/cdn/SAP-HANA-architecture.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/SAP-HANA-architecture.vsdx
 [vm-sizes-mem]: /azure/virtual-machines/windows/sizes-memory
 [swd]: https://help.sap.com/doc/saphelp_nw70ehp2/7.02.16/en-us/48/8fe37933114e6fe10000000a421937/frameset.htm
 [0]: ./images/sap-hana.png "使用 Microsoft Azure 的 SAP HANA 体系结构"

@@ -1,13 +1,13 @@
 ---
-title: "选择批处理技术"
-description: 
+title: 选择批处理技术
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: bfb850ee8e9d8fd41927b4ca3b612e15b5ae6b11
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 0117798af82f2caa6704dc86e88be57f09c381ea
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-a-batch-processing-technology-in-azure"></a>在 Azure 中选择批处理技术
 
@@ -53,8 +53,9 @@ ms.lasthandoff: 02/14/2018
 | 定价模型 | 按批处理作业 | 按群集小时 | 按群集小时 | 按群集小时 | 按群集小时 |  
 
 [1] 使用手动配置和缩放。
- 
+
 ### <a name="integration-capabilities"></a>集成功能
+
 | | Azure Data Lake Analytics | SQL 数据仓库 | 基于 Spark 的 HDInsight | 基于 Hive 的 HDInsight | 基于 Hive LLAP 的 HDInsight |
 | --- | --- | --- | --- | --- | --- |
 | 从 Azure Data Lake Store 进行访问 | 是 | 是 | 是 | 是 | 是 |
@@ -62,6 +63,7 @@ ms.lasthandoff: 02/14/2018
 | 从外部关系存储进行查询 | 是 | 否 | 是 | 否 | 否 |
 
 ### <a name="scalability-capabilities"></a>可伸缩性功能
+
 | | Azure Data Lake Analytics | SQL 数据仓库 | 基于 Spark 的 HDInsight | 基于 Hive 的 HDInsight | 基于 Hive LLAP 的 HDInsight |
 | --- | --- | --- | --- | --- | --- |
 | 横向扩展粒度  | 按作业 | 按群集 | 按群集 | 按群集 | 按群集 |
@@ -69,7 +71,8 @@ ms.lasthandoff: 02/14/2018
 | 数据的内存中缓存 | 否 | 是 | 是 | 否 | 是 | 
 
 ### <a name="security-capabilities"></a>安全功能
-| | Azure Data Lake Analytics | SQL 数据仓库 | 基于 Spark 的 HDInsight | Apache Hive on HDInsight | Hive LLAP on HDInsight |
+
+| | Azure Data Lake Analytics | SQL 数据仓库 | 基于 Spark 的 HDInsight | Apache Hive on HDInsight | HDInsight 上的 Hive LLAP |
 | --- | --- | --- | --- | --- | --- |
 | 身份验证  | Azure Active Directory (Azure AD) | SQL / Azure AD | 否 | 本地 / Azure AD <sup>1</sup> | 本地 / Azure AD <sup>1</sup> |
 | 授权  | 是 | 是| 否 | 是 <sup>1</sup> | 是 <sup>1</sup> |

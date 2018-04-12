@@ -1,15 +1,16 @@
 ---
-title: "技术指南：从本地恢复到 Azure"
-description: "本文可帮助了解和设计从本地基础结构到 Azure 的恢复系统"
+title: 技术指南：从本地恢复到 Azure
+description: 本文可帮助了解和设计从本地基础结构到 Azure 的恢复系统
 author: adamglick
 ms.date: 08/18/2016
-ms.openlocfilehash: f5ce86dbd605fa7dc74e6a7cc97f0d6c6acd79e5
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 6992e27d148074b3d60c282318741f45974d1afd
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [header](../_includes/header.md)]
+
 # <a name="azure-resiliency-technical-guidance-recovery-from-on-premises-to-azure"></a>Azure 复原技术指南：从本地恢复到 Azure
 Azure 提供一整套服务，可让你将本地数据中心扩展到 Azure，用于高可用性和灾难恢复目的：
 
@@ -18,7 +19,7 @@ Azure 提供一整套服务，可让你将本地数据中心扩展到 Azure，�
 * **存储**：StorSimple 可将文件系统扩展到 Azure 存储。 Azure 备份服务提供将文件和 SQL 数据库备份到 Azure 存储的功能。
 * **数据库复制**：使用 SQL 2014（或更高版本）可用性组，可以为本地数据实现高可用性和灾难恢复。
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 可以使用 Azure 虚拟网络在 Azure 中创建一个逻辑上独立的部分，并可使用 IPsec 连接将其连接到本地数据中心或单个客户端计算机。 通过虚拟网络，可轻松地利用 Azure 中按需可缩放的基础架构，同时可连接到本地数据和应用程序，包括 Windows Server、大型机和 UNIX 上运行的系统。 有关详细信息，请参阅 [Azure 网络文档](/azure/virtual-network/virtual-networks-overview/)。
 
 ## <a name="compute"></a>计算
@@ -62,7 +63,7 @@ AlwaysOn 可用性组可在本地和云中都有数据库副本的混合 IT 环�
 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr/)和 [Azure 虚拟机中 SQL Server 的备份和还原](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery/)。
 
 ## <a name="checklists-for-on-premises-recovery-in-microsoft-azure"></a>Microsoft Azure 中的本地恢复清单
-### <a name="networking"></a>联网
+### <a name="networking"></a>网络
 1. 查看本文档的“网络”部分。
 2. 使用虚拟网络安全地将本地部署与云相连。
 

@@ -1,17 +1,17 @@
 ---
-title: "可缩放的 Web 应用程序"
-description: "提高在 Microsoft Azure 中运行的 Web 应用程序的可伸缩性。"
+title: 可缩放的 Web 应用程序
+description: 提高在 Microsoft Azure 中运行的 Web 应用程序的可伸缩性。
 author: MikeWasson
 pnp.series.title: Azure App Service
 pnp.series.prev: basic-web-app
 pnp.series.next: multi-region-web-app
 ms.date: 11/23/2016
 cardTitle: Improve scalability
-ms.openlocfilehash: 4ad12fb041a79fcb706530c9968fd0f96211d7f9
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: 6459acebfa25491332e2118b9e8fe51d5fc79ff3
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="improve-scalability-in-a-web-application"></a>提高 Web 应用程序的可伸缩性
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/30/2018
 * **WebJob**。 使用 [Azure WebJobs][webjobs] 在后台运行长时间运行的任务。 WebJobs 可以按计划运行、持续运行或者以响应触发器的方式运行，例如将消息放置到队列中。 WebJob 可在应用服务应用上下文中作为后台进程运行。
 * **队列**。 在此处显示的体系结构中，应用程序通过向 [Azure 队列存储][queue-storage]队列放置消息，将后台任务排队。 消息触发 WebJob 中的函数。 也可使用服务总线队列。 如需比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照][queues-compared]。
 * **缓存**。 在 [Azure Redis 缓存][azure-redis]中存储半静态数据。  
-* **CDN**。 使用 [Azure 内容交付网络][azure-cdn] (CDN) 缓存公开提供的内容，以便降低延迟并加快内容交付速度。
+* <strong>CDN</strong>。 使用 [Azure 内容交付网络][azure-cdn] (CDN) 缓存公开提供的内容，以便降低延迟并加快内容交付速度。
 * **数据存储**。 对关系数据使用 [Azure SQL 数据库][sql-db]。 对于非关系数据，可考虑使用 NoSQL 存储，例如 [Cosmos DB][cosmosdb]。
 * **Azure 搜索**。 使用 [Azure 搜索][azure-search]添加搜索功能，例如搜索建议、模糊搜索、特定于语言的搜索。 Azure 搜索通常与其他数据存储结合使用，尤其是在主数据存储对一致性要求严格的情况下。 此方法将权威数据存储在其他数据存储中，将搜索索引存储在 Azure 搜索中。 也可使用 Azure 搜索合并来自多个数据存储的单一搜索索引。  
 * **电子邮件/短信**。 使用第三方服务（例如 SendGrid 或 Twilio）发送电子邮件或短信，而不是将此功能直接内置到应用程序中。
@@ -148,7 +148,7 @@ Azure 搜索没有在主数据存储中执行复杂的数据搜索所需的开�
 [sql-elastic]: /azure/sql-database/sql-database-elastic-scale-introduction
 [sql-encryption]: https://msdn.microsoft.com/library/dn948096.aspx
 [tm]: https://azure.microsoft.com/services/traffic-manager/
-[visio-download]: https://archcenter.azureedge.net/cdn/app-service-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/app-service-reference-architectures.vsdx
 [web-app-multi-region]: ./multi-region.md
 [webjobs-guidance]: ../../best-practices/background-jobs.md
 [webjobs]: /azure/app-service/app-service-webjobs-readme

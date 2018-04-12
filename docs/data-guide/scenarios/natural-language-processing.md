@@ -1,13 +1,13 @@
 ---
-title: "自然语言处理"
-description: 
+title: 自然语言处理
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: c03e2d017f9b4eb955a0e3494b5bc6c2603d1058
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 0afd8ac9a8a2e56f79ade0b2e10328630866c03c
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="natural-language-processing"></a>自然语言处理
 
@@ -34,7 +34,7 @@ NLP 可以用来对文档进行分类，例如将文档标记为敏感文档或�
 
 ## <a name="architecture"></a>体系结构
 
-在 NLP 解决方案中，可以对包含文本段落的文档执行自由格式文本处理。 总体体系结构可以是[批处理](./batch-processing.md)或[实时流处理](./real-time-processing.md)体系结构。
+在 NLP 解决方案中，可以对包含文本段落的文档执行自由格式文本处理。 总体体系结构可以是[批处理](../big-data/batch-processing.md)或[实时流处理](../big-data/real-time-processing.md)体系结构。
 
 实际处理因所需的输出而异，但是就管道而言，可以采用批处理方式或实时方式来应用 NLP。 例如，可以对文本块使用情绪分析来生成情绪分数。 可以通过对存储中的数据运行批处理来执行此操作，或者使用流经消息传递服务的较小数据块实时执行此操作。
 

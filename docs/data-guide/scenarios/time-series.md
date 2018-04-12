@@ -1,13 +1,13 @@
 ---
-title: "时序数据"
-description: 
+title: 时序数据
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: ceb8f34d4fd950e5270edfea05945a824c4492f0
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 80ff6c45988062afcb0eb92cc79e640d39dbb21f
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="time-series-solutions"></a>时序解决方案
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/14/2018
 
 IoT 设备收集的数据原生就很适合时序存储和分析。 传入的数据将会插入而极少更新（甚至不会更新）。 数据带有时间戳，按接收顺序插入并按时间顺序显示，使用户能够发现趋势、查明异常，并将这些信息用于预测分析。
 
-有关详细信息，请参阅[物联网](../concepts/big-data.md#internet-of-things-iot)。
+有关详细信息，请参阅[物联网](../big-data/index.md#internet-of-things-iot)。
 
 ### <a name="real-time-analytics"></a>实时分析
 
@@ -57,7 +57,7 @@ IoT 设备收集的数据原生就很适合时序存储和分析。 传入的数
 
 ## <a name="architecture"></a>体系结构
 
-在涉及到时序数据的许多方案（例如 IoT）中，数据是实时捕获的。 因此，[实时处理](./real-time-processing.md)体系结构比较适合。 
+在涉及到时序数据的许多方案（例如 IoT）中，数据是实时捕获的。 因此，[实时处理](../big-data/real-time-processing.md)体系结构比较适合。 
 
 [IoT 中心](/azure/iot-hub/)、[事件中心](/azure/event-hubs/)或 [Kafka on HDInsight](/azure/hdinsight/kafka/apache-kafka-introduction) 会将一个或多个数据源的数据引入流缓冲层。 接下来，在流处理层中处理数据。该层可以选择性地将处理后的数据转发到机器学习服务进行预测分析。 处理后的数据存储在 [HBase](/azure/hdinsight/hbase/apache-hbase-overview)、[Azure Cosmos DB](/azure/cosmos-db/)、Azure Data Lake 或 Blob 存储等分析数据存储中。 可以使用 Power BI 或 OpenTSDB（如果数据存储在 HBase 中）等分析和报告应用程序或服务来显示要分析的时序数据。
 

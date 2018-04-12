@@ -1,17 +1,17 @@
 ---
-title: "在 Azure 中实现安全的混合网络体系结构"
-description: "如何在 Azure 中实现安全的混合网络体系结构。"
+title: 在 Azure 中实现安全的混合网络体系结构
+description: 如何在 Azure 中实现安全的混合网络体系结构。
 author: telmosampaio
 ms.date: 11/23/2016
 pnp.series.title: Network DMZ
 pnp.series.prev: ./index
 pnp.series.next: secure-vnet-dmz
 cardTitle: DMZ between Azure and on-premises
-ms.openlocfilehash: 778d5ef6967a09b03bb6b5aca67e3e0c170ad016
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 81dea2e4439d5a01ebb88ab86dc0a59609bb7bc3
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="dmz-between-azure-and-your-on-premises-datacenter"></a>Azure 与本地数据中心之间的 DMZ
 
@@ -19,7 +19,7 @@ ms.lasthandoff: 11/14/2017
 
 [![0]][0] 
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 此体系结构需要使用 [VPN 网关][ra-vpn]或 [ExpressRoute][ra-expressroute] 连接来连接到本地数据中心。 此体系结构的典型用途包括：
 
@@ -179,7 +179,7 @@ NVA 前面的负载均衡器还通过忽略在负载均衡规则中未打开的�
 * 有关使用 Azure 管理网络安全的详细信息，请参阅 [Microsoft 云服务和网络安全][cloud-services-network-security]。
 * 有关在 Azure 中保护资源的详细信息，请参阅 [Microsoft Azure 安全入门][getting-started-with-azure-security]。 
 * 有关解决 Azure 网关连接上的安全问题的其他详细信息，请参阅[使用 Azure 和本地 VPN 实现混合网络体系结构][guidance-vpn-gateway-security]和[使用 Azure ExpressRoute 实现混合网络体系结构][guidance-expressroute-security]。
-> 
+  > 
 
 <!-- links -->
 
@@ -210,6 +210,6 @@ NVA 前面的负载均衡器还通过忽略在负载均衡规则中未打开的�
 [routing-and-remote-access-service]: https://technet.microsoft.com/library/dd469790(v=ws.11).aspx
 [security-principle-of-least-privilege]: https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1
 [udr-overview]: /azure/virtual-network/virtual-networks-udr-overview
-[visio-download]: https://archcenter.azureedge.net/cdn/dmz-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/dmz-reference-architectures.vsdx
 [wireshark]: https://www.wireshark.org/
 [0]: ./images/dmz-private.png "保护混合网络体系结构"

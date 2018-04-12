@@ -3,11 +3,11 @@ title: 实时处理
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: f1054ce5e8c2053aa4f80d8b472604125ba47187
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 8d3497c37d15dc0aa4645ddfce3bd30740217b2c
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="real-time-processing"></a>实时处理
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/31/2018
 
 ### <a name="data-storage"></a>数据存储
 
-- **Azure 存储 Blob 容器**或 **Azure Data Lake Store**。 传入的实时数据通常在消息中转站中捕获（如上所述），但在某些情况下，最好是监视文件夹中的新文件，并在创建或更新文件时对其进行处理。 此外，许多实时处理解决方案将流数据与静态引用数据合并，这些数据可存储在文件存储中。 最后，可将文件存储用作捕获的实时数据的输出目标，以便存档，或者在 [lambda 体系结构](../concepts/big-data.md#lambda-architecture)中做进一步的批处理。
+- **Azure 存储 Blob 容器**或 **Azure Data Lake Store**。 传入的实时数据通常在消息中转站中捕获（如上所述），但在某些情况下，最好是监视文件夹中的新文件，并在创建或更新文件时对其进行处理。 此外，许多实时处理解决方案将流数据与静态引用数据合并，这些数据可存储在文件存储中。 最后，可将文件存储用作捕获的实时数据的输出目标，以便存档，或者在 [lambda 体系结构](../big-data/index.md#lambda-architecture)中做进一步的批处理。
 
 有关详细信息，请参阅[数据存储](../technology-choices/data-storage.md)。
 

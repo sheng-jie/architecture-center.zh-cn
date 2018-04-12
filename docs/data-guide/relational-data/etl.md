@@ -3,11 +3,11 @@ title: 提取、转换和加载 (ETL)
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: a980c1f8aef99fc263083e5e496b1340204f7dac
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 1879b649fa3dfdf5c00f8ee30e53b83f7139fbf0
+ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="extract-transform-and-load-etl"></a>提取、转换和加载 (ETL)
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 03/31/2018
 
 数据转换通常涉及到各种操作，例如筛选、排序、聚合、联接数据、清理数据、删除重复数据和验证数据。
 
-![提取-转换-加载 (ETL) 过程](./images/etl.png)
+![提取-转换-加载 (ETL) 过程](../images/etl.png)
 
 通常，三个 ETL 阶段是同时运行的，以节省时间。 例如，在提取数据时，转换过程可以处理已收到的数据并做好加载数据的准备，加载过程可以开始处理已准备好的数据，而无需等待整个提取过程完成。
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/31/2018
 
 提取、加载和转换 (ELT) 与 ETL 的唯一不同之处在于转换的发生位置。 在 ELT 管道中，转换发生在目标数据存储中。 在不使用单独转换引擎的情况下，将使用目标数据存储的处理功能来转换数据。 这就从管道中删除了转换引擎，从而简化了体系结构。 此方法的另一个好处是，缩放目标数据存储也会缩放 ELT 管道性能。 但是，仅当目标系统足够强大，可以有效转换数据时，ELT 才能正常工作。
 
-![提取-加载-转换 (ELT) 过程](./images/elt.png)
+![提取-加载-转换 (ELT) 过程](../images/elt.png)
 
 ELT 的典型用例属于大数据领域。 例如，首先可将所有源数据提取到 Hadoop 分布式文件系统 (HDFS) 或 Azure Data Lake Store 等可缩放存储中的平面文件。 然后，可以使用 Spark、Hive 或 PolyBase 等技术查询源数据。 ELT 的关键之处在于，用于执行转换的数据存储是最终要在其中使用数据的同一数据存储。 此数据存储直接从可缩放的存储读取，而不是将数据载入其自身的专有存储。 此方法跳过了 ETL 中存在的数据复制步骤，针对大型数据集运行时可能很耗时。
 
@@ -62,7 +62,7 @@ ELT 管道的最后一个阶段通常是将源数据转换为最终格式，对�
 
 控制流以任务的形式执行数据流。 在数据流任务中，会从源提取数据、转换数据，或将数据载入数据存储。 一个数据流任务的输出可以是下一个数据流任务的输入，数据流可以并行运行。 与控制流不同，无法在数据流中的任务之间添加约束。 但是，可以添加数据查看器来观察每个任务处理的数据。
 
-![控制流中正在以任务形式执行的数据流](./images/control-flow-data-flow.png)
+![控制流中正在以任务形式执行的数据流](../images/control-flow-data-flow.png)
 
 在上图中，控制流包含多个任务，其中一个任务是数据流任务。 有一个任务嵌套在容器中。 可以使用容器来提供任务结构和工作单元。 一个例子是使用容器来重复集合中的元素，例如文件夹中的文件，或数据库语句。
 
@@ -74,7 +74,7 @@ ELT 管道的最后一个阶段通常是将源数据转换为最终格式，对�
 
 ## <a name="technology-choices"></a>技术选择
 
-- [联机事务处理 (OLTP) 数据存储](../technology-choices/oltp-data-stores.md)
-- [联机分析处理 (OLAP) 数据存储](../technology-choices/olap-data-stores.md)
-- [数据仓库](../technology-choices/data-warehouses.md)
+- [联机事务处理 (OLTP) 数据存储](./online-transaction-processing.md#oltp-in-azure)
+- [联机分析处理 (OLAP) 数据存储](./online-analytical-processing.md#olap-in-azure)
+- [数据仓库](./data-warehousing.md)
 - [管道业务流程](../technology-choices/pipeline-orchestration-data-movement.md)

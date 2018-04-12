@@ -1,15 +1,15 @@
 ---
-title: "在多个 Azure 区域中运行 Linux VM 以实现高可用性"
-description: "如何在 Azure 上的多个区域中部署 VM 以实现高可用性和复原能力。"
+title: 在多个 Azure 区域中运行 Linux VM 以实现高可用性
+description: 如何在 Azure 上的多个区域中部署 VM 以实现高可用性和复原能力。
 author: MikeWasson
 ms.date: 11/22/2016
 pnp.series.title: Linux VM workloads
 pnp.series.prev: n-tier
-ms.openlocfilehash: 7d720a004d21edbffc0ddeba54e291aa817550e0
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 07ccf44f28203e6d5001475b47adce01437e9600
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="run-linux-vms-in-multiple-regions-for-high-availability"></a>在多个区域中运行 Linux VM 以实现高可用性
 
@@ -17,7 +17,7 @@ ms.lasthandoff: 01/08/2018
 
 ![[0]][0]
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 ## <a name="architecture"></a>体系结构 
 
@@ -150,6 +150,6 @@ Cassandra 数据中心是一组相关的数据节点，这些节点一起配置�
 [tm-routing]: /azure/traffic-manager/traffic-manager-routing-methods
 [tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
 [traffic-manager]: https://azure.microsoft.com/services/traffic-manager/
-[visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [wsfc]: https://msdn.microsoft.com/library/hh270278.aspx
 [0]: ./images/multi-region-application-diagram.png "Azure N 层应用程序的高可用性网络体系结构"

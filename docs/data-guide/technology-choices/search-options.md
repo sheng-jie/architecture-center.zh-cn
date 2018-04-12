@@ -1,13 +1,13 @@
 ---
-title: "选择搜索数据存储"
-description: 
+title: 选择搜索数据存储
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 7fe5952c880921984beb30c71458fd1ef72ef239
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: ead07e307e96696faa5ddf48505eee378027523c
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-a-search-data-store-in-azure"></a>在 Azure 中选择搜索数据存储
 
@@ -42,6 +42,7 @@ ms.lasthandoff: 02/14/2018
 以下各表汇总了功能上的关键差异。
 
 ### <a name="general-capabilities"></a>常规功能
+
 | | Azure 搜索 | Elasticsearch | 基于 Solr 的 HDInsight | SQL 数据库 | 
 | --- | --- | --- | --- | --- | 
 | 是托管服务 | 是 | 否 | 是 | 是 |  
@@ -50,12 +51,14 @@ ms.lasthandoff: 02/14/2018
 | 常见文件类型（PDF、DOCX、TXT、等等）的文档索引器 | 是 | 否 | 是 | 否 |
 
 ### <a name="manageability-capabilities"></a>可管理性功能
+
 | | Azure 搜索 | Elasticsearch | 基于 Solr 的 HDInsight | SQL 数据库 | 
 | --- | --- | --- | --- | --- |
 | 可更新架构 | 否 | 是 | 是 | 是 |
 | 支持横向扩展  | 是 | 是 | 是 | 否 |
 
 ### <a name="analytic-workload-capabilities"></a>分析工作负荷功能
+
 | | Azure 搜索 | Elasticsearch | 基于 Solr 的 HDInsight | SQL 数据库 | 
 | --- | --- | --- | --- | --- | 
 | 支持超出全文搜索的分析 | 否 | 是 | 是 | 是 |
@@ -63,6 +66,7 @@ ms.lasthandoff: 02/14/2018
 | 支持语义搜索 | 是（仅限查找类似文档） | 是 | 是 | 是 | 
 
 ### <a name="security-capabilities"></a>安全功能
+
 | | Azure 搜索 | Elasticsearch | 基于 Solr 的 HDInsight | SQL 数据库 | 
 | --- | --- | --- | --- | --- | 
 | 行级别安全性 | 部分（要求应用程序查询按组 id 进行筛选） | 部分（要求应用程序查询按组 id 进行筛选） | 是 | 是 | 

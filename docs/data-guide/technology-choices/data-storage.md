@@ -1,13 +1,13 @@
 ---
-title: "选择数据存储技术"
-description: 
+title: 选择数据存储技术
+description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: d8f831e758ddc8604758392644a68b56dc51cf57
-ms.sourcegitcommit: 475064f0a3c2fac23e1286ba159aaded287eec86
+ms.openlocfilehash: b14611a2dc34bcb145cf420441795d4124e7baeb
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>在 Azure 中选择大数据存储技术
 
@@ -109,12 +109,13 @@ Azure Cosmos DB 功能：
 
 ### <a name="nosql-database-capabilities"></a>NoSQL 数据库功能
 
-| | Azure Cosmos DB | HDInsight 上的 HBase |
-| --- | --- | --- |
-| 主数据库模型 | 文档存储、图形、键-值存储、宽列存储 | 宽列存储 |
-| 辅助索引 | 是 | 否 |
-| SQL 语言支持 | 是 | 是（使用 [Phoenix](http://phoenix.apache.org/) JDBC 驱动程序） |
-| 一致性 | 非常、有限过期、会话、一致前缀或最终 | 非常 |
-| 本机 Azure Functions 集成 | [是](/azure/cosmos-db/serverless-computing-database) | 否 |
-| 自动全局分发 | [是](/azure/cosmos-db/distribute-data-globally) | 使用最终一致性时，无法跨区域[配置 HBase 群集复制](/azure/hdinsight/hbase/apache-hbase-replication) |
-| 定价模型 | 按秒计费的弹性可缩放请求单位 (RU)、弹性可缩放的存储 | HDInsight 群集（横向缩放节点）和存储按分钟计费 |
+|                                    |                                           Azure Cosmos DB                                           |                                                             HDInsight 上的 HBase                                                             |
+|------------------------------------|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+|       主数据库模型       |                      文档存储、图形、键-值存储、宽列存储                      |                                                             宽列存储                                                              |
+|         辅助索引          |                                                 是                                                 |                                                                     否                                                                     |
+|        SQL 语言支持        |                                                 是                                                 |                                     是（使用 [Phoenix](http://phoenix.apache.org/) JDBC 驱动程序）                                      |
+|            一致性             |                   非常、有限过期、会话、一致前缀或最终                   |                                                                   非常                                                                   |
+| 本机 Azure Functions 集成 |                        [是](/azure/cosmos-db/serverless-computing-database)                        |                                                                     否                                                                     |
+|   自动全局分发    |                          [是](/azure/cosmos-db/distribute-data-globally)                           | 使用最终一致性时，无法跨区域[配置 HBase 群集复制](/azure/hdinsight/hbase/apache-hbase-replication) |
+|           定价模型            | 按秒计费的弹性可缩放请求单位 (RU)、弹性可缩放的存储 |                              HDInsight 群集（横向缩放节点）和存储按分钟计费                               |
+
