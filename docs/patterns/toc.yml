@@ -16,7 +16,7 @@
       href: category/management-monitoring.md
     - name: 性能和可伸缩性
       href: category/performance-scalability.md
-    - name: 复原能力
+    - name: 复原
       href: category/resiliency.md
     - name: 安全
       href: category/security.md
@@ -26,7 +26,7 @@
   href: anti-corruption-layer.md
 - name: 用于前端的后端
   href: backends-for-frontends.md
-- name: 隔层
+- name: 隔舱
   href: bulkhead.md
 - name: 缓存端
   href: cache-aside.md
@@ -36,7 +36,7 @@
   href: cqrs.md
 - name: 补偿事务
   href: compensating-transaction.md
-- name: 让使用者竞争
+- name: 使用者竞争
   href: competing-consumers.md
 - name: 计算资源合并
   href: compute-resource-consolidation.md
@@ -44,7 +44,7 @@
   href: event-sourcing.md
 - name: 外部配置存储
   href: external-configuration-store.md
-- name: 联合标识
+- name: 联合身份
   href: federated-identity.md
 - name: 守护程序
   href: gatekeeper.md
@@ -66,7 +66,7 @@
   href: pipes-and-filters.md
 - name: 优先级队列
   href: priority-queue.md
-- name: 基于队列的负载调控
+- name: 基于队列的负载调节
   href: queue-based-load-leveling.md
 - name: 重试
   href: retry.md
