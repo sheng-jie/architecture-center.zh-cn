@@ -1,16 +1,16 @@
 ---
-title: "运行用于 N 层体系结构的 Windows VM"
-description: "如何在 Azure 上实现多层体系结构，并且特别注意可用性、安全性、可伸缩性和可管理性安全。"
+title: 运行用于 N 层体系结构的 Windows VM
+description: 如何在 Azure 上实现多层体系结构，并且特别注意可用性、安全性、可伸缩性和可管理性安全。
 author: MikeWasson
 ms.date: 11/22/2016
 pnp.series.title: Windows VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: 0654239a5bbd966a2aa776415b7f15ae723ffd63
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 5ed94eb9ab8203d35d9597336e367d54e03944d7
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-windows-vms-for-an-n-tier-application"></a>运行用于 N 层应用程序的 Windows VM
 
@@ -18,7 +18,7 @@ ms.lasthandoff: 01/08/2018
 
 ![[0]][0]
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 ## <a name="architecture"></a>体系结构 
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/08/2018
 * **负载均衡器。** 使用[面向 Internet 的负载均衡器][load-balancer-external]将传入的 Internet 流量分布到 Web 层，使用[内部负载均衡器][load-balancer-internal]将来自 Web 层的网络流量分布到业务层。
 * **Jumpbox。** 也称为[守护主机]。 网络上的一个安全 VM，管理员使用它来连接到其他 VM。 Jumpbox 中的某个 NSG 只允许来自安全列表中的公共 IP 地址的远程流量。 该 NSG 应允许远程桌面 (RDP) 流量。
 * **监视。** 可以使用 [Nagios]、[Zabbix] 或 [Icinga] 等监视软件深入了解响应时间、VM 运行时间和系统的整体运行状况。 在置于单独的管理子网中的 VM 上安装监视软件。
-* **NSG。** 使用[网络安全组][nsg] (NSG) 来限制 VNet 中的网络流量。 例如，在此处显示的 3 层体系结构中，数据库层不接受来自 Web 前端的流量，仅接受来自业务层和管理子网的流量。
+* <strong>NSG。</strong> 使用[网络安全组][nsg] (NSG) 来限制 VNet 中的网络流量。 例如，在此处显示的 3 层体系结构中，数据库层不接受来自 Web 前端的流量，仅接受来自业务层和管理子网的流量。
 * **SQL Server Always On 可用性组。** 通过启用复制和故障转移，在数据层提供高可用性。
 * **Active Directory 域服务 (AD DS) 服务器**。 在 Windows Server 2016 之前，SQL Server Always On 可用性组必须加入到域中。 这是因为可用性组依赖于 Windows Server 故障转移群集 (WSFC) 技术。 Windows Server 2016 引入了在没有 Active Directory 的情况下创建故障转移群集的能力，在这种情况下，AD DS 服务器不是此体系结构所必需的。 有关详细信息，请参阅 [What's new in Failover Clustering in Windows Server 2016][wsfc-whats-new]（Windows Server 2016 中的故障转移群集的新增功能）。
 * **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
@@ -82,10 +82,10 @@ ms.lasthandoff: 01/08/2018
 3. 创建一个可用性组侦听程序，并将该侦听程序的 DNS 名称映射到一个内部负载均衡器的 IP 地址。 
 4. 为 SQL Server 侦听端口（默认情况下为 TCP 端口 1433）创建一个负载均衡器规则。 该负载均衡器规则必须启用*浮动 IP*，也称为“直接服务器返回”。 这将导致 VM 直接回复客户端，从而实现到主要副本的直接连接。
   
-  > [!NOTE]
-  > 当启用了浮动 IP 时，前端端口号必须与负载均衡器规则中的后端端口号相同。
-  > 
-  > 
+   > [!NOTE]
+   > 当启用了浮动 IP 时，前端端口号必须与负载均衡器规则中的后端端口号相同。
+   > 
+   > 
 
 当 SQL 客户端尝试连接时，负载均衡器会将连接请求路由到主要副本。 如果发生到其他副本的故障转移，则负载均衡器会自动将后续请求路由到新的主要副本。 有关详细信息，请参阅[Configure an ILB listener for SQL Server Always On Availability Groups][sql-alwayson-ilb]（为 SQL Server Always On 可用性组配置 ILB 侦听程序）。
 
@@ -131,25 +131,25 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 
 [GitHub][github-folder] 中提供了此参考体系结构的部署。 
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 
 在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
 
-1. 为 [AzureCAT 参考体系结构][ref-arch-repo] GitHub 存储库克隆、下载 zip 文件或创建其分支。
+1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
 
 2. 确保在计算机上安装了 Azure CLI 2.0。 若要安装 CLI，请按照[安装 Azure CLI 2.0][azure-cli-2] 中的说明执行操作。
 
 3. 安装 [Azure 构建基块][azbb] npm 包。
 
-  ```bash
-  npm install -g @mspnp/azure-building-blocks
-  ```
+   ```bash
+   npm install -g @mspnp/azure-building-blocks
+   ```
 
 4. 从命令提示符、bash 提示符或 PowerShell 提示符下通过使用以下命令之一，登录到 Azure 帐户，然后按照提示进行操作。
 
-  ```bash
-  az login
-  ```
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-solution-using-azbb"></a>使用 azbb 部署解决方案
 
@@ -159,18 +159,18 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 
 2. 参数文件为部署中的每个 VM 指定默认管理员用户名称和密码。 必须在部署参考体系结构前，对其进行更改。 打开 `n-tier-windows.json` 文件，然后将每个“adminUsername”和“adminPassword”字段替换为新设置。
   
-  > [!NOTE]
-  > 此部署期间，多个脚本在一些 VirtualMachine 对象的 VirtualMachineExtension 对象和 extensions 设置中运行。 这些脚本中的一些需要你刚更改的管理员用户名和密码。 建议查看这些脚本，确保指定正确的凭据。 如果未指定正确的凭据，部署可能失败。
-  > 
-  > 
+   > [!NOTE]
+   > 此部署期间，多个脚本在一些 VirtualMachine 对象的 VirtualMachineExtension 对象和 extensions 设置中运行。 这些脚本中的一些需要你刚更改的管理员用户名和密码。 建议查看这些脚本，确保指定正确的凭据。 如果未指定正确的凭据，部署可能失败。
+   > 
+   > 
 
 保存文件。
 
 3. 使用 azbb 命令行工具部署参考体系结构，如下所示。
 
-  ```bash
-  azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-windows.json --deploy
-  ```
+   ```bash
+   azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-windows.json --deploy
+   ```
 
 若要详细了解如何使用 Azure 构建基块部署此示例参考体系结构，请访问 [GitHub 存储库][git]。
 
@@ -216,5 +216,5 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 [Nagios]: https://www.nagios.org/
 [Zabbix]: http://www.zabbix.com/
 [Icinga]: http://www.icinga.org/
-[visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [0]: ./images/n-tier-diagram.png "使用 Microsoft Azure 的 N 层体系结构"

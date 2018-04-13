@@ -1,15 +1,15 @@
 ---
-title: "在 Azure 中使用共享服务实现中心辐射型网络拓扑"
-description: "如何在 Azure 中使用共享服务实现中心辐射型网络拓扑。"
+title: 在 Azure 中使用共享服务实现中心辐射型网络拓扑
+description: 如何在 Azure 中使用共享服务实现中心辐射型网络拓扑。
 author: telmosampaio
 ms.date: 02/25/2018
 pnp.series.title: Implement a hub-spoke network topology with shared services in Azure
 pnp.series.prev: hub-spoke
-ms.openlocfilehash: c0fb1d1ddd7c70ed914d58e7c73b10475b91aedf
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: b492427f12e026be97629ccdc2b8d19c8c66f47d
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a>在 Azure 中使用共享服务实现中心辐射型网络拓扑
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 03/08/2018
 
 如果使用需要针对 Azure 和本地环境分开进行控制的组策略对象，请针对每个 Azure 区域使用不同的 AD 站点。 将域控制器置于可供依赖性工作负荷访问的中心 VNet（简称“中心”）。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
 将工作负荷从本地环境移到 Azure 时，其中的某些工作负荷将需要托管在 VM 中。 出于符合性考虑，可能需要对流经这些工作负荷的流量强制实施限制。 
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 03/08/2018
 
 在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
 
-1. 为 [AzureCAT 参考体系结构][ref-arch-repo] GitHub 存储库克隆、下载 zip 文件或创建其分支。
+1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
 
 2. 确保在计算机上安装了 Azure CLI 2.0。 有关 CLI 安装说明，请参阅[安装 Azure CLI 2.0][azure-cli-2]。
 
@@ -106,9 +106,9 @@ ms.lasthandoff: 03/08/2018
 
 4. 在命令提示符、bash 提示符或 PowerShell 提示符处使用以下命令登录到 Azure 帐户，然后按提示操作。
 
-  ```bash
-  az login
-  ```
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-simulated-on-premises-datacenter-using-azbb"></a>使用 azbb 部署模拟的本地数据中心
 
@@ -118,18 +118,18 @@ ms.lasthandoff: 03/08/2018
 
 2. 打开 `onprem.json` 文件，在第 45 行和第 46 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 3. 运行 `azbb` 以部署模拟的本地环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g onprem-vnet-rg - l <location> -p onoprem.json --deploy
-  ```
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `onprem-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   ```bash
+   azbb -s <subscription_id> -g onprem-vnet-rg - l <location> -p onoprem.json --deploy
+   ```
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `onprem-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 4. 等待部署完成。 此部署创建虚拟网络、运行 Windows 的虚拟机和 VPN 网关。 VPN 网关创建可能需要 40 多分钟才能完成。
 
@@ -139,26 +139,26 @@ ms.lasthandoff: 03/08/2018
 
 1. 打开 `hub-vnet.json` 文件，在第 50 行和第 51 行中输入括在引号中的用户名和密码，如下所示。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 2. 在第 52 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
 
 3. 在第 83 行中输入括在引号中的共享密钥，如下所示，然后保存文件。
 
-  ```bash
-  "sharedKey": "",
-  ```
+   ```bash
+   "sharedKey": "",
+   ```
 
 4. 运行 `azbb` 以部署模拟的本地环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet.json --deploy
-  ```
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   ```bash
+   azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet.json --deploy
+   ```
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 5. 等待部署完成。 此部署创建虚拟网络、虚拟机、VPN 网关和到上一部分创建的网关的连接。 VPN 网关创建可能需要 40 多分钟才能完成。
 
@@ -168,22 +168,22 @@ ms.lasthandoff: 03/08/2018
 
 1. 打开 `hub-adds.json` 文件，在第 14 行和第 15 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 2. 运行 `azbb`，以便部署 ADDS 域控制器，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-adds-rg - l <location> -p hub-adds.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g hub-adds-rg - l <location> -p hub-adds.json --deploy
+   ```
   
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `hub-adds-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `hub-adds-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
-  > [!NOTE]
-  > 这部分的部署可能需要数分钟的时间，因为需要将两个 VM 加入到域中，而该域托管在模拟的本地数据中心，然后需要在其上安装 AD DS。
+   > [!NOTE]
+   > 这部分的部署可能需要数分钟的时间，因为需要将两个 VM 加入到域中，而该域托管在模拟的本地数据中心，然后需要在其上安装 AD DS。
 
 ### <a name="nva"></a>NVA
 
@@ -191,17 +191,17 @@ ms.lasthandoff: 03/08/2018
 
 1. 打开 `hub-nva.json` 文件，在第 13 行和第 14 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 2. 运行 `azbb`，以便部署 NVA VM 和用户定义的路由。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-nva-rg - l <location> -p hub-nva.json --deploy
-  ```
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `hub-nva-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   ```bash
+   azbb -s <subscription_id> -g hub-nva-rg - l <location> -p hub-nva.json --deploy
+   ```
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `hub-nva-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 ### <a name="azure-spoke-vnets"></a>Azure 辐射 VNet
 
@@ -209,31 +209,31 @@ ms.lasthandoff: 03/08/2018
 
 1. 打开 `spoke1.json` 文件，在第 52 行和第 53 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 2. 在第 54 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
 
 3. 运行 `azbb` 以部署第一个辐射 VNet 环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g spoke1-vnet-rg - l <location> -p spoke1.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g spoke1-vnet-rg - l <location> -p spoke1.json --deploy
+   ```
   
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `spoke1-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `spoke1-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
-3. 对文件 `spoke2.json` 重复上面的步骤 1。
+4. 对文件 `spoke2.json` 重复上面的步骤 1。
 
-4. 运行 `azbb` 以部署第二个辐射 VNet 环境，如下所示。
+5. 运行 `azbb` 以部署第二个辐射 VNet 环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g spoke2-vnet-rg - l <location> -p spoke2.json --deploy
-  ```
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `spoke2-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   ```bash
+   azbb -s <subscription_id> -g spoke2-vnet-rg - l <location> -p spoke2.json --deploy
+   ```
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `spoke2-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 ### <a name="azure-hub-vnet-peering-to-spoke-vnets"></a>Azure 中心 VNet 到辐射 VNet 的对等互连
 
@@ -243,12 +243,12 @@ ms.lasthandoff: 03/08/2018
 
 2. 运行 `azbb` 以部署第一个辐射 VNet 环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet-peering.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet-peering.json --deploy
+   ```
 
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 <!-- links -->
 
@@ -270,7 +270,7 @@ ms.lasthandoff: 03/08/2018
 [vpn-appliance]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
 [windows-vm-ra]: ../virtual-machines-windows/index.md
 
-[visio-download]: https://archcenter.azureedge.net/cdn/hybrid-network-hub-spoke.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-hub-spoke.vsdx
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [0]: ./images/shared-services.png "Azure 中的共享服务拓扑"
 [3]: ./images/hub-spokehub-spoke.svg "Azure 中的中心-辐射-中心-辐射型拓扑"

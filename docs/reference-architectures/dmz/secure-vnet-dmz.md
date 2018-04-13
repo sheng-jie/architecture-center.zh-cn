@@ -1,17 +1,17 @@
 ---
-title: "在 Azure 与 Internet 之间实施外围网络"
-description: "如何在 Azure 中实施一个提供 Internet 访问方式的安全混合网络体系结构。"
+title: 在 Azure 与 Internet 之间实施外围网络
+description: 如何在 Azure 中实施一个提供 Internet 访问方式的安全混合网络体系结构。
 author: telmosampaio
 ms.date: 11/23/2016
 pnp.series.title: Network DMZ
 pnp.series.next: nva-ha
 pnp.series.prev: secure-vnet-hybrid
 cardTitle: DMZ between Azure and the Internet
-ms.openlocfilehash: 372d5bb0fc0e3c272843e062210dec5c15b2b78a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: c88545b1fcae49b413e7e2b6ac5bd92d3fd3456d
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="dmz-between-azure-and-the-internet"></a>Azure 与 Internet 之间的外围网络
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/14/2017
 
 将负载均衡器配置为仅接受传送 Internet 流量时所要开放的端口上的请求。 例如，将入站 HTTP 请求限制为端口 80，将入站 HTTPS 请求限制为端口 443。
 
-## <a name="scalability-considerations"></a>有关可伸缩性的注意事项
+## <a name="scalability-considerations"></a>可伸缩性注意事项
 
 即使体系结构最初只需在公共外围网络中部署单个 NVA，我们也还是建议一开始就在公共外围网络的前面部署一个负载均衡器。 这样，以后便可以根据需要更轻松地扩展到多个 NVA。
 
@@ -62,13 +62,13 @@ ms.lasthandoff: 11/14/2017
 
 面向 Internet 的负载均衡器要求将每个 NVA 部署在公共外围网络入站子网中，以实施[运行状况探测][lb-probe]。 无法在此终结点上做出响应的运行状况探测被视为不可用，负载均衡器会将请求定向到同一可用性集中的其他 NVA。 请注意，如果所有 NVA 都无法做出响应，应用程序将会失败，因此必须配置监视功能，以便在正常的 NVA 实例数低于定义的阈值时，向 DevOps 发出警报。
 
-## <a name="manageability-considerations"></a>有关可管理性的注意事项
+## <a name="manageability-considerations"></a>可管理性注意事项
 
 应该通过管理子网中的 Jumpbox 对公共外围网络中的 NVA 执行所有监视和管理。 如[在 Azure 与本地数据中心之间实施外围网络][implementing-a-secure-hybrid-network-architecture]中所述，定义从本地网络到网关再到 Jumpbox 的单个网络路由，以限制访问。
 
 如果从本地网络到 Azure 的网关连接断开，仍可以通过部署公共 IP 地址、将该地址添加到 Jumpbox，然后从 Internet 登录，来连接 Jumpbox。
 
-## <a name="security-considerations"></a>有关安全性的注意事项
+## <a name="security-considerations"></a>安全注意事项
 
 此参考体系结构实施多个安全级别：
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 11/14/2017
    * 查看条款和条件，并单击“我同意上述条款和条件”复选框。
    * 单击“购买”按钮。
 9. 等待部署完成。
-10. 参数文件包括所有 VM 的硬编码管理员用户名和密码，我们强烈建议立即更改。 针对部署中的每个 VM，请在 Azure 门户选择该 VM，并在“支持 + 故障排除”边栏选项卡中单击“重置密码”。 在“模式”下拉框中选择“重置密码”，并选择新**用户名**和**密码**。 单击“更新”按钮保存设置。
+10. 参数文件包括所有 VM 的硬编码管理员用户名和密码，我们强烈建议立即更改。 针对部署中的每个 VM，请在 Azure 门户选择该 VM，并在“支持 + 故障排除”边栏选项卡中单击“重置密码”。 从“模式”下拉框中选择“重置密码”，然后选择新的**用户名**和**密码**。 单击“更新”按钮保存设置。
 
 
 [availability-set]: /azure/virtual-machines/virtual-machines-windows-manage-availability
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/14/2017
 [load-balancer]: /azure/load-balancer/load-balancer-Internet-overview
 [network-security-group]: /azure/virtual-network/virtual-networks-nsg
 
-[visio-download]: https://archcenter.azureedge.net/cdn/dmz-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/dmz-reference-architectures.vsdx
 
 
 [0]: ./images/dmz-public.png "保护混合网络体系结构"

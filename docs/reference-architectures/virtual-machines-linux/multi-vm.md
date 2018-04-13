@@ -1,24 +1,24 @@
 ---
-title: "在 Azure 上运行负载均衡的 VM 以提高可伸缩性和可用性"
-description: "如何在 Azure 上运行多个 Linux VM 以提高可伸缩性和可用性。"
+title: 在 Azure 上运行负载均衡的 VM 以提高可伸缩性和可用性
+description: 如何在 Azure 上运行多个 Linux VM 以提高可伸缩性和可用性。
 author: telmosampaio
 ms.date: 11/16/2017
 pnp.series.title: Linux VM workloads
 pnp.series.next: n-tier
 pnp.series.prev: single-vm
-ms.openlocfilehash: 8f081baa40355b4f02b83c308466df8333d7ad87
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 2c8b1310e0a76ae0cea0a52cdbd2a0e5d3205d6e
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-load-balanced-vms-for-scalability-and-availability"></a>运行负载均衡的 VM 以提高可伸缩性和可用性
 
-对于在负载均衡器后的规模集中运行多个 Linux 虚拟机 (VM) 以提高可用性和可伸缩性，此参考体系结构显示了一组已经过验证的做法。 此体系结构可用于任何无状态工作负荷（如 Web 服务器），并且是用于部署 n 层应用程序的基础。 [**部署此解决方案**。](#deploy-the-solution)
+对于在负载均衡器后的规模集中运行多个 Linux 虚拟机 (VM) 以提高可用性和可伸缩性，此参考体系结构显示了一组已经过验证的做法。 此体系结构可用于任何无状态工作负荷（如 Web 服务器），并且是部署 n 层应用程序的基础。 [**部署此解决方案**。](#deploy-the-solution)
 
 ![[0]][0]
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 ## <a name="architecture"></a>体系结构
 
@@ -26,14 +26,14 @@ ms.lasthandoff: 01/08/2018
 
 在此体系结构中，工作负荷分布于多个 VM 实例上。 有单个公共 IP 地址，并且 Internet 流量通过负载均衡器分布到这些 VM。 此体系结构可用于单层应用程序，例如无状态 Web 应用程序。
 
-该体系结构包含以下组件：
+此体系结构具有以下组件：
 
 * **资源组。** [资源组][resource-manager-overview]用于对资源进行分组，以便可以按生存期、所有者或其他条件对其进行管理。
 * **虚拟网络 (VNet) 和子网。** 每个 Azure VM 都会部署到可细分为多个子网的 VNet 中。
 * **Azure 负载均衡器**。 [负载均衡器][load-balancer]将传入 Internet 请求分布到各个 VM 实例。 
 * **公共 IP 地址**。 负载均衡器需要使用一个公共 IP 地址来接收 Internet 流量。
 * **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
-* **VM 规模集**。 [VM 规模集][vm-scaleset]是一组用于托管工作负荷的相同 VM。 规模集允许根据预定义规则以手动或自动方式增加或减少 VM 的数量。
+* **VM 规模集**。 [VM 规模集][vm-scaleset]是一组用于托管工作负荷的相同 VM。 规模集允许以手动方式或根据预定义规则以自动方式增加或减少 VM 的数量。
 * **可用性集**。 [可用性集][availability-set]包含 VM，使 VM 符合更高[服务级别协议 (SLA)][vm-sla] 的要求。 要应用更高级别的 SLA，可用性集必须包含至少两个 VM。 可用性集隐含于规模集中。 如果在规模集外创建 VM，需要独立创建可用性集。
 * **托管磁盘**。 Azure 托管磁盘管理 VM 磁盘的虚拟硬盘 (VHD) 文件。 
 * **存储**。 创建一个 Azure 存储帐户来保存 VM 的诊断日志。
@@ -46,7 +46,7 @@ ms.lasthandoff: 01/08/2018
 
 实现可用性和可伸缩性的一个选项是使用[虚拟机规模集][vmss]。 VM 规模集可帮助部署和管理一组相同的 VM。 规模集支持基于性能指标自动缩放。 VM 上的负载增加时，会自动向负载均衡器添加更多 VM。 如果需要快速横向扩展 VM，或者需要进行自动缩放，请考虑规模集。
 
-默认情况下，规模集使用“过度预配”，这意味着规模集最初会预配多于你要求的数量的 VM，然后删除额外的 VM。 这会提高预配 VM 时的整体成功率。 如果不使用[托管磁盘](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-managed-disks)，则建议在启用过度预配的情况下每个存储帐户不超过 20 个 VM，并且在禁用过度预配的情况下每个存储帐户不超过 40 个 VM。
+默认情况下，规模集使用“过度预配”，这意味着规模集最初会预配多于你要求的数量的 VM，然后删除额外的 VM。 这会提高预配 VM 时的整体成功率。 如果不使用[托管磁盘](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-managed-disks)，则建议在启用超量预配的情况下每个存储帐户不超过 20 个 VM，并且在禁用超量预配的情况下每个存储帐户不超过 40 个 VM。
 
 有两种基本方法可用来配置规模集中部署的 VM：
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 01/08/2018
 * *计划内维护*在 Microsoft 更新基础平台时进行，有时会导致 VM 重新启动。 Azure 可确保可用性集中的 VM 不会全部同时重新启动。 至少有一个 VM 在其他 VM 重新启动时会保持运行。
 * *计划外维护*在发生硬件故障时进行。 Azure 会确保跨多个服务器机架预配可用性集中的 VM。 这有助于减少硬件故障、网络中断、电力中断等事件的影响。
 
-有关详细信息，请参阅[管理虚拟机的可用性][availability-set]。 下面的视频也很好地概述了可用性集：[如何配置可用性集以缩放 VM][availability-set-ch9]。
+有关详细信息，请参阅[管理虚拟机的可用性][availability-set]。 下面的视频也很好地概述了可用性集：[How Do I Configure an Availability Set to Scale VMs][availability-set-ch9]（如何配置可用性集以缩放 VM）。
 
 > [!WARNING]
 > 务必在预配 VM 时配置可用性集。 目前，没有任何方法可以在预配 VM 后将资源管理器 VM 添加到可用性集。
@@ -120,16 +120,16 @@ ms.lasthandoff: 01/08/2018
 
 [GitHub][github-folder] 上提供了此体系结构的部署。 它将部署以下部分：
 
-  * 一个虚拟网络，其中包含用于托管 VM 的名为 web 的单个子网。
+  * 一个虚拟网络，其中有包含 VM 的名为 web 的单个子网。
   * 一个 VM 规模集，其中包含运行 Ubuntu 16.04.3 最新版本的 VM。 自动缩放已启用。
   * 一个位于 VM 规模集前面的负载均衡器。
   * 一个 NSG，其中包含用于允许 HTTP 流量发送到 VM 规模集的传入规则。
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 
 在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
 
-1. 为 [AzureCAT 参考体系结构][ref-arch-repo] GitHub 存储库克隆、下载 zip 文件或创建其分支。
+1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
 
 2. 确保在计算机上安装了 Azure CLI 2.0。 有关 CLI 安装说明，请参阅[安装 Azure CLI 2.0][azure-cli-2]。
 
@@ -137,9 +137,9 @@ ms.lasthandoff: 01/08/2018
 
 4. 从命令提示符、bash 提示符或 PowerShell 提示符下通过使用以下命令之一，登录到 Azure 帐户，然后按照提示进行操作。
 
-  ```bash
-  az login
-  ```
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-solution-using-azbb"></a>使用 azbb 部署解决方案
 
@@ -149,16 +149,16 @@ ms.lasthandoff: 01/08/2018
 
 2. 打开 `multi-vm-v2.json` 文件并在引号之间输入用户名和 SSH 密钥，如下所示，然后保存文件。
 
-  ```bash
-  "adminUsername": "",
-  "sshPublicKey": "",
-  ```
+   ```bash
+   "adminUsername": "",
+   "sshPublicKey": "",
+   ```
 
 3. 运行 `azbb` 以部署 VM，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g <resource_group_name> -l <location> -p multi-vm-v2.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g <resource_group_name> -l <location> -p multi-vm-v2.json --deploy
+   ```
 
 有关部署此示例参考体系结构的详细信息，请访问 [GitHub 存储库][git]。
 
@@ -187,7 +187,7 @@ ms.lasthandoff: 01/08/2018
 [runbook-gallery]: /azure/automation/automation-runbook-gallery#runbooks-in-runbook-gallery
 [single-vm]: single-vm.md
 [subscription-limits]: /azure/azure-subscription-service-limits
-[visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [vm-disk-limits]: /azure/azure-subscription-service-limits#virtual-machine-disk-limits
 [vm-scaleset]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview
 [vm-sizes]: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/

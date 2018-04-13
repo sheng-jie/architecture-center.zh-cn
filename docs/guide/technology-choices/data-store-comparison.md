@@ -1,12 +1,12 @@
 ---
-title: "用于选择数据存储的条件"
-description: "Azure 计算选项概述"
+title: 用于选择数据存储的条件
+description: Azure 计算选项概述
 author: MikeWasson
-ms.openlocfilehash: 7fb75cd334438c5b985fa04ad8afe3236f2391f8
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 9cb2f77b854a38450490bc96bf0b6a2998ceb1c7
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="criteria-for-choosing-a-data-store"></a>用于选择数据存储的条件
 
@@ -61,7 +61,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="relational-database-management-systems-rdbms"></a>关系数据库管理系统 (RDBMS)
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>新记录的创建和对现有数据的更新都经常发生。</li>
@@ -74,7 +74,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>数据是高度规范化的。</li>
@@ -87,7 +87,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>
         <ul>
             <li>业务线（人力资本管理、客户关系管理、企业资源规划）</li>
@@ -105,7 +105,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="document-databases"></a>文档数据库
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>常规用途。</li>
@@ -117,7 +117,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
             <li>单个文档将作为单个块进行检索和写入。</li>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>可以采用非规范化的方式管理数据。</li>
@@ -129,7 +129,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>
         <ul>
             <li>产品目录</li>
@@ -149,7 +149,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="keyvalue-stores"></a>键/值存储
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>将使用单个 ID 键（例如字典）标识和访问数据。</li>
@@ -160,7 +160,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>数据大小通常很大。</li>
@@ -170,7 +170,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>
         <ul>
             <li>数据缓存</li>
@@ -186,7 +186,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="graph-databases"></a>图形数据库
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>数据项之间的关系非常复杂，涉及相关数据项之间的许多跃点。</li>
@@ -195,7 +195,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>数据由节点和关系组成。</li>
@@ -205,7 +205,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>
         <ul>
             <li>组织结构图</li>
@@ -221,7 +221,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="column-family-databases"></a>列系列数据库
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>大多数列系列数据库都极快地执行写入操作。</li>
@@ -232,7 +232,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>数据存储在由一个键列和一个或多个列系列组成的表中。</li>
@@ -242,7 +242,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>
         <ul>
             <li>建议</li>
@@ -262,7 +262,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="search-engine-databases"></a>搜索引擎数据库
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>为来自多个源和服务的数据编制索引。</li>
@@ -274,7 +274,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>半结构化的或非结构化的</li>
@@ -283,7 +283,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>
         <ul>
             <li>产品目录</li>
@@ -299,7 +299,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="data-warehouse"></a>数据仓库
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>数据分析</li>
@@ -307,17 +307,17 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>来自多个源的历史数据。</li>
             <li>通常是非规范化的，采用“星型”或“雪花型”架构，包含事实数据表和维度表。</li>
             <li>通常按计划定期加载新数据。</li>
-            <li>维度表通常包括实体的多个历史版本，称为*渐变维度*。</li>
+            <li>维度表通常包括实体的多个历史版本，称为<em>渐变维度</em>。</li>
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>为分析模型、报表和仪表板提供数据的企业数据仓库。
     </td>
 </tr>
@@ -327,7 +327,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="time-series-databases"></a>时序数据库
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>绝大部分 (95-99%) 操作是写入。</li>
@@ -340,7 +340,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>一个用作主键和排序机制的时间戳。</li>
@@ -349,7 +349,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>
         <ul>
             <li>监视和事件遥测。</li>
@@ -362,7 +362,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="object-storage"></a>对象存储
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>由键进行标识。</li>
@@ -372,7 +372,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>数据大小较大。</li>
@@ -381,7 +381,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>
         <ul>
             <li>图像、视频、Office 文档、PDF</li>
@@ -397,7 +397,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
 ## <a name="shared-files"></a>共享文件
 
 <table>
-<tr><td>**工作负荷**</td>
+<tr><td><strong>工作负载</strong></td>
     <td>
         <ul>
             <li>从与文件系统进行交互的现有应用进行迁移。</li>
@@ -405,7 +405,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**数据类型**</td>
+<tr><td><strong>数据类型</strong></td>
     <td>
         <ul>
             <li>一组分层文件夹中的文件。</li>
@@ -413,7 +413,7 @@ Azure 支持许多类型的数据存储解决方案，每个都提供了不同�
         </ul>
     </td>
 </tr>
-<tr><td>**示例**</td>
+<tr><td><strong>示例</strong></td>
     <td>
         <ul>
             <li>旧式文件</li>

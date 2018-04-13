@@ -1,16 +1,16 @@
 ---
-title: "在 Azure 上运行用于 N 层应用程序的 Linux VM"
-description: "如何在 Microsoft Azure 中运行用于 N 层体系结构的 Linux VM。"
+title: 在 Azure 上运行用于 N 层应用程序的 Linux VM
+description: 如何在 Microsoft Azure 中运行用于 N 层体系结构的 Linux VM。
 author: MikeWasson
 ms.date: 11/22/2017
 pnp.series.title: Linux VM workloads
 pnp.series.next: multi-region-application
 pnp.series.prev: multi-vm
-ms.openlocfilehash: e875a58aa83339560fd1de5b03a960f071883927
-ms.sourcegitcommit: c9e6d8edb069b8c513de748ce8114c879bad5f49
+ms.openlocfilehash: 8d3e6e5124a0abb27a3c72e1ecbd52a1a1da2a33
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-linux-vms-for-an-n-tier-application"></a>运行用于 N 层应用程序的 Linux VM
 
@@ -18,7 +18,7 @@ ms.lasthandoff: 01/08/2018
 
 ![[0]][0]
 
-*下载此体系结构的 [Visio 文件][visio-download]。*
+下载此体系结构的 [Visio 文件][visio-download]。
 
 ## <a name="architecture"></a>体系结构
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/08/2018
 * **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 * **Jumpbox。** 也称为[守护主机]。 网络上的一个安全 VM，管理员使用它来连接到其他 VM。 Jumpbox 中的某个 NSG 只允许来自安全列表中的公共 IP 地址的远程流量。 NSG 应允许安全外壳 (SSH) 流量。
 * **监视。** 可以使用 [Nagios]、[Zabbix] 或 [Icinga] 等监视软件深入了解响应时间、VM 运行时间和系统的整体运行状况。 在置于单独的管理子网中的 VM 上安装监视软件。
-* **NSG。** 使用[网络安全组][nsg] (NSG) 来限制 VNet 中的网络流量。 例如，在此处显示的 3 层体系结构中，数据库层不接受来自 Web 前端的流量，仅接受来自业务层和管理子网的流量。
+* <strong>NSG。</strong> 使用[网络安全组][nsg] (NSG) 来限制 VNet 中的网络流量。 例如，在此处显示的 3 层体系结构中，数据库层不接受来自 Web 前端的流量，仅接受来自业务层和管理子网的流量。
 * **Apache Cassandra 数据库**。 通过启用复制和故障转移，在数据层提供高可用性。
 
 ## <a name="recommendations"></a>建议
@@ -116,25 +116,25 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 
 [GitHub][github-folder] 中提供了此参考体系结构的部署。 
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 
 在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
 
-1. 为 [AzureCAT 参考体系结构][ref-arch-repo] GitHub 存储库克隆、下载 zip 文件或创建其分支。
+1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
 
 2. 确保在计算机上安装了 Azure CLI 2.0。 若要安装 CLI，请按照[安装 Azure CLI 2.0][azure-cli-2] 中的说明执行操作。
 
 3. 安装 [Azure 构建基块][azbb] npm 包。
 
-  ```bash
-  npm install -g @mspnp/azure-building-blocks
-  ```
+   ```bash
+   npm install -g @mspnp/azure-building-blocks
+   ```
 
 4. 从命令提示符、bash 提示符或 PowerShell 提示符下通过使用以下命令之一，登录到 Azure 帐户，然后按照提示进行操作。
 
-  ```bash
-  az login
-  ```
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-solution-using-azbb"></a>使用 azbb 部署解决方案
 
@@ -146,9 +146,9 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 
 3. 使用 azbb 命令行工具部署参考体系结构，如下所示。
 
-  ```bash
-  azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-linux.json --deploy
-  ```
+   ```bash
+   azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-linux.json --deploy
+   ```
 
 若要详细了解如何使用 Azure 构建基块部署此示例参考体系结构，请访问 [GitHub 存储库][git]。
 
@@ -183,7 +183,7 @@ Jumpbox 的性能要求非常低，因此请为 jumpbox 选择一个较小的 VM
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines
 [vnet faq]: /azure/virtual-network/virtual-networks-faq
-[visio-download]: https://archcenter.azureedge.net/cdn/vm-reference-architectures.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [Nagios]: https://www.nagios.org/
 [Zabbix]: http://www.zabbix.com/
 [Icinga]: http://www.icinga.org/

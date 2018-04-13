@@ -1,14 +1,14 @@
 ---
-title: "API 设计指南"
-description: "有关如何创建合理设计的 Web API 的指南。"
+title: API 设计指南
+description: 有关如何创建合理设计的 Web API 的指南。
 author: dragon119
 ms.date: 01/12/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: f0813c18da03b9deeabbf529a560c60e8ce579d8
-ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
+ms.openlocfilehash: a8c4a81835ebd3ebdba2fd2cec624a9a9d5646f5
+ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="api-design"></a>API 设计
 
@@ -422,7 +422,7 @@ Content-Type: application/json; charset=utf-8
 ### <a name="uri-versioning"></a>URI 版本控制
 每次修改 Web API 或更改资源的架构时，向每个资源的 URI 添加版本号。 以前存在的 URI 应像以前一样继续运行，并返回符合原始架构的资源。
 
-继续前面的示例，如果将 `address` 字段重构为包含地址的每个构成部分的子字段（例如 `streetAddress`、`city`、`state` 和 `zipCode`），则此版本的资源可通过包含版本号的 URI（如 http://adventure-works.com/v2/customers/3）公开：
+继续前面的示例，如果将 `address` 字段重构为包含地址的每个构成部分的子字段（例如 `streetAddress`、`city`、`state` 和 `zipCode`），则此版本的资源可通过包含版本号的 URI（如 http://adventure-works.com/v2/customers/3:）公开：
 
 ```HTTP
 HTTP/1.1 200 OK

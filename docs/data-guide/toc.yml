@@ -3,56 +3,36 @@
 - name: 数据体系结构指南
   href: index.md
   items:
-    - name: 传统 RDBMS
+    - name: 传统 RDBMS 工作负荷
       items:
-        - name: 概念
-          items:
-            - name: 关系数据
-              href: concepts/relational-data.md
-            - name: 事务数据
-              href: concepts/transactional-data.md
-            - name: 语义建模
-              href: concepts/semantic-modeling.md
+        - name: 概述
+          href: relational-data/index.md
+        - name: 联机事务处理 (OLTP)
+          href: relational-data/online-transaction-processing.md
+        - name: 数据仓库
+          href: relational-data/data-warehousing.md
+        - name: 联机分析处理 (OLAP)
+          href: relational-data/online-analytical-processing.md
+        - name: 提取、转换和加载 (ETL)
+          href: relational-data/etl.md
+    - name: 大数据体系结构
+      items:
+        - name: 概述
+          href: big-data/index.md
+        - name: 批处理
+          href: big-data/batch-processing.md
+        - name: 实时处理
+          href: big-data/real-time-processing.md
+        - name: 大规模机器学习
+          href: big-data/machine-learning-at-scale.md
+        - name: 非关系数据存储
+          href: big-data/non-relational-data.md
         - name: 方案
           items:
-            - name: 联机事务处理 (OLTP)
-              href: scenarios/online-transaction-processing.md
-            - name: 联机分析处理 (OLAP)
-              href: scenarios/online-analytical-processing.md
-            - name: 数据仓库
-              href: scenarios/data-warehousing.md
-            - name: 提取、转换和加载 (ETL)
-              href: scenarios/etl.md
-        - name: 技术选择
-          items:
-            - name: 数据仓库
-              href: technology-choices/data-warehouses.md
-            - name: 联机分析处理 (OLAP)
-              href: technology-choices/olap-data-stores.md
-            - name: 联机事务处理 (OLTP)
-              href: technology-choices/oltp-data-stores.md
-    - name: 大数据和 NoSQL
-      items:
-        - name: 概念
-          items:
-            - name: 非关系数据存储
-              href: concepts/non-relational-data.md
-            - name: 使用 CSV 和 JSON 文件
-              href: concepts/csv-and-json.md
-            - name: Data Lake
-              href: concepts/data-lake.md
-            - name: 大数据体系结构
-              href: concepts/big-data.md
             - name: 高级分析
-              href: concepts/advanced-analytics.md
-            - name: 大规模机器学习
-              href: concepts/machine-learning-at-scale.md
-        - name: 方案
-          items:
-            - name: 批处理
-              href: scenarios/batch-processing.md
-            - name: 实时处理
-              href: scenarios/real-time-processing.md
+              href: scenarios/advanced-analytics.md
+            - name: Data Lake
+              href: scenarios/data-lake.md
             - name: 自由格式文本搜索
               href: scenarios/search.md
             - name: 交互式数据探索
@@ -61,6 +41,8 @@
               href: scenarios/natural-language-processing.md
             - name: 时序解决方案
               href: scenarios/time-series.md
+            - name: 使用 CSV 和 JSON 文件
+              href: scenarios/csv-and-json.md
         - name: 技术选择
           items:
             - name: 分析数据存储

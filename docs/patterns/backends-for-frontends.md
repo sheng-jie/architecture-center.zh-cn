@@ -1,13 +1,13 @@
 ---
-title: "用于前端的后端模式"
-description: "创建单独的后端服务，供特定的前端应用程序或接口使用。"
+title: 用于前端的后端模式
+description: 创建单独的后端服务，供特定的前端应用程序或接口使用。
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 87acd39d021c5e44594a2e7c9574e4dd363ce83b
-ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
+ms.openlocfilehash: 2991d7a3e05b3ce6cd5148a552bae6d4ba8f7c4c
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="backends-for-frontends-pattern"></a>用于前端的后端模式
 

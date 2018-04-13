@@ -1,15 +1,15 @@
 ---
-title: "在 Azure 中实现中心辐射型网络拓扑"
-description: "如何在 Azure 中实现中心辐射型网络拓扑。"
+title: 在 Azure 中实现中心辐射型网络拓扑
+description: 如何在 Azure 中实现中心辐射型网络拓扑。
 author: telmosampaio
 ms.date: 02/23/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: 1a2855f0d4a903fc4d7a022aef20ea73fe763e2c
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: 243ad026c7c9703d9659cbef6815131fcdaa8a11
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>在 Azure 中实现中心辐射型网络拓扑
 
@@ -115,7 +115,7 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
 
-1. 为 [AzureCAT 参考体系结构][ref-arch-repo] GitHub 存储库克隆、下载 zip 文件或创建其分支。
+1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
 
 2. 确保在计算机上安装了 Azure CLI 2.0。 有关 CLI 安装说明，请参阅[安装 Azure CLI 2.0][azure-cli-2]。
 
@@ -123,9 +123,9 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 4. 在命令提示符、bash 提示符或 PowerShell 提示符处使用以下命令登录到 Azure 帐户，然后按提示操作。
 
-  ```bash
-  az login
-  ```
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-simulated-on-premises-datacenter-using-azbb"></a>使用 azbb 部署模拟的本地数据中心
 
@@ -135,20 +135,20 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 2. 打开 `onprem.json` 文件，在第 36 行和第 37 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 3. 在第 38 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
 
 4. 运行 `azbb` 以部署模拟的本地环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g onprem-vnet-rg - l <location> -p onoprem.json --deploy
-  ```
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `onprem-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   ```bash
+   azbb -s <subscription_id> -g onprem-vnet-rg - l <location> -p onoprem.json --deploy
+   ```
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `onprem-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 5. 等待部署完成。 此部署创建虚拟网络、虚拟机和 VPN 网关。 VPN 网关创建可能需要 40 多分钟才能完成。
 
@@ -158,26 +158,26 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 1. 打开 `hub-vnet.json` 文件，在第 39 行和第 40 行中输入括在引号中的用户名和密码，如下所示。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 2. 在第 41 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
 
 3. 在第 72 行中输入括在引号中的共享密钥，如下所示，然后保存文件。
 
-  ```bash
-  "sharedKey": "",
-  ```
+   ```bash
+   "sharedKey": "",
+   ```
 
 4. 运行 `azbb` 以部署模拟的本地环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet.json --deploy
-  ```
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   ```bash
+   azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet.json --deploy
+   ```
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 5. 等待部署完成。 此部署创建虚拟网络、虚拟机、VPN 网关和到上一部分创建的网关的连接。 VPN 网关创建可能需要 40 多分钟才能完成。
 
@@ -187,15 +187,15 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 1. 从 Azure 门户导航到 `onprem-jb-rg` 资源组，然后单击 `jb-vm1` 虚拟机资源。
 
-2.  在门户中的 VM 边栏选项卡的左上角单击 `Connect`，然后按提示使用远程桌面连接到 VM。 确保使用在 `onprem.json` 文件的第 36 行和 37 行中指定的用户名和密码。
+2. 在门户中的 VM 边栏选项卡的左上角单击 `Connect`，然后按提示使用远程桌面连接到 VM。 确保使用在 `onprem.json` 文件的第 36 行和 37 行中指定的用户名和密码。
 
 3. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到中心 Jumpbox VM，如下所示。
 
-  ```powershell
-  Test-NetConnection 10.0.0.68 -CommonTCPPort RDP
-  ```
-  > [!NOTE]
-  > 默认情况下，Windows Server VM 不允许 Azure 中的 ICMP 响应。 若要使用 `ping` 来测试连接，需在“Windows 高级防火墙”中为每个 VM 启用 ICMP 流量。
+   ```powershell
+   Test-NetConnection 10.0.0.68 -CommonTCPPort RDP
+   ```
+   > [!NOTE]
+   > 默认情况下，Windows Server VM 不允许 Azure 中的 ICMP 响应。 若要使用 `ping` 来测试连接，需在“Windows 高级防火墙”中为每个 VM 启用 ICMP 流量。
 
 若要使用 Linux VM 测试从模拟的本地环境到中心 VNet 的连接，请执行以下步骤：
 
@@ -205,17 +205,17 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 3. 在 Linux 提示符处运行 `ssh`，以便使用在上面的步骤 2 中复制的信息连接到模拟的本地环境 Jumpbox，如下所示。
 
-  ```bash
-  ssh <your_user>@<public_ip_address>
-  ```
+   ```bash
+   ssh <your_user>@<public_ip_address>
+   ```
 
 4. 使用在 `onprem.json` 文件的第 37 行中指定的密码连接到 VM。
 
 5. 使用 `ping` 命令测试到中心 Jumpbox 的连接，如下所示。
 
-  ```bash
-  ping 10.0.0.68
-  ```
+   ```bash
+   ping 10.0.0.68
+   ```
 
 ### <a name="azure-spoke-vnets"></a>Azure 辐射 VNet
 
@@ -223,31 +223,31 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 1. 打开 `spoke1.json` 文件，在第 47 行和第 48 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 
 2. 在第 49 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
 
 3. 运行 `azbb` 以部署第一个辐射 VNet 环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g spoke1-vnet-rg - l <location> -p spoke1.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g spoke1-vnet-rg - l <location> -p spoke1.json --deploy
+   ```
   
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `spoke1-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `spoke1-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
-3. 对文件 `spoke2.json` 重复上面的步骤 1。
+4. 对文件 `spoke2.json` 重复上面的步骤 1。
 
-4. 运行 `azbb` 以部署第二个辐射 VNet 环境，如下所示。
+5. 运行 `azbb` 以部署第二个辐射 VNet 环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g spoke2-vnet-rg - l <location> -p spoke2.json --deploy
-  ```
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `spoke2-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   ```bash
+   azbb -s <subscription_id> -g spoke2-vnet-rg - l <location> -p spoke2.json --deploy
+   ```
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `spoke2-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 ### <a name="azure-hub-vnet-peering-to-spoke-vnets"></a>Azure 中心 VNet 到辐射 VNet 的对等互连
 
@@ -257,12 +257,12 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 2. 运行 `azbb` 以部署第一个辐射 VNet 环境，如下所示。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet-peering.json --deploy
-  ```
+   ```bash
+   azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet-peering.json --deploy
+   ```
 
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 ### <a name="test-connectivity"></a>测试连接
 
@@ -270,14 +270,14 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 1. 从 Azure 门户导航到 `onprem-jb-rg` 资源组，然后单击 `jb-vm1` 虚拟机资源。
 
-2.  在门户中的 VM 边栏选项卡的左上角单击 `Connect`，然后按提示使用远程桌面连接到 VM。 确保使用在 `onprem.json` 文件的第 36 行和 37 行中指定的用户名和密码。
+2. 在门户中的 VM 边栏选项卡的左上角单击 `Connect`，然后按提示使用远程桌面连接到 VM。 确保使用在 `onprem.json` 文件的第 36 行和 37 行中指定的用户名和密码。
 
 3. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到中心 Jumpbox VM，如下所示。
 
-  ```powershell
-  Test-NetConnection 10.1.0.68 -CommonTCPPort RDP
-  Test-NetConnection 10.2.0.68 -CommonTCPPort RDP
-  ```
+   ```powershell
+   Test-NetConnection 10.1.0.68 -CommonTCPPort RDP
+   Test-NetConnection 10.2.0.68 -CommonTCPPort RDP
+   ```
 
 若要使用 Linux VM 测试从模拟的本地环境到辐射 VNet 的连接，请执行以下步骤：
 
@@ -287,18 +287,18 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 3. 在 Linux 提示符处运行 `ssh`，以便使用在上面的步骤 2 中复制的信息连接到模拟的本地环境 Jumpbox，如下所示。
 
-  ```bash
-  ssh <your_user>@<public_ip_address>
-  ```
+   ```bash
+   ssh <your_user>@<public_ip_address>
+   ```
 
-5. 使用在 `onprem.json` 文件的第 37 行中指定的密码连接到 VM。
+4. 使用在 `onprem.json` 文件的第 37 行中指定的密码连接到 VM。
 
-6. 使用 `ping` 命令测试到每个辐射 VNet 中的 Jumpbox VM 的连接，如下所示。
+5. 使用 `ping` 命令测试到每个辐射 VNet 中的 Jumpbox VM 的连接，如下所示。
 
-  ```bash
-  ping 10.1.0.68
-  ping 10.2.0.68
-  ```
+   ```bash
+   ping 10.1.0.68
+   ping 10.2.0.68
+   ```
 
 ### <a name="add-connectivity-between-spokes"></a>添加辐射之间的连接
 
@@ -306,17 +306,17 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 1. 打开 `hub-nva.json` 文件，在第 13 行和第 14 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
 
-  ```bash
-  "adminUsername": "XXX",
-  "adminPassword": "YYY",
-  ```
+   ```bash
+   "adminUsername": "XXX",
+   "adminPassword": "YYY",
+   ```
 2. 运行 `azbb`，以便部署 NVA VM 和用户定义的路由。
 
-  ```bash
-  azbb -s <subscription_id> -g hub-nva-rg - l <location> -p hub-nva.json --deploy
-  ```
-  > [!NOTE]
-  > 如果决定使用其他资源组名称（而非 `hub-nva-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+   ```bash
+   azbb -s <subscription_id> -g hub-nva-rg - l <location> -p hub-nva.json --deploy
+   ```
+   > [!NOTE]
+   > 如果决定使用其他资源组名称（而非 `hub-nva-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
 <!-- links -->
 
@@ -336,7 +336,7 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 [vpn-appliance]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
 [windows-vm-ra]: ../virtual-machines-windows/index.md
 
-[visio-download]: https://archcenter.azureedge.net/cdn/hybrid-network-hub-spoke.vsdx
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-hub-spoke.vsdx
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [0]: ./images/hub-spoke.png "Azure 中的中心辐射型拓扑"
 [1]: ./images/hub-spoke-gateway-routing.svg "Azure 中的具有可传递路由的中心辐射型拓扑"

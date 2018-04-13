@@ -1,11 +1,11 @@
 ---
-title: "体系结构关系图的图标和其他资产"
-description: "对于生成自己的体系结构关系图十分有用的图标、Viso 模板、PNG 文件和 SVG 文件"
-ms.openlocfilehash: 58a2046c0d463c1f331ea3f950f0c11c273ffc36
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+title: 体系结构关系图的图标和其他资产
+description: 对于生成自己的体系结构关系图十分有用的图标、Viso 模板、PNG 文件和 SVG 文件
+ms.openlocfilehash: f65a09450ba1b7154e6d43bbc7bdb65212b21828
+ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="icons-and-diagrams"></a>图标和关系图
 
@@ -27,6 +27,10 @@ ms.lasthandoff: 02/23/2018
 ## <a name="reference-architectures-visio-template"></a>参考体系结构 Visio 模板 
 
 [参考体系结构](../reference-architectures/index.md)中使用的关系图版本可供[以 Visio 格式下载](https://aka.ms/arch-diagrams)。
+
+## <a name="solution-architecture-diagrams"></a>解决方案体系结构关系图
+
+Microsoft 发布了[解决方案体系结构和随附的关系图](https://azure.microsoft.com/solutions/architecture/)。 可以下载 SVG 格式的关系图。 可以使用许多工具（包括 Visio 和 PowerPoint）打开并修改 SVG。 如果将关系图取消分组，可以选择单个图标。   
 
 ## <a name="3d-blueprint-visio-template"></a>3D Blueprint Visio Template
 

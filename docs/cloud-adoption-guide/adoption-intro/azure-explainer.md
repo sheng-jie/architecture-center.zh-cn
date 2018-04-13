@@ -1,12 +1,12 @@
 ---
-title: "说明：Azure 如何工作？"
-description: "介绍了 Azure 的内部运行"
+title: 说明：Azure 如何工作？
+description: 介绍了 Azure 的内部运行
 author: petertay
-ms.openlocfilehash: 847d24b7057d80f3d34aac7900cfb64fec60a640
-ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.openlocfilehash: b4830fec69ac6d256d934d91ea2c295219925a9a
+ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="explainer-how-does-azure-work"></a>说明：Azure 如何工作？
 
@@ -22,7 +22,7 @@ Azure 是 Microsoft 的公有云平台。 Azure 提供了一个大型的服务�
 
 结构控制器的每个实例连接到运行云业务流程软件的另一组服务器，通常称为**前端**。 前端托管着用于云执行的所有功能的 Web 服务、RESTful API 和内部 Azure 数据库。 
 
-例如，前端托管的服务对客户请求进行处理来分配 Azure 资源（例如[虚拟网络][vnet]、[虚拟机][vms]）和服务（例如 [CosmosDB]）。 首先，前端对用户进行验证并验证用户是否有权分配所请求的资源。 如果有，则前端将请求数据库分配一个具有足够容量的服务器机架，然后指示机架上的结构控制器来分配资源。
+例如，前端托管的服务对客户请求进行处理来分配 Azure 资源（例如[虚拟网络][vnet]、[虚拟机][vms]）和服务（例如 [Cosmos DB][cosmosdb]）。 首先，前端对用户进行验证并验证用户是否有权分配所请求的资源。 如果有，则前端将请求数据库分配一个具有足够容量的服务器机架，然后指示机架上的结构控制器来分配资源。
 
 因此，非常简单，Azure 是服务器和网络硬件的巨大集合，并且其中还包含一组复杂的分布式应用程序，它们安排这些服务器上的虚拟化硬件和软件的配置和操作。 并且，正是此业务流程安排使得 Azure 如此强大 - 用户不再负责维护和升级硬件，Azure 在幕后执行所有这些操作。 
 

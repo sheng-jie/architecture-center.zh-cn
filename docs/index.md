@@ -1,13 +1,13 @@
 ---
-title: "Azure 体系结构中心"
-description: "Azure 体系结构中心是提供有关在 Microsoft Azure 中生成解决方案的指南、蓝图、模式和最佳做法的官方中心。 它由 Microsoft 模式和实践团队维护。"
+title: Azure 体系结构中心
+description: Azure 体系结构中心是提供有关在 Microsoft Azure 中生成解决方案的指南、蓝图、模式和最佳做法的官方中心。 它由 Microsoft 模式和实践团队维护。
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 31177903bea137b40a457fe9360596e8096d6ab2
-ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
+ms.openlocfilehash: 0ac5dd79f765fe9b649cc2ca83c0213b4ba28544
+ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-architecture-center"></a>Azure 体系结构中心
 
@@ -19,7 +19,7 @@ ms.lasthandoff: 03/17/2018
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card">
-                        <img src="_images/a3g-logo.svg" alt="Azure Application Architecture Guide" />
+                        <img src="_images/a3g-logo.svg" alt="" />
                         <div class="cardText">
                             <h3>Azure 应用程序体系结构指南</h3>
                             <p> 有关基于我们从客户交互中学到的成熟做法，设计可缩放、可复原且高度可用的应用程序的指南。</p>
@@ -35,10 +35,10 @@ ms.lasthandoff: 03/17/2018
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card">
-                        <img src="_images/reference-architectures.svg" alt="Azure Reference Architectures" />
+                        <img src="_images/reference-architectures.svg" alt="" />
                         <div class="cardText">
                             <h3>参考体系结构</h3>
-                            <p>适用于 Azure 的一系列建议体系结构。 每种体系结构包括最佳实践、说明性的步骤和部署解决方案。</p>
+                            <p>适用于 Azure 的一系列建议体系结构。 每种体系结构包括最佳做法、说明性的步骤和可部署的解决方案。</p>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ ms.lasthandoff: 03/17/2018
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card">
-                        <img src="_images/cloud-design-patterns.svg" alt="Cloud Design Patterns" />
+                        <img src="_images/cloud-design-patterns.svg" alt="" />
                         <div class="cardText">
                             <h3>云设计模式</h3>
                             <p>面向开发人员和解决方案架构师的设计模式。 每种模式描述了一个问题、用于解决该问题的模式，以及基于 Azure 的示例。</p>
@@ -73,7 +73,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/microservices.svg" alt="Designing, building, and operating microservices on Azure" />
+                                <img src="_images/microservices.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
@@ -93,7 +93,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/data-guide.svg" alt="Data Architecture Guide"  />
+                                <img src="_images/data-guide.svg" alt=""  />
                             </div>
                         </div>
                         <div class="cardText">
@@ -113,11 +113,11 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/best-practices.svg" alt="Best Practices" />
+                                <img src="_images/best-practices.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>云应用程序最佳实践</h3>
+                            <h3>云应用程序最佳做法</h3>
                             <p>有关云应用程序的最佳做法，涉及自动缩放、缓存、数据分区、API 设计等方面。</p>
                         </div>
                     </div>
@@ -133,7 +133,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/resiliency.svg" alt="Designing for Resiliency" />
+                                <img src="_images/resiliency.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
@@ -153,7 +153,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/azbb.svg" alt="Azure Building Blocks" />
+                                <img src="_images/azbb.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
@@ -173,7 +173,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/checklist.svg" alt="Design Review Checklists" />
+                                <img src="_images/checklist.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
@@ -187,18 +187,18 @@ ms.lasthandoff: 03/17/2018
     </li>
     <!-- Azure Virtual Datacenter -->
     <li>
-        <a href="https://aka.ms/vdc">
+        <a href="./vdc/index.md">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/virtual-datacenter.svg" alt="Azure Virtual Datacenter e-book" />
+                                <img src="_images/virtual-datacenter.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>Azure 虚拟数据中心电子书</h3>
-                            <p>此电子书演示如何在遵守现有安全和网络政策的前提下，将企业工作负荷部署到 Azure 云平台。</p>
+                            <h3>Azure 虚拟数据中心</h3>
+                            <p>将企业工作负荷部署到云时，组织必须在监管与开发人员敏捷性之间实现平衡。 Azure 虚拟数据中心提供的模型可实现这种平衡，并将重心放在监管上。</p>
                         </div>
                     </div>
                 </div>
@@ -213,7 +213,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/aws-professional.svg" alt="Azure for AWS Professionals" />
+                                <img src="_images/aws-professional.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
@@ -233,7 +233,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/performance.svg" alt="Performance antipatterns" />
+                                <img src="_images/performance.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
@@ -253,7 +253,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="/azure/architecture/reference-architectures/sharepoint/images/sharepoint.svg" alt="Run SharePoint 2016 on Azure" />
+                                <img src="/azure/architecture/reference-architectures/sharepoint/images/sharepoint.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
@@ -273,7 +273,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="/azure/architecture/reference-architectures/sap/images/sap.svg" width="100%" alt="Run Elasticsearch on Azure" />
+                                <img src="/azure/architecture/reference-architectures/sap/images/sap.svg" width="100%" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
@@ -293,7 +293,7 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/multitenant-identity.svg" alt="Identity Management for Multitenant Applications" />
+                                <img src="_images/multitenant-identity.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
@@ -313,12 +313,12 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/azurecat.svg" alt="Azure Customer Advisory Team" />
+                                <img src="_images/azurecat.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
                             <h3>Azure 客户顾问团队</h3>
-                            <p>AzureCAT 团队的博客</p>
+                            <p>AzureCAT 团队博客</p>
                         </div>
                     </div>
                 </div>
@@ -333,12 +333,12 @@ ms.lasthandoff: 03/17/2018
                     <div class="card">
                         <div class="cardImageOuter">
                             <div class="cardImage">
-                                <img src="_images/sqlcat.svg" alt="SQL Server Customer Advisory Team" />
+                                <img src="_images/sqlcat.svg" alt="" />
                             </div>
                         </div>
                         <div class="cardText">
                             <h3>SQL Server 客户顾问团队</h3>
-                            <p>SQLCAT 团队的博客</p>
+                            <p>SQLCAT 团队博客</p>
                         </div>
                     </div>
                 </div>
