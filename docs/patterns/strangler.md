@@ -1,5 +1,5 @@
 ---
-title: Strangler 模式
+title: 绞杀者模式
 description: 通过将特定的功能片断逐渐取代为新的应用程序和服务，逐步迁移旧系统。
 author: dragon119
 ms.date: 06/23/2017
@@ -9,7 +9,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/14/2017
 ---
-# <a name="strangler-pattern"></a>Strangler 模式
+# <a name="strangler-pattern"></a>绞杀者模式
 
 通过将特定的功能片断逐渐取代为新的应用程序和服务，逐步迁移旧系统。 随着旧系统的功能被替换，新系统最终将取代旧系统的所有功能，抑制旧系统并使其停用。 
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 11/14/2017
 ## <a name="issues-and-considerations"></a>问题和注意事项
 
 - 请考虑如何处理可能由新旧系统共同使用的服务和数据存储。 请确保新旧系统可并行访问这些资源。
-- 构建新的应用程序和服务，使它们能在将来的 strangler 迁移中被轻松拦截和替换。
-- 有时候，迁移完成后，strangler 外层消失，或进化为旧版客户端的适配器。
+- 构建新的应用程序和服务，使它们能在将来的绞杀者迁移中被轻松拦截和替换。
+- 有时候，迁移完成后，绞杀者外层消失，或进化为旧版客户端的适配器。
 - 请确保外层与迁移保持同步。
 - 请确保外层不会成为单一故障点或性能瓶颈。
 
