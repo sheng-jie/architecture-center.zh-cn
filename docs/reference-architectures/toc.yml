@@ -12,6 +12,10 @@
           href: app-service-web-app/scalable-web-app.md
         - name: 多区域部署
           href: app-service-web-app/multi-region.md
+    - name: 数据体系结构
+      items:
+        - name: 将 Enterprise BI 与 SQL 数据仓库配合使用
+          href: data/enterprise-bi-sqldw.md
     - name: 混合网络
       href: hybrid-networking/index.md
       items:
