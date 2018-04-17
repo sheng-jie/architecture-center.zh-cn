@@ -5,11 +5,11 @@ keywords: AWS 专家, Azure 比较, AWS 比较, azure 与 aws 之间的差别, a
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: b8698675efa42bb3fae73cefe7b078942549b412
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 0af0890d383d22db0ed9d3b445cdd5b561b498ae
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-for-aws-professionals"></a>面向 AWS 专业人员的 Azure
 
@@ -118,7 +118,7 @@ Azure 提供多种方式用于管理资源：
 | 故障范围 | 机架 | 数据中心 | 区域 |
 | 请求路由 | 负载均衡器 | 跨区域负载均衡器 | 流量管理器 |
 | 网络延迟 | 极低 | 低 | 中到高 |
-| 虚拟网络  | VNet | VNet | 跨区域 VNet 对等互连（预览） |
+| 虚拟网络  | VNet | VNet | 跨区域 VNet 对等互连 |
 
 ### <a name="availability-sets"></a>可用性集 
 
@@ -130,7 +130,7 @@ Azure 提供多种方式用于管理资源：
 
 ![每个应用程序角色的 Azure 可用性集](./images/three-tier-example.png "每个应用程序角色的可用性集")
 
-### <a name="availability-zones-preview"></a>可用性区域（预览版）
+### <a name="availability-zones"></a>可用性区域
 
 [可用性区域](/azure/availability-zones/az-overview)是 Azure 区域中在物理上独立的区域。 每个可用性区域有独立的电源、网络和散热设备。 跨可用性区域部署 VM 有助于在发生数据中心范围的故障时保护应用程序。 
 

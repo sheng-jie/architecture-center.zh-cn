@@ -5,11 +5,11 @@ author: MikeWasson
 ms.date: 05/26/2017
 ms.custom: resiliency
 pnp.series.title: Design for Resiliency
-ms.openlocfilehash: 0cbcf0a8af1a8e20f2a1c024f5146a37176c5d1e
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 9a6bd1332ea59923b32379018060403024b15e10
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="designing-resilient-applications-for-azure"></a>设计适用于 Azure 的可复原应用程序
 
@@ -153,7 +153,7 @@ Azure 提供许多功能用于实现每个故障级别的应用程序冗余，�
 
 **可用性集**。 若要防范局部性硬件故障（例如磁盘或网络交换机故障），请在可用性集中部署两个或更多个 VM。 可用性集包括两个或更多个容错域，它们共用一个电源和网络交换机。 可用性集中的 VM 分布在不同的容错域中，因此，如果硬件故障影响了一个容错域，仍可将网络流量路由到其他容错域中的 VM。 有关可用性集的详细信息，请参阅[在 Azure 中管理 Windows 虚拟机的可用性](/azure/virtual-machines/windows/manage-availability)。
 
-**可用性区域（预览）**。  可用性区域是 Azure 区域中的物理独立区域。 每个可用性区域有独立的电源、网络和散热设备。 跨可用性区域部署 VM 有助于在发生数据中心范围的故障时保护应用程序。 
+**可用性区域**。  可用性区域是 Azure 区域中的物理独立区域。 每个可用性区域有独立的电源、网络和散热设备。 跨可用性区域部署 VM 有助于在发生数据中心范围的故障时保护应用程序。 
 
 **配对区域**。 若要在发生区域性服务中断时保护应用程序，可以跨多个区域部署应用程序，并使用 Azure 流量管理器将 Internet 流量分发到不同的区域。 每个 Azure 区域与另一个区域配对。 它们共同构成了[区域对](/azure/best-practices-availability-paired-regions)。 除巴西南部以外，区域对位于同一区域，以符合税务和执法管辖范围方面的数据驻留要求。
 
@@ -164,7 +164,7 @@ Azure 提供许多功能用于实现每个故障级别的应用程序冗余，�
 | 故障范围 | 机架 | 数据中心 | 区域 |
 | 请求路由 | 负载均衡器 | 跨区域负载均衡器 | 流量管理器 |
 | 网络延迟 | 极低 | 低 | 中到高 |
-| 虚拟网络  | VNet | VNet | 跨区域 VNet 对等互连（预览） |
+| 虚拟网络  | VNet | VNet | 跨区域 VNet 对等互连 |
 
 ## <a name="designing-for-resiliency"></a>复原设计
 在设计阶段，应执行故障模式分析 (FMA)。 FMA 旨在识别潜在的故障点，并定义应用程序如何对这些故障做出响应。
