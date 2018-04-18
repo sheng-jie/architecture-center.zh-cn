@@ -569,7 +569,7 @@ Azure Service Fabric 是在云中提供分布式应用程序的运行时的微�
 [Multi-shard querying]: /azure/sql-database/sql-database-elastic-scale-multishard-querying
 [Azure Service Fabric 概述]: /azure/service-fabric/service-fabric-overview
 [分区 Service Fabric 可靠服务]: /azure/service-fabric/service-fabric-concepts-partitioning
-[Partitioning: how to split data among multiple Redis instances]: http://redis.io/topics/partitioning（分区：如何在多个 Redis 实例之间拆分数据）
+[Partitioning: how to split data among multiple Redis instances]: http://redis.io/topics/partitioning
 [执行实体组事务]: https://msdn.microsoft.com/library/azure/dd894038.aspx
 [Redis 群集教程]: http://redis.io/topics/cluster-tutorial
 [Running Redis on a CentOS Linux VM in Azure]: http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx
