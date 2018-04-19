@@ -36,7 +36,7 @@ ms.lasthandoff: 02/13/2018
     - 既然已了解不同类型的 Azure 计算选项，请选取 PaaS Web 应用程序或 IaaS 虚拟机作为 Azure 中的第一个资源：
     - PaaS：平台即服务简介：
         - **如何：**[将基本 Web 应用程序部署到 Azure](/azure/app-service/app-service-web-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)
-        - **指南：**用于将[基本 Web 应用程序](/azure/architecture/reference-architectures/app-service-web-app/basic-web-app?toc=/azure/architecture/cloud-adoption-guide/toc.json)部署到 Azure 的经过验证的做法
+        - **指南：** 用于将[基本 Web 应用程序](/azure/architecture/reference-architectures/app-service-web-app/basic-web-app?toc=/azure/architecture/cloud-adoption-guide/toc.json)部署到 Azure 的经过验证的做法
     - IaaS：虚拟网络简介：
         - **说明：**[Azure 虚拟网络](/azure/virtual-network/virtual-networks-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)
         - **如何：**[使用门户将虚拟网络部署到 Azure](/azure/virtual-network/virtual-networks-create-vnet-arm-pportal?toc=/azure/architecture/cloud-adoption-guide/toc.json)

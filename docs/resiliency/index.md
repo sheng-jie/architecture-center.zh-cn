@@ -176,7 +176,7 @@ Azure 提供许多功能用于实现每个故障级别的应用程序冗余，�
 有关 FMA 过程的详细信息以及针对 Azure 的具体建议，请参阅 [Azure 复原指南：故障模式分析][fma]。
 
 ### <a name="example-of-identifying-failure-modes-and-detection-strategy"></a>确定故障模式和检测策略的示例
-**故障点：**调用外部 Web 服务/API。
+**故障点：** 调用外部 Web 服务/API。
 
 | 故障模式 | 检测策略 |
 | --- | --- |
