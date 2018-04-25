@@ -4,11 +4,11 @@ description: Azure 资源的命名约定。 如何命名虚拟机、存储帐户
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: f814201901af69b816d7f1588e58057b252b22db
-ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.openlocfilehash: f3f010ceb3c810caafa53523de63aa787d392aa1
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -102,7 +102,7 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 |队列名称 |存储帐户 |3-63 |小写 |字母数字和连字符 |`<service short name>-<context>-<num>` |`awesomeservice-messages-001` |
 |表名称 | 存储帐户 |3-63 |不区分大小写 |字母数字 |`<service short name><context>` |`awesomeservicelogs` |
 |文件名 | 存储帐户 |3-63 |小写 | 字母数字 |`<variable based on blob usage>` |`<variable based on blob usage>` |
-|Data Lake Store | 全局 |3-24 |小写 | 字母数字 |`<name>-dls` |`telemetry-dls` |
+|Data Lake Store | 全局 |3-24 |小写 | 字母数字 |`<name>dls` |`telemetrydls` |
 
 ### <a name="networking"></a>网络
 
