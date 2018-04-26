@@ -20,14 +20,17 @@
           href: architecture-styles/big-data.md
         - name: 大计算
           href: architecture-styles/big-compute.md
-    - name: 技术选择
-      href: technology-choices/index.md
+    - name: 选择计算服务
       items:
-        - name: 计算选项概述
+        - name: 概述
           href: technology-choices/compute-overview.md
+        - name: 决策树
+          href: technology-choices/compute-decision-tree.md
         - name: 计算选项的比较
           href: technology-choices/compute-comparison.md
-        - name: 数据存储概述
+    - name: 选择数据存储
+      items:
+        - name: 概述
           href: technology-choices/data-store-overview.md
         - name: 数据存储的比较
           href: technology-choices/data-store-comparison.md
