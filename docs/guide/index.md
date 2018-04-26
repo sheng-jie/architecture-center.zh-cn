@@ -1,15 +1,17 @@
 ---
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 530844a0d3b1256cec807e7bad509a40dca304f6
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 80cb7fde0694257a5c413b702505e27f18aed8d3
+ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-application-architecture-guide"></a>Azure 应用程序体系结构指南
 
 本指南演示用于在 Azure 上设计可缩放、可复原且高度可用的应用程序的结构化方法。 该方法基于我们从客户互动中掌握的成熟做法。
+
+<br/>
 
 <img src="./images/guide-steps.svg" style="max-width:800px;"/>
 
@@ -53,25 +55,49 @@ Polyglot 持久性（存储技术的混合）<br/>
 
 《Azure 应用程序体系结构指南》组织成一系列步骤：从体系结构和设计到实施。 每个步骤都有支持性的指导，可帮助设计应用程序体系结构。
 
-**[体系结构样式][arch-styles]**。 第一个决策点至关重要。 要生成哪种类型的体系结构？ 它可能是微服务体系结构、更传统的 N 层应用程序，或大数据解决方案。 我们已识别了七种不同的体系结构样式。 这些样式各有利弊。
+### <a name="architecture-styles"></a>体系结构样式
 
-> &#10148; [Azure 参考体系结构][ref-archs]介绍了 Azure 中的建议部署，以及有关可伸缩性、可用性、可管理性和安全性的注意事项。 大多数体系结构还包含可部署的资源管理器模板。
+第一个决策点至关重要。 要生成哪种类型的体系结构？ 它可能是微服务体系结构、更传统的 N 层应用程序，或大数据解决方案。 我们已确定了多种不同的体系结构样式。 这些样式各有利弊。
 
-**[技术选择][technology-choices]**。 应该尽早在两种技术选择中做出决定，因为它们会影响整个体系结构。 这两个选项是计算和存储技术。 术语“计算”指的是应用程序运行所在的计算资源的托管模型。 存储包括数据库，但也包括消息队列、缓存、IoT 数据、非结构化日志数据，以及应用程序可能持久存储的其他任何内容所用的存储。 
+了解更多：
 
-> &#10148; [计算选项][compute-options]和[存储选项][storage-options]提供了有关选择计算和存储服务的详细比较准则。
+- [体系结构样式][arch-styles]
+- [Azure 参考体系结构][ref-archs]
 
-**[设计原则][design-principles]**。 在整个设计过程中，请牢记这十条高级设计原则。 
+### <a name="technology-choices"></a>技术选择
 
-> &#10148; [最佳做法][best-practices]一文提供了有关自动缩放、缓存、数据分区、API 设计等方面的具体指导。   
+应该尽早在两种技术选择中做出决定，因为它们会影响整个体系结构。 这两种选择是计算服务和数据存储。 “计算”指的是运行应用程序的计算资源的承载模型。 “数据存储”不仅包括数据库，而且还包括消息队列、缓存、日志以及应用程序可能持久存储的其他任何内容所用的存储。 
 
-**[要点][pillars]**。 一个成功的云应用程序应注重软件质量的五大构成要素：可伸缩性、可用性、复原能力、管理和安全性。 
+了解更多：
 
-> &#10148; 使用我们的[设计评审查检表][checklists]根据这些质量要点评审设计。 
+- [选择计算服务](./technology-choices/compute-overview.md)
+- [选择数据存储](./technology-choices/data-store-overview.md)
 
-**[云设计模式][patterns]**。 这些设计模式可用于在 Azure 中构建可靠且可缩放的安全应用程序。 每种模式描述了一个问题、用于解决该问题的模式，以及基于 Azure 的示例。
+### <a name="design-principles"></a>设计原理
 
-> &#10148; 查看完整的[云设计模式目录](../patterns/index.md)。
+我们已确定了十条高级设计原则，遵循这些设计原则可以提高应用程序的可伸缩性、复原能力和易管理性。 这些设计原则适用于任何体系结构样式。 在整个设计过程中，请牢记这十条高级设计原则。 然后考虑一套适用于体系结构特定方面（如自动缩放、缓存、数据分区、API 设计等）的最佳做法。
+
+了解更多：
+
+- [Azure 应用程序的设计原则][design-principles]
+- [针对云进行构建时的最佳做法][best-practices]
+
+### <a name="quality-pillars"></a>质量要点
+
+一个成功的云应用程序应注重软件质量的五大构成要点：可伸缩性、可用性、复原能力、管理和安全性。 使用我们的设计评审查检表可根据这些质量要点评审体系结构。
+
+了解更多：
+
+- [软件质量的要点][pillars]
+- [设计评审查检表][checklists] 
+
+### <a name="cloud-design-patterns"></a>云设计模式
+
+设计模式是常见软件设计问题的常规解决方案。 我们已确定了一组在设计云的分布式应用程序时特别有用的设计模式。
+
+了解更多：
+
+- [云设计模式类别](../patterns/index.md)
 
 
 [arch-styles]: ./architecture-styles/index.md

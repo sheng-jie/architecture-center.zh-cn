@@ -10,9 +10,10 @@
   items:
     - name: 体系结构样式
       href: guide/architecture-styles/index.md
-    - name: 技术选择
-      href: guide/technology-choices/index.md
-      items: null
+    - name: 选择计算服务
+      href: guide/technology-choices/compute-overview.md
+    - name: 选择数据存储
+      href: guide/technology-choices/data-store-overview.md
     - name: 设计原理
       href: guide/design-principles/index.md
     - name: 软件质量的要素
