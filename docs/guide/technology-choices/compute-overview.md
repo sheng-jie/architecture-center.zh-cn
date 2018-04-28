@@ -2,11 +2,12 @@
 title: Azure 计算选项概述
 description: Azure 计算选项概述
 author: MikeWasson
-ms.openlocfilehash: a23dd49f24bc52db6f357540e3ebccb19e0497ee
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.date: 04/21/2018
+ms.openlocfilehash: 6781e1f1f6e239e3853920cb544092538cccfc62
+ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="overview-of-azure-compute-options"></a>Azure 计算选项概述
 
@@ -42,4 +43,6 @@ IaaS 提供最大的控制力、灵活性和可移植性。 FaaS 具有简便性
 - 每项服务的总体限制有哪些？ 
 - 哪类应用程序体系结构适用于此服务？ 
 
-有关 Azure 中计算选项的详细比较信息，请参阅[选择 Azure 计算选项的条件](./compute-comparison.md)。
+若要帮助选择应用程序的计算服务，请使用 [Azure 计算服务的决策树](./compute-decision-tree.md)
+
+有关 Azure 中计算选项的详细比较信息，请参阅[选择 Azure 计算服务的条件](./compute-comparison.md)。

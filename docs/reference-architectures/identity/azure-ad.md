@@ -7,11 +7,11 @@ ms.date: 11/28/2016
 pnp.series.next: adds-extend-domain
 pnp.series.prev: ./index
 cardTitle: Integrate on-premises AD with Azure AD
-ms.openlocfilehash: 431de4b2e08c79f70cc9830fda8315e07bf22c64
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 9475d669b2cb8888a7ceabed7e36317fe63681fd
+ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>将本地 Active Directory 域与 Azure Active Directory 集成
 
@@ -119,9 +119,9 @@ Azure AD Connect 同步服务可确保存储在云中的标识信息与保存在
 
 ### <a name="user-authentication"></a>用户身份验证
 
-默认情况下，Azure AD Connect 同步服务器会在本地域和 Azure AD 之间配置密码同步，并且 Azure AD 服务假定用户通过提供他们在本地使用的密码进行身份验证。 许多组织支持这种做法，但你应当考虑自己组织现有的策略和基础结构。 例如：
+默认情况下，Azure AD Connect 同步服务器会在本地域和 Azure AD 之间配置密码哈希同步，并且 Azure AD 服务假定用户通过提供他们在本地使用的密码进行身份验证。 许多组织支持这种做法，但你应当考虑自己组织现有的策略和基础结构。 例如：
 
-* 贵组织的安全策略可能禁止将密码哈希同步到云。
+* 组织的安全策略可能禁止将密码哈希同步到云。 在这种情况下，组织应考虑[直通身份验证](/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication)。
 * 你可能要求用户从公司网络访问已加入域的计算机中的云资源时，使用无缝单一登录 (SSO)。
 * 贵组织可能已部署 Active Directory 联合身份验证服务 (AD FS) 或第三方联合身份验证提供程序。 你可以将 Azure AD 配置为使用此基础结构实施身份验证和 SSO，而不是使用保存在云中的密码信息。
 

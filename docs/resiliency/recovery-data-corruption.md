@@ -3,11 +3,11 @@ title: 从数据损坏或意外删除中恢复
 description: 本文可帮助了解如何从数据损坏或意外数据删除中恢复，并可帮助设计有复原能力和高可用性的容错应用程序，以及对灾难恢复进行规划
 author: MikeWasson
 ms.date: 01/10/2018
-ms.openlocfilehash: 76d2f996750d5a67b67bd5dc4977580f3b8abbc3
-ms.sourcegitcommit: 3d6dba524cc7661740bdbaf43870de7728d60a01
+ms.openlocfilehash: b0716de39fe69d607b9a63e51356d28bbcdbfeae
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="recover-from-data-corruption-or-accidental-deletion"></a>从数据损坏或意外删除中恢复 
 
@@ -23,7 +23,7 @@ Azure 存储通过自动化副本提供数据复原能力。 但是，这不会�
 
 - **块 Blob**。 创建每个块 Blob 的时间点快照。 有关详细信息，请参阅 [Creating a Snapshot of a Blob](/rest/api/storageservices/creating-a-snapshot-of-a-blob)（创建 Blob 的快照）。 对于每个快照，只需要支付存储自上次快照状态以来 Blob 内的更改所需的存储空间费用。 快照依赖于它们所基于的原始 Blob 的存在，因此建议复制到另一个 Blob 甚至另一个存储帐户。 这可以确保正确保护备份数据不受意外删除的影响。 可以使用 [AzCopy](/azure/storage/common/storage-use-azcopy) 或 [Azure PowerShell](/azure/storage/common/storage-powershell-guide-full) 将 Blob 复制到其他存储帐户。
 
-- **文件**。 使用[共享快照（预览版）](/azure/storage/files/storage-how-to-use-files-snapshots)、AzCopy 或 PowerShell 将文件复制到其他存储帐户。
+- **文件**。 使用[共享快照](/azure/storage/files/storage-snapshots-files)、AzCopy 或 PowerShell 将文件复制到其他存储帐户。
 
 - **表**。 使用 AzCopy 将表数据导出到其他区域中的其他存储帐户。
 

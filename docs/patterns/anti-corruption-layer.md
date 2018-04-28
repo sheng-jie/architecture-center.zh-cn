@@ -3,11 +3,11 @@ title: 防损层模式
 description: 在现代应用程序与旧系统之间实施外观或适配器层。
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: efb1f90be33c2621c7a24c42730da9fffe70dfad
-ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
+ms.openlocfilehash: ac898519c9aa0a0aa2301da9f48756db0eb2af7c
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="anti-corruption-layer-pattern"></a>防损层模式
 

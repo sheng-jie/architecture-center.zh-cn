@@ -5,11 +5,11 @@ author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: client-assertion
-ms.openlocfilehash: 45d1564c255f2450f68c5e92ebe0d7de0c40ae31
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: d49129a38d0413f6006095f03b817885e1ce6c92
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-key-vault-to-protect-application-secrets"></a>使用 Azure Key Vault 保护应用程序机密
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 11/14/2017
 
 安全的最佳做法是切勿将这些机密存储在源代码管理中。 即使源代码存储库是私有的，它们也很容易泄露。 而且这不仅仅是保护机密不被泄露公开。 在较大型的项目上，建议限制有权访问生产机密的开发者和操作员。 （测试或开发环境的设置有所不同。）
 
-更安全的做法是将这些机密存储在 [Azure Key Vault][KeyVault]。 Key Vault 是用于管理加密密钥和其他机密的云托管服务。 本文演示如何使用 Key Vault 存储应用的配置设置。
+更安全的做法是将这些机密存储在 [Azure Key Vault][KeyVault]。 Key Vault 是用于管理加密密钥和其他机密的云托管服务。 本文介绍如何使用 Key Vault 存储应用的配置设置。
 
 在 [Tailspin Surveys][Surveys] 应用程序中，以下设置是机密：
 
@@ -75,7 +75,7 @@ Surveys 应用程序从以下位置加载配置设置：
 3. 单击“更多服务” > “安全 + 标识” > “Azure Active Directory” > 用户和组” > “所有用户”。
 4. 在门户顶部单击“新建用户”。
 5. 填充字段并将用户分配到“全局管理员”目录角色。
-6. 单击“创建” 。
+6. 单击“创建”。
 
 ![全局管理员用户](./images/running-the-app/global-admin-user.png)
 
@@ -87,7 +87,7 @@ Surveys 应用程序从以下位置加载配置设置：
 
 2. 选择希望管理员访问的订阅。
 3. 在“订阅”边栏选项卡中，选择“访问控制 (IAM)”。
-4. 单击“添加”。
+4. 单击 **“添加”**。
 4. 在“角色”下，选择“所有者”。
 5. 键入要添加为“所有者”的用户的电子邮件地址。
 6. 选择用户并单击“保存”。
@@ -120,7 +120,7 @@ Surveys 应用程序从以下位置加载配置设置：
     ],
     ```          
 
-6. 单击“保存” 。  
+6. 单击“ **保存**”。  
 
 7. 重复步骤 3-6，将相同的 JSON 片段添加到 Web API (Surveys.WebAPI) 的应用程序清单。
 

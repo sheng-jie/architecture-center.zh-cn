@@ -1,23 +1,20 @@
 ---
 title: 将 Active Directory 域服务 (AD DS) 扩展到 Azure
-description: >-
-  如何在 Azure 中实现采用 Active Directory 授权的安全的混合网络体系结构。
-
-  指南,vpn 网关,ExpressRoute,负载均衡器,虚拟网络,active-directory
+description: 将本地 Active Directory 域扩展到 Azure
 author: telmosampaio
-ms.date: 11/28/2016
+ms.date: 04/13/2018
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: 007d244f29bf11c6e2bd703c7f4f245d22c02f0f
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: bcd1e2b1b925a5d64665c5651c24589a77e39ec9
+ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>将 Active Directory 域服务 (AD DS) 扩展到 Azure
 
-此参考体系结构展示了如何使用 [Active Directory 域服务 (AD DS)][active-directory-domain-services] 将 Active Directory 环境扩展到 Azure 以提供分布式身份验证服务。  [**部署此解决方案**。](#deploy-the-solution)
+此参考体系结构展示了如何使用 Active Directory 域服务 (AD DS) 将 Active Directory 环境扩展到 Azure 以提供分布式身份验证服务。 [**部署此解决方案**。](#deploy-the-solution)
 
 [![0]][0] 
 
@@ -103,27 +100,113 @@ AD DS 服务器提供身份验证服务并且是引入注目的攻击目标。 �
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[GitHub][github] 上提供了一个用于部署此参考体系结构的解决方案。 若要运行部署此解决方案的 Powershell 脚本，需要具有 [Azure CLI][azure-powershell] 的最新版本。 若要部署此参考体系结构，请执行以下步骤：
+[GitHub][github] 上提供了此体系结构的部署。 请注意，整个部署最长可能需要花费两个小时，包括创建 VPN 网关和运行配置 AD DS 的脚本。
 
-1. 将解决方案文件夹从 [GitHub][github] 克隆到本地计算机。
+### <a name="prerequisites"></a>先决条件
 
-2. 打开 Azure CLI 并导航到本地解决方案文件夹。
+1. 克隆、下载 [参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
 
-3. 运行以下命令：
-    ```Powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>
+2. 安装 [Azure CLI 2.0][azure-cli-2]。
+
+3. 安装 [Azure 构建基块][azbb] npm 包。
+
+4. 在命令提示符、bash 提示符或 PowerShell 提示符下使用以下命令登录到 Azure 帐户。
+
+   ```bash
+   az login
+   ```
+
+### <a name="deploy-the-simulated-on-premises-datacenter"></a>部署模拟的本地数据中心
+
+1. 导航到参考体系结构存储库的 `identity/adds-extend-domain` 文件夹。
+
+2. 打开 `onprem.json` 文件。 搜索 `adminPassword` 并添加密码值。 该文件中有三个实例。
+
+    ```bash
+    "adminUsername": "testuser",
+    "adminPassword": "<password>",
     ```
-    将 `<subscription id>` 替换为你的 Azure 订阅 ID。
-    对于 `<location>`，请指定一个 Azure 区域，例如 `eastus` 或 `westus`。
-    `<mode>` 参数控制部署粒度，可以是下列值之一：
-    * `Onpremise`：部署模拟的本地环境。
-    * `Infrastructure`：在 Azure 中部署 VNet 基础结构和 jumpbox。
-    * `CreateVpn`：部署 Azure 虚拟网络网关并将其连接到模拟的本地网络。
-    * `AzureADDS`：部署充当 AD DS 服务器的 VM，将 Active Directory 部署到这些 VM，并在 Azure 中部署域。
-    * `Workload`：部署公共和专用外围网络以及工作负荷层。
-    * `All`：部署上述所有部署。 **如果没有现有的本地网络，但是希望如上所述部署完整的参考体系结构以用于测试或评估，则这是建议使用的选项。**
 
-4. 等待部署完成。 如果要部署 `All` 部署，则将需要花费几个小时。
+3. 在同一文件中，搜索 `protectedSettings` 并添加密码值。 有两个 `protectedSettings` 实例，每个 AD 服务器各有一个实例。
+
+    ```bash
+    "protectedSettings": {
+      "configurationArguments": {
+        ...
+        "AdminCreds": {
+          "UserName": "testadminuser",
+          "Password": "<password>"
+        },
+        "SafeModeAdminCreds": {
+          "UserName": "testsafeadminuser",
+          "Password": "<password>"
+        }
+      }
+    }
+    ```
+
+4. 运行以下命令，并等待部署完成：
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onprem.json --deploy
+    ```
+
+### <a name="deploy-the-azure-vnet"></a>部署 Azure VNet
+
+1. 打开 `azure.json` 文件。  搜索 `adminPassword` 并添加密码值。 该文件中有三个实例。
+
+    ```bash
+    "adminUsername": "testuser",
+    "adminPassword": "<password>",
+    ```
+
+2. 在同一文件中，搜索 `protectedSettings` 并添加密码值。 有两个 `protectedSettings` 实例，每个 AD 服务器各有一个实例。
+
+    ```bash
+    "protectedSettings": {
+      "configurationArguments": {
+        ...
+        "AdminCreds": {
+          "UserName": "testadminuser",
+          "Password": "<password>"
+        },
+        "SafeModeAdminCreds": {
+          "UserName": "testsafeadminuser",
+          "Password": "<password>"
+        }
+      }
+    }
+    ```
+
+3. 对于 `sharedKey`，请输入 VPN 连接的共享密钥。 参数文件中有两个 `sharedKey` 实例。
+
+    ```bash
+    "sharedKey": "",
+    ```
+
+4. 运行以下命令并等待部署完成。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onoprem.json --deploy
+    ```
+
+   部署到本地 VNet 所在的同一个资源组。
+
+### <a name="test-connectivity-with-the-azure-vnet"></a>测试与 Azure VNet 的连接
+
+部署完成后，可以测试从模拟本地环境到 Azure VNet 的连接。
+
+1. 使用 Azure 门户找到名为 `ra-onpremise-mgmt-vm1` 的 VM。
+
+2. 单击 `Connect` 来与 VM 建立远程桌面会话。 用户名为 `contoso\testuser`，密码为 `onprem.json` 参数文件中指定的密码。
+
+3. 在远程桌面会话中，与 10.0.4.4（名为 `adds-vm1` 的 VM 的 IP 地址）建立另一个远程桌面会话。 用户名为 `contoso\testuser`，密码为 `azure.json` 参数文件中指定的密码。
+
+4. 在 `adds-vm1` 的远程桌面会话中，转到“服务器管理器”并单击“添加要管理的其他服务器”。 
+
+5. 在“Active Directory”选项卡中，单击“立即查找”。 应会看到 AD、AD DS 和 Web VM 的列表。
+
+   ![](./images/add-servers-dialog.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -131,27 +214,27 @@ AD DS 服务器提供身份验证服务并且是引入注目的攻击目标。 �
 * 了解在 Azure 中[创建 Active Directory 联合身份验证服务 (AD FS) 基础结构][adfs]的最佳做法。
 
 <!-- links -->
+
 [adds-resource-forest]: adds-forest.md
 [adfs]: adfs.md
-
+[azure-cli-2]: /azure/install-azure-cli
+[azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 [implementing-a-secure-hybrid-network-architecture]: ../dmz/secure-vnet-hybrid.md
 [implementing-a-secure-hybrid-network-architecture-with-internet-access]: ../dmz/secure-vnet-dmz.md
 
-[active-directory-domain-services]: https://technet.microsoft.com/library/dd448614.aspx
 [adds-data-disks]: https://msdn.microsoft.com/library/azure/jj156090.aspx#BKMK_PlaceDB
 [ad-ds-operations-masters]: https://technet.microsoft.com/library/cc779716(v=ws.10).aspx
 [ad-ds-ports]: https://technet.microsoft.com/library/dd772723(v=ws.11).aspx
 [availability-set]: /azure/virtual-machines/virtual-machines-windows-create-availability-set
-[azure-expressroute]: https://azure.microsoft.com/documentation/articles/expressroute-introduction/
-[azure-powershell]: /powershell/azureps-cmdlets-docs
-[azure-vpn-gateway]: https://azure.microsoft.com/documentation/articles/vpn-gateway-about-vpngateways/
+[azure-expressroute]: /azure/expressroute/expressroute-introduction
+[azure-vpn-gateway]: /azure/vpn-gateway/vpn-gateway-about-vpngateways
 [capacity-planning-for-adds]: http://social.technet.microsoft.com/wiki/contents/articles/14355.capacity-planning-for-active-directory-domain-services.aspx
 [considerations]: ./considerations.md
 [GitHub]: https://github.com/mspnp/reference-architectures/tree/master/identity/adds-extend-domain
 [microsoft_systems_center]: https://www.microsoft.com/server-cloud/products/system-center-2016/
 [monitoring_ad]: https://msdn.microsoft.com/library/bb727046.aspx
 [security-considerations]: #security-considerations
-[set-a-static-ip-address]: https://azure.microsoft.com/documentation/articles/virtual-networks-static-private-ip-arm-pportal/
+[set-a-static-ip-address]: /azure/virtual-network/virtual-networks-static-private-ip-arm-pportal
 [standby-operations-masters]: https://technet.microsoft.com/library/cc794737(v=ws.10).aspx
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
 [vm-windows-sizes]: /azure/virtual-machines/virtual-machines-windows-sizes
