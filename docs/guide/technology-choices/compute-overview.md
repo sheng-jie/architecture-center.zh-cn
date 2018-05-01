@@ -3,17 +3,17 @@ title: Azure 计算选项概述
 description: Azure 计算选项概述
 author: MikeWasson
 ms.date: 04/21/2018
-ms.openlocfilehash: 6781e1f1f6e239e3853920cb544092538cccfc62
-ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
+ms.openlocfilehash: 8ee508aaa07d87ac77ef484e20d572fdf2b9fb40
+ms.sourcegitcommit: 3846a0ab2b2b2552202a3c9c21af0097a145ffc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/29/2018
 ---
 # <a name="overview-of-azure-compute-options"></a>Azure 计算选项概述
 
 术语“计算”指的是计算资源（应用程序在这些资源上运行）的承载模型。 
 
-一端是服务架构（Intrastructure-as-a-Service，IaaS）。 使用 IaaS 可以预配所需的 VM 以及关联的网络和存储组件。 然后将需要的任何软件和应用程序部署到这些 VM 上。 除非 Microsoft 管理基础结构，否则该模型最接近传统的本地环境。 仍由你管理单独的 VM。  
+一端是**服务架构**（Infrastructure-as-a-Service，IaaS）。 使用 IaaS 可以预配所需的 VM 以及关联的网络和存储组件。 然后将需要的任何软件和应用程序部署到这些 VM 上。 除非 Microsoft 管理基础结构，否则该模型最接近传统的本地环境。 仍由你管理单独的 VM。  
 
 平台即服务（Platform-as-a-Service，PaaS）提供托管的承载环境，可在其中部署应用程序而无需管理 VM 或网络资源。 例如，指定实例计数而不是创建单独的 VM，服务将预配、配置并管理必需的资源。 Azure App Service 是 PaaS 服务的一个示例。
 

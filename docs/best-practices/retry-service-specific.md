@@ -4,11 +4,11 @@ description: 设置重试机制的服务指南。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 332f96e73def360926b6a934bbb1361b2254ec41
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: c80a4aa232cca1283d84368a36dd7341cab8a314
+ms.sourcegitcommit: 3846a0ab2b2b2552202a3c9c21af0097a145ffc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/29/2018
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定服务的重试指南
 
@@ -924,7 +924,7 @@ Active Directory 身份验证库 (ADAL) 提供适用于 Azure Active Directory �
 使用 Azure Active Directory 时，请注意以下指南：
 
 * 如有可能，请使用 ADAL 库和内置支持进行重试。
-* 如果使用的是适用于 Azure Active Directory 的 REST API，只有当结果是 5xx 范围内的错误（如 500 内部服务器错误、502 错误的网关、503 服务不可用和 504 网关超时）时，才应重试操作。 请勿针对其他任何错误重试操作。
+* 在对 Azure Active Directory 使用 REST API 的情况下，如果结果代码为 429（太多请求）或 5xx 范围中的错误，请重试该操作。 请勿针对其他任何错误重试操作。
 * 建议将指数回退策略用于 Azure Active Directory 的批处理方案。
 
 请考虑从下列重试操作设置入手。 这些都是通用设置，应监视操作，并对值进行微调以适应自己的方案。
@@ -989,6 +989,7 @@ client.RetryPolicy = RetryPolicy.Default;
 * 临时检测逻辑视用于调用 REST 调用的实际客户端 API 而定。 某些客户端（如较新的 **HttpClient** 类）不会引发包含失败 HTTP 状态代码的已完成请求的异常。 这可以提升性能，但会阻止使用临时故障处理应用程序块。 在这种情况下，可以使用针对失败 HTTP 状态代码引发异常的代码，包装 REST API 调用，并可以由临时故障处理应用程序块进行处理。 或者，可以使用另一种机制来驱动重试。
 * 从服务返回的 HTTP 状态代码可以帮助指明故障是否是临时故障。 可能需要检查客户端生成的异常或重试框架，以访问状态代码或确定对等的异常类型。 以下 HTTP 代码通常可指明重试是否合适：
   * 408 请求超时
+  * 429 请求过多
   * 500 内部服务器错误
   * 502 错误的网关
   * 503 服务不可用
