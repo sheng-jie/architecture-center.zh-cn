@@ -2,11 +2,11 @@
 title: 体系结构样式
 description: 云应用程序的常见体系结构样式
 layout: LandingPage
-ms.openlocfilehash: 15a316f9ebf7cfe4e72a6992f264a68abb904819
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: e647d1a0f3305e7754859e5ab8a9a3b46c3d4fb6
+ms.sourcegitcommit: d08f6ee27e1e8a623aeee32d298e616bc9bb87ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="architecture-styles"></a>体系结构样式
 
@@ -65,6 +65,7 @@ Web-队列-辅助角色体系结构适合用于包含一些资源密集型任务
 可考虑对以极低延迟引入和处理大量数据的应用程序（例如 IoT 解决方案）使用事件驱动的体系结构。 当不同的子系统必须对相同的事件数据执行不同类型的处理时，该样式也很有用。
 
 <br />
+
 ### <a name="big-data-big-compute"></a>大数据、大计算
 
 **[大数据](./big-data.md)** 和 **[大计算](./big-compute.md)** 是专业化的体系结构样式，适用于符合某些特定要求的工作负荷。 大数据将庞大的数据集划分为区块，针对要分析和报告的整个数据集执行并行处理。 大计算也称为高性能计算 (HPC)，它使用大量（数千个）核心执行并行计算。 应用领域包含仿真、建模和 3D 渲染。
