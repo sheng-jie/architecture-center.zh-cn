@@ -5,11 +5,11 @@ author: zoinerTejada
 ms:date: 02/12/2018
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 9ffbe74bc55f4731369e938848cc5bbf9f7775f4
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 0975d056aa971c627ca91c9fc05c4e16e07b6fc0
+ms.sourcegitcommit: d08f6ee27e1e8a623aeee32d298e616bc9bb87ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-data-architecture-guide"></a>Azure 数据体系结构指南
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/06/2018
 
 ![](./images/guide-rdbms.svg)
 
-**[大数据解决方案](./big-data/index.md)**。 大数据体系结构设计用来处理对传统数据库系统而言太大或太复杂的数据的引入、处理和分析。 可以批处理或实时处理数据。 大数据解决方案通常涉及到大量的非关系数据，例如键-值数据、JSON 文档或时序数据。 通常，传统 RDBMS 系统并不很适合用于存储此类数据。 术语 *NoSQL* 是指用于存放非关系数据的数据库系列。 （此术语不是很正确，因为许多非关系数据存储支持 SQL 兼容查询。）
+**[大数据解决方案](./big-data/index.md)**。 大数据体系结构设计用来处理对传统数据库系统而言太大或太复杂的数据的引入、处理和分析。 可以成批或实时处理数据。 大数据解决方案通常涉及到大量的非关系数据，例如键-值数据、JSON 文档或时序数据。 通常，传统 RDBMS 系统并不很适合用于存储此类数据。 术语 *NoSQL* 是指用于存放非关系数据的数据库系列。 （此术语不是很正确，因为许多非关系数据存储支持 SQL 兼容查询。）
 
 ![](./images/guide-big-data.svg)
 

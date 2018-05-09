@@ -44,6 +44,19 @@
           href: identity/adds-forest.md
         - name: 将 AD FS 扩展到 Azure
           href: identity/adfs.md
+    - name: N 层应用程序
+      href: n-tier/index.md
+      items:
+        - name: 使用 SQL Server 的 N 层应用程序
+          href: n-tier/n-tier-sql-server.md
+        - name: 多区域 N 层应用程序
+          href: n-tier/multi-region-sql-server.md
+        - name: 使用 Cassandra 的 N 层应用程序
+          href: n-tier/n-tier-cassandra.md
+        - name: 部署 Linux VM
+          href: n-tier/linux-vm.md
+        - name: 部署 Windows VM
+          href: n-tier/windows-vm.md
     - name: 外围网络
       href: dmz/index.md
       items:
@@ -53,28 +66,6 @@
           href: dmz/secure-vnet-dmz.md
         - name: 高度可用的网络虚拟设备
           href: dmz/nva-ha.md
-    - name: VM 工作负荷 (Linux)
-      href: virtual-machines-linux/index.md
-      items:
-        - name: 单个 VM
-          href: virtual-machines-linux/single-vm.md
-        - name: 负载均衡的 VM
-          href: virtual-machines-linux/multi-vm.md
-        - name: N 层应用程序
-          href: virtual-machines-linux/n-tier.md
-        - name: 多区域应用程序
-          href: virtual-machines-linux/multi-region-application.md
-    - name: VM 工作负荷 (Windows)
-      href: virtual-machines-windows/index.md
-      items:
-        - name: 单个 VM
-          href: virtual-machines-windows/single-vm.md
-        - name: 负载均衡的 VM
-          href: virtual-machines-windows/multi-vm.md
-        - name: N 层应用程序
-          href: virtual-machines-windows/n-tier.md
-        - name: 多区域应用程序
-          href: virtual-machines-windows/multi-region-application.md
     - name: Jenkins 服务器
       href: jenkins/index.md
     - name: SAP NetWeaver 和 SAP HANA
