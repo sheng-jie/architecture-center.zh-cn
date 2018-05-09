@@ -3,11 +3,11 @@ title: Azure 参考体系结构
 description: 适用于 Azure 上的常见工作负荷的参考体系结构、蓝图和规范性实施指南。
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 9708c975e543a04cafe22f38194e833be44d7b81
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 4c0006404ed0c0f603e9599cd9c04e6d02fdbfeb
+ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/06/2018
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
@@ -19,47 +19,30 @@ ms.lasthandoff: 04/06/2018
 
 <section class="series">
     <ul class="panelContent">
-    <!-- Windows VM workloads -->
+
+<!-- N-tier -->
 <li style="display: flex; flex-direction: column;">
-    <a href="./virtual-machines-windows/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+    <a href="./n-tier/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
             <div class="cardPadding" style="display: flex;">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="./virtual-machines-windows/images/n-tier.svg" height="140px" />
+                            <img src="./n-tier/images/n-tier-sql-server.svg" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Windows VM 工作负荷</h3>
-                        <p>此系列文章依次介绍有关运行单个 Windows VM、多个负载均衡的 VM 和多区域 N 层应用程序的最佳做法。</p>
+                        <h3>N 层应用程序</h3>
+                        <p>将 N 层应用程序部署到 Azure（适用于 Windows 或 Linux）。</p>
+                        <p>此处显示了适用于 SQL Server 和 Apache Cassandra 的配置。 为实现高可用性，请将主动-被动配置部署到两个区域中。</p>
                     </div>
                 </div>
             </div>
         </div>
     </a>
 </li>
-    <!-- Linux VM workloads -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./virtual-machines-linux/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="./virtual-machines-linux/images/n-tier.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Linux VM 工作负荷</h3>
-                        <p>此系列文章依次介绍有关运行单个 Linux VM、多个负载均衡的 VM 和多区域 N 层应用程序的最佳做法。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-    <!-- Hybrid network -->
+
+<!-- Hybrid network -->
 <li style="display: flex; flex-direction: column;">
     <a href="./hybrid-networking/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
@@ -73,6 +56,7 @@ ms.lasthandoff: 04/06/2018
                     <div class="cardText">
                         <h3>混合网络</h3>
                         <p>此系列文章演示用于在本地网络与 Azure 之间创建网络连接的选项。</p>
+                        <p>配置包括点对点 VPN 或用于私有专用连接的 Azure ExpressRoute。</p>
                     </div>
                 </div>
             </div>
