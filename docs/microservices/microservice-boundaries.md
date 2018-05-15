@@ -3,11 +3,11 @@ title: 标识微服务边界
 description: 标识微服务边界
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: e4f11da9f970724c55ad99824f808a10c4558971
-ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
+ms.openlocfilehash: d35b92ffd97c4fda5d6599340925ce3dfea7f15b
+ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 05/06/2018
 ---
 # <a name="designing-microservices-identifying-microservice-boundaries"></a>设计微服务：标识微服务边界
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/08/2018
 
 2. 接下来，查看域模型中的聚合。 聚合通常是微服务的适当候选项。 合理设计的聚合能够展示合理设计的微服务许多特征，例如：
 
-    - 聚合派生自业务要求，而不是数据访问或消息传递等技术因素。  
+    - 聚合源自业务需求，而不是数据访问或消息传递等技术因素。  
     - 聚合应具有较高的功能内聚性。
     - 聚合是持久性边界。
     - 聚合应松散耦合。 

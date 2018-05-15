@@ -9,17 +9,17 @@ pnp.pattern.categories:
 - data-management
 - design-implementation
 - performance-scalability
-ms.openlocfilehash: ce8d20ae82ae7d5ba00b4bc264a5c4d90fc383bd
-ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
+ms.openlocfilehash: c2832aa806909c6f0aab8b6345ffb8162eb59903
+ms.sourcegitcommit: d08f6ee27e1e8a623aeee32d298e616bc9bb87ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>命令和查询责任分离 (CQRS) 模式
 
 [!INCLUDE [header](../_includes/header.md)]
 
-使用独立接口将读取数据的操作与更新数据的操作分离。 这可以最大程度地提高性能、可伸缩性和安全性。 支持系统随着时间的推移而改进；防止更新命令在域级别引起合并冲突。
+使用独立接口将读取数据的操作与更新数据的操作分离。 这可以最大程度地提高性能、可伸缩性和安全性。 通过提高灵活性，让系统随着时间的推移而改进；防止更新命令在域级别引发并冲突。
 
 ## <a name="context-and-problem"></a>上下文和问题
 
