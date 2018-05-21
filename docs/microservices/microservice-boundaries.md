@@ -3,11 +3,11 @@ title: 识别微服务边界
 description: 识别微服务边界
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: e4f11da9f970724c55ad99824f808a10c4558971
-ms.sourcegitcommit: 744ad1381e01bbda6a1a7eff4b25e1a337385553
+ms.openlocfilehash: d35b92ffd97c4fda5d6599340925ce3dfea7f15b
+ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 05/06/2018
 ---
 # <a name="designing-microservices-identifying-microservice-boundaries"></a>设计微服务：识别微服务边界
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/08/2018
 
 在应用程序中标识微服务之后，请根据以下条件验证设计：
 
-- 每个服务职责单一。
+- 每个服务承担单一责任。
 - 服务之间不存在琐碎的调用。 如果将功能拆分成两个服务会导致它们过度琐碎，该症状的原因可能是这些功能属于同一个服务。
 - 每个服务足够小，独立工作的小团队即可构建它。
 - 两个或更多个服务的部署不应该存在相互依赖的关系。 应该始终可以在不重新部署其他任何服务的情况下部署某个服务。
