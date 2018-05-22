@@ -1,5 +1,5 @@
 ---
-title: 整体持久性对立模式
+title: 整体持久性反模式
 description: 将应用程序的所有数据放入单个数据存储可能会损害性能。
 author: dragon119
 ms.date: 06/05/2017
@@ -9,7 +9,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/14/2017
 ---
-# <a name="monolithic-persistence-antipattern"></a>整体持久性对立模式
+# <a name="monolithic-persistence-antipattern"></a>整体持久性反模式
 
 将应用程序的所有数据放入单个数据存储可能会降低性能，原因是这会导致资源争用，或者数据存储不很适合某些数据。
 
@@ -110,11 +110,11 @@ public class PolyController : ApiController
 
 ![示例应用程序的数据访问统计信息][MonolithicDataAccessStats]
 
-### <a name="identify-resource-contention"></a>识别资源争用
+### <a name="identify-resource-contention"></a>识别资源竞争
 
 此时，可以检查源代码，并重点检查应用程序在哪些位置访问了争用的资源。 找到如下所述的情况：
 
-- 正在将逻辑隔离的数据写入相同的存储。 日志、报告和排队消息等数据不应保存在业务信息所在的同一个数据库中。
+- 将逻辑隔离的数据写入相同的存储。 日志、报告和排队消息等数据不应保存在业务信息所在的同一个数据库中。
 - 所选数据存储与数据类型（例如关系型数据库中的大型 Blob 或 XML 文档）之间不匹配。
 - 具有明显不同使用模式的数据共享同一个存储，例如将 high-write/low-read 数据与 low-write/high-read 数据存储在一起。
 
