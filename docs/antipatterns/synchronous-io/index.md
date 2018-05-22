@@ -1,5 +1,5 @@
 ---
-title: 同步 I/O 对立模式
+title: 同步 I/O 反模式
 description: 在完成 I/O 时阻塞调用线程可能会降低性能并影响纵向可伸缩性。
 author: dragon119
 ms.date: 06/05/2017
@@ -9,7 +9,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/14/2017
 ---
-# <a name="synchronous-io-antipattern"></a>同步 I/O 对立模式
+# <a name="synchronous-io-antipattern"></a>同步 I/O 反模式
 
 在完成 I/O 时阻塞调用线程可能会降低性能并影响纵向可伸缩性。
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/14/2017
 - 发布消息，或者从队列中检索消息。
 - 写入或读取本地文件。
 
-出现此对立模式的原因通常是：
+出现此反模式的原因通常是：
 
 - 此模式似乎是执行操作的最直观方式。 
 - 应用程序需要请求返回的响应。
