@@ -1,5 +1,5 @@
 ---
-title: 琐碎 I/O 对立模式
+title: 琐碎 I/O 反模式
 description: 发出大量的 I/O 请求可能会损害性能和响应能力。
 author: dragon119
 ms.openlocfilehash: 4f0e0e455ceb58317d3029d8ab4631d476802499
@@ -8,7 +8,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/23/2018
 ---
-# <a name="chatty-io-antipattern"></a>琐碎 I/O 对立模式
+# <a name="chatty-io-antipattern"></a>琐碎 I/O 反模式
 
 大量 I/O 请求的累积效应可能会对性能和响应能力产生明显的不利影响。
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/23/2018
 2. 通过查询 `Product` 表查找该子类别中的所有产品。
 3. 对于每个产品，查询 `ProductPriceListHistory` 表中的价格数据。
 
-应用程序使用[实体框架][ef]查询数据库。 可在[此处][code-sample]找到完整示例。 
+应用程序使用[Entity Framework][ef]查询数据库。 可在[此处][code-sample]找到完整示例。 
 
 ```csharp
 public async Task<IHttpActionResult> GetProductsInSubCategoryAsync(int subcategoryId)
@@ -207,21 +207,21 @@ await SaveCustomerListToFileAsync(customers);
 
 ## <a name="considerations"></a>注意事项
 
-- 前两个示例发出更少的 I/O 调用，但每个示例检索了更多的信息。 必须考虑这两种因素的利弊。 正确的答案取决于实际使用模式。 例如，在 Web API 示例中，客户端可能往往只需检索用户名。 在这种情况下，将该操作公开为单独的 API 调用可能有利。 有关详细信息，请参阅[超量提取][extraneous-fetching]对立模式。
+- 前两个示例发出更少的 I/O 调用，但每个示例检索了更多的信息。 必须考虑这两种因素的利弊。 正确的答案取决于实际使用场景。 例如，在 Web API 示例中，客户端可能往往只需检索用户名。 在这种情况下，将该操作公开为单独的 API 调用可能有利。 有关详细信息，请参阅[超量提取][extraneous-fetching]反模式。
 
 - 读取数据时，请不要发出过大的 I/O 请求。 应用程序应该只检索它可能要使用的信息。 
 
 - 有时，将对象的信息分区成以下两个区块可能会有帮助：经常访问的数据（大多数请求就是针对这些数据发出的），不经常访问的数据（极少使用的数据）。 最常访问的数据往往是对象总体数据中的相对较小一部分，因此，只返回这一部分数据能够大幅节省 I/O 开销。
 
-- 写入数据时，请避免将资源锁定超过必要的时间，以减少在执行冗长操作期间发生资源争用的可能性。 如果写入操作跨多个数据存储、文件或服务，则采用最终一致性方法。 请参阅[数据一致性指南][data-consistency-guidance]。
+- 写入数据时，请避免将资源锁定超过必要的时间，以减少在执行冗长操作期间发生资源竞争的可能性。 如果写入操作跨多个数据存储、文件或服务，则采用最终一致性方法。 请参阅[数据一致性指南][data-consistency-guidance]。
 
-- 如果在写入数据之前在内存中缓冲数据，则发生进程崩溃时，数据易受攻击。 如果数据率通常出现喷发或相对稀疏，在[事件中心](http://azure.microsoft.com/services/event-hubs/)等外部持久队列中缓冲数据可能会更安全。
+- 如果在写入数据之前在内存中缓冲数据，则当进程崩溃时，数据易受攻击。 如果数据率通常出现喷发或相对稀疏，在[事件中心](http://azure.microsoft.com/services/event-hubs/)等外部持久队列中缓冲数据可能会更安全。
 
-- 请考虑缓存从服务或数据库检索的数据。 这可以避免针对相同的数据发出重复请求，从而帮助减少 I/O 数量。 有关详细信息，请参阅[有关缓存的最佳做法][caching-guidance]。
+- 请考虑将服务或数据库检索的数据缓存。 这可以避免针对相同的数据发出重复请求，从而帮助减少 I/O 数量。 有关详细信息，请参阅[有关缓存的最佳做法][caching-guidance]。
 
 ## <a name="how-to-detect-the-problem"></a>如何检测问题
 
-琐碎 I/O 的症状包括高延迟和低吞吐量。 由于 I/O 资源争用加剧，最终用户可能会反映响应时间延长，或服务超时导致失败。
+琐碎 I/O 的症状包括高延迟和低吞吐量。 由于 I/O 资源竞争加剧，最终用户可能会反映响应时间延长，或服务超时导致失败。
 
 可执行以下步骤来帮助确定任何问题的原因：
 
@@ -300,8 +300,8 @@ await SaveCustomerListToFileAsync(customers);
 - [API 设计最佳做法][api-design]
 - [有关缓存的最佳做法][caching-guidance]
 - [数据一致性入门][data-consistency-guidance]
-- [超量提取对立模式][extraneous-fetching]
-- [无缓存对立模式][no-cache]
+- [超量提取反模式][extraneous-fetching]
+- [无缓存反模式][no-cache]
 
 [api-design]: ../../best-practices/api-design.md
 [caching-guidance]: ../../best-practices/caching.md
