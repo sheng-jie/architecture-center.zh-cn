@@ -1,5 +1,5 @@
 ---
-title: 超量提取对立模式
+title: 超量提取反模式
 description: 检索超出业务运营需要的数据可能会导致不必要的 I/O 开销，并降低响应能力。
 author: dragon119
 ms.date: 06/05/2017
@@ -9,15 +9,15 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
 ---
-# <a name="extraneous-fetching-antipattern"></a>超量提取对立模式
+# <a name="extraneous-fetching-antipattern"></a>超量提取反模式
 
 检索超出业务运营需要的数据可能会导致不必要的 I/O 开销，并降低响应能力。 
 
 ## <a name="problem-description"></a>问题描述
 
-如果应用程序尝试通过检索所有数据（超过它可能需要的数据量）来尽量减少 I/O 请求数量，则可能会发生这种对立模式。 这通常是过度补偿[琐碎 I/O][chatty-io] 对立模式的结果。 例如，应用程序可能会提取数据库中每个产品的详细信息。 但用户可能只需要一部分详细信息（有些信息与客户无关），因此不需要一次性查看所有产品。 即使用户浏览的是整个目录，也最好是将结果分页 &mdash; 例如，每次显示 20 条结果。
+如果应用程序尝试通过检索所有数据（超过它可能需要的数据量）来尽量减少 I/O 请求数量，则可能会发生这种反模式。 这通常是过度补偿[琐碎 I/O][chatty-io] 反模式的结果。 例如，应用程序可能会提取数据库中每个产品的详细信息。 但用户可能只需要一部分详细信息（有些信息与客户无关），因此不需要一次性查看所有产品。 即使用户浏览的是整个目录，也最好是将结果分页 &mdash; 例如，每次显示 20 条结果。
 
-出现此问题的另一个原因是遵循了不合理的编程或设计做法。 例如，以下代码使用实体框架来提取每个产品的完整详细信息。 然后，它会筛选结果以返回一部分字段，并丢弃剩余的字段。 可在[此处][sample-app]找到完整示例。
+出现此问题的另一个原因是遵循了不合理的编程或设计做法。 例如，以下代码使用Entity Framework来提取每个产品的完整详细信息。 然后，它会筛选结果以返回一部分字段，并丢弃剩余的字段。 可在[此处][sample-app]找到完整示例。
 
 ```csharp
 public async Task<IHttpActionResult> GetAllFieldsAsync()
@@ -51,7 +51,7 @@ public async Task<IHttpActionResult> AggregateOnClientAsync()
 }
 ```
 
-以下示例演示实体框架对 LINQ to Entities 的使用方式所造成的微妙问题。 
+以下示例演示Entity Framework对 LINQ to Entities 的使用方式所造成的微妙问题。 
 
 ```csharp
 var query = from p in context.Products.AsEnumerable()
@@ -99,7 +99,7 @@ public async Task<IHttpActionResult> AggregateOnDatabaseAsync()
 }
 ```
 
-使用实体框架时，请确保使用 `IQueryable` 接口而不是 `IEnumerable` 来解析 LINQ 查询。 可能需要调整查询，以便只使用可映射到数据源的函数。 可以重构前面的示例，以便从查询中删除 `AddDays` 方法，使筛选由数据库执行。
+使用Entity Framework时，请确保使用 `IQueryable` 接口而不是 `IEnumerable` 来解析 LINQ 查询。 可能需要调整查询，以便只使用可映射到数据源的函数。 可以重构前面的示例，以便从查询中删除 `AddDays` 方法，使筛选由数据库执行。
 
 ```csharp
 DateTime dateSince = DateTime.Now.AddDays(-7); // AddDays has been factored out. 
@@ -112,7 +112,7 @@ List<Product> products = query.ToList();
 
 ## <a name="considerations"></a>注意事项
 
-- 在某些情况下，可以通过将数据水平分区来提高性能。 如果不同的操作访问不同的数据属性，水平分区可以减少资源争用。 大部分操作往往是针对少部分数据运行的，因此，分散此负载可提高性能。 请参阅[数据分区][data-partitioning]。
+- 在某些情况下，可以通过将数据水平分区来提高性能。 如果不同的操作访问不同的数据属性，水平分区可以减少资源争用。 大部分操作往往是针对少部分数据运行的，因此，分散负载可提高性能。 请参阅[数据分区][data-partitioning]。
 
 - 对于必须支持无界限查询的操作，请实现分页，每次只提取有限数量的实体。 例如，如果客户正在浏览产品目录，则每次可向其显示一页结果。
 
@@ -124,14 +124,14 @@ List<Product> products = query.ToList();
 
 - 同样，检索大量实体的请求可能意味着应用程序未正确筛选数据。 请确认是否真正需要所有这些实体。 尽量使用数据库端筛选，例如，在 SQL 中使用 `WHERE` 子句。 
 
-- 将处理工作量卸载到数据库并不总是最佳选择。 仅当数据库在设计上或优化为执行这些处理时，才使用此策略。 大部分数据库系统已针对某些函数进行高度优化，但并不旨在充当通用的应用程序引擎。 有关详细信息，请参阅[繁忙数据库对立模式][BusyDatabase]。
+- 将处理工作量分配到数据库并不总是最佳选择。 仅当数据库在设计上或优化为执行这些处理时，才使用此策略。 大部分数据库系统已针对某些函数进行高度优化，但并不旨在充当通用的应用程序引擎。 有关详细信息，请参阅[繁忙数据库反模式][BusyDatabase]。
 
 
 ## <a name="how-to-detect-the-problem"></a>如何检测问题
 
 超量提取的症状包括高延迟和低吞吐量。 如果数据是从数据存储中检索的，则还可能会加剧资源争用。 最终用户可能会反映响应时间延长，或服务超时导致失败。这些失败可能返回 HTTP 500（内部服务器）错误或 HTTP 503（服务不可用）错误。 检查 Web 服务器的事件日志，其中可能包含有关错误原因和情况的更详细信息。
 
-此对立模式的症状和获取的某些遥测数据可能与[整体持久性对立模式][MonolithicPersistence]非常类似。 
+此反模式的症状和获取的某些遥测数据可能与[整体持久性反模式][MonolithicPersistence]非常类似。 
 
 可执行以下步骤来帮助确定原因：
 
@@ -226,8 +226,8 @@ List<Product> products = query.ToList();
 
 ## <a name="related-resources"></a>相关资源
 
-- [繁忙数据库对立模式][BusyDatabase]
-- [琐碎 I/O 对立模式][chatty-io]
+- [繁忙数据库反模式][BusyDatabase]
+- [琐碎 I/O 反模式][chatty-io]
 - [数据分区最佳做法][data-partitioning]
 
 
