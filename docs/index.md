@@ -1,6 +1,6 @@
 ---
-title: Azure 体系结构中心
-description: Azure 体系结构中心是提供有关在 Microsoft Azure 中生成解决方案的指南、蓝图、模式和最佳做法的官方中心。 它由 Microsoft 模式和实践团队维护。
+title: Azure 架构中心
+description: Azure 架构中心是提供有关在 Microsoft Azure 中生成解决方案的指南、蓝图、模式和最佳做法的官方中心。 它由 Microsoft 模式和实践团队维护。
 layout: LandingPage
 ms.topic: landing-page
 ms.openlocfilehash: 0ac5dd79f765fe9b649cc2ca83c0213b4ba28544
@@ -9,7 +9,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-architecture-center"></a>Azure 体系结构中心
+# <a name="azure-architecture-center"></a>Azure 架构中心
 
 <!-- main panel -->
 <ul class="panelContent cardsC">
@@ -21,7 +21,7 @@ ms.lasthandoff: 04/06/2018
                     <div class="card">
                         <img src="_images/a3g-logo.svg" alt="" />
                         <div class="cardText">
-                            <h3>Azure 应用程序体系结构指南</h3>
+                            <h3>Azure 应用程序架构指南</h3>
                             <p> 有关基于我们从客户交互中学到的成熟做法，设计可缩放、可复原且高度可用的应用程序的指南。</p>
                         </div>
                     </div>
@@ -37,8 +37,8 @@ ms.lasthandoff: 04/06/2018
                     <div class="card">
                         <img src="_images/reference-architectures.svg" alt="" />
                         <div class="cardText">
-                            <h3>参考体系结构</h3>
-                            <p>适用于 Azure 的一系列建议体系结构。 每种体系结构包括最佳做法、说明性的步骤和可部署的解决方案。</p>
+                            <h3>架构参考</h3>
+                            <p>适用于 Azure 的一系列建议架构。 每种架构包括最佳做法、说明性的步骤和可部署的解决方案。</p>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ ms.lasthandoff: 04/06/2018
                         </div>
                         <div class="cardText">
                             <h3>在 Azure 上构建微服务</h3>
-                            <p>本系列教程由多篇文章组成，将逐步引导你完成在 Azure 上设计和构建微服务体系结构的整个过程。 另外还随附了参考实现。</p>
+                            <p>本系列教程由多篇文章组成，将逐步引导你完成在 Azure 上设计和构建微服务架构的整个过程。 另外还随附了参考实现。</p>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ ms.lasthandoff: 04/06/2018
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>Azure 数据体系结构指南</h3>
+                            <h3>Azure 数据架构指南</h3>
                             <p>在 Microsoft Azure 上设计以数据为中心的解决方案的结构化方法。</p>
                         </div>
                     </div>
@@ -158,7 +158,7 @@ ms.lasthandoff: 04/06/2018
                         </div>
                         <div class="cardText">
                             <h3>Azure 构建基块</h3>
-                            <p>简化 Azure 资源的部署。 使用单个设置文件在 Azure 中部署复杂的体系结构。</p>
+                            <p>简化 Azure 资源的部署。 使用单个设置文件在 Azure 中部署复杂的架构。</p>
                         </div>
                     </div>
                 </div>
