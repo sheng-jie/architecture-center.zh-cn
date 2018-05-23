@@ -1,6 +1,6 @@
 ---
-title: 应用服务 Web 应用程序
-description: 适用于 Microsoft Azure 中运行的 Web 应用程序的建议体系结构。
+title: 基于应用服务的Web 应用
+description: 适用于 Microsoft Azure 中运行的 Web 应用程序的建议架构。
 layout: LandingPage
 ms.openlocfilehash: ea5ca6f0a1e2995ab35333095260d8f2c3db2600
 ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
@@ -12,9 +12,9 @@ ms.lasthandoff: 02/23/2018
 <!-- See the templates in ./build/reference-architectures  -->
 <!-- See data in index.json -->
 
-# <a name="app-service-web-application"></a>应用服务 Web 应用程序
+# <a name="app-service-web-application"></a>基于应用服务的Web 应用
 
-这些参考体系结构介绍了在 Azure 中使用 Azure 应用服务和其他托管服务的 Web 应用程序适用的成熟做法。
+以下参考架构中介绍了 Web 应用程序使用 Azure 应用服务和其他托管服务的最佳实践。
 
 <section class="series">
     <ul class="panelContent">
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/23/2018
                     </div>
                     <div class="cardText">
                         <h3>基本 Web 应用程序</h3>
-                        <p>一个使用 Azure 应用服务和 Azure SQL 数据库的基本 Web 应用程序。</p>
+                        <p>一个使用 Azure 应用服务和 Azure SQL 数据库的简单 Web 应用程序。</p>
                     </div>
                 </div>
             </div>
