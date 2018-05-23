@@ -1,6 +1,6 @@
 ---
-title: 识别微服务边界
-description: 识别微服务边界
+title: 标识微服务边界
+description: 标识微服务边界
 author: MikeWasson
 ms.date: 12/08/2017
 ms.openlocfilehash: d35b92ffd97c4fda5d6599340925ce3dfea7f15b
@@ -9,7 +9,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2018
 ---
-# <a name="designing-microservices-identifying-microservice-boundaries"></a>设计微服务：识别微服务边界
+# <a name="designing-microservices-identifying-microservice-boundaries"></a>设计微服务：标识微服务边界
 
 微服务的适当大小是什么？ 我们经常听到有人说，“不要太大，也不要太小”&mdash; 这句话绝对正确，但实际上没有太大意义。 但是，如果从一个精心设计的领域模型着手，则规划出微服务就容易得多。
 
@@ -47,7 +47,8 @@ ms.lasthandoff: 05/06/2018
   
 ## <a name="drone-delivery-defining-the-microservices"></a>无人机交付：定义微服务
 
-回顾一下，前面开发团队已标识四个聚合（“交付”、“包裹”、“无人机”和“帐户”）和两个领域服务（“计划程序”和“监督程序”）。 
+回顾一下，前面开发团队已标识四个聚合（“交付”、“包裹”、“无人机”和“帐户”）和两个领域服务（“计划程序”和“监督程序”）。
+ 
 
 “交付”和“包裹”是微服务的突出候选项。 “计划程序”和“监督程序”协调其他微服务执行的活动，因此，将这些领域服务实施为微服务比较有利。  
 
