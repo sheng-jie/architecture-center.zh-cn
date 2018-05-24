@@ -1,5 +1,5 @@
 ---
-title: 无缓存对立模式
+title: 无缓存反模式
 description: 反复提取相同的数据可能会降低性能和可伸缩性。
 author: dragon119
 ms.date: 06/05/2017
@@ -9,7 +9,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/05/2018
 ---
-# <a name="no-caching-antipattern"></a>无缓存对立模式
+# <a name="no-caching-antipattern"></a>无缓存反模式
 
 在处理许多并发请求的云应用程序中，反复提取相同的数据可能会降低性能和可伸缩性。 
 
@@ -43,7 +43,7 @@ public class PersonRepository : IPersonRepository
 
 可在[此处][sample-app]找到完整示例。
 
-出现此对立模式的原因通常是：
+出现此反模式的原因通常是：
 
 - 不使用缓存的解决方案更容易实施，在低负载下可正常运转。 缓存使代码变得更复杂。 
 - 不能清楚地了解使用缓存的优点和缺点。
