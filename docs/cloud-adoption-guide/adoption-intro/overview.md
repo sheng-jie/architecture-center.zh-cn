@@ -1,6 +1,6 @@
 ---
-title: 采用 Azure：基础
-description: 说明企业采用 Azure 所需的基线知识级别
+title: Azure 选型：基础
+description: 说明企业选型 Azure 所需的基线知识级别
 author: petertay
 ms.openlocfilehash: e9421b610e4eb07a3ed37bca56e513b0689484ef
 ms.sourcegitcommit: 9ba82cf84cee06ccba398ec04c51dab0e1ca8974
@@ -8,11 +8,11 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2018
 ---
-# <a name="adopting-azure-foundational"></a>采用 Azure：基础
+# <a name="adopting-azure-foundational"></a>Azure 选型：基础
 
-采用 Azure 是企业具有组织成熟度的第一阶段。 此阶段结束时，组织中的人员将可以向 Azure 部署简单的工作负荷。
+Azure 选型是企业具有组织成熟度的第一阶段。 此阶段结束时，组织中的人员将可以向 Azure 部署简单的工作负荷。
 
-下表包含用于完成基础采用阶段的任务。 该列表是渐进式的，以便按顺序完成每个任务。 如果以前已完成某个任务，请转到该列表中的下一个任务。 
+下表包含用于完成基础选型阶段的任务。 该列表是渐进式的，以便按顺序完成每个任务。 如果以前已完成某个任务，请转到该列表中的下一个任务。 
 
 1. 了解 Azure 的内部：
     - **说明：**[Azure 的工作原理](azure-explainer.md)
