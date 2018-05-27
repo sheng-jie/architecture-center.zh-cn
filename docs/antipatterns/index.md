@@ -33,9 +33,9 @@ ms.lasthandoff: 11/14/2017
 | [繁忙数据库][BusyDatabase] | 将过多的处理工作附加到数据存储。 |
 | [繁忙前端][BusyFrontEnd] | 将资源密集型任务转移到后台线程。 |
 | [琐碎 I/O][ChattyIO] | 持续发送许多小型网络请求。 |
-| [超量提取][ExtraneousFetching] | 未按需检索数据，超量检索的数据导致不必要的 I/O。 |
+| [超量提取][ExtraneousFetching] | 检索的数据量超过需要，导致不必要的 I/O。 |
 | [不当实例化][ImproperInstantiation] | 反复创建和销毁原本应该共享并重复使用的对象。 |
-| [整体持久性][MonolithicPersistence] | 使用相同的数据存储方案来存储使用模式截然不同的的数据。 |
+| [整体持久性][MonolithicPersistence] | 对采用截然不同的使用模式的数据使用相同的数据存储。 |
 | [无缓存][NoCaching] | 无法缓存数据。 |
 | [同步 I/O][SynchronousIO] | I/O 完成时阻塞调用线程。 | 
 
