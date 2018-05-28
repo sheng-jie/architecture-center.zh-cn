@@ -12,7 +12,7 @@ ms.lasthandoff: 02/23/2018
 <!-- See the templates in ./build/reference-architectures  -->
 <!-- See data in index.json -->
 
-# <a name="app-service-web-application"></a>基于应用服务的Web 应用
+# <a name="app-service-web-application"></a>基于应用服务的 Web 应用
 
 以下参考架构中介绍了 Web 应用程序使用 Azure 应用服务和其他托管服务的最佳实践。
 
