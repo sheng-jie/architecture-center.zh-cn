@@ -92,7 +92,7 @@ export class Location {
 
 构建传统的整体应用程序时，此类编程做法特别重要。 借助大型代码库，许多子系统可以使用 `Location` 对象，因此，对象必须实施正确的行为。 
 
-另一个示例是一个仓储模式，它可以确保应用程序的其他部分不会直接在数据存储中执行读取或写入：
+另一个示例是一个存储库模式，它可以确保应用程序的其他部分不会直接在数据存储中执行读取或写入：
 
 ![](./images/repository.png)
 
@@ -112,11 +112,11 @@ export class Location {
 
 - 实体具有唯一标识。 在 REST 中，资源具有 URL 格式的唯一标识符。 创建对应于实体领域标识的资源 URL。 从 URL 到领域标识的映射对于客户端可能是不透明的。
 
-- 可以通过从根实体的导航属性来访问聚合的子实体。 如果遵循了 [HATEOAS](https://en.wikipedia.org/wiki/HATEOAS) 原则的话，则可以通过父实体表示形式中的链接来访问子实体。 
+- 可以通过从根实体导航来访问聚合的子实体。 如果遵循了 [HATEOAS](https://en.wikipedia.org/wiki/HATEOAS) 原则的话，则可以通过父实体表示形式中的链接来访问子实体。
 
 - 由于值对象是不可变的，可以通过替换整个值对象来执行更新。 在 REST 中，可通过 PUT 或 PATCH 请求来实现更新。 
 
-- 仓储可让客户端在集合中查询、添加或删除对象，以及提取基础数据存储的详细信息。 在 REST 中，集合可以是不同的资源，其中包含用于查询集合或将新实体添加到集合的方法。
+- 存储库可让客户端在集合中查询、添加或删除对象，以及提取基础数据存储的详细信息。 在 REST 中，集合可以是不同的资源，其中包含用于查询集合或将新实体添加到集合的方法。
 
 设计 API 时，请考虑这些 API 如何表达领域模型。不仅要考虑到模型中的数据，而且还要考虑业务运营以及对数据的约束。
 
@@ -126,7 +126,7 @@ export class Location {
 | 标识 | 代码 | `http://delivery-service/deliveries/1` |
 | 子实体 | 链接 | `{ "href": "/deliveries/1/confirmation" }` |
 | 更新值对象 | PUT 或 PATCH | `PUT http://delivery-service/deliveries/1/dropoff` |
-| 仓储 | 集合 | `http://delivery-service/deliveries?status=pending` |
+| 存储库 | 集合 | `http://delivery-service/deliveries?status=pending` |
 
 
 ## <a name="api-versioning"></a>API 版本控制
