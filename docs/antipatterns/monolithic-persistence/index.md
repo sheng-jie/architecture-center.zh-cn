@@ -110,7 +110,7 @@ public class PolyController : ApiController
 
 ![示例应用程序的数据访问统计信息][MonolithicDataAccessStats]
 
-### <a name="identify-resource-contention"></a>识别资源竞争
+### <a name="identify-resource-contention"></a>识别资源争用
 
 此时，可以检查源代码，并重点检查应用程序在哪些位置访问了争用的资源。 找到如下所述的情况：
 
