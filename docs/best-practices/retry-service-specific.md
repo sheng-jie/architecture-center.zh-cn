@@ -4,11 +4,12 @@ description: 设置重试机制的服务指南。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: d03cc9dd1af92a91bbfab1ebc8c438e6312eeb49
-ms.sourcegitcommit: d08f6ee27e1e8a623aeee32d298e616bc9bb87ff
+ms.openlocfilehash: 65206c5f39a74d228c7eaa0fea0c5b1b0710b22f
+ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/21/2018
+ms.locfileid: "34423011"
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定服务的重试指南
 
@@ -855,7 +856,7 @@ var stats = await client.GetServiceStatsAsync(null, context);
 
 | **设置** | **默认值** | **含义** |
 | --- | --- | --- |
-| MaximumExecutionTime | 120 秒 | 请求的最长执行时间，包括所有可能的重试尝试。 |
+| MaximumExecutionTime | 无 | 请求的最长执行时间，包括所有可能的重试尝试。 如果未指定，则允许请求花费的时间没有限制。 换而言之，请求可能会挂起。 |
 | ServerTimeOut | 无 | 请求的服务器超时间隔（值四舍五入到秒）。 如果未指定，则会使用所有服务器请求的默认值。 通常情况下，最好忽略此设置，以便使用服务器默认值。 | 
 | LocationMode | 无 | 如果创建的存储帐户设置了读取访问异地冗余存储 (RA-GRS) 复制选项，则可以使用位置模式来指明哪个位置应接收请求。 例如，如果指定的是 **PrimaryThenSecondary**，则请求总是会先发送到主要位置。 如果某个请求失败，它将发送到辅助位置。 |
 | RetryPolicy | ExponentialPolicy | 有关每个选项的详细信息，请参阅下文。 |
