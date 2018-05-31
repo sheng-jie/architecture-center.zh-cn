@@ -1,5 +1,5 @@
 ---
-title: 超量提取对立模式
+title: 请求冗余反模式
 description: 检索超出业务运营需要的数据可能会导致不必要的 I/O 开销，并降低响应能力。
 author: dragon119
 ms.date: 06/05/2017
@@ -8,8 +8,9 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30846597"
 ---
-# <a name="extraneous-fetching-antipattern"></a>超量提取对立模式
+# <a name="extraneous-fetching-antipattern"></a>请求冗余反模式
 
 检索超出业务运营需要的数据可能会导致不必要的 I/O 开销，并降低响应能力。 
 
