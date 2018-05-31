@@ -1,6 +1,6 @@
 ---
-title: 不当实例化对立模式
-description: 避免连续创建本应一次性创建，然后共享的对象的新实例。
+title: 不当实例化反模式
+description: 避免连续创建对象的新实例（本应创建一次然后共享）。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: 4d5ef9ad9e675b46df94b51e81d7a4bd4c1b25e9
@@ -8,14 +8,15 @@ ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29477574"
 ---
-# <a name="improper-instantiation-antipattern"></a>不当实例化对立模式
+# <a name="improper-instantiation-antipattern"></a>不当实例化反模式
 
-连续创建本应一次性创建，然后共享的对象的新实例可能会损害性能。 
+连续创建对象的新实例（本应创建一次然后共享），可能会损害性能。 
 
 ## <a name="problem-description"></a>问题描述
 
-许多库提供外部资源的抽象。 在内部，这些类通常管理其自身与资源之间的连接，充当可由客户端用来访问资源的中转站。 下面是与 Azure 应用程序相关的中转站类的一些示例：
+许多库提供外部资源的抽象。 在内部，这些类通常管理其自身与资源之间的连接，在客户端访问资源时充当中转站。  下面是与 Azure 应用程序相关的中转站类的一些示例：
 
 - `System.Net.Http.HttpClient`。 使用 HTTP 来与 Web 服务通信。
 - `Microsoft.ServiceBus.Messaging.QueueClient`。 向服务总线队列发布和接收消息。 

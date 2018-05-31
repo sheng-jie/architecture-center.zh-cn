@@ -7,12 +7,13 @@ ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29478266"
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
 <!-- See data in index.json -->
 
-# <a name="app-service-web-application"></a>基于应用服务的 Web 应用
+# <a name="app-service-web-application"></a>基于应用服务的Web 应用
 
 以下参考架构中介绍了 Web 应用程序使用 Azure 应用服务和其他托管服务的最佳实践。
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 02/23/2018
                     </div>
                     <div class="cardText">
                         <h3>基本 Web 应用程序</h3>
-                        <p>一个使用 Azure 应用服务和 Azure SQL 数据库的简单 Web 应用程序。</p>
+                        <p>一个使用 Azure 应用服务和 Azure SQL 数据库的简单 Web 应用程序。</p>
                     </div>
                 </div>
             </div>

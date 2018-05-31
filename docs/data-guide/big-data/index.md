@@ -8,6 +8,7 @@ ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30298849"
 ---
 # <a name="big-data-architectures"></a>大数据架构
 
@@ -52,7 +53,7 @@ ms.lasthandoff: 04/03/2018
 
 * **分析数据存储**。 许多大数据解决方案会先准备用于分析的数据，然后以结构化格式提供已处理的数据供分析工具查询。 如大多数传统业务智能 (BI) 解决方案中所见，用来为这些查询提供服务的分析数据存储可以是 Kimball 样式的关系数据仓库。 另外，可以通过低延迟 NoSQL 技术（例如 HBase，或通过分布式数据存储中的数据文件提供元数据抽象的交互式 Hive 数据库）来提供数据。 Azure SQL 数据仓库针对大规模的基于云的数据仓库提供托管服务。 HDInsight 支持交互式 Hive、HBase 和 Spark SQL，也可以使用这些技术来提供用于分析的数据。
 
-* **分析和报告**。 大多数大数据解决方案的目的是通过分析和报告提供对数据的见解。 若要使用户能够对数据进行分析，架构可以包括一个数据建模层，例如 Azure Analysis Services 中的多维 OLAP 多维数据集或表格数据模型。 它还可以使用 Microsoft Power BI 或 Microsoft Excel 中的建模和可视化技术支持自助式 BI。 分析和报告还可以采用适用于数据科学家或数据分析人员的交互式数据浏览形式。 对于这些方案，许多 Azure 服务都支持分析笔记本（例如 Jupyter），这允许这些用户通过 Python 或 R 利用其现有技能。对于大规模数据浏览，可以使用 Microsoft R Server，可以独立使用，也可以将其与 Spark 一起使用。
+* **分析和报告**。 大多数大数据解决方案的目的是通过分析和报告提供对数据的见解。 若要使用户能够对数据进行分析，架构可以包括一个数据建模层，例如 Azure Analysis Services 中的多维 OLAP 多维数据集或表格数据模型。  它还可以使用 Microsoft Power BI 或 Microsoft Excel 中的建模和可视化技术支持自助式 BI。 分析和报告还可以采用适用于数据科学家或数据分析人员的交互式数据浏览形式。 对于这些方案，许多 Azure 服务都支持分析笔记本（例如 Jupyter），这允许这些用户通过 Python 或 R 利用其现有技能。对于大规模数据浏览，可以使用 Microsoft R Server，可以独立使用，也可以将其与 Spark 一起使用。
 
 * **业务流程**。 大多数大数据解决方案都包括重复的数据处理操作（封装在工作流中），这些操作对源数据进行转换、在多个源和接收器之间移动数据、将已处理的数据加载到分析数据存储中，或者直接将结果推送到报表或仪表板。 若要自动执行这些工作流，可以使用诸如 Azure 数据工厂或 Apache Oozie 和 Sqoop 的业务流程技术。
 
