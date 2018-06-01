@@ -1,6 +1,6 @@
 ---
 title: Azure 体系结构中心
-description: Azure 体系结构中心是提供有关在 Microsoft Azure 中生成解决方案的指南、蓝图、模式和最佳做法的官方中心。 它由 Microsoft 模式和实践团队维护。
+description: Azure 体系结构中心是提供有关在 Microsoft Azure 中生成解决方案的指南、蓝图、模式和最佳实践的官方中心。 它由 Microsoft 模式和实践团队维护。
 layout: LandingPage
 ms.topic: landing-page
 ms.openlocfilehash: 0ac5dd79f765fe9b649cc2ca83c0213b4ba28544
@@ -38,7 +38,7 @@ ms.lasthandoff: 04/06/2018
                         <img src="_images/reference-architectures.svg" alt="" />
                         <div class="cardText">
                             <h3>参考体系结构</h3>
-                            <p>适用于 Azure 的一系列建议体系结构。 每种体系结构包括最佳做法、说明性的步骤和可部署的解决方案。</p>
+                            <p>适用于 Azure 的一系列建议体系结构。 每种体系结构包括最佳实践、说明性的步骤和可部署的解决方案。</p>
                         </div>
                     </div>
                 </div>
@@ -117,8 +117,8 @@ ms.lasthandoff: 04/06/2018
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>云应用程序最佳做法</h3>
-                            <p>有关云应用程序的最佳做法，涉及自动缩放、缓存、数据分区、API 设计等方面。</p>
+                            <h3>云应用程序最佳实践</h3>
+                            <p>有关云应用程序的最佳实践，涉及自动缩放、缓存、数据分区、API 设计等方面。</p>
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@ ms.lasthandoff: 04/06/2018
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>Azure 构建基块</h3>
+                            <h3>Azure 构建基块</h3>
                             <p>简化 Azure 资源的部署。 使用单个设置文件在 Azure 中部署复杂的体系结构。</p>
                         </div>
                     </div>
@@ -177,7 +177,7 @@ ms.lasthandoff: 04/06/2018
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>设计评审查检表</h3>
+                            <h3>设计评审查检表</h3>
                             <p>在设计过程中为开发人员和解决方案架构师提供协助的查检表。</p>
                         </div>
                     </div>
@@ -258,7 +258,7 @@ ms.lasthandoff: 04/06/2018
                         </div>
                         <div class="cardText">
                             <h3>在 Azure 上运行 SharePoint Server 2016</h3>
-                            <p>在 Azure 上部署和运行高可用性 SharePoint Server 2016 场。</p>
+                            <p>在 Azure 上部署和运行高可用性 SharePoint Server 2016。</p>
                         </div>
                     </div>
                 </div>
@@ -298,7 +298,7 @@ ms.lasthandoff: 04/06/2018
                         </div>
                         <div class="cardText">
                             <h3>多租户应用程序的标识管理</h3>
-                            <p>了解使用 Azure AD 进行标识管理时有关多租户的最佳做法。</p>
+                            <p>关于基于 Azure AD 进行标识管理实现多租户的最佳实践。</p>
                         </div>
                     </div>
                 </div>
