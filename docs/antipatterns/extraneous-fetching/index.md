@@ -1,5 +1,5 @@
 ---
-title: 请求冗余对立模式
+title: 请求冗余反模式
 description: 检索超出业务运营需要的数据可能会导致不必要的 I/O 开销，并降低响应能力。
 author: dragon119
 ms.date: 06/05/2017
@@ -9,7 +9,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
 ---
-# <a name="extraneous-fetching-antipattern"></a>请求冗余对立模式
+# <a name="extraneous-fetching-antipattern"></a>请求冗余反模式
 
 检索超出业务运营需要的数据可能会导致不必要的 I/O 开销，并降低响应能力。 
 
