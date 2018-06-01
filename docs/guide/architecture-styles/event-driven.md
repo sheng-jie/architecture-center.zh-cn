@@ -1,5 +1,5 @@
 ---
-title: 事件驱动的架构风格
+title: 事件驱动的架构样式
 description: 介绍 Azure 上事件驱动和 IoT 架构的优点、挑战和最佳做法
 author: MikeWasson
 ms.openlocfilehash: 3289bf784b02d62e3d0c1a29b4839c9be3501134
@@ -8,7 +8,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/23/2018
 ---
-# <a name="event-driven-architecture-style"></a>事件驱动的架构风格
+# <a name="event-driven-architecture-style"></a>事件驱动的架构样式
 
 事件驱动的架构由生成事件流的事件生成者和侦听事件的事件使用者组成。 
 
