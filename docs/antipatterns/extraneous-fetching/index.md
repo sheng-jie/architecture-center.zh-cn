@@ -17,7 +17,7 @@ ms.lasthandoff: 04/06/2018
 
 如果应用程序尝试通过检索所有数据（超过它可能需要的数据量）来尽量减少 I/O 请求数量，则可能会发生这种反模式。 这通常是过度补偿[琐碎 I/O][chatty-io] 反模式的结果。 例如，应用程序可能会提取数据库中每个产品的详细信息。 但用户可能只需要一部分详细信息（有些信息与客户无关），因此不需要一次性查看所有产品。 即使用户浏览的是整个目录，也最好是将结果分页 &mdash; 例如，每次显示 20 条结果。
 
-出现此问题的另一个原因是遵循了不合理的编程或设计做法。 例如，以下代码使用Entity Framework来提取每个产品的完整详细信息。 然后，它会筛选结果以返回一部分字段，并丢弃剩余的字段。 可在[此处][sample-app]找到完整示例。
+出现此问题的另一个原因是遵循了不合理的编程或设计做法。 例如，以下代码使用实体框架来提取每个产品的完整详细信息。 然后，它会筛选结果以返回一部分字段，并丢弃剩余的字段。 可在[此处][sample-app]找到完整示例。
 
 ```csharp
 public async Task<IHttpActionResult> GetAllFieldsAsync()
@@ -51,7 +51,7 @@ public async Task<IHttpActionResult> AggregateOnClientAsync()
 }
 ```
 
-以下示例演示Entity Framework对 LINQ to Entities 的使用方式所造成的微妙问题。 
+以下示例演示实体框架对 LINQ to Entities 的使用方式所造成的微妙问题。 
 
 ```csharp
 var query = from p in context.Products.AsEnumerable()
@@ -99,7 +99,7 @@ public async Task<IHttpActionResult> AggregateOnDatabaseAsync()
 }
 ```
 
-使用Entity Framework时，请确保使用 `IQueryable` 接口而不是 `IEnumerable` 来解析 LINQ 查询。 可能需要调整查询，以便只使用可映射到数据源的函数。 可以重构前面的示例，以便从查询中删除 `AddDays` 方法，使筛选由数据库执行。
+使用实体框架时，请确保使用 `IQueryable` 接口而不是 `IEnumerable` 来解析 LINQ 查询。 可能需要调整查询，以便只使用可映射到数据源的函数。 可以重构前面的示例，以便从查询中删除 `AddDays` 方法，使筛选由数据库执行。
 
 ```csharp
 DateTime dateSince = DateTime.Now.AddDays(-7); // AddDays has been factored out. 
