@@ -22,7 +22,7 @@ ms.lasthandoff: 04/06/2018
                         <img src="_images/a3g-logo.svg" alt="" />
                         <div class="cardText">
                             <h3>Azure 应用程序体系结构指南</h3>
-                            <p> 有关基于我们从客户交互中学到的成熟实践，设计可缩放、可复原且高度可用的应用程序的指南。</p>
+                            <p> 有关基于我们从客户交互中学到的成熟做法，设计可缩放、可复原且高度可用的应用程序的指南。</p>
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@ ms.lasthandoff: 04/06/2018
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>Azure 构建模块</h3>
+                            <h3>Azure 构建基块</h3>
                             <p>简化 Azure 资源的部署。 使用单个设置文件在 Azure 中部署复杂的体系结构。</p>
                         </div>
                     </div>
@@ -177,8 +177,8 @@ ms.lasthandoff: 04/06/2018
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>设计评审清单</h3>
-                            <p>在设计过程中为开发人员和解决方案架构师提供协助的清单。</p>
+                            <h3>设计评审查检表</h3>
+                            <p>在设计过程中为开发人员和解决方案架构师提供协助的查检表。</p>
                         </div>
                     </div>
                 </div>
@@ -258,7 +258,7 @@ ms.lasthandoff: 04/06/2018
                         </div>
                         <div class="cardText">
                             <h3>在 Azure 上运行 SharePoint Server 2016</h3>
-                            <p>在 Azure 上部署和运行高可用性 SharePoint Server 2016 。</p>
+                            <p>在 Azure 上部署和运行高可用性 SharePoint Server 2016。</p>
                         </div>
                     </div>
                 </div>
