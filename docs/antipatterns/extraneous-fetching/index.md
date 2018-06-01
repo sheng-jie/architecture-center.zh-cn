@@ -1,5 +1,5 @@
 ﻿---
-title: 超量提取反模式
+title: 请求冗余反模式
 description: 检索超出业务运营需要的数据可能会导致不必要的 I/O 开销，并降低响应能力。
 author: dragon119
 ms.date: 06/05/2017
@@ -10,7 +10,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
 ms.locfileid: "30846597"
 ---
-# <a name="extraneous-fetching-antipattern"></a>超量提取反模式
+# <a name="extraneous-fetching-antipattern"></a>请求冗余反模式
 
 检索超出业务运营需要的数据可能会导致不必要的 I/O 开销，并降低响应能力。 
 
@@ -130,7 +130,7 @@ List<Product> products = query.ToList();
 
 ## <a name="how-to-detect-the-problem"></a>如何检测问题
 
-超量提取的症状包括高延迟和低吞吐量。 如果数据是从数据存储中检索的，则还可能会加剧资源争用。 最终用户可能会反映响应时间延长，或服务超时导致失败。这些失败可能返回 HTTP 500（内部服务器）错误或 HTTP 503（服务不可用）错误。 检查 Web 服务器的事件日志，其中可能包含有关错误原因和情况的更详细信息。
+请求冗余的症状包括高延迟和低吞吐量。 如果数据是从数据存储中检索的，则还可能会加剧资源争用。 最终用户可能会反映响应时间延长，或服务超时导致失败。这些失败可能返回 HTTP 500（内部服务器）错误或 HTTP 503（服务不可用）错误。 检查 Web 服务器的事件日志，其中可能包含有关错误原因和情况的更详细信息。
 
 此反模式的症状和获取的某些遥测数据可能与[整体持久性反模式][MonolithicPersistence]非常类似。 
 
