@@ -1,6 +1,6 @@
 ---
-title: 复原能力清单
-description: 为设计过程中的复原能力考虑因素提供指导的清单。
+title: 复原能力查检表
+description: 为设计过程中的复原能力考虑因素提供指导的查检表。
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
@@ -10,7 +10,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
 ---
-# <a name="resiliency-checklist"></a>复原能力清单
+# <a name="resiliency-checklist"></a>复原能力查检表
 
 复原能力是指系统能够在发生故障后进行恢复，然后继续正常运行，它是[软件质量的构成要素](../guide/pillars.md)之一。 根据复原能力设计应用程序需要规划和缓解可能发生的各种故障模式。 核对此清单可以从复原能力的角度审查应用程序的架构。 另请查看[特定 Azure 服务的复原能力检查表](./resiliency-per-service.md)。
 
@@ -31,14 +31,14 @@ ms.lasthandoff: 03/08/2018
 
 **使用自动缩放来响应负载增加。** 如果应用程序未配置为随着负载的增加而自动横向扩展，如果用户的请求饱和，那么应用程序的服务可能会失败。 有关详细信息，请参阅以下文章：
 
-* 一般信息：[可伸缩性清单](./scalability.md)
+* 一般信息：[可伸缩性查检表](./scalability.md)
 * Azure 应用服务：[手动或自动缩放实例计数][app-service-autoscale]
 * 云服务：[如何自动缩放云服务][cloud-service-autoscale]
 * 虚拟机：[自动缩放和虚拟机规模集][vmss-autoscale]
 
 **使用负载均衡来分发请求。** 负载均衡通过从循环列表中删除不正常的实例，将应用程序请求分发到正常的服务实例。 如果服务使用 Azure 应用服务或 Azure 云服务，则已负载均衡。 但是，如果应用程序使用 Azure VM，则你需要预配负载均衡器。 有关更多详细信息，请参阅 [Azure 负载均衡器](/azure/load-balancer/load-balancer-overview/)概述。
 
-**将 Azure 应用程序网关配置为使用多个实例。** 根据应用程序的要求，[Azure 应用程序网关](/azure/application-gateway/application-gateway-introduction/)可能更适合用于将请求分发到应用服务。 但是，应用程序网关服务的单个实例不享有 SLA 保障，因此，洱应用程序网关实例发生故障时，应用程序也可能发生故障。 预配多个中型或大型应用程序网关实例，保证根据 [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/v1_0/) 的条款提供服务可用性。
+**将 Azure 应用程序网关配置为使用多个实例。** 根据应用程序的要求，[Azure 应用程序网关](/azure/application-gateway/application-gateway-introduction/)可能更适合用于将请求分发到应用程序的服务。 但是，应用程序网关服务的单个实例不享有 SLA 保障，因此，洱应用程序网关实例发生故障时，应用程序也可能发生故障。 预配多个中型或大型应用程序网关实例，保证根据 [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/v1_0/) 的条款提供服务可用性。
 
 **为每个应用层使用 Azure 可用性集。** 将实例放入[可用性集][availability-sets]可提供更高的 [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。 
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/08/2018
 
 **使用 Azure 流量管理器将应用程序的流量路由到不同的区域。**  [Azure 流量管理器][traffic-manager]在 DNS 级别执行负载均衡，根据指定的[流量路由][traffic-manager-routing]方法和应用程序终结点的运行状况将流量路由到不同区域。 如果不使用流量管理器，则受限于部署的单个区域，从而会限制规模，增大用户的延迟，并导致应用程序在发生区域范围的服务中断时停机。
 
-**为负载均衡器和流量管理器配置并测试运行健康状况探测。** 确保运行状况逻辑检查系统关键部件，并相应地对运行状况探测做出响应。
+**为负载均衡器和流量管理器配置并测试运行状况探测。** 确保运行状况逻辑检查系统关键部件，并相应地对运行状况探测做出响应。
 
 * [Azure 流量管理器][traffic-manager]和 [Azure 负载均衡器][load-balancer]的运行状况探测充当特定的功能。 对于流量管理器，运行状况探测确定是否故障转移到另一个区域。 对于负载均衡器，它确定是否从轮转项目中删除某个 VM。      
 * 对于流量管理器探测，运行状况终结点应检查所有关键依赖项，它们部署在同一区域，其故障应触发故障转移到另一个区域。  
@@ -86,7 +86,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="testing"></a>测试
 
-**对应用程序执行故障转移和故障恢复测试。** 如果不全面测试故障转移和故障回复，则无法确定在灾难恢复过程中，应用程序中的依赖服务以同步方式恢复正常运行。 确保应用程序的依赖服务按正确的顺序故障转移和故障恢复。
+**对应用程序执行故障转移和故障恢复测试。** 如果不全面测试故障转移和故障恢复，则无法确定在灾难恢复过程中，应用程序中的依赖服务以同步方式恢复正常运行。 确保应用程序的依赖服务按正确的顺序故障转移和故障恢复。
 
 **对应用程序执行故障注入测试。** 应用程序可能出于多种不同的原因而发生故障，例如，证书过期、VM 中系统资源耗尽或存储故障。 在尽可能接近生产环境的环境中，通过模拟或触发实际故障来测试应用程序。 例如，删除证书、人为地消耗系统资源，或删除存储源。 验证应用程序是否能够从所有类型的故障（单独或组合的故障）中恢复。 检查故障是否不会通过系统传播或引发连锁故障。
 
