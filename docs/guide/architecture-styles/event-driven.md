@@ -7,10 +7,11 @@ ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29478317"
 ---
 # <a name="event-driven-architecture-style"></a>事件驱动的架构样式
 
-事件驱动的架构由生成事件流的事件生成者和侦听事件的事件使用者组成。 
+事件驱动的架构由生成事件流的事件生成者和侦听事件的事件使用者组成 。 
 
 ![](./images/event-driven.svg)
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: 请求冗余反模式
 description: 检索超出业务运营需要的数据可能会导致不必要的 I/O 开销，并降低响应能力。
 author: dragon119
