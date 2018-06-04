@@ -9,10 +9,11 @@ ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29782608"
 ---
 # <a name="resiliency-checklist"></a>复原能力查检表
 
-复原能力是指系统能够在发生故障后进行恢复，然后继续正常运行，它是[软件质量的构成要素](../guide/pillars.md)之一。 根据复原能力设计应用程序需要规划和缓解可能发生的各种故障模式。 使用此核对清单可以从复原能力的角度审查应用程序的体系结构。 另请查看[特定 Azure 服务的复原能力检查表](./resiliency-per-service.md)。
+复原能力是指系统能够在发生故障后进行恢复，然后继续正常运行，它是[软件质量的构成要素](../guide/pillars.md)之一。 根据复原能力设计应用程序需要规划和缓解可能发生的各种故障模式。 核对此清单可以从复原能力的角度审查应用程序的架构。 另请查看[特定 Azure 服务的复原能力检查表](./resiliency-per-service.md)。
 
 ## <a name="requirements"></a>要求
 
