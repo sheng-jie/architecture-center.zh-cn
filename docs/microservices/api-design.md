@@ -1,4 +1,4 @@
-﻿---
+---
 title: API 设计
 description: 为微服务设计 API
 author: MikeWasson
@@ -8,6 +8,7 @@ ms.sourcegitcommit: 786bafefc731245414c3c1510fc21027afe303dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/12/2017
+ms.locfileid: "26653192"
 ---
 # <a name="designing-microservices-api-design"></a>设计微服务：API 设计
 
@@ -60,7 +61,7 @@ ms.lasthandoff: 12/12/2017
 
 下面是要注意的一些具体事项。
 
-- 留意会暴露内部实现细节或只是镜像内部数据库架构的 API。 API 应该为领域建模。 它是服务之间的协定，在理想情况下，应该只是在添加了新功能的情况下才对它进行更改，而不能仅仅因为重构了某些代码或规范化了数据库表，就对它进行更改。 
+- 留意会暴露内部实现细节或直接映射内部数据库架构的 API。 API 应该为领域建模。 它是服务之间的协定，在理想情况下，应该只是在添加了新功能的情况下才对它进行更改，而不能仅仅因为重构了某些代码或规范化了数据库表，就对它进行更改。 
 
 - 不同类型的客户端（例如移动应用程序和桌面 Web 浏览器）可能需要不同的有效负载大小或交互模式。 请考虑使用[用于前端的后端模式](../patterns/backends-for-frontends.md)为每个客户端创建独立的后端，这些后端可公开该客户端的最佳接口。
 
@@ -112,7 +113,7 @@ export class Location {
 
 - 实体具有唯一标识。 在 REST 中，资源具有 URL 格式的唯一标识符。 创建对应于实体领域标识的资源 URL。 从 URL 到领域标识的映射对于客户端可能是不透明的。
 
-- 可以通过从根实体导航来访问聚合的子实体。 如果遵循了 [HATEOAS](https://en.wikipedia.org/wiki/HATEOAS) 原则的话，则可以通过父实体表示形式中的链接来访问子实体。
+- 可以通过从根实体导航来访问聚合的子实体。 如果遵循了 [HATEOAS](https://en.wikipedia.org/wiki/HATEOAS) 原则的话，则可以通过父实体表示形式中的链接来访问子实体。 
 
 - 由于值对象是不可变的，可以通过替换整个值对象来执行更新。 在 REST 中，可通过 PUT 或 PATCH 请求来实现更新。 
 
