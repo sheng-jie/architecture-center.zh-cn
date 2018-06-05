@@ -1,6 +1,6 @@
 ---
 title: 不当实例化反模式
-description: 避免连续创建对象的新实例(本应创建一次然后共享)。
+description: 避免连续创建对象的新实例（本应创建一次然后共享）。
 author: dragon119
 ms.date: 06/05/2017
 ms.openlocfilehash: 4d5ef9ad9e675b46df94b51e81d7a4bd4c1b25e9
@@ -15,14 +15,14 @@ ms.lasthandoff: 02/23/2018
 
 ## <a name="problem-description"></a>问题描述
 
-许多库提供外部资源的抽象。 在内部，这些类通常管理其自身与资源之间的连接，充当客户端访问资源的中转站。 下面是与 Azure 应用程序相关的中转站类的一些示例：
+许多库提供外部资源的抽象。 在内部，这些类通常管理其自身与资源之间的连接，在客户端访问资源时充当中转站。 下面是与 Azure 应用程序相关的中转站类的一些示例：
 
 - `System.Net.Http.HttpClient`。 使用 HTTP 来与 Web 服务通信。
 - `Microsoft.ServiceBus.Messaging.QueueClient`。 向服务总线队列发布和接收消息。 
 - `Microsoft.Azure.Documents.Client.DocumentClient`。 连接到 Cosmos DB 实例
 - `StackExchange.Redis.ConnectionMultiplexer`。 连接到 Redis，包括 Azure Redis 缓存。
 
-这些类应该只实例化一次，并在应用程序的整个生存期内重复使用。 但是，一个常见的误解是，只在有必要时才获取这些类，并应快速将其释放。 （此处正好列出了 .NET 库，但模式不是 .NET 特有的）。以下 ASP.NET 示例创建一个 `HttpClient` 实例来与远程服务通信。 可在[此处][sample-app]找到完整示例。
+这些类应该只实例化一次，并在应用程序的整个生存期内重复使用。 但是，一个常见的误解是，只能在有必要时才获取这些类，并应快速将其释放。 （此处正好列出了 .NET 库，但模式不是 .NET 特有的）。以下 ASP.NET 示例创建一个 `HttpClient` 实例来与远程服务通信。 可在[此处][sample-app]找到完整示例。
 
 ```csharp
 public class NewHttpClientInstancePerRequestController : ApiController
@@ -40,7 +40,7 @@ public class NewHttpClientInstancePerRequestController : ApiController
 }
 ```
 
-在 Web 应用程序中，这种方式不可取。 为每个用户请求创建了一个新的 `HttpClient` 对象。 在高负载下，Web 服务器可能会耗尽可用的套接字，从而导致 `SocketException` 错误。
+在 Web 应用程序中，此技术不可缩放。 它会为每个用户请求创建一个新的 `HttpClient` 对象。 在重负载下，Web 服务器可能会耗尽可用的套接字，从而导致 `SocketException` 错误。
 
 此问题并不局限于 `HttpClient` 类。 用于包装资源或者创建开销较高的其他类可能导致类似问题。 以下示例创建 `ExpensiveToCreateService` 类的实例。 此处的问题不一定是套接字耗尽问题，而只是创建每个实例需要花费多长时间。 连续创建再销毁此类的实例可能对系统的可伸缩性造成不利影响。
 
@@ -67,7 +67,7 @@ public class ExpensiveToCreateService
 
 ## <a name="how-to-fix-the-problem"></a>如何解决问题
 
-如果用于包装外部资源的类可共享且是线程安全的，可创建该类可共享的单一实例或可重用实例池。
+如果用于包装外部资源的类可共享且是线程安全的，可创建该类的共享单一实例或可重用实例池。
 
 以下示例使用静态 `HttpClient` 实例，因此在所有请求之间共享了连接。
 
