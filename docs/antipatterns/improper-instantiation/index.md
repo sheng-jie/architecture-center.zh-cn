@@ -1,4 +1,4 @@
----
+﻿---
 title: 不当实例化反模式
 description: 避免连续创建对象的新实例（本应创建一次然后共享）。
 author: dragon119
@@ -16,7 +16,7 @@ ms.locfileid: "29477574"
 
 ## <a name="problem-description"></a>问题描述
 
-许多库提供外部资源的抽象。 在内部，这些类通常管理其自身与资源之间的连接，在客户端访问资源时充当中转站。  下面是与 Azure 应用程序相关的中转站类的一些示例：
+许多库提供外部资源的抽象。 在内部，这些类通常管理其自身与资源之间的连接，在客户端访问资源时充当中转站。 下面是与 Azure 应用程序相关的中转站类的一些示例：
 
 - `System.Net.Http.HttpClient`。 使用 HTTP 来与 Web 服务通信。
 - `Microsoft.ServiceBus.Messaging.QueueClient`。 向服务总线队列发布和接收消息。 
@@ -41,7 +41,7 @@ public class NewHttpClientInstancePerRequestController : ApiController
 }
 ```
 
-在 Web 应用程序中，此技术不可缩放。 为每个用户请求创建了一个新的 `HttpClient` 对象。 在重负载下，Web 服务器可能会耗尽可用的套接字，从而导致 `SocketException` 错误。
+在 Web 应用程序中，此技术不可缩放。 它会为每个用户请求创建一个新的 `HttpClient` 对象。 在重负载下，Web 服务器可能会耗尽可用的套接字，从而导致 `SocketException` 错误。
 
 此问题并不局限于 `HttpClient` 类。 用于包装资源或者创建开销较高的其他类可能导致类似问题。 以下示例创建 `ExpensiveToCreateService` 类的实例。 此处的问题不一定是套接字耗尽问题，而只是创建每个实例需要花费多长时间。 连续创建再销毁此类的实例可能对系统的可伸缩性造成不利影响。
 
@@ -94,7 +94,7 @@ public class SingleHttpClientInstanceController : ApiController
 
 ## <a name="considerations"></a>注意事项
 
-- 此对立模式的关键要素是重复创建和销毁可共享对象的实例。 如果某个类不可共享（不是线程安全的），则此对立模式不适用。
+- 此反模式的关键要素是重复创建和销毁可共享对象的实例。 如果某个类不可共享（不是线程安全的），则此反模式不适用。
 
 - 共享资源的类型可能决定了是要使用单一实例还是创建池。 `HttpClient` 类旨在进行共享而不是入池。 其他对象可能支持入池，使系统能够将工作负荷分散到多个实例。
 
