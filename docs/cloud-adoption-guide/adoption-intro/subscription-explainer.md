@@ -20,7 +20,7 @@ Azure 实现了此控制，它名为**订阅**。 订阅将用户以及由这些
 
 ## <a name="next-steps"></a>后续步骤
 
-* 现在你已了解 Azure 订阅，请了解更多关于如何[创建订阅](subscription.md)的信息，然后再创建第一个 Azure 资源。
+* 现在你已了解 Azure 订阅，请详细了解如何[创建订阅](subscription.md)，然后再创建第一个 Azure 资源。
 
 <!-- Links -->
 [azure-get-started]: https://azure.microsoft.com/get-started/
