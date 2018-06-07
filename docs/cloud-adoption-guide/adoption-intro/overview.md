@@ -32,7 +32,7 @@ ms.lasthandoff: 02/13/2018
     - **指南：**[Azure 资源组设计指南](resource-group.md)
     - **指南：**[Azure 资源的命名约定](/azure/architecture/best-practices/naming-conventions?toc=/azure/architecture/cloud-adoption-guide/toc.json)
 5. 部署基本 Azure 体系结构：
-    - 在 [Azure 计算选项概述](/azure/architecture/guide/technology-choices/compute-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)中了解不同类型的 Azure 计算选项，例如基础设施即服务 (IaaS) 和平台即服务 (PaaS)。
+    - 在 [Azure 计算选项概述](/azure/architecture/guide/technology-choices/compute-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)中了解不同类型的 Azure 计算选项，例如基础结构即服务 (IaaS) 和平台即服务 (PaaS)。
     - 既然已了解不同类型的 Azure 计算选项，请选取 PaaS Web 应用程序或 IaaS 虚拟机作为 Azure 中的第一个资源：
     - PaaS：平台即服务简介：
         - **如何：**[将基本 Web 应用程序部署到 Azure](/azure/app-service/app-service-web-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)
