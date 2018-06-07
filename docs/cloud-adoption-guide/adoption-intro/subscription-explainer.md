@@ -16,11 +16,11 @@ ms.lasthandoff: 02/23/2018
 
 Azure 实现了此控制，它名为**订阅**。 订阅将用户以及由这些用户创建的资源组合在一起。 其中每个资源都会导致该特定资源的[总体限制][subscription-service-limits]。
 
-组织可以使用订阅管理成本并通过用户、团队、项目或使用许多其他策略管理资源创建。 这些策略将在中间和高级采用阶段文章中进行讨论。 
+组织可以使用订阅管理成本并通过用户、团队、项目或使用许多其他策略管理资源创建。 这些策略将在中级和高级采用阶段文章中进行讨论。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 现在你已了解 Azure 订阅，请详细了解如何[创建订阅](subscription.md)，然后再创建第一个 Azure 资源。
+* 现在你已了解 Azure 订阅，请了解更多关于如何[创建订阅](subscription.md)的信息，然后再创建第一个 Azure 资源。
 
 <!-- Links -->
 [azure-get-started]: https://azure.microsoft.com/get-started/
