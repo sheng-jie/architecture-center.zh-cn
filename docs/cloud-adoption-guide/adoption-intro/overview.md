@@ -12,7 +12,7 @@ ms.lasthandoff: 02/13/2018
 
 采用 Azure 是企业具有组织成熟度的第一阶段。 此阶段结束时，组织中的人员将可以向 Azure 部署简单的工作负荷。
 
-下表包含用于完成基础采用阶段的任务。 该列表是渐进式的，以便按顺序完成每个任务。 如果以前已完成某个任务，请转到该列表中的下一个任务。 
+下表包含用于完成基础采用阶段的任务。 该列表是渐进式的，请按顺序完成每个任务。 如果以前已完成某个任务，请转到该列表中的下一个任务。 
 
 1. 了解 Azure 的内部：
     - **说明：**[Azure 的工作原理](azure-explainer.md)
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/13/2018
     - **指南：**[Azure 资源的命名约定](/azure/architecture/best-practices/naming-conventions?toc=/azure/architecture/cloud-adoption-guide/toc.json)
 5. 部署基本 Azure 体系结构：
     - 在 [Azure 计算选项概述](/azure/architecture/guide/technology-choices/compute-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)中了解不同类型的 Azure 计算选项，例如基础结构即服务 (IaaS) 和平台即服务 (PaaS)。
-    - 既然已了解不同类型的 Azure 计算选项，请选取 PaaS Web 应用程序或 IaaS 虚拟机作为 Azure 中的第一个资源：
+    - 了解不同类型的 Azure 计算选项后，请选取 PaaS Web 应用程序或 IaaS 虚拟机作为 Azure 中的第一个资源：
     - PaaS：平台即服务简介：
         - **如何：**[将基本 Web 应用程序部署到 Azure](/azure/app-service/app-service-web-overview?toc=/azure/architecture/cloud-adoption-guide/toc.json)
         - **指南：** 用于将[基本 Web 应用程序](/azure/architecture/reference-architectures/app-service-web-app/basic-web-app?toc=/azure/architecture/cloud-adoption-guide/toc.json)部署到 Azure 的经过验证的做法
