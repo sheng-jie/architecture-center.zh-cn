@@ -1,4 +1,4 @@
-﻿---
+---
 title: 不当实例化反模式
 description: 避免连续创建对象的新实例（本应创建一次然后共享）。
 author: dragon119
@@ -16,7 +16,7 @@ ms.locfileid: "29477574"
 
 ## <a name="problem-description"></a>问题描述
 
-许多库提供外部资源的抽象。 在内部，这些类通常管理其自身与资源之间的连接，在客户端访问资源时充当中转站。 下面是与 Azure 应用程序相关的中转站类的一些示例：
+许多库提供外部资源的抽象。 在内部，这些类通常管理其自身与资源之间的连接，在客户端访问资源时充当中转站。  下面是与 Azure 应用程序相关的中转站类的一些示例：
 
 - `System.Net.Http.HttpClient`。 使用 HTTP 来与 Web 服务通信。
 - `Microsoft.ServiceBus.Messaging.QueueClient`。 向服务总线队列发布和接收消息。 
