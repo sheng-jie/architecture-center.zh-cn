@@ -1,4 +1,4 @@
----
+﻿---
 title: 采用 Azure：基础
 description: 说明企业采用 Azure 所需的基线知识级别
 author: petertay
