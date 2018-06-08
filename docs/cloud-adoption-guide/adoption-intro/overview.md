@@ -7,6 +7,7 @@ ms.sourcegitcommit: 9ba82cf84cee06ccba398ec04c51dab0e1ca8974
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29183933"
 ---
 # <a name="adopting-azure-foundational"></a>采用 Azure：基础
 
