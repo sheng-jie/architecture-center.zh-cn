@@ -7,6 +7,7 @@ ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29962925"
 ---
 # <a name="explainer-how-does-azure-work"></a>说明：Azure 如何工作？
 
