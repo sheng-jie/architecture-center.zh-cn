@@ -16,6 +16,6 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-* 现在你已了解订阅并创建了第一个订阅，请在 [Azure 中的资源管理](resource-manager-explainer.md)说明文章中了解有关创建和管理资源的更多信息。
+* 现在你已了解订阅并创建了第一个订阅，请在 [Azure 中的资源管理](resource-manager-explainer.md)说明文章中了解有关创建和管理资源的详细信息。
 
 [azure-enterprise-licensing]: https://azure.microsoft.com/pricing/enterprise-agreement
