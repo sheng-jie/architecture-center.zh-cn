@@ -44,7 +44,7 @@ Microsoft Azure 中任何资源的名称选择都很重要，因为：
 | Contoso |IT |InternalApps |生产 |Contoso IT InternalApps Production |
 | Contoso |IT |InternalApps |Dev |Contoso IT InternalApps Dev |
 
-有关如何为较大型企业组织订阅的更多信息，请参阅[订阅管理说明性指南][scaffold]。
+有关如何为较大型企业组织订阅的详细信息，请参阅[订阅管理说明性指南][scaffold]。
 
 ## <a name="use-affixes-to-avoid-ambiguity"></a>使用词缀以避免多义性
 
