@@ -348,7 +348,7 @@ Content-Length: ...
 * 客户端使用状态代码来维护缓存。 如果数据尚未更改（状态代码 304），则对象可保持缓存，并且客户端应用程序应继续使用此版本的对象。 如果数据已更改（状态代码 200），则应放弃缓存的对象，并插入新对象。 如果数据不再可用（状态代码 404），则应从缓存中删除该对象。
 
 > [!NOTE]
-> 如果响应标头包含 Cache-Control 标头 no-store，则应始终从缓存中删除对象，而不考虑 HTTP 状态代码。
+> 如果响应标头包含的 Cache-Control 标头为 no-store，则应始终从缓存中删除对象，而不考虑 HTTP 状态代码。
 >
 
 下面的代码显示了已扩展为支持 If-None-Match 标头的 `FindOrderByID` 方法。 请注意，如果省略 If-None-Match 标头，则始终检索指定的订单：
@@ -458,7 +458,7 @@ public class EmptyResultWithCaching : IHttpActionResult
     productID=3&quantity=5&orderValue=250
     ```
 * Web API 中的 PUT 操作获取所请求数据的当前 ETag（上面示例中的订单 1），并将其与 If-Match 标头中的值进行比较。
-* 如果所请求数据的当前 ETag 与请求提供的 ETag 匹配，则资源尚未未更改并且 Web API 应执行更新，并在成功的情况下返回包含 HTTP 状态代码 204（无内容）的消息。 响应可以包括资源的更新后版本的 Cache-Control 和 ETag 标头。 响应中应始终包含引用新更新资源的 URI 的 Location 标头。
+* 如果所请求数据的当前 ETag 与请求提供的 ETag 匹配，则资源尚未更改并且 Web API 应执行更新，并在成功的情况下返回包含 HTTP 状态代码 204（无内容）的消息。 响应可以包括资源的更新后版本的 Cache-Control 和 ETag 标头。 响应中应始终包含引用新更新资源的 URI 的 Location 标头。
 * 如果所请求数据的当前 ETag 与请求提供的 ETag 不匹配，则数据在提取后已被其他用户更改，Web API 应返回包含空的消息正文和状态代码 412（不满足前提条件）的 HTTP 响应。
 * 如果要更新的资源不再存在，则 Web API 应返回状态代码为 404（未找到）的 HTTP 响应。
 * 客户端使用状态代码和响应标头来维护缓存。 如果数据已更新（状态代码 204），则对象可保持缓存（只要 Cache-Control 标头未指定 no-store），但应更新 ETag。 如果数据已被其他用户更改（状态代码 412）或未找到（状态代码 404），则应放弃缓存的对象。
@@ -545,11 +545,11 @@ public class OrdersController : ApiController
 
 ### <a name="optimize-requests-and-responses-that-involve-large-objects"></a>优化涉及大型对象的请求和响应
 
-一些资源可能是大型对象或包含大量字段，例如图形图像或其他类型的二进制数据。 Web API 应支持流式处理以实现优化这些资源的上传和下载。
+一些资源可能是大型对象或包含大量字段，例如图形图像或其他类型的二进制数据。 Web API 应支持流式处理以对这些资源的上传和下载进行优化。
 
 HTTP 协议提供了分块传输编码机制，用于将大型数据对象流式传输回客户端。 当客户端为大型对象发送 HTTP GET 请求时，Web API 可以通过 HTTP 连接在段落*区块*中发送回答复。 最初答复中数据的长度可能未知（可能会生成它），因此托管 Web API 的服务器应发送包含每个区块的响应消息，这些区块指定 Transfer-Encoding: Chunked 标头而不是 Content-Length 标头。 客户端应用程序可以依次接收每个区块以组合成完整响应。 在数据传输完成后，服务器将发送回最后一个区块（大小为零）。 
 
-可以想象单个请求生成使用大量资源的大型对象。 如果在流式处理过程中，Web API 确定请求中的数据量超过一些可接受的范围，它可以中止操作并返回具有状态代码 413（请求实体太大）的响应消息。
+可以想象单个请求生成使用大量资源的大型对象。 如果在流式处理过程中，Web API 确定请求中的数据量超过了可接受的范围，它可以中止操作并返回具有状态代码 413（请求实体太大）的响应消息。
 
 可以使用 HTTP 压缩将通过网络传输的大型对象的大小降到最低。 此方法可帮助减少网络流量和关联的网络延迟，但代价是需要在客户端和托管 Web API 的服务器上进行额外的处理。 例如，需要接收压缩数据的客户端应用程序可以提供 Accept-Encoding: gzip 请求标头（还可以指定其他数据压缩算法）。 如果服务器支持压缩，则应以消息正文中以 gzip 格式存储的内容以及 Content-Encoding: gzip 响应标头进行响应。
 
@@ -557,7 +557,7 @@ HTTP 协议提供了分块传输编码机制，用于将大型数据对象流式
 
 ### <a name="implement-partial-responses-for-clients-that-do-not-support-asynchronous-operations"></a>为不支持异步操作的客户端实现部分响应
 
-作为异步流式处理的替代方法，客户端应用程序可以区块方式显式请求大型对象的数据，称为部分响应。 客户端应用程序发送 HTTP HEAD 请求以获取有关对象的信息。 如果 Web API 支持部分响应，则应以包含 Accept-Ranges 标头和 Content-Length 标头（指示该对象的总大小），但消息正文应为空的响应消息响应 HEAD 请求。 客户端应用程序可以使用此信息来构造一系列指定要接收的字节范围的 GET 请求。 Web API 应返回包含以下内容的响应消息：HTTP 状态 206（部分内容）、指定响应消息正文中包含的实际数据量的 Content-Length 标头，以及指示此数据表示对象的哪一部分（例如 4000 到 8000 个字节）的 Content-Range 标头。
+作为异步流式处理的替代方法，客户端应用程序可以区块方式显式请求大型对象的数据，称为部分响应。 客户端应用程序发送 HTTP HEAD 请求以获取有关对象的信息。 如果 Web API 支持部分响应，则应以包含 Accept-Ranges 标头和 Content-Length 标头（指示该对象的总大小），但消息正文应为空的响应消息响应 HEAD 请求。 客户端应用程序可以使用此信息来构造一系列要接收的在指定字节范围的 GET 请求。 Web API 应返回包含以下内容的响应消息：HTTP 状态 206（部分内容）、指定响应消息正文中包含的实际数据量的 Content-Length 标头，以及指示此数据表示对象的哪一部分（例如 4000 到 8000 个字节）的 Content-Range 标头。
 
 HTTP HEAD 请求和部分响应会在 [API 设计][api-design]中详细介绍。
 
@@ -567,7 +567,7 @@ HTTP HEAD 请求和部分响应会在 [API 设计][api-design]中详细介绍。
 
 如果使用 IIS 来托管服务，则 HTTP.sys 驱动程序会自动检测并处理 Expect: 100-Continue 标头，然后再将请求传递到 Web 应用程序。 这意味着你很可能在应用程序代码中看不到这些标头，可以假设 IIS 已筛选掉任何它认为不适合或太大的消息。
 
-如果使用.NET Framework 生成客户端应用程序，则默认情况下所有 POST 和 PUT 消息都将先发送包含 Expect: 100-Continue 标头的消息。 与服务器端一样，由 .NET Framework 透明地处理该过程。 但是，此过程的结果是，每个 POST 和 PUT 请求会导致对服务器进行 2 次往返，即使是小请求，也是如此。 如果应用程序不发送包含大量数据的请求，则可以通过在客户端应用程序中使用 `ServicePointManager` 类创建 `ServicePoint` 对象来禁用此功能。 `ServicePoint` 对象将基于标识服务器上的资源的 URI 的方案和主机片段处理客户端建立的与服务器的连接。 然后，可以将 `ServicePoint` 对象的 `Expect100Continue` 属性设置为 false。 客户端通过与 `ServicePoint` 对象的方案和主机片段匹配的 URI 发出的所有后续 POST 和 PUT 请求在发送时会不包含 Expect: 100-Continue 标头。 下面的代码演示如何配置 `ServicePoint` 对象，以便将所有请求都发送到方案为 `http` 且主机为 `www.contoso.com` 的 URI。
+如果使用.NET Framework 生成客户端应用程序，则默认情况下所有 POST 和 PUT 消息都将先发送包含 Expect: 100-Continue 标头的消息。 与服务器端一样，由 .NET Framework 透明地处理该过程。 但是，此过程的结果是，每个 POST 和 PUT 请求会导致对服务器进行 2 次往返，即使是小请求，也是如此。 如果应用程序不发送包含大量数据的请求，则可以通过在客户端应用程序中使用 `ServicePointManager` 类创建 `ServicePoint` 对象来禁用此功能。 `ServicePoint` 对象将基于标识服务器上的资源的 URI 的方案和主机片段处理客户端与服务器连接的创建。 然后，可以将 `ServicePoint` 对象的 `Expect100Continue` 属性设置为 false。 客户端通过与 `ServicePoint` 对象的方案和主机片段匹配的 URI 发出的所有后续 POST 和 PUT 请求在发送时会不包含 Expect: 100-Continue 标头。 下面的代码演示如何配置 `ServicePoint` 对象，以便将所有请求都发送到方案为 `http` 且主机为 `www.contoso.com` 的 URI。
 
 ```csharp
 Uri uri = new Uri("http://www.contoso.com/");
