@@ -1,6 +1,6 @@
 - name: Azure 体系结构中心
   href: /azure/architecture
-- name: 云采用指南
+- name: 云选型指南
   href: index.md
   items:
     - name: 基础 Azure 采用
@@ -10,6 +10,8 @@
           items:
             - name: 说明：Azure 的工作原理
               href: adoption-intro/azure-explainer.md
+            - name: 说明：什么是云资源调控
+              href: adoption-intro/governance-explainer.md
         - name: 了解 Azure 中的数字标识
           items:
             - name: 说明：Azure Active Directory 租户是什么？
@@ -62,3 +64,8 @@
                   href: /azure/virtual-machines/linux/quick-create-portal?toc=/azure/architecture/cloud-adoption-guide/toc.json
                 - name: 指南：有关将 Linux VM 部署到 Azure 的最佳做法
                   href: /azure/architecture/reference-architectures/virtual-machines-linux/single-vm?toc=/azure/architecture/cloud-adoption-guide/toc.json
+    - name: 中级 Azure 采用
+      href: intermediate-stage/overview.md
+      items:
+        - name: 调控设计指南
+          href: intermediate-stage/governance-design-guide.md
