@@ -8,7 +8,7 @@
 - name: 应用程序体系结构指南
   href: guide/index.md
   items:
-    - name: 体系结构样式
+    - name: 架构样式
       href: guide/architecture-styles/index.md
     - name: 选择计算服务
       href: guide/technology-choices/compute-overview.md
@@ -37,7 +37,7 @@
       href: reference-architectures/n-tier/index.md
     - name: 外围网络
       href: reference-architectures/dmz/index.md
-    - name: SAP NetWeaver 和 SAP HANA
+    - name: Azure 上的 SAP
       href: reference-architectures/sap/index.md
     - name: SharePoint Server 2016
       href: reference-architectures/sharepoint/index.md
