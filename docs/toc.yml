@@ -127,12 +127,16 @@
   items:
     - name: 面向 AWS 专业人员的 Azure
       href: aws-professional/index.md
+    - name: 在 Azure 上构建微服务
+      href: ./microservices/index.md
     - name: 管理多租户应用程序中的标识
       href: multitenant-identity/index.md
     - name: 从云服务迁移到 Service Fabric
-      href: service-fabric/migrate-from-cloud-services.md
-    - name: 重构从 Azure 云服务迁移的 Azure Service Fabric 应用程序
-      href: service-fabric/refactor-migrated-app.md
+      items:
+        - name: 将云服务应用程序迁移到 Service Fabric
+          href: service-fabric/migrate-from-cloud-services.md
+        - name: 重构 Service Fabric 应用程序
+          href: service-fabric/refactor-migrated-app.md
     - name: 扩展 Azure 资源管理器模板功能
       href: building-blocks/extending-templates/index.md
 - name: 资源
