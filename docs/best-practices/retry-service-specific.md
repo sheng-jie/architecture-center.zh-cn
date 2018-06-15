@@ -4,12 +4,12 @@ description: 设置重试机制的服务指南。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 65206c5f39a74d228c7eaa0fea0c5b1b0710b22f
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: f02843f179671da04bc2f09326b58075b432ba95
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34423011"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35253071"
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定服务的重试指南
 
@@ -38,6 +38,9 @@ ms.locfileid: "34423011"
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 Azure Active Directory (Azure AD) 是一项全面的标识和访问管理云解决方案，集成了核心目录服务、高级标识监管、安全性和应用程序访问管理等各种功能。 Microsoft Azure AD 还为开发人员提供了身份管理平台，以便他们可以根据集中的策略和规则，控制应用程序访问情况。
+
+> [!NOTE]
+> 有关托管服务标识终结点的重试指南，请参阅[如何使用 Azure VM 托管服务标识 (MSI) 进行令牌获取](/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling)。
 
 ### <a name="retry-mechanism"></a>重试机制
 Active Directory 身份验证库 (ADAL) 提供适用于 Azure Active Directory 的内置重试机制。 为避免意外锁定，建议第三方库和应用程序代码**不要**重试失败的连接，而让 ADAL 处理重试。 

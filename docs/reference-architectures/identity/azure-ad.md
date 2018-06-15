@@ -7,11 +7,12 @@ ms.date: 11/28/2016
 pnp.series.next: adds-extend-domain
 pnp.series.prev: ./index
 cardTitle: Integrate on-premises AD with Azure AD
-ms.openlocfilehash: 9475d669b2cb8888a7ceabed7e36317fe63681fd
-ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
+ms.openlocfilehash: ade79f8ebffc15b423ef6ebfb9b19611c9500cd8
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35252986"
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>将本地 Active Directory 域与 Azure Active Directory 集成
 
@@ -32,7 +33,7 @@ Azure Active Directory (Azure AD) 是一种基于云的多租户目录和标识�
 * 本地网络和应用程序的 Azure VNet 不使用 VPN 隧道或 ExpressRoute 线路进行连接的体系结构。
 
 > [!NOTE]
-> Azure AD 当前仅支持用户身份验证。 某些应用程序和服务（如 SQL Server）可能需要进行计算机身份验证，此解决方案不适合这种情况。
+> Azure AD 可以对组织目录中存在的用户和应用程序的标识进行身份验证。 某些应用程序和服务（如 SQL Server）可能需要进行计算机身份验证，此解决方案不适合这种情况。
 > 
 
 有关其他注意事项，请参阅[选择用于将本地 Active Directory 与 Azure 相集成的解决方案][considerations]。 

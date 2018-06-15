@@ -3,11 +3,12 @@ title: 数据仓库和数据市场
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 552cdfad2d571c93f83bc1e4ff0d09ac12d0b6a4
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 9b90d77ce1a81cd4a7532f5d4230ada8b4991d13
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35252799"
 ---
 # <a name="data-warehousing-and-data-marts"></a>数据仓库和数据市场
 
@@ -142,7 +143,7 @@ Azure SQL 数据仓库还可用于小型和中型数据集，其中的工作负�
 | --- | --- | --- | --- | --- | --- | -- |
 | 用于实现高可用性的的冗余区域服务器  | 是 | 是 | 是 | 否 | 否 |
 | 支持查询横向扩展（分布式查询）  | 否 | 否 | 是 | 是 | 是 |
-| 动态可伸缩性（纵向扩展）  | 是 | 否 | 是 <sup>1</sup> | 否 | 否 |
+| 动态可伸缩性 | 是 | 否 | 是 <sup>1</sup> | 否 | 否 |
 | 支持数据的内存中缓存 | 是 |  是 | 否 | 是 | 是 |
 
 [1] SQL 数据仓库允许通过调整数据仓库单位 (DWU) 数目来纵向扩展和缩减。 请参阅[管理 Azure SQL 数据仓库中的计算能力](/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview)。

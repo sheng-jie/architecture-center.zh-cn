@@ -4,12 +4,12 @@ description: Azure 资源的命名约定。 如何命名虚拟机、存储帐户
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: df536a4b34a29b93edc4e03fa1142e20fe84a6a7
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: 42d91da3eacdcda66b82dff82ba444170c11d7d1
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34422943"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35253054"
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -22,7 +22,7 @@ Microsoft Azure 中任何资源的名称选择都很重要，因为：
 * 之后很难更改名称。
 * 名称必须满足它们特定资源类型的要求。
 
-一致的命名约定使得资源更易于查找。 它们还可以表明解决方案中资源的角色。
+一致的命名约定使得资源更易于查找。 它们还可以指示解决方案中资源的角色。
 
 命名约定成功的关键是在应用程序和组织中创建并遵循它们。
 
@@ -35,7 +35,7 @@ Microsoft Azure 中任何资源的名称选择都很重要，因为：
 
 * 公司通常对每个订阅都是一样的。 但是，一些公司可能存在组织结构内的子公司。 这些公司可能由中心 IT 组管理。 在这些情况下，可能会用母公司名称（Contoso）加上子公司名称（Northwind）来加以区分。
 * 部门是组织内的名称，一群人在其中工作。 命名空间中的此项为可选项。
-* 产品线是部门中执行的产品或功能的特定名称。 对于面向内部的服务和应用程序，这通常是可选的。 但是强烈建议将此用于需要轻松分离和识别的面向公众的服务（例如，清晰分离账单记录）。
+* 产品系列是部门中执行的产品或功能的特定名称。 对于面向内部的服务和应用程序，这通常是可选的。 但是强烈建议将此用于需要轻松分离和识别的面向公众的服务（例如，清晰分离账单记录）。
 * 环境是描述应用程序或服务（如开发、QA 或生产）的部署生命周期的名称。
 
 | 公司 | 部门 | 产品线或服务 | 环境 | 全名 |
@@ -70,7 +70,7 @@ Microsoft Azure 中任何资源的名称选择都很重要，因为：
 
 ## <a name="naming-rules-and-restrictions"></a>命名规则和限制
 
-Azure 中的每个资源或服务类型强制实施一组命名限制和范围；任何命名约定或模式必须符合必需的命名规则和范围。  例如，虽然 VM 的名称映射到 DNS 名称（因此其需要在整个 Azure 中保持唯一），但 VNET 的名称范围设置为创建它的资源组。
+Azure 中的每个资源或服务类型强制实施一组命名限制和范围；任何命名约定或模式必须符合必需的命名规则和范围。  例如，虽然 VM 的名称映射到 DNS 名称（因此其需要在整个 Azure 中保持唯一），但 VNET 的范围设置为创建它的资源组。
 
 通常，应避免将任何特殊字符（`-` 或 `_`）作为任何名称的第一个或最后一个字符。 这些字符将导致大多数验证规则失败。
 
@@ -167,7 +167,7 @@ Azure 资源管理器支持使用任意文本字符串标记实体，以标识�
 > [!TIP]
 > 存储帐户（无论用于数据还是磁盘）应遵循允许采用多个存储帐户的命名约定（即始终使用数字后缀）。
 
-可以配置自定义域名以便访问 Azure 存储帐户中的 Blob 数据。 BLOB 服务的默认终结点是 https://<name>.blob.core.windows.net`。
+可以配置自定义域名以便访问 Azure 存储帐户中的 Blob 数据。 BLOB 服务的默认终结点是 https://\<name\>.blob.core.windows.net。
 
 但是如果将自定义域（如 www.contoso.com）映射到存储帐户的 Blob 终结点，则用户也可以使用该域访问存储帐户中的 Blob 数据。 例如，对于自定义域名，`http://mystorage.blob.core.windows.net/mycontainer/myblob` 可以作为 `http://www.contoso.com/mycontainer/myblob` 访问。
 
