@@ -9,11 +9,12 @@ ms.date: 11/28/2016
 pnp.series.title: Identity management
 pnp.series.prev: adds-forest
 cardTitle: Extend AD FS to Azure
-ms.openlocfilehash: 87489b7b81cf323c221466c539ee14ea90e23c14
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 37edae209334da96aa9c121b1ac68c5e1d363323
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35252723"
 ---
 # <a name="extend-active-directory-federation-services-ad-fs-to-azure"></a>将 Active Directory 联合身份验证服务 (AD FS) 扩展到 Azure
 
@@ -118,7 +119,7 @@ AD FS 可以在本地进行承载，但是如果应用程序是其中某些部�
 * 使用 Azure 负载均衡器提供对 WAP VM 的外部访问，并使用内部负载均衡器在场中的 AD FS 服务器之间分布负载。
 * 仅将在端口 443 (HTTPS) 上出现的流量传递给 AD FS/WAP 服务器。
 * 为负载均衡器提供静态 IP 地址。
-* 使用 TCP 协议而不是 HTTPS 创建运行状况探测。 可以对端口 443 执行 ping 操作，以验证 AD FS 服务器是否在正常运行。
+* 使用 HTTP 针对 `/adfs/probe` 创建运行状况探测。 有关详细信息，请参阅[硬件负载均衡器运行状况检查和 Web 应用程序代理/AD FS 2012 R2](https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/)。
   
   > [!NOTE]
   > AD FS 服务器使用服务器名称指示 (SNI) 协议，因此尝试从负载均衡器使用 HTTPS 终结点进行探测会失败。
