@@ -3,7 +3,7 @@
 - name: 应用程序体系结构指南
   href: index.md
   items:
-    - name: 体系结构样式
+    - name: 架构样式
       href: architecture-styles/index.md
       items:
         - name: N 层应用程序
@@ -14,7 +14,7 @@
           href: architecture-styles/microservices.md
         - name: CQRS
           href: architecture-styles/cqrs.md
-        - name: 事件驱动的体系结构
+        - name: 事件驱动的架构
           href: architecture-styles/event-driven.md
         - name: 大数据
           href: architecture-styles/big-data.md
@@ -60,4 +60,5 @@
     - name: 软件质量的要素
       href: pillars.md
     - name: 设计模式
-      href: ../patterns/index.md?toc=/azure/architecture/guide/toc.json
+      href: ../patterns/index.md
+      maintainContext: true

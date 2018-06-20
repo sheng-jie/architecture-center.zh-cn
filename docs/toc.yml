@@ -5,6 +5,8 @@
   items:
     - name: 基础采用阶段
       href: cloud-adoption-guide/adoption-intro/overview.md
+    - name: 中级采用阶段
+      href: cloud-adoption-guide/intermediate-stage/overview.md
 - name: 应用程序体系结构指南
   href: guide/index.md
   items:
@@ -19,7 +21,8 @@
     - name: 软件质量的要素
       href: guide/pillars.md
     - name: 设计模式
-      href: patterns/index.md?toc=/azure/architecture/guide/toc.json
+      href: patterns/index.md
+      maintainContext: true
 - name: 数据体系结构指南
   href: data-guide/index.md
 - name: 参考体系结构
@@ -120,7 +123,8 @@
     - name: 设计可复原的应用程序
       href: resiliency/index.md
     - name: 复原能力查检表
-      href: checklist/resiliency.md?toc=/azure/architecture/resiliency/toc.json
+      href: checklist/resiliency.md
+      maintainContext: true
     - name: 故障模式分析
       href: resiliency/failure-mode-analysis.md
 - name: 方案指南
