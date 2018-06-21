@@ -8,6 +8,7 @@ ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2018
+ms.locfileid: "33673609"
 ---
 # <a name="n-tier-application-with-apache-cassandra"></a>使用 Apache Cassandra 的 N 层应用程序
 

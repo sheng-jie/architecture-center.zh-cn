@@ -8,6 +8,7 @@ ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29289683"
 ---
 # <a name="extending-on-premises-data-solutions-to-the-cloud"></a>将本地数据解决方案扩展到云
 

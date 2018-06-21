@@ -14,6 +14,7 @@ ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24541683"
 ---
 # <a name="static-content-hosting-pattern"></a>静态内容托管模式
 

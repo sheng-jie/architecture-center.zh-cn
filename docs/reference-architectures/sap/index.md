@@ -8,6 +8,7 @@ ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2018
+ms.locfileid: "34422841"
 ---
 # <a name="sap-on-azure-reference-architectures"></a>Azure 上的 SAP 参考体系结构
 

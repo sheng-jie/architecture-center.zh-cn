@@ -12,6 +12,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30846502"
 ---
 # <a name="improve-scalability-in-a-web-application"></a>提高 Web 应用程序的可伸缩性
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/06/2018
 此体系结构基于[基本 Web 应用程序][basic-web-app]中显示的体系结构。 它包括以下组件：
 
 * 资源组。 [资源组][resource-group]是 Azure 资源的逻辑容器。
-* **[Web 应用][app-service-web-app]**和 **[API 应用][app-service-api-app]**。 典型的现代应用程序可能包括一个网站以及一个或多个 RESTful Web API。 Web API 可供浏览器客户端通过 AJAX 来使用，也可供本机客户端应用程序或服务器端应用程序使用。 有关设计 Web API 的注意事项，请参阅 [API 设计指南][api-guidance]。    
+* **[Web 应用][app-service-web-app]** 和 **[API 应用][app-service-api-app]**。 典型的现代应用程序可能包括一个网站以及一个或多个 RESTful Web API。 Web API 可供浏览器客户端通过 AJAX 来使用，也可供本机客户端应用程序或服务器端应用程序使用。 有关设计 Web API 的注意事项，请参阅 [API 设计指南][api-guidance]。    
 * **WebJob**。 使用 [Azure WebJobs][webjobs] 在后台运行长时间运行的任务。 WebJobs 可以按计划运行、持续运行或者以响应触发器的方式运行，例如将消息放置到队列中。 WebJob 可在应用服务应用上下文中作为后台进程运行。
 * **队列**。 在此处显示的体系结构中，应用程序通过向 [Azure 队列存储][queue-storage]队列放置消息，将后台任务排队。 消息触发 WebJob 中的函数。 也可使用服务总线队列。 如需比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照][queues-compared]。
 * **缓存**。 在 [Azure Redis 缓存][azure-redis]中存储半静态数据。  

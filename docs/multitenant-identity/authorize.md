@@ -11,6 +11,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30849665"
 ---
 # <a name="role-based-and-resource-based-authorization"></a>基于角色和基于资源的授权
 

@@ -10,6 +10,7 @@ ms.sourcegitcommit: d08f6ee27e1e8a623aeee32d298e616bc9bb87ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33810493"
 ---
 # <a name="failure-mode-analysis"></a>故障模式分析
 [!INCLUDE [header](../_includes/header.md)]

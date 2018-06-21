@@ -8,6 +8,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30848659"
 ---
 # <a name="choosing-a-batch-processing-technology-in-azure"></a>在 Azure 中选择批处理技术
 

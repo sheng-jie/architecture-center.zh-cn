@@ -8,6 +8,7 @@ ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29288929"
 ---
 # <a name="choosing-a-machine-learning-technology-in-azure"></a>在 Azure 中选择机器学习技术
 

@@ -8,6 +8,7 @@ ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29288909"
 ---
 # <a name="choosing-a-data-analytics-technology-in-azure"></a>在 Azure 中选择数据分析技术
 

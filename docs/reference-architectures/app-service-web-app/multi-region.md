@@ -9,6 +9,7 @@ ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30270282"
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>在多个区域中运行 Web 应用程序
 [!INCLUDE [header](../../_includes/header.md)]
