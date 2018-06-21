@@ -1,15 +1,15 @@
-﻿---
+---
 title: API 设计指南
 description: 有关如何创建合理设计的 Web API 的指南。
 author: dragon119
 ms.date: 01/12/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: a8c4a81835ebd3ebdba2fd2cec624a9a9d5646f5
-ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
+ms.openlocfilehash: db9784f454e0b52b335d6dff3a054c2c59124c9f
+ms.sourcegitcommit: f7418f8bdabc8f5ec33ae3551e3fbb466782caa5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29963163"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209604"
 ---
 # <a name="api-design"></a>API 设计
 
@@ -47,7 +47,7 @@ ms.locfileid: "29963163"
 
 - REST API 使用无状态请求模型。 HTTP 请求应是独立的并可按任意顺序发生，因此保留请求之间的瞬时状态信息并不可行。 信息的唯一存储位置就在资源内，并且每个请求应是原子操作。 此约束可让 Web 服务获得高度可伸缩性，因为无需保留客户端与特定服务器之间的关联。 任何服务器可以处理来自任何客户端的任何请求。 也就是说，其他因素可能会限制可伸缩性。 例如，许多 Web 服务向后端数据存储写入数据，可能导致难以横向扩展。（[数据分区](./data-partitioning.md)一文介绍了横向扩展数据存储的策略。）
 
-- REST API 由表示形式中包含的超媒体链接驱动。 例如，下面显示了某个订单的 JSON 表示形式。 该表示形式包含一些链接，用于获取或更新与该订单关联的客户。  
+- REST API 由表示形式中包含的超媒体链接驱动。 例如，下面显示了某个订单的 JSON 表示形式。 该表示形式包含一些链接，用于获取或更新与该订单关联的客户。 
  
     ```json
     {
@@ -248,7 +248,7 @@ Content-Type: application/json
 
 {
     "status":"In progress",
-    "link": { "rel":"cancel", "method":"delete", "href":"/api/status/12345"
+    "link": { "rel":"cancel", "method":"delete", "href":"/api/status/12345" }
 }
 ```
 

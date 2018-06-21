@@ -2,16 +2,18 @@
 title: 说明：Azure 如何工作？
 description: 介绍了 Azure 的内部运行
 author: petertay
-ms.openlocfilehash: 1cebcc001b8d2ae93d8b0271c48d54617281c7c2
-ms.sourcegitcommit: b3d74d8a89b2224fc796ce0e89cea447af43a0d4
+ms.openlocfilehash: 88514ba01efabe38a1b92d135321c2e44cef004e
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35290503"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206457"
 ---
 # <a name="explainer-how-does-azure-work"></a>说明：Azure 如何工作？
 
 Azure 是 Microsoft 的公有云平台。 Azure 提供了一个大型的服务集合，包括平台即服务 (PaaS)、基础结构即服务 (IaaS)、数据库即服务 (DBaaS) 以及许多其他服务。 但是，确切而言，什么是 Azure，它如何工作？
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2ixGo] 
 
 与其他云平台一样，Azure 依赖于称为**虚拟化**的技术。 可以在软件中仿真大多数计算机硬件，因为大多数计算机硬件只是在硅片中永久或半永久编码的一组指令。 使用将软件指令映射为硬件指令的仿真层，虚拟化的硬件可以在软件中执行，就像它是实际硬件本身一样。
 

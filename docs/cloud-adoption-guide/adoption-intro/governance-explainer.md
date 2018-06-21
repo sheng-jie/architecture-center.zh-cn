@@ -2,12 +2,12 @@
 title: 说明：什么是云调控？
 description: 解释 Azure 和云的资源调控概念
 author: petertay
-ms.openlocfilehash: 63b04089aad5fc736641f8aaa6ff5247ea8ba13e
-ms.sourcegitcommit: b3d74d8a89b2224fc796ce0e89cea447af43a0d4
+ms.openlocfilehash: 3404beaa719177ee7638feed8a8442b5c3b455c6
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35291001"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206474"
 ---
 # <a name="explainer-what-is-cloud-resource-governance"></a>说明：什么是云资源调控？
 
@@ -16,6 +16,8 @@ ms.locfileid: "35291001"
 但是，为开发人员授予不受限制的资源访问权限可能会使他们变得随心所欲，此外还可能导致意外的成本。 例如，某个开发团队获批部署一组用于测试的资源，但完成测试后忘记删除这些资源。 这些资源会不断加大成本，即使其用途不再受批准，或者不再有需要。 
 
 解决此问题的方法就是采用资源访问**调控**。 调控是指根据组织的目标和要求，对 Azure 资源的使用持续进行管理、监视和审核的过程。 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2ii94] 
 
 每家组织的目标和要求都是独特的，因此，不存在以一应百的调控方法。 Azure 实施两个主要的管理工具：**基于资源的访问控制 (RBAC)** 和**资源策略**，每家组织可以使用这些工具设计自己的调控模型。
 
