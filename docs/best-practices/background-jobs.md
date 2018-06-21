@@ -32,7 +32,7 @@ ms.lasthandoff: 02/01/2018
 可通过多种不同的方式启动后台作业。 这些方式属于以下类别之一：
 
 * [事件驱动的触发器](#event-driven-triggers)。 响应事件时启动任务，这通常是用户或工作流中的步骤所执行的操作。
-* [计划驱动的触发器](#schedule-driven-triggers)。 基于计时器按计划调用任务。 这可能是定期计划，或者指定在某时刻以后运行的一次性调用。
+* [计划驱动的触发器](#schedule-driven-triggers)。 基于计时器按计划调用任务。 这可能是定期计划，或者指定在以后某时刻运行的一次性调用。
 
 ### <a name="event-driven-triggers"></a>事件驱动的触发器
 事件驱动的调用使用触发器启动后台任务。 使用事件驱动的触发器的示例包括：
@@ -80,7 +80,7 @@ ms.lasthandoff: 02/01/2018
 
 ### <a name="azure-web-apps-and-webjobs"></a>Azure Web 应用和 Web 作业
 
-可以使用 Azure Web 作业将自定义作业作为 Azure Web 应用中的后台任务来执行。 Web 作业可在 Web 应用的上下文中作为连续进程运行。 Web 作业还可以在响应来自 Azure 计划程序或外部因素（例如更改存储 Blob 和消息队列）的触发器事件触发时运行。 作业可按需启动和停止，并可以正常关闭。 如果连续运行的 Web 作业失败，它会自动重新启动。 重试和错误操作可配置。
+可以使用 Azure Web 作业将自定义作业作为 Azure Web 应用中的后台任务来执行。 Web 作业可在 Web 应用的上下文中作为连续进程运行。 Web 作业还可以在响应来自 Azure 计划程序或外部因素（例如更改存储 Blob 和消息队列）的触发器事件时运行。 作业可按需启动和停止，并可以正常关闭。 如果连续运行的 Web 作业失败，它会自动重新启动。 重试和错误操作可配置。
 
 配置 Web 作业时：
 
@@ -130,7 +130,7 @@ Azure Web 作业具有以下特征：
 
 * 在单独的 Azure 虚拟机中托管后台任务可提供弹性，并可通过启动、执行、计划和资源分配来实现精确控制。 但是，如果只是出于运行后台任务的目的而必须部署虚拟机，则会增加运行时成本。
 * 没有任何工具可以监视 Azure 门户中的任务，并且对于失败的任务没有任何自动重新启动功能 -- 不过，用户可以监视虚拟机的基本状态，并使用[Azure 资源管理器 Cmdlet](https://msdn.microsoft.com/library/mt125356.aspx) 来管理它。 但是，计算节点中没有任何工具可用于控制进程和线程。 通常，使用虚拟机时，需要付出额外的工作量才能实施一个机制用于从任务的检测中收集数据，以及从虚拟机中的操作系统收集数据。 一个适当的解决方案是使用 [System Center Management Pack for Azure](https://www.microsoft.com/download/details.aspx?id=50013)（用于 Azure 的 System Center 管理包）。
-* 可以考虑创建通过 HTTP 终结点的公开来监视探测。 这些探测器的代码可以执行运行状况检查、收集操作信息和统计信息，或者整理错误信息，并将其返回给管理应用程序。 有关详细信息，请参阅[运行状况终结点监视模式](http://msdn.microsoft.com/library/dn589789.aspx)。
+* 可以考虑创建通过 HTTP 终结点公开的监视探测。 这些探测器的代码可以执行运行状况检查、收集操作信息和统计信息，或者整理错误信息，并将其返回给管理应用程序。 有关详细信息，请参阅[运行状况终结点监视模式](http://msdn.microsoft.com/library/dn589789.aspx)。
 
 #### <a name="more-information"></a>详细信息
 * Azure 上的[虚拟机](https://azure.microsoft.com/services/virtual-machines/)
