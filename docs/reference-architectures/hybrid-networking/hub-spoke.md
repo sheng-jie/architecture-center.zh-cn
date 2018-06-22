@@ -5,11 +5,12 @@ author: telmosampaio
 ms.date: 04/09/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: 3b19526a9ed77c1605325a9eec101ffbee7c8401
-ms.sourcegitcommit: 3846a0ab2b2b2552202a3c9c21af0097a145ffc6
+ms.openlocfilehash: 4ebb0d4df3e1907662537516cae1f077e68e47b4
+ms.sourcegitcommit: f7418f8bdabc8f5ec33ae3551e3fbb466782caa5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209570"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>在 Azure 中实现中心辐射型网络拓扑
 
@@ -272,7 +273,7 @@ TcpTestSucceeded : True
 
 2. 单击 `Connect` 来与 VM 建立远程桌面会话。 使用 `onprem.json` 参数文件中指定的密码。
 
-3. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到中心 VNet 中的 Jumpbox VM。
+3. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到辐射 VNet 中的 Jumpbox VM。
 
    ```powershell
    Test-NetConnection 10.1.0.68 -CommonTCPPort RDP

@@ -2,12 +2,12 @@
 title: 采用 Azure：中间阶段
 description: 介绍有关企业采用 Azure 所要掌握的中级知识
 author: petertay
-ms.openlocfilehash: 39b98595dd615ba1aa36921e48a0b23797bebaa0
-ms.sourcegitcommit: b3d74d8a89b2224fc796ce0e89cea447af43a0d4
+ms.openlocfilehash: 227d9558647ed8076b2832d95e192f2f0c43b9db
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35291049"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206355"
 ---
 # <a name="azure-cloud-adoption-guide-intermediate-overview"></a>Azure 云采用指南：中间阶段概述
 
@@ -53,31 +53,31 @@ Azure 云采用指南的[基本阶段](/azure/architecture/cloud-adoption-guide/
 执行以下步骤:
 
 1. 如果组织没有 [Azure 帐户](/azure/active-directory/sign-up-organization)，请创建一个帐户。 注册 Azure 帐户的人员将成为 Azure 帐户管理员，组织的领导层必须选择一个充当此角色的人员。 此人将会负责：
-  * 创建订阅，以及
-  * 创建和管理用于存储这些订阅的用户标识的 [Azure Active Directory (AD)](/azure/active-directory/active-directory-whatis) 租户。    
+    * 创建订阅，以及
+    * 创建和管理用于存储这些订阅的用户标识的 [Azure Active Directory (AD)](/azure/active-directory/active-directory-whatis) 租户。    
 2. 组织领导团队确定哪个人员承担以下责任：
-  * 管理用户标识；创建组织的 Azure 帐户时，默认会创建 [Azure AD 租户](/azure/active-directory/develop/active-directory-howto-tenant)，并且默认会将帐户管理员添加为 [Azure AD 全局管理员](/azure/active-directory/active-directory-assign-admin-roles-azure-portal#details-about-the-global-administrator-role)。 组织可以选择另一个用户来管理用户标识，只需[将 Azure AD 全局管理员角色分配到该用户](/azure/active-directory/active-directory-users-assign-role-azure-portal)即可。 
-  * 订阅，表示这些用户将负责：
-    * 管理与该订阅中的资源用量相关的成本
-    * 实施和维护用于资源访问的最低权限模型，以及
-    * 跟踪服务限制。
-  * 共享基础结构服务（如果组织决定使用此模型），表示此用户将负责：
-    * 建立本地到 Azure 的网络连接，以及 
-    * 通过虚拟网络对等互连拥有 Azure 中的网络连接。
-  * 工作负荷所有者。 
+    * 管理用户标识；创建组织的 Azure 帐户时，默认会创建 [Azure AD 租户](/azure/active-directory/develop/active-directory-howto-tenant)，并且默认会将帐户管理员添加为 [Azure AD 全局管理员](/azure/active-directory/active-directory-assign-admin-roles-azure-portal#details-about-the-global-administrator-role)。 组织可以选择另一个用户来管理用户标识，只需[将 Azure AD 全局管理员角色分配到该用户](/azure/active-directory/active-directory-users-assign-role-azure-portal)即可。 
+    * 订阅，表示这些用户将负责：
+        * 管理与该订阅中的资源用量相关的成本；
+        * 实现和维护用于资源访问的最低权限模型；
+        * 跟踪服务限制。
+    * 共享基础结构服务（如果组织决定使用此模型），表示此用户将负责：
+        * 建立本地到 Azure 的网络连接，以及 
+        * 通过虚拟网络对等互连管理 Azure 中的网络连接。
+    * 工作负荷所有者。 
 3. Azure AD 全局管理员为以下人员[创建新用户帐户](/azure/active-directory/add-users-azure-active-directory)：
-  * 与每个环境关联的每个订阅的**订阅所有者**。 请注意，仅当订阅**服务管理员**的任务不包括管理每个订阅/环境的资源访问权限时，才需要创建帐户。
-  * **网络操作用户**，以及
-  * **工作负荷所有者**。
+    * 与每个环境关联的每个订阅的**订阅所有者**。 请注意，仅当订阅**服务管理员**的任务不包括管理每个订阅/环境的资源访问权限时，才需要创建帐户。
+    * **网络操作用户**，以及
+    * **工作负荷所有者**。
 4. Azure 帐户管理员可以使用 [Azure 帐户门户](https://account.azure.com)创建以下三个订阅：
-  * **共享基础结构**环境的订阅；
-  * **生产**环境的订阅； 
-  * **开发**环境的订阅。 
+    * **共享基础结构**环境的订阅；
+    * **生产**环境的订阅； 
+    * **开发**环境的订阅。 
 5. Azure 帐户管理员[将订阅服务所有者添加到每个订阅](/azure/billing/billing-add-change-azure-subscription-administrator#add-an-rbac-owner-admin-for-a-subscription-in-azure-portal)。
-6. 为**工作负荷所有者**创建审批过程，以请求创建资源组。 可通过许多方式实施审批过程，例如，通过电子邮件，或者使用 [Sharepoint 工作流](https://support.office.com/article/introduction-to-sharepoint-workflow-07982276-54e8-4e17-8699-5056eff4d9e3)等过程管理工具。 审批过程可以遵循以下步骤：
-  1. **工作负荷所有者**为**开发**环境和/或**生产**环境中的所需 Azure 资源准备物料清单，并将其提交给**订阅所有者**。
-  2. **订阅所有者**审查物料清单并验证请求的资源，以确保请求的资源适合规划的用途 - 例如，检查请求的[虚拟机大小](/azure/virtual-machines/windows/sizes)是否正确。
-  3. 如果请求未获批准，则会通知**工作负荷所有者**。 如果请求获批准，**订阅所有者**将遵循组织的[命名约定](/azure/architecture/best-practices/naming-conventions)[创建请求的资源组](/azure/azure-resource-manager/resource-group-portal#manage-resource-groups)，添加具有[**参与者**角色](/azure/role-based-access-control/built-in-roles#contributor)的[**工作负荷所有者**](/azure/role-based-access-control/role-assignments-portal#add-access)，并通知**工作负荷所有者**已创建资源组。
+6. 为**工作负荷所有者**创建审批过程，以请求创建资源组。 可通过许多方式实施审批过程，例如，通过电子邮件，或者使用 [Sharepoint 工作流](https://support.office.com/article/introduction-to-sharepoint-workflow-07982276-54e8-4e17-8699-5056eff4d9e3)等过程管理工具。 审批过程可以遵循以下步骤：  
+    * **工作负荷所有者**为**开发**环境和/或**生产**环境中的所需 Azure 资源准备物料清单，并将其提交给**订阅所有者**。
+    * **订阅所有者**审查物料清单并验证请求的资源，以确保请求的资源适合规划的用途 - 例如，检查请求的[虚拟机大小](/azure/virtual-machines/windows/sizes)是否正确。
+    * 如果请求未获批准，则会通知**工作负荷所有者**。 如果请求获批准，**订阅所有者**将遵循组织的[命名约定](/azure/architecture/best-practices/naming-conventions)[创建请求的资源组](/azure/azure-resource-manager/resource-group-portal#manage-resource-groups)，添加具有[**参与者**角色](/azure/role-based-access-control/built-in-roles#contributor)的[**工作负荷所有者**](/azure/role-based-access-control/role-assignments-portal#add-access)，并通知**工作负荷所有者**已创建资源组。
 7. 为工作负荷所有者创建审批过程，以请求共享基础结构所有者建立虚拟网络对等连接。 与前面的步骤一样，可以使用电子邮件或过程管理工具来实施此审批过程。
 
 实施调控模型后，可以部署共享基础结构服务。

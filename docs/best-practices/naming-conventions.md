@@ -4,12 +4,12 @@ description: Azure 资源的命名约定。 如何命名虚拟机、存储帐户
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 42d91da3eacdcda66b82dff82ba444170c11d7d1
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.openlocfilehash: a92b6a1a23b35e7379f586d477b6f7cc6ccfc7e1
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35253054"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206372"
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -34,8 +34,8 @@ Microsoft Azure 中任何资源的名称选择都很重要，因为：
 `<Company> <Department (optional)> <Product Line (optional)> <Environment>`
 
 * 公司通常对每个订阅都是一样的。 但是，一些公司可能存在组织结构内的子公司。 这些公司可能由中心 IT 组管理。 在这些情况下，可能会用母公司名称（Contoso）加上子公司名称（Northwind）来加以区分。
-* 部门是组织内的名称，一群人在其中工作。 命名空间中的此项为可选项。
-* 产品系列是部门中执行的产品或功能的特定名称。 对于面向内部的服务和应用程序，这通常是可选的。 但是强烈建议将此用于需要轻松分离和识别的面向公众的服务（例如，清晰分离账单记录）。
+* 部门是组织内的名称，包含一组员工。 命名空间中的此项为可选项。
+* 产品线是部门中执行的产品或功能的特定名称。 对于面向内部的服务和应用程序，这通常是可选的。 但是强烈建议将此用于需要轻松分离和识别的面向公众的服务（例如，清晰分离账单记录）。
 * 环境是描述应用程序或服务（如开发、QA 或生产）的部署生命周期的名称。
 
 | 公司 | 部门 | 产品线或服务 | 环境 | 全名 |
