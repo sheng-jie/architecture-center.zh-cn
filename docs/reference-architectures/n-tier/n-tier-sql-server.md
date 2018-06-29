@@ -2,16 +2,13 @@
 title: 使用 SQL Server 的 N 层应用程序
 description: 如何在 Azure 上实现多层体系结构，以确保可用性、安全性、可伸缩性和可管理性。
 author: MikeWasson
-ms.date: 05/03/2018
-pnp.series.title: Windows VM workloads
-pnp.series.next: multi-region-application
-pnp.series.prev: multi-vm
-ms.openlocfilehash: 0f170f2fbcbbfeace53db199cb5d3949415b5546
-ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
+ms.date: 06/23/2018
+ms.openlocfilehash: 050ea9b3104a2dc9af4cdaad3b4540cd75434e9d
+ms.sourcegitcommit: 767c8570d7ab85551c2686c095b39a56d813664b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2018
-ms.locfileid: "33673589"
+ms.lasthandoff: 06/24/2018
+ms.locfileid: "36746666"
 ---
 # <a name="n-tier-application-with-sql-server"></a>使用 SQL Server 的 N 层应用程序
 
@@ -43,9 +40,11 @@ ms.locfileid: "33673589"
 
 * **Jumpbox。** 也称为[守护主机]。 网络上的一个安全 VM，管理员使用它来连接到其他 VM。 Jumpbox 中的某个 NSG 只允许来自安全列表中的公共 IP 地址的远程流量。 该 NSG 应允许远程桌面 (RDP) 流量。
 
-* **SQL Server Always On 可用性组。** 通过启用复制和故障转移，在数据层提供高可用性。
+* **SQL Server Always On 可用性组。** 通过启用复制和故障转移，在数据层提供高可用性。 它使用 Windows Server 故障转移群集 (WSFC) 技术进行故障转移。
 
-* **Active Directory 域服务 (AD DS) 服务器**。 SQL Server Always On 可用性组已加入域，目的是启用适用于故障转移的 Windows Server 故障转移群集 (WSFC) 技术。 
+* **Active Directory 域服务 (AD DS) 服务器**。 故障转移群集及其关联的群集角色的计算机对象在 Active Directory 域服务 (AD DS) 中创建。
+
+* **云见证**。 故障转移群集要求其节点的半数以上处于运行状态，这称为“建立仲裁”。 如果群集只有两个节点，则网络分区之后，每个节点都会认为自己是主节点。 在这种情况下，需要使用见证来打破“僵持”局面，建立仲裁。 见证是一种可以充当僵持局面打破者并建立仲裁的资源，例如共享磁盘。 云见证是一种使用 Azure Blob 存储的见证。 若要详细了解仲裁的概念，请参阅[了解群集和池仲裁](/windows-server/storage/storage-spaces/understand-quorum)。 有关云见证的详细信息，请参阅[部署故障转移群集的云见证](/windows-server/failover-clustering/deploy-cloud-witness)。 
 
 * **Azure DNS**。 [Azure DNS][azure-dns] 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 
@@ -157,13 +156,13 @@ Jumpbox 的性能要求非常低，因此请选择一个较小的 VM 大小。 �
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[GitHub][github-folder] 中提供了此参考体系结构的部署。 
+[GitHub][github-folder] 中提供了此参考体系结构的部署。 请注意，整个部署最长可能需要两小时的时间，包括运行相关脚本来配置 AD DS、Windows Server 故障转移群集以及 SQL Server 可用性组。
 
 ### <a name="prerequisites"></a>先决条件
 
 1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
 
-2. 确保在计算机上安装了 Azure CLI 2.0。 若要安装 CLI，请按照[安装 Azure CLI 2.0][azure-cli-2] 中的说明执行操作。
+2. 安装 [Azure CLI 2.0][azure-cli-2]。
 
 3. 安装 [Azure 构建基块][azbb] npm 包。
 
@@ -171,32 +170,80 @@ Jumpbox 的性能要求非常低，因此请选择一个较小的 VM 大小。 �
    npm install -g @mspnp/azure-building-blocks
    ```
 
-4. 从命令提示符、bash 提示符或 PowerShell 提示符下通过使用以下命令之一，登录到 Azure 帐户，然后按照提示进行操作。
+4. 在命令提示符、bash 提示符或 PowerShell 提示符下使用以下命令登录到 Azure 帐户。
 
    ```bash
    az login
    ```
 
-### <a name="deploy-the-solution-using-azbb"></a>使用 azbb 部署解决方案
+### <a name="deploy-the-solution"></a>部署解决方案 
 
-若要为 N 层应用程序参考体系结构部署 Windows VM，请按照以下步骤操作：
+1. 运行以下命令来创建资源组。
 
-1. 导航到在以上前决条件的第 1 步中克隆的存储库的 `virtual-machines\n-tier-windows` 文件夹。
+    ```bash
+    az group create --location <location> --name <resource-group-name>
+    ```
 
-2. 参数文件为部署中的每个 VM 指定默认管理员用户名称和密码。 必须在部署参考体系结构前，对其进行更改。 打开 `n-tier-windows.json` 文件，然后将每个“adminUsername”和“adminPassword”字段替换为新设置。
-  
-   > [!NOTE]
-   > 此部署期间，多个脚本在一些 VirtualMachine 对象的 VirtualMachineExtension 对象和 extensions 设置中运行。 这些脚本中的一些需要你刚更改的管理员用户名和密码。 建议查看这些脚本，确保指定正确的凭据。 如果未指定正确的凭据，部署可能失败。
-   > 
-   > 
+2. 运行以下命令来创建云见证的存储帐户。
 
-保存文件。
+    ```bash
+    az storage account create --location <location> \
+      --name <storage-account-name> \
+      --resource-group <resource-group-name> \
+      --sku Standard_LRS
+    ```
 
-3. 使用 azbb 命令行工具部署参考体系结构，如下所示。
+3. 导航到参考体系结构 GitHub 存储库的 `virtual-machines\n-tier-windows` 文件夹。
 
-   ```bash
-   azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-windows.json --deploy
-   ```
+4. 打开 `n-tier-windows.json` 文件。 
+
+5. 搜索“witnessStorageBlobEndPoint”的所有实例，将占位符文本替换为步骤 2 中的存储帐户的名称。
+
+    ```json
+    "witnessStorageBlobEndPoint": "https://[replace-with-storageaccountname].blob.core.windows.net",
+    ```
+
+6. 运行以下命令，列出存储帐户的帐户密钥。
+
+    ```bash
+    az storage account keys list \
+      --account-name <storage-account-name> \
+      --resource-group <resource-group-name>
+    ```
+
+    输出应如下所示。 复制 `key1` 的值。
+
+    ```json
+    [
+    {
+        "keyName": "key1",
+        "permissions": "Full",
+        "value": "..."
+    },
+    {
+        "keyName": "key2",
+        "permissions": "Full",
+        "value": "..."
+    }
+    ]
+    ```
+
+7. 在 `n-tier-windows.json` 文件中，搜索“witnessStorageAccountKey”的所有实例，然后将帐户密钥粘贴进去。
+
+    ```json
+    "witnessStorageAccountKey": "[replace-with-storagekey]"
+    ```
+
+8. 在 `n-tier-windows.json` 文件中，搜索 `testPassw0rd!23`、`test$!Passw0rd111`、`AweS0me@SQLServicePW` 的所有实例。 将其替换为你自己的密码，然后保存文件。
+
+    > [!NOTE]
+    > 如果更改管理员用户名，则还必须更新 JSON 文件中的 `extensions` 块。 
+
+9. 运行以下命令来部署体系结构。
+
+    ```bash
+    azbb -s <your subscription_id> -g <resource_group_name> -l <location> -p n-tier-windows.json --deploy
+    ```
 
 若要详细了解如何使用 Azure 构建基块部署此示例参考体系结构，请访问 [GitHub 存储库][git]。
 

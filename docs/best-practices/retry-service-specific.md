@@ -4,12 +4,12 @@ description: 设置重试机制的服务指南。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: f02843f179671da04bc2f09326b58075b432ba95
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.openlocfilehash: 77cf5d90373da2118d34301bd5c790080d3cf63f
+ms.sourcegitcommit: 9a2d56ac7927f0a2bbfee07198d43d9c5cb85755
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35253071"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36327681"
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定服务的重试指南
 
@@ -325,7 +325,7 @@ Azure 搜索可用于向网站或应用程序添加功能强大且复杂的搜�
 * [RetryExponential 类](http://msdn.microsoft.com/library/microsoft.servicebus.retryexponential.aspx)。 这会公开用于控制回退间隔和重试计数的属性，以及用于限制操作完成总时间的 **TerminationTimeBuffer** 属性。
 * [NoRetry 类](http://msdn.microsoft.com/library/microsoft.servicebus.noretry.aspx)。 这适用于不需要在服务总线 API 一级进行重试的情况，如其他进程将重试作为批处理或多步操作的一部分进行管理的情况。
 
-服务总线操作可以返回一系列异常，如 [Appendix: Messaging Exceptions](http://msdn.microsoft.com/library/hh418082.aspx)（附录：消息传送异常）中所列。 此列表提供了一些信息来指明重试操作是否合适。 例如，[ServerBusyException](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.serverbusyexception.aspx) 指明客户端应等待一段时间，并重试操作。 **ServerBusyException** 的出现还会导致服务总线切换到不同模式，这会令计算的重试延迟额外增加 10 秒。 在一段很短的时间后，此模式会重置。
+服务总线操作可能返回一系列异常，如[服务总线消息传送异常](/azure/service-bus-messaging/service-bus-messaging-exceptions)中所列。 此列表提供了一些信息来指明重试操作是否合适。 例如，**ServerBusyException** 指明客户端应等待一段时间，并重试操作。 **ServerBusyException** 的出现还会导致服务总线切换到不同模式，这会令计算的重试延迟额外增加 10 秒。 在一段很短的时间后，此模式会重置。
 
 从服务总线返回的异常会公开 **IsTransient** 属性，此属性指明客户端是否应重试操作。 内置的 **RetryExponential** 策略依赖于 **MessagingException** 类（所有服务总线异常的基类）中的 **IsTransient** 属性。 如果创建 **RetryPolicy** 基类的自定义实现，则可以结合使用异常类型和 **IsTransient** 属性来更精细地控制重试操作。 例如，可以检测 **QuotaExceededException**，并采取措施以在重试向其发送消息之前清空队列。
 
