@@ -3,7 +3,7 @@
 - name: 参考体系结构
   href: index.md
   items:
-    - name: 应用服务 Web 应用程序
+    - name: 基于应用服务的Web 应用
       href: app-service-web-app/index.md
       items:
         - name: 基本 Web 应用程序
@@ -16,6 +16,8 @@
       items:
         - name: 将 Enterprise BI 与 SQL 数据仓库配合使用
           href: data/enterprise-bi-sqldw.md
+        - name: 将自动化企业 BI 与 SQL 数据仓库和数据工厂配合使用
+          href: data/enterprise-bi-adf.md
     - name: 混合网络
       href: hybrid-networking/index.md
       items:
