@@ -6,12 +6,12 @@ ms.date: 05/02/2018
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: 763fffd321a1b50a562ef462dab59aafae717908
-ms.sourcegitcommit: 0de300b6570e9990e5c25efc060946cb9d079954
+ms.openlocfilehash: ecf24a05d071c0d0283fc962b13285108b5ac4bd
+ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32323867"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37142262"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>将 Active Directory 域服务 (AD DS) 扩展到 Azure
 
@@ -105,17 +105,7 @@ AD DS 服务器提供身份验证服务并且是引入注目的攻击目标。 �
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 克隆、下载[参考体系结构][github] GitHub 存储库的 zip 文件或创建其分支。
-
-2. 安装 [Azure CLI 2.0][azure-cli-2]。
-
-3. 安装 [Azure 构建基块][azbb] npm 包。
-
-4. 在命令提示符、bash 提示符或 PowerShell 提示符下使用以下命令登录到 Azure 帐户。
-
-   ```bash
-   az login
-   ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 ### <a name="deploy-the-simulated-on-premises-datacenter"></a>部署模拟的本地数据中心
 

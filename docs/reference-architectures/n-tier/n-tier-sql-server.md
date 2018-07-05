@@ -3,12 +3,12 @@ title: 使用 SQL Server 的 N 层应用程序
 description: 如何在 Azure 上实现多层体系结构，以确保可用性、安全性、可伸缩性和可管理性。
 author: MikeWasson
 ms.date: 06/23/2018
-ms.openlocfilehash: 050ea9b3104a2dc9af4cdaad3b4540cd75434e9d
-ms.sourcegitcommit: 767c8570d7ab85551c2686c095b39a56d813664b
+ms.openlocfilehash: 7c8184d25cf6b3bd358adc2728329fd3bd08503a
+ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2018
-ms.locfileid: "36746666"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37142295"
 ---
 # <a name="n-tier-application-with-sql-server"></a>使用 SQL Server 的 N 层应用程序
 
@@ -160,23 +160,9 @@ Jumpbox 的性能要求非常低，因此请选择一个较小的 VM 大小。 �
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
-2. 安装 [Azure CLI 2.0][azure-cli-2]。
-
-3. 安装 [Azure 构建基块][azbb] npm 包。
-
-   ```bash
-   npm install -g @mspnp/azure-building-blocks
-   ```
-
-4. 在命令提示符、bash 提示符或 PowerShell 提示符下使用以下命令登录到 Azure 帐户。
-
-   ```bash
-   az login
-   ```
-
-### <a name="deploy-the-solution"></a>部署解决方案 
+### <a name="deploy-the-solution"></a>部署解决方案
 
 1. 运行以下命令来创建资源组。
 
@@ -252,11 +238,9 @@ Jumpbox 的性能要求非常低，因此请选择一个较小的 VM 大小。 �
 [dmz]: ../dmz/secure-vnet-dmz.md
 [multi-dc]: multi-region-sql-server.md
 [n-tier]: n-tier.md
-[azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 [azure-administration]: /azure/automation/automation-intro
 [azure-availability-sets]: /azure/virtual-machines/virtual-machines-windows-manage-availability#configure-each-application-tier-into-separate-availability-sets
 [azure-cli]: /azure/virtual-machines-command-line-tools
-[azure-cli-2]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-dns]: /azure/dns/dns-overview
 [azure-key-vault]: https://azure.microsoft.com/services/key-vault
 [守护主机]: https://en.wikipedia.org/wiki/Bastion_host
@@ -274,7 +258,6 @@ Jumpbox 的性能要求非常低，因此请选择一个较小的 VM 大小。 �
 [private-ip-space]: https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces
 [公共 IP 地址]: /azure/virtual-network/virtual-network-ip-addresses-overview-arm
 [puppet]: https://puppetlabs.com/blog/managing-azure-virtual-machines-puppet
-[ref-arch-repo]: https://github.com/mspnp/reference-architectures
 [sql-alwayson]: https://msdn.microsoft.com/library/hh510230.aspx
 [sql-alwayson-force-failover]: https://msdn.microsoft.com/library/ff877957.aspx
 [sql-alwayson-getting-started]: https://msdn.microsoft.com/library/gg509118.aspx

@@ -3,12 +3,12 @@ title: 在 Azure 上运行 Linux VM
 description: 如何在 Azure 上运行 Linux VM，并注意可伸缩性、弹性、可管理性和安全性。
 author: telmosampaio
 ms.date: 04/03/2018
-ms.openlocfilehash: f29b7225c2e0edbb1569c9e3a55d112d12041af8
-ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
+ms.openlocfilehash: 3d0492d05280e8c296cdfc4157aa0387a70337bf
+ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2018
-ms.locfileid: "33673579"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37142312"
 ---
 # <a name="run-a-linux-vm-on-azure"></a>在 Azure 上运行 Linux VM
 
@@ -144,17 +144,7 @@ VM 可能会受到[计划内维护][planned-maintenance]或[计划外维护][man
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
-
-2. 确保在计算机上安装了 Azure CLI 2.0。 有关 CLI 安装说明，请参阅[安装 Azure CLI 2.0][azure-cli-2]。
-
-3. 安装 [Azure 构建基块][azbb] npm 包。
-
-4. 在命令提示符、bash 提示符或 PowerShell 提示符下，输入以下命令登录到 Azure 帐户。
-
-  ```bash
-  az login
-  ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 5. 创建 SSH 密钥对。 有关详细信息，请参阅[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](/azure/virtual-machines/linux/mac-create-ssh-keys)。
 

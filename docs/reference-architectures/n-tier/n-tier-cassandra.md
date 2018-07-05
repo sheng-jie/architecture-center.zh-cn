@@ -3,12 +3,12 @@ title: 使用 Apache Cassandra 的 N 层应用程序
 description: 如何在 Microsoft Azure 中运行用于 N 层体系结构的 Linux VM。
 author: MikeWasson
 ms.date: 05/03/2018
-ms.openlocfilehash: 46e9a821a33dd3ea3ae9129ab5ad69172bfcd667
-ms.sourcegitcommit: a5e549c15a948f6fb5cec786dbddc8578af3be66
+ms.openlocfilehash: 7ee14088a2fae3cfc5c1119daf717236c75ecc6a
+ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2018
-ms.locfileid: "33673609"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37142227"
 ---
 # <a name="n-tier-application-with-apache-cassandra"></a>使用 Apache Cassandra 的 N 层应用程序
 
@@ -144,21 +144,7 @@ Jumpbox 的性能要求非常低，因此请选择一个较小的 VM 大小。 �
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
-
-2. 确保在计算机上安装了 Azure CLI 2.0。 若要安装 CLI，请按照[安装 Azure CLI 2.0][azure-cli-2] 中的说明执行操作。
-
-3. 安装 [Azure 构建基块][azbb] npm 包。
-
-   ```bash
-   npm install -g @mspnp/azure-building-blocks
-   ```
-
-4. 从命令提示符、bash 提示符或 PowerShell 提示符下通过使用以下命令之一，登录到 Azure 帐户，然后按照提示进行操作。
-
-   ```bash
-   az login
-   ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 ### <a name="deploy-the-solution-using-azbb"></a>使用 azbb 部署解决方案
 
