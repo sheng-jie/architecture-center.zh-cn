@@ -3,12 +3,12 @@ title: 选择流处理技术
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 29e4cd3d5ea6e10f036bfe226152290512dafa65
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: fd93418c62b584e79f229e9f42703d148aeb0eca
+ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30848642"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37091057"
 ---
 # <a name="choosing-a-stream-processing-technology-in-azure"></a>在 Azure 中选择流处理技术
 
@@ -53,8 +53,8 @@ ms.locfileid: "30848642"
 
 | | Azure 流分析 | 基于 Spark Streaming 的 HDInsight | Azure Databricks 中的 Apache Spark | 基于 Storm 的 HDInsight | Azure Functions | Azure 应用服务 Web 作业 |
 | --- | --- | --- | --- | --- | --- | --- | 
-| 输入 | [流分析输入](/azure/stream-analytics/stream-analytics-define-inputs)  | 事件中心、IoT 中心、Kafka、HDFS、存储 Blob、Azure Data Lake Store  | 事件中心、IoT 中心、Kafka、HDFS、存储 Blob、Azure Data Lake Store  | 事件中心、IoT 中心、存储 Blob、Azure Data Lake Store  | [支持的绑定](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | 服务总线、存储队列、存储 Blob、事件中心、WebHook、Cosmos DB、文件 |
-| 接收器 |  [流分析输出](/azure/stream-analytics/stream-analytics-define-outputs) | HDFS、Kafka、存储 Blob、Azure Data Lake Store、Cosmos DB | HDFS、Kafka、存储 Blob、Azure Data Lake Store、Cosmos DB | 事件中心、服务总线、Kafka | [支持的绑定](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | 服务总线、存储队列、存储 Blob、事件中心、WebHook、Cosmos DB、文件 | 
+| 输入 | Azure 事件中心、Azure IoT 中心和 Azure Blob 存储  | 事件中心、IoT 中心、Kafka、HDFS、存储 Blob、Azure Data Lake Store  | 事件中心、IoT 中心、Kafka、HDFS、存储 Blob、Azure Data Lake Store  | 事件中心、IoT 中心、存储 Blob、Azure Data Lake Store  | [支持的绑定](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | 服务总线、存储队列、存储 Blob、事件中心、WebHook、Cosmos DB、文件 |
+| 接收器 |  Azure Data Lake Store、Azure SQL 数据库、存储 Blob、事件中心、Power BI、表存储、服务总线队列、服务总线主题、Cosmos DB、Azure Functions  | HDFS、Kafka、存储 Blob、Azure Data Lake Store、Cosmos DB | HDFS、Kafka、存储 Blob、Azure Data Lake Store、Cosmos DB | 事件中心、服务总线、Kafka | [支持的绑定](/azure/azure-functions/functions-triggers-bindings#supported-bindings) | 服务总线、存储队列、存储 Blob、事件中心、WebHook、Cosmos DB、文件 | 
 
 ### <a name="processing-capabilities"></a>处理功能
 

@@ -3,21 +3,23 @@ title: 在 Azure 虚拟机上部署适用于 AnyDB 的 SAP NetWeaver (Windows)
 description: 有关在 Azure 上的高可用性 Linux 环境中运行 SAP S/4HANA 的成熟做法。
 author: lbrader
 ms.date: 05/11/2018
-ms.openlocfilehash: 0efe3e78d9e1809fdab52044b75e432742786b79
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: 90334e4872bdd15d59aa16286a031d07f3d1bb2f
+ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34423034"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37864532"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>在 Azure 虚拟机上部署适用于 AnyDB 的 SAP NetWeaver (Windows)
 
 此参考体系结构演示有关在 Azure 上的高可用性 Windows 环境中运行 SAP NetWeaver 的一套成熟做法。 数据库为 AnyDB（除了 SAP HANA 之外，该 SAP 术语还指任何受支持的 DBMS）。 将使用可根据组织需求更改的特定虚拟机 (VM) 大小部署此体系结构。
 
-![](./images/sap-s4hana.png)
- 
+![](./images/sap-netweaver.png)
+
+下载此体系结构的 [Visio 文件][visio-download]。
+
 > [!NOTE] 
-> 根据此参考体系结构部署 SAP 产品需要获取 SAP 产品和其他非 Microsoft 技术的相应许可。
+> 部署此参考体系结构需要获取 SAP 产品和其他非 Microsoft 技术的相应许可。
 
 ## <a name="architecture"></a>体系结构
 该体系结构包括以下基础结构和关键软件组件。
@@ -110,7 +112,7 @@ SAP 应用程序服务器与数据库服务器不断通信。 对于任何数据
 
 ## <a name="scalability-considerations"></a>可伸缩性注意事项
 
-在 SAP 应用程序层，Azure 提供多种虚拟机大小供纵向和横向扩展。有关详尽列表，请参阅 [SAP 说明 1928533](https://launchpad.support.sap.com/#/notes/1928533) - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型。 （需要创建 SAP 服务 Marketplace 帐户进行访问。） 可以纵向扩展/缩减 SAP 应用程序服务器和 Central Services 群集，或者通过添加更多的实例对其进行横向扩展。 AnyDB 数据库可以纵向扩展/缩减，但不能横向扩展。AnyDB 的 SAP 数据库容器不支持分片。
+在 SAP 应用程序层，Azure 提供多种虚拟机大小供纵向和横向扩展。有关详尽列表，请参阅 [SAP 说明 1928533](https://launchpad.support.sap.com/#/notes/1928533) - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型。 （需要创建 SAP Service Marketplace 帐户进行访问。） 可以纵向扩展/缩减 SAP 应用程序服务器和 Central Services 群集，或者通过添加更多的实例对其进行横向扩展。 AnyDB 数据库可以纵向扩展/缩减，但不能横向扩展。AnyDB 的 SAP 数据库容器不支持分片。
 
 ## <a name="availability-considerations"></a>可用性注意事项
 
@@ -174,3 +176,4 @@ SAP 具有自身的用户管理引擎 (UME)，可在 SAP 应用程序中控制�
 - [SAP 社区](https://www.sap.com/community.html)
 - [堆栈溢出](https://stackoverflow.com/tags/sap/)
 
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/sap-reference-architectures.vsdx

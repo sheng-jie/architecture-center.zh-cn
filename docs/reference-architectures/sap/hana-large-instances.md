@@ -3,18 +3,20 @@ title: 运行 Azure SAP HANA 大型实例
 description: 有关在 Azure 大型实例上的高可用性环境中运行 SAP HANA 的成熟做法。
 author: lbrader
 ms.date: 05/16/2018
-ms.openlocfilehash: 7605fa8a0012aaef3f7323c6f88614b640152e3b
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: 746161ac51335af5c48a559830d6e0345dcfb7b1
+ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34423033"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37864515"
 ---
 # <a name="run-sap-hana-on-azure-large-instances"></a>运行 Azure SAP HANA 大型实例
 
 此参考体系结构演示有关运行 Azure 上的 SAP HANA（大型实例）和实现高可用性与灾难恢复 (DR) 的一套成熟做法。 此产品/服务称作 HANA 大型实例，部署在 Azure 区域中的物理服务器上。 
 
 ![0][0]
+
+下载此体系结构的 [Visio 文件][visio-download]。
 
 > [!NOTE]
 > 部署此参考体系结构需要获取 SAP 产品和其他非 Microsoft 技术的相应许可。
@@ -147,7 +149,7 @@ Microsoft 可帮助建立大型实例设置，但你要负责验证操作系统�
 
 - 出于物理安全性考虑，仅限已获授权的人员访问 Azure 数据中心。 任何客户都不能访问物理服务器。
 
-有关详细信息，请参阅 [SAP HANA 安全性 - 概述][sap-security]。（需要创建一个 SAP 服务 Marketplace 帐户进行访问。）
+有关详细信息，请参阅 [SAP HANA 安全性 - 概述][sap-security]。（需要创建一个 SAP Service Marketplace 帐户进行访问。）
 
 ## <a name="communities"></a>社区
 社区可以解答问题，并帮助设置成功的部署。 请注意以下几点：
@@ -201,3 +203,5 @@ Microsoft 可帮助建立大型实例设置，但你要负责验证操作系统�
 [type]: /azure/virtual-machines/workloads/sap/hana-installation
 [vnet]: /azure/virtual-network/virtual-networks-overview
 [0]: ./images/sap-hana-large-instances.png "使用 Azure 大型实例的 SAP HANA 体系结构"
+
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/sap-reference-architectures.vsdx

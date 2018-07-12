@@ -3,11 +3,11 @@ title: Web 队列辅助角色体系结构样式
 description: 介绍 Azure 上的 Web 队列辅助角色的体系结构的优点、难题和最佳做法
 author: MikeWasson
 ms.openlocfilehash: 545472e71ffcd43717ad24af0dc9218a221ca910
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24539795"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37958783"
 ---
 # <a name="web-queue-worker-architecture-style"></a>Web 队列辅助角色体系结构样式
 
@@ -27,7 +27,7 @@ Web 和辅助角色都无状态。 会话状态可以存储在分布式缓存中
 
 前端可能包括 Web API。 在客户端上，Web API 可以由进行 AJAX 调用的单页应用程序或者本机客户端应用程序使用。
 
-## <a name="when-to-use-this-architecture"></a>此体系结构适用的情况
+## <a name="when-to-use-this-architecture"></a>何时使用此架构
 
 通常使用托管的计算服务（Azure App Service 或 Azure 云服务）实施 Web 队列辅助角色体系结构。 
 

@@ -3,25 +3,26 @@ title: 适用于 Azure 上 Linux 虚拟机的 SAP S/4HANA
 description: 有关在 Azure 上的高可用性 Linux 环境中运行 SAP S/4HANA 的成熟做法。
 author: lbrader
 ms.date: 05/11/2018
-ms.openlocfilehash: d24ef6f9e4eae460d0d0dcfff35568c812d09951
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.openlocfilehash: 9635de73ec431e0ac678e4008e0c4835796d47ad
+ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34423035"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37864498"
 ---
 # <a name="sap-s4hana-for-linux-virtual-machines-on-azure"></a>适用于 Azure 上 Linux 虚拟机的 SAP S/4HANA
 
 此参考体系结构演示有关在 Azure 上支持灾难恢复的高可用性环境中运行 S/4HANA 的一套成熟做法。 将使用可根据组织需求更改的特定虚拟机 (VM) 大小部署此体系结构。 
 
-
 ![](./images/sap-s4hana.png)
+
+下载此体系结构的 [Visio 文件][visio-download]。
+
+> [!NOTE] 
+> 部署此参考体系结构需要获取 SAP 产品和其他非 Microsoft 技术的相应许可。
 
 ## <a name="architecture"></a>体系结构
  
-> [!NOTE] 
-> 根据此参考体系结构部署 SAP 产品需要获取 SAP 产品和其他非 Microsoft 技术的相应许可。
-
 此参考体系结构描述一个企业规模的生产级系统。 可根据业务需求，将此配置缩减为单个虚拟机。 但是，以下组件是必需的：
 
 虚拟网络。 [Azure 虚拟网络](/azure/virtual-network/virtual-networks-overview)服务在 Azure 资源之间建立安全连接。 在此体系结构中，虚拟网络将通过[中心-分支拓扑](../hybrid-networking/hub-spoke.md)的中心内部署的网关连接到本地环境。 分支是用于 SAP 应用程序的虚拟网络。
@@ -115,11 +116,11 @@ NSG 在与某个子网关联后，将应用到该子网中的所有服务器。 
 
 SAP 应用程序服务器与数据库服务器不断通信。 对于 HANA 数据库虚拟机，请考虑启用[写入加速器](/azure/virtual-machines/linux/how-to-enable-write-accelerator)来改善日志写入延迟。 若要优化服务器间的通信，请使用[加速网络](https://azure.microsoft.com/blog/linux-and-windows-networking-performance-enhancements-accelerated-networking/)。 请注意，这些加速器仅适用于某些 VM 系列。
 
-若要实现较高的 IOPS 和磁盘带宽吞吐量，可向 Azure 存储布局应用[优化存储卷性能](/azure/virtual-machines/linux/premium-storage-performance)时采用的常见做法。 例如，将多个磁盘合并在一起以创建条带化磁盘卷可以提高 IO 性能。 针对不经常更改的存储内容启用读取缓存可增强数据检索的速度。 有关性能要求的详细信息，请参阅 [SAP 说明 1943937 - 硬件配置检查工具](https://launchpad.support.sap.com/#/notes/1943937)（需要创建 SAP 服务 Marketplace 帐户进行访问）。
+若要实现较高的 IOPS 和磁盘带宽吞吐量，可向 Azure 存储布局应用[优化存储卷性能](/azure/virtual-machines/linux/premium-storage-performance)时采用的常见做法。 例如，将多个磁盘合并在一起以创建条带化磁盘卷可以提高 IO 性能。 针对不经常更改的存储内容启用读取缓存可增强数据检索的速度。 有关性能要求的详细信息，请参阅 [SAP 说明 1943937 - 硬件配置检查工具](https://launchpad.support.sap.com/#/notes/1943937)（需要创建 SAP Service Marketplace 帐户进行访问）。
 
 ## <a name="scalability-considerations"></a>可伸缩性注意事项
 
-在 SAP 应用程序层，Azure 提供多种虚拟机大小供纵向和横向扩展。有关详尽列表，请参阅 [SAP 说明 1928533](https://launchpad.support.sap.com/#/notes/1928533) - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型（需要创建 SAP 服务 Marketplace 帐户进行访问）。 随着我们不断地认证更多的虚拟机类型，你可以在同一个云部署中进行纵向扩展或缩减。 
+在 SAP 应用程序层，Azure 提供多种虚拟机大小供纵向和横向扩展。有关详尽列表，请参阅 [SAP 说明 1928533](https://launchpad.support.sap.com/#/notes/1928533) - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型（需要创建 SAP Service Marketplace 帐户进行访问）。 随着我们不断地认证更多的虚拟机类型，你可以在同一个云部署中进行纵向扩展或缩减。 
 
 在数据库层中，此体系结构在 VM 上运行 HANA。 如果工作负荷超过了最大 VM 大小，Microsoft 还为 SAP HANA 提供 [Azure 大型实例](/azure/virtual-machines/workloads/sap/hana-overview-architecture)。 这些物理服务器共置在 Microsoft Azure 认证的数据中心，截至本文发布时，最多为单个实例提供 20 TB 的内存容量。 凭借多达 60 TB 的总内存容量，还可以实现多节点配置。
 
@@ -176,7 +177,7 @@ Azure 提供多种功能用于[监视和诊断](/azure/architecture/best-practic
 
 ## <a name="security-considerations"></a>安全注意事项
 
-SAP 具有自身的用户管理引擎 (UME)，可在 SAP 应用程序中控制基于角色的访问和授权。 有关详细信息，请参阅 [SAP HANA 安全性 - 概述](https://archive.sap.com/documents/docs/DOC-62943)（需要创建 SAP 服务 Marketplace 帐户进行访问。）
+SAP 具有自身的用户管理引擎 (UME)，可在 SAP 应用程序中控制基于角色的访问和授权。 有关详细信息，请参阅 [SAP HANA 安全性 - 概述](https://archive.sap.com/documents/docs/DOC-62943)（需要创建 SAP Service Marketplace 帐户进行访问。）
 
 在其他网络安全性方面，请考虑实施[外围网络](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)。外围网络使用网络虚拟设备在 Web 调度程序子网和 Fiori 前端服务器池的前面创建防火墙。
 
@@ -197,3 +198,5 @@ SAP 具有自身的用户管理引擎 (UME)，可在 SAP 应用程序中控制�
 - [Azure 社区支持](https://azure.microsoft.com/support/community/)
 - [SAP 社区](https://www.sap.com/community.html)
 - [堆栈溢出](https://stackoverflow.com/tags/sap/)
+
+[visio-download]: https://archcenter.blob.core.windows.net/cdn/sap-reference-architectures.vsdx
