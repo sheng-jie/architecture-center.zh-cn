@@ -3,12 +3,12 @@ title: 在 Azure 中运行高可用性 SharePoint Server 2016 场
 description: 有关在 Azure 中设置高可用性 SharePoint Server 2016 场的成熟做法。
 author: njray
 ms.date: 08/01/2017
-ms.openlocfilehash: d1e3f0b73c94844ac649bf2abb6917809202fdb7
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 9fe4fc09cf3babdf3ec8e8f27049f90e0047e9f0
+ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30270116"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38987703"
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>在 Azure 中运行高可用性 SharePoint Server 2016 场
 
@@ -38,7 +38,9 @@ ms.locfileid: "30270116"
 
 - **网关**。 网关在本地网络与 Azure 虚拟网络之间提供连接。 连接可以使用 ExpressRoute 或站点到站点 VPN。 有关详细信息，请参阅[将本地网络连接到 Azure][hybrid-ra]。
 
-- **Windows Server Active Directory (AD) 域控制器**。 由于 SharePoint Server 2016 不支持使用 Azure Active Directory 域服务，因此必须部署 Windows Server AD 域控制器。 这些域控制器在 Azure VNet 中运行，并与本地 Windows Server AD 林建立了信任关系。 针对 SharePoint 场资源发出的客户端 Web 请求在 VNet 中进行身份验证，而不是跨网关连接将该身份验证流量发送到本地网络。 在 DNS 中创建 Intranet A 或 CNAME 记录，使 Intranet 用户能够将 SharePoint 场的名称解析成内部负载均衡器的专用 IP 地址。
+- **Windows Server Active Directory (AD) 域控制器**。 此参考体系结构部署 Windows Server AD 域控制器。 这些域控制器在 Azure VNet 中运行，并与本地 Windows Server AD 林建立了信任关系。 针对 SharePoint 场资源发出的客户端 Web 请求在 VNet 中进行身份验证，而不是跨网关连接将该身份验证流量发送到本地网络。 在 DNS 中创建 Intranet A 或 CNAME 记录，使 Intranet 用户能够将 SharePoint 场的名称解析成内部负载均衡器的专用 IP 地址。
+
+  SharePoint Server 2016 也支持使用 [Azure Active Directory 域服务](/azure/active-directory-domain-services/)。 Azure AD 域服务提供托管域服务，因此不需在 Azure 中部署和管理域控制器。
 
 - **SQL Server Always On 可用性组**。 为了实现 SQL Server 数据库的高可用性，我们建议创建 [SQL Server Always On 可用性组][sql-always-on]。 将两个虚拟机用于 SQL Server。 一个虚拟机包含主数据库副本，另一个虚拟机包含次要副本。 
 
