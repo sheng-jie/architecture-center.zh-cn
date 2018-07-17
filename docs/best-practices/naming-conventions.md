@@ -4,12 +4,12 @@ description: Azure 资源的命名约定。 如何命名虚拟机、存储帐户
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: a92b6a1a23b35e7379f586d477b6f7cc6ccfc7e1
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.openlocfilehash: b9833654f63dc81ff6d05b9c49897e0c58de2683
+ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206372"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37864549"
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -122,7 +122,7 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 
 ## <a name="organize-resources-with-tags"></a>使用标记组织资源
 
-Azure 资源管理器支持使用任意文本字符串标记实体，以标识上下文和简化自动化。  例如，`"sqlVersion: "sql2014ee"` 标记可以标识运行 SQL Server 2014 Enterprise Edition 的部署中的 VM，以针对其运行自动化脚本。  应将标记与所选的命名约定结合使用，以便增加和增强上下文。
+Azure 资源管理器支持使用任意文本字符串标记实体，以标识上下文和简化自动化。  例如，`"sqlVersion"="sql2014ee"` 标记可以标识运行 SQL Server 2014 Enterprise Edition 的 VM。 应将标记与所选的命名约定结合使用，以便增加和增强上下文。
 
 > [!TIP]
 > 标记的另一个优点是标记跨资源组，这样用户可跨不同的部署链接和关联实体。

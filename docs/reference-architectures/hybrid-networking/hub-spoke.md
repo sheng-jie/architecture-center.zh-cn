@@ -5,12 +5,12 @@ author: telmosampaio
 ms.date: 04/09/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: 925e0f47cf6b9aa1ad48ffae2c9561a2393bf601
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: 9105748f434e5d655b09b1fe0775417f33a912b0
+ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142244"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37843586"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>在 Azure 中实现中心辐射型网络拓扑
 
@@ -163,7 +163,7 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 2. （可选）对于 Linux 部署，请将 `osType` 设置为 `Linux`。
 
-3. 对于 `sharedKey`，请输入 VPN 连接的共享密钥。 
+3. 找到 `sharedKey` 的两个实例，并输入 VPN 连接的共享密钥。 值必须匹配。
 
     ```bash
     "sharedKey": "",

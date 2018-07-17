@@ -6,12 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authorize
 pnp.series.next: token-cache
-ms.openlocfilehash: 65529280c5849e36ed7ff23de08a0b485034d0d8
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 2d02ff7be04c6ebec888039453fe1ac7e957b301
+ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24541459"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37843668"
 ---
 # <a name="secure-a-backend-web-api"></a>保护后端 Web API
 
@@ -68,7 +68,7 @@ Tailspin 应用程序实施委托的用户标识。 两种方法的主要区别�
 不管使用哪种方法，Web 应用程序都必须获取访问令牌，也就是调用 Web API 时所需的凭据。
 
 * 使用委托的用户标识时，令牌必须来自可代表用户颁发令牌的 IDP。
-* 对于客户端凭据，应用程序可以从 IDP 获取令牌，或者托管其自身的令牌服务器。 （但是，不需要从头开始编写令牌服务器；使用类似于 [IdentityServer3] 的经全面测试的框架即可。）如果通过 Azure AD 进行身份验证，则即使使用了客户端凭据流，我们也强烈建议从 Azure AD 获取访问令牌。
+* 对于客户端凭据，应用程序可以从 IDP 获取令牌，或者托管其自身的令牌服务器。 （但是，不需要从头开始编写令牌服务器；使用类似于 [IdentityServer4] 的经全面测试的框架即可。）如果通过 Azure AD 进行身份验证，则即使使用了客户端凭据流，我们也强烈建议从 Azure AD 获取访问令牌。
 
 本文的余下部分假设应用程序使用 Azure AD 进行身份验证。
 
@@ -271,7 +271,7 @@ public void ConfigureServices(IServiceCollection services)
 [JwtBearer]: https://www.nuget.org/packages/Microsoft.AspNet.Authentication.JwtBearer
 
 [Tailspin Surveys]: tailspin.md
-[IdentityServer3]: https://github.com/IdentityServer/IdentityServer3
+[IdentityServer4]: https://github.com/IdentityServer/IdentityServer4
 [更新应用程序清单]: ./run-the-app.md#update-the-application-manifests
 [令牌缓存]: token-cache.md
 [租户注册]: signup.md

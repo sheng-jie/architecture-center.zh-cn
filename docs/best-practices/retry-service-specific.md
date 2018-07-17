@@ -4,12 +4,12 @@ description: 设置重试机制的服务指南。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 77cf5d90373da2118d34301bd5c790080d3cf63f
-ms.sourcegitcommit: 9a2d56ac7927f0a2bbfee07198d43d9c5cb85755
+ms.openlocfilehash: 39d342dc96e3d0d923ce159c392d9427359a4639
+ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36327681"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37843620"
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定服务的重试指南
 
@@ -383,7 +383,7 @@ client.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 \* 不包括收到“服务器忙”响应时增加的附加延迟。
 
 ### <a name="telemetry"></a>遥测
-服务总线使用 **EventSource** 将重试记录为 ETW 事件。 必须将 **EventListener** 附加到事件源，才能捕获事件并在性能查看器中查看这些事件，或将这些事件写入合适的目标日志。 为此，可以使用[语义式日志记录应用程序块](http://msdn.microsoft.com/library/dn775006.aspx)。 重试事件具有以下形式：
+服务总线使用 **EventSource** 将重试记录为 ETW 事件。 必须将 **EventListener** 附加到事件源，才能捕获事件并在性能查看器中查看这些事件，或将这些事件写入合适的目标日志。 重试事件具有以下形式：
 
 ```text
 Microsoft-ServiceBus-Client/RetryPolicyIteration
@@ -985,8 +985,8 @@ namespace RetryCodeSamples
 访问 Azure 或第三方服务时，请注意以下指南：
 
 * 使用管理重试的系统化方法（可能作为可重用代码），以便跨所有客户端和解决方案应用一致的方法。
-* 如果目标服务或客户端没有内置的重试机制，请考虑使用重试框架（如临时故障处理应用程序块）来管理重试。 这会帮助你实现一致的重试行为，并可能会为目标服务提供合适的默认重试策略。 不过，可能需要为具有非标准行为的服务创建自定义重试代码，无需根据异常来指明临时故障；或者，可能需要使用 **Retry-Response** 答复来管理重试行为。
-* 临时检测逻辑视用于调用 REST 调用的实际客户端 API 而定。 某些客户端（如较新的 **HttpClient** 类）不会引发包含失败 HTTP 状态代码的已完成请求的异常。 这可以提升性能，但会阻止使用临时故障处理应用程序块。 在这种情况下，可以使用针对失败 HTTP 状态代码引发异常的代码，包装 REST API 调用，并可以由临时故障处理应用程序块进行处理。 或者，可以使用另一种机制来驱动重试。
+* 如果目标服务或客户端没有内置的重试机制，请考虑使用重试框架（如 [Polly][polly]）来管理重试。 这会帮助你实现一致的重试行为，并可能会为目标服务提供合适的默认重试策略。 不过，可能需要为具有非标准行为的服务创建自定义重试代码，无需根据异常来指明临时故障；或者，可能需要使用 **Retry-Response** 答复来管理重试行为。
+* 临时检测逻辑视用于调用 REST 调用的实际客户端 API 而定。 某些客户端（如较新的 **HttpClient** 类）不会引发包含失败 HTTP 状态代码的已完成请求的异常。 
 * 从服务返回的 HTTP 状态代码可以帮助指明故障是否是临时故障。 可能需要检查客户端生成的异常或重试框架，以访问状态代码或确定对等的异常类型。 以下 HTTP 代码通常可指明重试是否合适：
   * 408 请求超时
   * 429 请求过多
@@ -999,7 +999,7 @@ namespace RetryCodeSamples
   * WebExceptionStatus.ConnectFailure
   * WebExceptionStatus.Timeout
   * WebExceptionStatus.RequestCanceled
-* 如果服务处于不可用状态，则服务可以指明在 **Retry-After** 响应头或其他自定义头中进行重试前的相应延迟。 服务还可以发送其他信息，既能以自定义头的形式，也能嵌入响应内容中。 临时故障处理应用程序块不能使用标准头或任何自定义“retry-after”头。
+* 如果服务处于不可用状态，则服务可以指明在 **Retry-After** 响应头或其他自定义头中进行重试前的相应延迟。 服务还可以发送其他信息，既能以自定义头的形式，也能嵌入响应内容中。 
 * 请勿针对表示客户端错误的状态代码（4xx 范围内的错误）进行重试，“408 请求超时”除外。
 * 在各种条件（如不同的网络状态和系统负载）下全面测试重试策略和机制。
 
