@@ -332,18 +332,32 @@
       href: example-scenario/index.md
     - name: AI
       items:
-        - name: 图像处理
+        - name: 图像分类
           href: example-scenario/ai/intelligent-apps-image-processing.md
     - name: 应用
       items:
         - name: 酒店预订聊天机器人
           href: example-scenario/apps/commerce-chatbot.md
-        - name: 将 DevOps 与 Azure Kubernetes 服务配合使用
+        - name: 将 DevOps 与容器配合使用
           href: example-scenario/apps/devops-with-aks.md
+        - name: 将 DevOps 与 VSTS 配合使用
+          href: example-scenario/apps/devops-dotnet-webapp.md
+        - name: 用于开发/测试的 SAP
+          href: example-scenario/apps/sap-dev-test.md
+        - name: 电子商务前端
+          href: example-scenario/apps/ecommerce-scenario.md
     - name: 数据和分析
       items:
         - name: 实时欺诈检测
           href: example-scenario/data/fraud-detection.md
+        - name: 可缩放订单处理
+          href: example-scenario/data/ecommerce-order-processing.md
+    - name: 基础结构
+      items:
+        - name: 多层 Windows
+          href: example-scenario/infrastructure/regulated-multitier-app.md
+        - name: HPC 视频呈现
+          href: example-scenario/infrastructure/video-rendering.md
 - name: 参考体系结构
   items:
     - name: 概述
