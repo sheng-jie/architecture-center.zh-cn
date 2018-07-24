@@ -4,12 +4,12 @@ description: Azure 资源的命名约定。 如何命名虚拟机、存储帐户
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: b9833654f63dc81ff6d05b9c49897e0c58de2683
-ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
+ms.openlocfilehash: 09bcfa3c0a0c46605f0025adad06f8049f109f1b
+ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864549"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38987727"
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -78,7 +78,7 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 
 | 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- | --- |
-|资源组 |订阅 |1-90 |不区分大小写 |字母数字、下划线、括号、连字符、句点（位于末尾的除外） |`<service short name>-<environment>-rg` |`profx-prod-rg` |
+|资源组 |订阅 |1-90 |不区分大小写 |字母数字、下划线、括号、连字符、句点（位于末尾的除外）以及 Unicode 字符 |`<service short name>-<environment>-rg` |`profx-prod-rg` |
 |可用性集 |资源组 |1-80 |不区分大小写 |字母数字、下划线和连字符 |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |标记 |关联的实体 |512（名称）、256（值） |不区分大小写 |字母数字 |`"key" : "value"` |`"department" : "Central IT"` |
 
