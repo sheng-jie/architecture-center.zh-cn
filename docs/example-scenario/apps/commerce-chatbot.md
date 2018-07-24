@@ -1,26 +1,26 @@
 ---
-title: 用于酒店预订的对话式 Azure 聊天机器人
-description: 经验证的解决方案，所生成的对话式聊天机器人适合使用 Azure 机器人服务、认知服务和 LUIS，Azure SQL 数据库以及 Application Insights 的商业应用程序。
+title: Azure 上提供的用于酒店预订的对话式聊天机器人
+description: 经验证的方案，所生成的对话式聊天机器人适合使用 Azure 机器人服务、认知服务和 LUIS，Azure SQL 数据库以及 Application Insights 的商业应用程序。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: 85bdc3194961bbbd8d89db34e5c56e4baa8d8599
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: b664faf20d806824c2581346aaa592b0d74207da
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37891268"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060857"
 ---
-# <a name="conversational-azure-chatbot-for-hotel-reservations"></a>用于酒店预订的对话式 Azure 聊天机器人
+# <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure 上提供的用于酒店预订的对话式聊天机器人
 
-本示例方案适用于需将对话式聊天机器人集成到应用程序中的企业。 在本解决方案中，将对连锁酒店使用一个 C# 聊天机器人，以便客户通过 Web 或移动应用程序查看房间可用情况并进行预订。
+本示例方案适用于需将对话式聊天机器人集成到应用程序中的企业。 在本方案中，将对连锁酒店使用一个 C# 聊天机器人，以便客户通过 Web 或移动应用程序查看房间可用情况并进行预订。
 
 示例场景包括：允许客户查看酒店房间可用情况并订房、允许客户查看餐馆外卖菜单并下单，或者允许客户搜索并订购照片。 传统上，企业需雇佣并培训客户服务代理来响应此类客户请求，而客户则需等待代理为其提供帮助。
 
 有了机器人服务和语言理解或语音 API 服务等 Azure 服务，公司就可以使用自动化的可缩放机器人帮助客户并处理订单或预订。
 
-## <a name="potential-use-cases"></a>可能的用例
+## <a name="related-use-cases"></a>相关的用例
 
-以下用例可以考虑本解决方案：
+以下用例可以考虑本方案：
 
 * 查看餐馆外卖菜单并下单
 * 查看酒店房间可用情况并订房
@@ -30,7 +30,7 @@ ms.locfileid: "37891268"
 
 ![从体系结构的角度概要说明对话式聊天机器人中涉及的 Azure 组件][architecture]
 
-本解决方案涉及的对话式聊天机器人充当酒店接待。 数据流经解决方案的情形如下所示：
+本方案涉及的对话式聊天机器人充当酒店接待。 数据流经方案的情形如下所示：
 
 1. 客户通过移动或 Web 应用访问此聊天机器人。
 2. 用户通过 Azure Active Directory B2C（企业对客户）进行身份验证。
@@ -58,19 +58,19 @@ ms.locfileid: "37891268"
 
 ### <a name="availability"></a>可用性
 
-本解决方案使用 Azure SQL 数据库来存储客户预订项目。 SQL 数据库包括区域冗余数据库、故障转移组和异地复制。 有关详细信息，请参阅 [Azure SQL 数据库可用性功能][sqlavailability-docs]。
+本方案使用 Azure SQL 数据库来存储客户预订项目。 SQL 数据库包括区域冗余数据库、故障转移组和异地复制。 有关详细信息，请参阅 [Azure SQL 数据库可用性功能][sqlavailability-docs]。
 
-若要了解其他可伸缩性主题，请参阅 Azure 体系结构中心的[可用性核对清单][availability]。
+若要了解其他可用性主题，请参阅 Azure 体系结构中心的[可用性核对清单][availability]。
 
 ### <a name="scalability"></a>可伸缩性
 
-本解决方案使用 Azure 应用服务。 可以通过应用服务自动调整运行机器人的实例数。 可以通过此功能时刻了解客户对 Web 应用程序和聊天机器人的需求情况。 有关自动缩放的详细信息，请参阅体系结构中心的[自动缩放最佳做法][autoscaling]。
+本方案使用 Azure 应用服务。 可以通过应用服务自动调整运行机器人的实例数。 可以通过此功能时刻了解客户对 Web 应用程序和聊天机器人的需求情况。 有关自动缩放的详细信息，请参阅体系结构中心的[自动缩放最佳做法][autoscaling]。
 
 若要了解其他可伸缩性主题，请参阅 Azure 体系结构中心的[可伸缩性核对清单][scalability]。
 
 ### <a name="security"></a>“安全”
 
-本解决方案使用 Azure Active Directory B2C（企业对客户）进行用户身份验证。 使用 AAD B2C 时，聊天机器人不存储任何敏感的客户帐户信息或凭据。 有关详细信息，请参阅 [Azure Active Directory B2C 概述][aadb2c-docs]。
+本方案使用 Azure Active Directory B2C（企业对客户）进行用户身份验证。 使用 AAD B2C 时，聊天机器人不存储任何敏感的客户帐户信息或凭据。 有关详细信息，请参阅 [Azure Active Directory B2C 概述][aadb2c-docs]。
 
 存储在 Azure SQL 数据库中的信息使用透明数据加密 (TDE) 进行静态加密。 SQL 数据库还提供 Always Encrypted，用于在查询和处理过程中加密数据。 有关 SQL 数据库安全性的详细信息，请参阅 [Azure SQL 数据库安全性和符合性][sqlsecurity-docs]。
 
@@ -78,15 +78,15 @@ ms.locfileid: "37891268"
 
 ### <a name="resiliency"></a>复原
 
-本解决方案使用 Azure SQL 数据库来存储客户预订项目。 SQL 数据库包括区域冗余数据库、故障转移组、异地复制和自动备份。 有了这些功能，应用程序就可以在进行维护或出现服务中断的情况下继续运行。 有关详细信息，请参阅 [Azure SQL 数据库可用性功能][sqlavailability-docs]。
+本方案使用 Azure SQL 数据库来存储客户预订项目。 SQL 数据库包括区域冗余数据库、故障转移组、异地复制和自动备份。 有了这些功能，应用程序就可以在进行维护或出现服务中断的情况下继续运行。 有关详细信息，请参阅 [Azure SQL 数据库可用性功能][sqlavailability-docs]。
 
-本解决方案使用 Application Insights 来监视应用程序的运行状况。 可以使用 Application Insights 生成警报并响应那些会影响客户体验和聊天机器人可用性的性能问题。 有关详细信息，请参阅[什么是 Application Insights？][appinsights-docs]
+本方案使用 Application Insights 来监视应用程序的运行状况。 可以使用 Application Insights 生成警报并响应那些会影响客户体验和聊天机器人可用性的性能问题。 有关详细信息，请参阅[什么是 Application Insights？][appinsights-docs]
 
 若需可复原解决方案的通用设计指南，请参阅[设计适用于 Azure 的可复原应用程序][resiliency]。
 
-## <a name="deploy-the-solution"></a>部署解决方案
+## <a name="deploy-the-scenario"></a>部署方案
 
-本解决方案分为三个组件，方便你了解自己最关注的领域：
+本方案分为三个组件，方便你了解自己最关注的领域：
 
 * [基础结构组件](#deploy-infrastructure-components)。 使用 Azure 资源管理器模板来部署应用服务、Web 应用、Application Insights、存储帐户以及 SQL Server 和数据库的核心基础结构组件。
 * [Web 应用聊天机器人](#deploy-web-app-chatbot)。 使用 Azure CLI 将机器人与机器人服务、语言理解和智能服务 (LUIS) 应用部署在一起。
@@ -135,11 +135,11 @@ GitHub 上提供了一个示例 C# 应用程序：
 
 * [商业机器人 C# 示例](https://github.com/Microsoft/AzureBotServices-scenarios/tree/master/CSharp/Commerce/src)
 
-示例应用程序包括 Azure Active Directory 身份验证组件，并集成了认知服务的语言理解和智能服务 (LUIS) 组件。 此应用程序要求使用 Visual Studio 来生成和部署解决方案。 有关如何配置 AAD B2C 和 LUIS 应用的其他信息，可参阅 GitHub 存储库文档。
+示例应用程序包括 Azure Active Directory 身份验证组件，并集成了认知服务的语言理解和智能服务 (LUIS) 组件。 此应用程序要求使用 Visual Studio 来生成和部署方案。 有关如何配置 AAD B2C 和 LUIS 应用的其他信息，可参阅 GitHub 存储库文档。
 
 ## <a name="pricing"></a>定价
 
-为了方便用户了解运行本解决方案的成本，我们已在成本计算器中预配置了所有服务。 若要了解自己的特定用例的定价变化情况，请按预期的流量更改相应的变量。
+为了方便用户了解运行本方案的成本，我们已在成本计算器中预配置了所有服务。 若要了解自己的特定用例的定价变化情况，请按预期的流量更改相应的变量。
 
 我们已根据你预期的聊天机器人需要处理的消息数提供了三个示例性的成本配置文件：
 

@@ -5,12 +5,12 @@ author: telmosampaio
 ms.date: 06/19/2018
 pnp.series.title: Implement a hub-spoke network topology with shared services in Azure
 pnp.series.prev: hub-spoke
-ms.openlocfilehash: 555d08e5d3792f8699875c6d6aa8a1a42eadd477
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: 283251d5b11f76985405410c5c237e5a64ee98fe
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142346"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060789"
 ---
 # <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a>在 Azure 中使用共享服务实现中心辐射型网络拓扑
 

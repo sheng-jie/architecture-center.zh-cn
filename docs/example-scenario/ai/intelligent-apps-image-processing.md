@@ -1,16 +1,16 @@
 ---
-title: 智能应用 - Azure 上的图像处理
-description: 经验证的解决方案，用于将图像处理内置到 Azure 应用程序中。
+title: Azure 上的保险索赔图像分类
+description: 经验证的方案，用于将图像处理内置到 Azure 应用程序中。
 author: david-stanford
 ms.date: 07/05/2018
-ms.openlocfilehash: c5bfb9a929ddddda4336e1cbc8665a0b4d3bbe2c
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: 361a88234fd9ed918ab7664893f86666b4328b8c
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37891269"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060823"
 ---
-# <a name="insurance-claim-image-classification-on-azure"></a>Azure 上的保险索赔图像分类
+# <a name="image-classification-for-insurance-claims-on-azure"></a>Azure 上的保险索赔图像分类
 
 本示例方案适用于需处理图像的企业。
 
@@ -18,19 +18,18 @@ ms.locfileid: "37891269"
 
 使用 Azure 服务（例如计算机视觉 API 和 Azure Functions），公司不需管理各个服务器，既减少了成本，又可充分利用 Microsoft 围绕认知服务图像处理开发的专业技术。 本方案专门解决图像处理方案问题。 如果有各种不同的的 AI 需求，可以考虑全套[认知服务][cognitive-docs]。
 
-## <a name="potential-use-cases"></a>可能的用例
+## <a name="related-use-cases"></a>相关的用例
 
-以下用例可以考虑本解决方案：
+以下用例可以考虑本方案：
 
 * 对时尚网站上的图像分类。
-* 对保险索赔的图像分类。
 * 对游戏屏幕截图中的遥测数据分类。
 
 ## <a name="architecture"></a>体系结构
 
 ![智能应用体系结构 - 计算机视觉][architecture-computer-vision]
 
-本解决方案涉及 Web 或移动应用程序的后端组件。 数据流经解决方案的情形如下所示：
+本方案涉及 Web 或移动应用程序的后端组件。 数据流经方案的情形如下所示：
 
 1. Azure Functions 充当 API 层。 应用程序可以通过这些 API 上传图像以及检索 Cosmos DB 中的数据。
 
@@ -64,7 +63,7 @@ ms.locfileid: "37891269"
 
 ### <a name="scalability"></a>可伸缩性
 
-大多数情况下，本解决方案的所有组件是托管服务，可以自动进行缩放。 一些需注意的例外：Azure Functions 存在限制，最多可以使用 200 个实例。 如果所需规模超出限制，可以考虑使用多个区域或应用计划。
+大多数情况下，本方案的所有组件是托管服务，可以自动进行缩放。 一些需注意的例外：Azure Functions 存在限制，最多可以使用 200 个实例。 如果所需规模超出限制，可以考虑使用多个区域或应用计划。
 
 Cosmos DB 不会按照预配的请求单位 (RU) 自动缩放。  有关如何估算需求的指南，请参阅文档中的[请求单位][request-units]。 若要充分利用 Cosmos DB 中的缩放功能，还应参阅[分区键][partition-key]的内容。
 
@@ -80,13 +79,13 @@ Cosmos DB 不会按照预配的请求单位 (RU) 自动缩放。  有关如何�
 
 ### <a name="resiliency"></a>复原
 
-本解决方案中的所有组件都是托管的，因此均可在区域级别自动复原。 
+本方案中的所有组件都是托管的，因此均可在区域级别自动复原。
 
 若需可复原解决方案的通用设计指南，请参阅[设计适用于 Azure 的可复原应用程序][resiliency]。
 
 ## <a name="pricing"></a>定价
 
-为了方便用户了解运行本解决方案的成本，我们已在成本计算器中预配置了所有服务。 若要了解自己的特定用例的定价变化情况，请按预期的流量更改相应的变量。
+为了方便用户了解运行本方案的成本，我们已在成本计算器中预配置了所有服务。 若要了解自己的特定用例的定价变化情况，请按预期的流量更改相应的变量。
 
 我们已根据流量（假定所有图像的大小均为 100kb）提供了三个示例性的成本配置文件：
 
@@ -96,7 +95,7 @@ Cosmos DB 不会按照预配的请求单位 (RU) 自动缩放。  有关如何�
 
 ## <a name="related-resources"></a>相关资源
 
-如需此解决方案的引导式学习路径，请参阅[在 Azure 中生成无服务器 Web 应用][serverless]。  
+如需此方案的引导式学习路径，请参阅[在 Azure 中生成无服务器 Web 应用][serverless]。  
 
 将此解决方案放到生产环境中之前，请参阅 Azure Functions [最佳做法][functions-best-practices]。
 

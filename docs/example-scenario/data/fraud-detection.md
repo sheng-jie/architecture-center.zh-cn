@@ -1,14 +1,14 @@
 ---
-title: 高级分析&mdash;实时欺诈检测
-description: 经验证的解决方案，可以使用 Azure 事件中心和流分析实时检测欺诈性活动。
+title: 在 Azure 上实时欺诈检测
+description: 经验证的方案，可以使用 Azure 事件中心和流分析实时检测欺诈性活动。
 author: alexbuckgit
 ms.date: 07/05/2018
-ms.openlocfilehash: cf375445b38b0ff7d6fbc400902d5e97b34b4fed
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: e22322133adf40d033ac5af98069cb00765d14ca
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37891267"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060806"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>在 Azure 上实时欺诈检测
 
@@ -19,10 +19,10 @@ ms.locfileid: "37891267"
 使用完全托管的 Azure 服务（例如事件中心和流分析），公司不需管理各个服务器，既减少了成本，又可充分利用 Microsoft 在云规模的数据引入和实时分析方面的专业技术。 本方案专门解决欺诈性活动的检测问题。 如果有数据分析的其他需求，则应查看可用 [Azure 分析服务][product-category]的列表。
 
 本示例所代表的部分涉及到更广泛的数据处理体系结构和策略。 整个体系结构此方面的其他选项将在本文后面讨论。
- 
-## <a name="potential-use-cases"></a>可能的用例
 
-以下用例可以考虑本解决方案：
+## <a name="related-use-cases"></a>相关的用例
+
+以下用例可以考虑本方案：
 
 * 在电信场景中检测欺诈性移动电话呼叫。
 * 为银行机构确定欺诈性信用卡交易。
@@ -30,9 +30,9 @@ ms.locfileid: "37891267"
 
 ## <a name="architecture"></a>体系结构
 
-![从体系结构的角度概要说明实时欺诈检测解决方案的 Azure 组件][architecture-diagram]
+![从体系结构的角度概要说明实时欺诈检测方案的 Azure 组件][architecture-diagram]
 
-本解决方案涉及实时分析管道的后端组件。 数据流经解决方案的情形如下所示：
+本方案涉及实时分析管道的后端组件。 数据流经方案的情形如下所示：
 
 1. 将移动电话呼叫元数据从源系统发送到 Azure 事件中心实例。 
 2. 启动流分析作业，通过事件中心源接收数据。
@@ -41,9 +41,9 @@ ms.locfileid: "37891267"
 
 ### <a name="components"></a>组件
 
-* [Azure 事件中心][docs-event-hubs]是一个实时流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 在本解决方案中，事件中心接收需要进行欺诈活动分析的所有电话呼叫元数据。
-* [Azure 流分析][docs-stream-analytics]是一个事件处理引擎，可以分析从设备和其他数据源流式传输的大量数据。 它还支持从数据流提取信息，以便确定模式和关系。 这些模式可能触发其他下游操作。 在本解决方案中，流分析会转换事件中心的输入流，以便确定欺诈性呼叫。
-* [Blob 存储][docs-blob-storage]在本解决方案中用于存储流分析作业的结果。
+* [Azure 事件中心][docs-event-hubs]是一个实时流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 在本方案中，事件中心接收需要进行欺诈活动分析的所有电话呼叫元数据。
+* [Azure 流分析][docs-stream-analytics]是一个事件处理引擎，可以分析从设备和其他数据源流式传输的大量数据。 它还支持从数据流提取信息，以便确定模式和关系。 这些模式可能触发其他下游操作。 在本方案中，流分析会转换事件中心的输入流，以便确定欺诈性呼叫。
+* [Blob 存储][docs-blob-storage]在本方案中用于存储流分析作业的结果。
 
 ## <a name="considerations"></a>注意事项
 
@@ -61,9 +61,9 @@ Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服�
 
 ### <a name="scalability"></a>可伸缩性
 
-本解决方案的组件设计用于超大规模的引入和大规模并行实时分析。 Azure 事件中心高度可缩放，每秒能够接收和处理数百万个事件且延迟很低。  事件中心可[自动增加](/azure/event-hubs/event-hubs-auto-inflate)吞吐量单元数，以便满足使用需求。 Azure 流分析可以分析多个源提供的大量流数据。 若要纵向扩展流分析，可以增加分配的用于执行流作业的[流单元](/azure/stream-analytics/stream-analytics-streaming-unit-consumption)数。
+本方案的组件设计用于超大规模的引入和大规模并行实时分析。 Azure 事件中心高度可缩放，每秒能够接收和处理数百万个事件且延迟很低。  事件中心可[自动增加](/azure/event-hubs/event-hubs-auto-inflate)吞吐量单元数，以便满足使用需求。 Azure 流分析可以分析多个源提供的大量流数据。 若要纵向扩展流分析，可以增加分配的用于执行流作业的[流单元](/azure/stream-analytics/stream-analytics-streaming-unit-consumption)数。
 
-有关如何设计可缩放解决方案的通用指南，请参阅 Azure 体系结构中心的[可伸缩性核对清单][scalability]。
+有关如何设计可缩放方案的通用指南，请参阅 Azure 体系结构中心的[可伸缩性核对清单][scalability]。
 
 ### <a name="security"></a>“安全”
 
@@ -75,13 +75,13 @@ Azure 事件中心通过[身份验证和安全模型][docs-event-hubs-security-m
 
 若需可复原解决方案的通用设计指南，请参阅[设计适用于 Azure 的可复原应用程序][resiliency]。
 
-## <a name="deploy-the-solution"></a>部署解决方案
+## <a name="deploy-the-scenario"></a>部署方案
 
-若要部署本解决方案，可以按照此[分步教程][tutorial]的说明操作，手动部署解决方案的每个组件。 本教程还提供了一个 .NET 客户端应用程序，用于生成示例电话呼叫元数据并将该数据发送到事件中心实例。 
+若要部署本方案，可以按照此[分步教程][tutorial]的说明操作，手动部署方案的每个组件。 本教程还提供了一个 .NET 客户端应用程序，用于生成示例电话呼叫元数据并将该数据发送到事件中心实例。
 
 ## <a name="pricing"></a>定价
 
-为了方便用户了解运行本解决方案的成本，我们已在成本计算器中预配置了所有服务。 若要了解自己的特定用例的定价变化情况，请按预期的数据量更改相应的变量。
+为了方便用户了解运行本方案的成本，我们已在成本计算器中预配置了所有服务。 若要了解自己的特定用例的定价变化情况，请按预期的数据量更改相应的变量。
 
 我们已根据你预期接收的流量提供了三个示例性的成本配置文件：
 
@@ -91,7 +91,7 @@ Azure 事件中心通过[身份验证和安全模型][docs-event-hubs-security-m
 
 ## <a name="related-resources"></a>相关资源
 
-可以通过机器学习模型生成更复杂的欺诈检测方案。 若要了解使用 Machine Learning Server 生成的解决方案，请参阅[使用 Machine Learning Server 进行的欺诈检测][r-server-fraud-detection]。 若要了解使用 Machine Learning Server 的其他解决方案模板，请参阅[数据科学方案和解决方案模板][docs-r-server-sample-solutions]。 若要了解使用 Azure Data Lake Analytics 的示例解决方案，请参阅[使用 Azure Data Lake 和 R 进行欺诈检测][technet-fraud-detection]。  
+可以通过机器学习模型生成更复杂的欺诈检测方案。 若要了解使用 Machine Learning Server 生成的方案，请参阅[使用 Machine Learning Server 进行的欺诈检测][r-server-fraud-detection]。 若要了解使用 Machine Learning Server 的其他解决方案模板，请参阅[数据科学方案和解决方案模板][docs-r-server-sample-solutions]。 若要了解使用 Azure Data Lake Analytics 的示例解决方案，请参阅[使用 Azure Data Lake 和 R 进行欺诈检测][technet-fraud-detection]。  
 
 <!-- links -->
 [product-category]: https://azure.microsoft.com/product-categories/analytics/
