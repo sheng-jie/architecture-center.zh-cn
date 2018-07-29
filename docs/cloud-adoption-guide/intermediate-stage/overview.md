@@ -2,12 +2,12 @@
 title: 采用 Azure：中间阶段
 description: 介绍有关企业采用 Azure 所要掌握的中级知识
 author: petertay
-ms.openlocfilehash: 227d9558647ed8076b2832d95e192f2f0c43b9db
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.openlocfilehash: a1f93616f5f1ecf4f395ce39bbb037ef6ab5991b
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206355"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39229229"
 ---
 # <a name="azure-cloud-adoption-guide-intermediate-overview"></a>Azure 云采用指南：中间阶段概述
 
@@ -27,7 +27,7 @@ Azure 采用计划的中间阶段侧重于针对使用多个新 Azure 开发工�
 
 在基本采用阶段，我们已了解一些有关 Azure 内部结构的基础知识，以及如何创建、读取、更新和删除资源。 我们还了解了标识，以及 Azure 只信任 Azure Active Directory (AD) 对需要访问这些资源的用户进行身份验证和授权。
 
-此外，我们已开始了解如何配置 Azure 的调控工具来管理组织对 Azure 资源的使用。 在基本阶段，我们探讨了如何调控单个团队访问部署简单工作负荷时所需的资源。 实际上，组织往往由多个团队构成，这些团队会同时处理多个工作负荷。 
+此外，我们已开始了解如何配置 Azure 的调控工具来管理组织对 Azure 资源的使用。 我们探讨了如何调控单个团队访问部署简单工作负荷时所需的资源。 实际上，组织往往由多个团队构成，这些团队会同时处理多个工作负荷。 
 
 在开始之前，让我们了解术语“工作负荷”的真正含义。 该术语通常定义一个任意的功能单元，例如应用程序或服务。 我们可以从部署到服务器和其他任何所需服务（例如数据库）的代码项目角度来考虑工作负荷。 对于本地应用程序或服务而言，这种定义非常有效；但在云中，我们需要对其进行延伸。 
 

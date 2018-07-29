@@ -2,13 +2,13 @@
 title: 使用 SQL Server 的 N 层应用程序
 description: 如何在 Azure 上实现多层体系结构，以确保可用性、安全性、可伸缩性和可管理性。
 author: MikeWasson
-ms.date: 06/23/2018
-ms.openlocfilehash: 7c8184d25cf6b3bd358adc2728329fd3bd08503a
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.date: 07/19/2018
+ms.openlocfilehash: 42ba18e9ffef32c6990fbb888cc41e980fb4abea
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142295"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39229127"
 ---
 # <a name="n-tier-application-with-sql-server"></a>使用 SQL Server 的 N 层应用程序
 
@@ -26,6 +26,8 @@ ms.locfileid: "37142295"
 
 * **虚拟网络 (VNet) 和子网。** 每个 Azure VM 都会部署到可细分为多个子网的 VNet 中。 为每个层创建一个单独的子网。 
 
+* **应用程序网关**。 [Azure 应用程序网关](/azure/application-gateway/)是第 7 层负载均衡器。 在此体系结构中，它将 HTTP 请求路由到 Web 前端。 应用程序网关还提供一个 [Web 应用程序防火墙](/azure/application-gateway/waf-overview) (WAF)，出现常见的漏洞和攻击时，WAF 可以保护应用程序。 
+
 * **NSG。** 使用[网络安全组][nsg] (NSG) 来限制 VNet 中的网络流量。 例如，在此处显示的 3 层体系结构中，数据库层不接受来自 Web 前端的流量，仅接受来自业务层和管理子网的流量。
 
 * **虚拟机**。 有关如何配置 VM 的建议，请参阅[在 Azure 上运行 Windows VM](./windows-vm.md) 和[在 Azure 上运行 Linux VM](./linux-vm.md)。
@@ -34,9 +36,9 @@ ms.locfileid: "37142295"
 
 * **VM 规模集**（未显示）。 可以使用 [VM 规模集][vmss]来替代可用性集。 可以通过规模集轻松地手动横向扩展某个层中的 VM，也可以按预定义规则自动这样做。
 
-* **Azure 负载均衡器。** [负载均衡器][load-balancer]将传入的 Internet 请求分配到 VM 实例。 使用[公共负载均衡器][load-balancer-external]将传入的 Internet 流量分配到 Web 层，使用[内部负载均衡器][load-balancer-internal]将来自 Web 层的网络流量分配到业务层。
+* **负载均衡器。** 使用 [Azure 负载均衡器][load-balancer]可将网络流量从 Web 层分配到业务层，以及从业务层分配到 SQL Server。
 
-* **公共 IP 地址**。 公共负载均衡器需要使用一个公共 IP 地址来接收 Internet 流量。
+* **公共 IP 地址**。 应用程序接收 Internet 流量时所需的公共 IP 地址。
 
 * **Jumpbox。** 也称为[守护主机]。 网络上的一个安全 VM，管理员使用它来连接到其他 VM。 Jumpbox 中的某个 NSG 只允许来自安全列表中的公共 IP 地址的远程流量。 该 NSG 应允许远程桌面 (RDP) 流量。
 
@@ -62,7 +64,7 @@ ms.locfileid: "37142295"
 
 ### <a name="load-balancers"></a>负载均衡器
 
-不要将 VM 直接向 Internet 公开，而是改为给每个 VM 提供专用 IP 地址。 客户端使用公共负载均衡器的 IP 地址进行连接。
+不要将 VM 直接向 Internet 公开，而是改为给每个 VM 提供专用 IP 地址。 客户端使用与应用程序网关相关联的公共 IP 地址进行连接。
 
 定义用于将网络流量定向到 VM 的负载均衡器规则。 例如，若要启用 HTTP 流量，请创建将前端配置中的端口 80 映射到后端地址池上的端口 80 的规则。 当客户端将 HTTP 请求发送到端口 80 时，负载均衡器会通过使用包括源 IP 地址的[哈希算法][load-balancer-hashing]选择后端 IP 地址。 这样，客户端请求就会分布在所有 VM 上。
 
@@ -147,8 +149,6 @@ Jumpbox 的性能要求非常低，因此请选择一个较小的 VM 大小。 �
 ## <a name="security-considerations"></a>安全注意事项
 
 虚拟网络是 Azure 中的流量隔离边界。 一个 VNet 中的 VM 无法直接与其他 VNet 中的 VM 通信。 同一个 VNet 中的 VM 之间可以通信，除非你创建[网络安全组][nsg] (NSG) 来限制流量。 有关详细信息，请参阅 [Microsoft 云服务和网络安全性][network-security]。
-
-对于传入 Internet 流量，负载均衡器规则定义哪些流量可以到达后端。 但是，负载均衡器规则不支持 IP 安全列表，因此如果要将某些公共 IP 地址添加到安全列表，请将 NSG 添加到子网。
 
 请考虑添加一个网络虚拟设备 (NVA) 以在 Internet 与 Azure 虚拟网络之间创建一个外围网络。 NVA 是虚拟设备的一个通用术语，可以执行与网络相关的任务，例如防火墙、包检查、审核和自定义路由。 有关详细信息，请参阅[在 Azure 与 Internet 之间实现外围网络][dmz]。
 
@@ -248,10 +248,6 @@ Jumpbox 的性能要求非常低，因此请选择一个较小的 VM 大小。 �
 [chef]: https://www.chef.io/solutions/azure/
 [git]: https://github.com/mspnp/template-building-blocks
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/virtual-machines/n-tier-windows
-[lb-external-create]: /azure/load-balancer/load-balancer-get-started-internet-portal
-[lb-internal-create]: /azure/load-balancer/load-balancer-get-started-ilb-arm-portal
-[load-balancer-external]: /azure/load-balancer/load-balancer-internet-overview
-[load-balancer-internal]: /azure/load-balancer/load-balancer-internal-overview
 [nsg]: /azure/virtual-network/virtual-networks-nsg
 [operations-management-suite]: https://www.microsoft.com/server-cloud/operations-management-suite/overview.aspx
 [plan-network]: /azure/virtual-network/virtual-network-vnet-plan-design-arm
@@ -275,7 +271,7 @@ Jumpbox 的性能要求非常低，因此请选择一个较小的 VM 大小。 �
 [0]: ./images/n-tier-sql-server.png "使用 Microsoft Azure 的 N 层体系结构"
 [resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview 
 [vmss]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview
-[load-balancer]: /azure/load-balancer/load-balancer-get-started-internet-arm-cli
+[load-balancer]: /azure/load-balancer/
 [load-balancer-hashing]: /azure/load-balancer/load-balancer-overview#load-balancer-features
 [vmss-design]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview
 [subscription-limits]: /azure/azure-subscription-service-limits

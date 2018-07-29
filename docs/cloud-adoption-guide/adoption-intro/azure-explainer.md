@@ -1,15 +1,15 @@
 ---
-title: 说明：Azure 如何工作？
-description: 介绍了 Azure 的内部运行
+title: Azure 的工作原理
+description: 解释 Azure 的内部功能
 author: petertay
-ms.openlocfilehash: 88514ba01efabe38a1b92d135321c2e44cef004e
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.openlocfilehash: bf301a05d69ed66aa03727dde3968477c2337790
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206457"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228960"
 ---
-# <a name="explainer-how-does-azure-work"></a>说明：Azure 如何工作？
+# <a name="how-does-azure-work"></a>Azure 的工作原理
 
 Azure 是 Microsoft 的公有云平台。 Azure 提供了一个大型的服务集合，包括平台即服务 (PaaS)、基础结构即服务 (IaaS)、数据库即服务 (DBaaS) 以及许多其他服务。 但是，确切而言，什么是 Azure，它如何工作？
 
@@ -31,7 +31,7 @@ Azure 是 Microsoft 的公有云平台。 Azure 提供了一个大型的服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 Azure 的内部功能后，接下来请了解[资源访问调控](governance-explainer.md)。 然后，转到采用 Azure 的第一个步骤，即[了解 Azure 中的数字标识](tenant-explainer.md)。 完成该步骤后，便可以[在 Azure AD 中创建第一个用户][docs-add-users-to-aad]。
+* 了解 Azure 的内部功能后，接下来请了解[资源访问调控](governance-explainer.md)。 
 
 <!-- Links -->
 
