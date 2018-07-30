@@ -4,12 +4,12 @@ description: Azure 资源的命名约定。 如何命名虚拟机、存储帐户
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 09bcfa3c0a0c46605f0025adad06f8049f109f1b
-ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
+ms.openlocfilehash: 6ad71a5ee39b8f1863c51dae0120dbdc7baf1f76
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38987727"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39229144"
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -119,6 +119,13 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 |负载均衡规则配置 |负载均衡器 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<descriptive context>` |`http` |
 |Azure 应用程序网关 |资源组 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<service or role>-agw` |`profx-agw` |
 |流量管理器配置文件 |资源组 |1-63 |不区分大小写 |字母数字、连字符和句点 |`<descriptive context>` |`app1` |
+
+### <a name="containers"></a>容器
+
+| 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|容器注册表 | 全局 |5-50 |不区分大小写 | 字母数字 |`<service short name>registry` |`app1registry` |
+
 
 ## <a name="organize-resources-with-tags"></a>使用标记组织资源
 

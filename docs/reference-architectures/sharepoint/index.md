@@ -3,12 +3,12 @@ title: 在 Azure 中运行高可用性 SharePoint Server 2016 场
 description: 有关在 Azure 中设置高可用性 SharePoint Server 2016 场的成熟做法。
 author: njray
 ms.date: 07/14/2018
-ms.openlocfilehash: ff690300cb5f4af301bcfac58ac10b9b3c47f96d
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 04c69309e9f96e3bf7cd7faabeedd9b6d9da1ebd
+ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060891"
+ms.lasthandoff: 07/29/2018
+ms.locfileid: "39334124"
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>在 Azure 中运行高可用性 SharePoint Server 2016 场
 
@@ -66,17 +66,19 @@ ms.locfileid: "39060891"
 
 ### <a name="vm-recommendations"></a>VM 建议
 
-根据标准 DSv2 虚拟机大小，此体系结构至少需要 38 个核心：
+此体系结构至少需要 44 个核心：
 
 - Standard_DS3_v2 虚拟机上有 8 个 SharePoint 服务器（每个服务器需要 4 个核心）= 32 个核心
 - Standard_DS1_v2 虚拟机上有 2 个 Active Directory 域控制器（每个域控制器需要 1 个核心）= 2 个核心
-- Standard_DS1_v2 虚拟机上有 2 个 SQL Server VM = 2 个核心
+- Standard_DS3_v2 上有 2 个 SQL Server VM = 8 个核心
 - Standard_DS1_v2 虚拟机上有 1 个多数节点 = 1 个核心
 - Standard_DS1_v2 虚拟机上有 1 个管理服务器 = 1 个核心
 
-核心总数取决于所选的 VM 大小。 有关详细信息，请参阅下面的[有关 SharePoint Server 的建议](#sharepoint-server-recommendations)。
-
 确保 Azure 订阅提供足够的 VM 核心配额用于部署，否则部署将会失败。 请参阅 [Azure 订阅和服务限制、配额与约束][quotas]。 
+
+对于除搜索索引器以外的所有 SharePoint 角色，我们建议使用 [Standard_DS3_v2][vm-sizes-general] VM 大小。 搜索索引器应至少使用 [Standard_DS13_v2][vm-sizes-memory] 大小。 对于测试，此参考体系结构的参数文件为搜索索引器角色指定了较小的 DS3_v2 大小。 对于生产部署，请更新参数文件以使用 DS13 大小或更大大小。 有关详细信息，请参阅 [SharePoint Server 2016 的硬件和软件要求][sharepoint-reqs]。 
+
+对于 SQL Server VM，建议至少配备 4 个核心和 8 GB RAM。 此参考体系结构的参数文件指定了 DS3_v2 大小。 对于生产部署，可能需要指定更大的 VM 大小。 有关详细信息，请参阅[存储和 SQL Server 容量规划与配置 (SharePoint Server)](/sharepoint/administration/storage-and-sql-server-capacity-planning-and-configuration#estimate-memory-requirements)。 
  
 ### <a name="nsg-recommendations"></a>有关 NSG 的建议
 
@@ -109,18 +111,12 @@ ms.locfileid: "39060891"
 - 缓存超级用户帐户
 - 缓存超级读取者帐户
 
-对于除搜索索引器以外的所有角色，我们建议使用 [Standard_DS3_v2][vm-sizes-general] VM 大小。 搜索索引器应至少使用 [Standard_DS13_v2][vm-sizes-memory] 大小。 
-
-> [!NOTE]
-> 此参考体系结构的资源管理器模板对搜索索引器使用较小的 DS3 大小来测试部署。 对于生产部署，请使用 DS13 或更大大小。 
-
-对于生产工作负荷，请参阅 [SharePoint Server 2016 的硬件和软件要求][sharepoint-reqs]。 
-
 为了满足每秒最低 200 MB 磁盘吞吐量的支持要求，请确保规划好搜索体系结构。 请参阅[在 SharePoint Server 2013 中规划企业搜索体系结构][sharepoint-search]。 另请遵照[有关在 SharePoint Server 2016 中爬网的最佳做法][sharepoint-crawling]中的准则。
 
 此外，请将搜索组件数据存储在高性能的独立存储卷或分区中。 为了减少负载并提高吞吐量，请配置此体系结构中所需的对象缓存用户帐户。 将 Windows Server 操作系统文件、SharePoint Server 2016 程序文件和诊断日志拆分到具有普通性能的三个独立存储卷或分区中。 
 
 有关这些建议的详细信息，请参阅 [SharePoint Server 2016 中的初始部署管理帐户和服务帐户][sharepoint-accounts]。
+
 
 ### <a name="hybrid-workloads"></a>混合工作负荷
 
