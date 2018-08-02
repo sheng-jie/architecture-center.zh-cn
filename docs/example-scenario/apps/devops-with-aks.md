@@ -3,12 +3,12 @@ title: 适用于基于容器的工作负荷的 CI/CD 管道
 description: 经验证的方案，所生成的 DevOps 管道适合使用 Jenkins、Azure 容器注册表、Azure Kubernetes 服务、Cosmos DB 和 Grafana 的 Node.js Web 应用。
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: d9f6571234a0c3e67a233cfda1a37f6fb32929a3
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: dceb4ad3c34ec43a54d802772f5817cacdd3929c
+ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060755"
+ms.lasthandoff: 07/29/2018
+ms.locfileid: "39334209"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>适用于基于容器的工作负荷的 CI/CD 管道
 
@@ -75,7 +75,7 @@ Azure Kubernetes 服务允许按照应用程序的需求调整群集节点的数
 
 若要了解其他可伸缩性主题，请参阅体系结构中心提供的[可伸缩性核对清单][scalability]。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
 为了尽量减少受攻击面，本方案不通过 HTTP 公开 Jenkins VM 实例。 若要执行需要与 Jenkins 交互的管理任务，请使用本地计算机的 SSH 隧道创建安全的远程连接。 Jenkins 和 Grafana VM 实例仅允许 SSH 公钥身份验证。 基于密码的登录已禁用。 有关详细信息，请参阅[在 Azure 上运行 Jenkins 服务器](../../reference-architectures/jenkins/index.md)。
 
@@ -119,7 +119,7 @@ Azure Kubernetes 服务允许按照应用程序的需求调整群集节点的数
 
 ## <a name="pricing"></a>定价
 
-为了方便用户了解运行本方案的成本，我们已在成本计算器中预配置了所有服务。 若要了解自己的特定用例的定价变化情况，请按预期的流量更改相应的变量。 更改相应的变量。
+为了方便用户了解运行本方案的成本，我们已在成本计算器中预配置了所有服务。 若要了解自己的特定用例的定价变化情况，请按预期的流量更改相应的变量。
 
 我们已根据要存储的容器映像数以及运行应用程序所需的 Kubernetes 节点数提供了三个示例性的成本配置文件。
 

@@ -4,12 +4,12 @@ description: 设置重试机制的服务指南。
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 39d342dc96e3d0d923ce159c392d9427359a4639
-ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
+ms.openlocfilehash: 72dfb59c3357c5f14806a33ef5f6cdd3e7937915
+ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37843620"
+ms.lasthandoff: 07/29/2018
+ms.locfileid: "39334158"
 ---
 # <a name="retry-guidance-for-specific-services"></a>特定服务的重试指南
 
@@ -23,7 +23,7 @@ ms.locfileid: "37843620"
 | --- | --- | --- | --- | --- |
 | **[Azure Active Directory](#azure-active-directory)** |ADAL 库原生 |嵌入到 ADAL 库 |内部 |无 |
 | **[Cosmos DB](#cosmos-db)** |服务原生 |不可配置 |全局 |TraceSource |
-| **[事件中心](#azure-event-hubs)** |客户端原生 |编程 |Client |无 |
+| **[事件中心](#event-hubs)** |客户端原生 |编程 |Client |无 |
 | **[Redis 缓存](#azure-redis-cache)** |客户端原生 |编程 |Client |TextWriter |
 | **[搜索](#azure-search)** |客户端原生 |编程 |Client |ETW 或自定义 |
 | **[服务总线](#service-bus)** |客户端原生 |编程 |命名空间管理器、消息工厂和客户端 |ETW |
@@ -74,7 +74,7 @@ Cosmos DB 是一种完全托管的多模型数据库，支持无架构 JSON 数�
 ### <a name="policy-configuration"></a>策略配置
 下表显示了 `RetryOptions` 类的默认设置。
 
-| 设置 | 默认值 | 说明 |
+| 设置 | 默认值 | Description |
 | --- | --- | --- |
 | MaxRetryAttemptsOnThrottledRequests |9 |因 Cosmos DB 对客户端应用速率限制而导致请求失败时的最大重试次数。 |
 | MaxRetryWaitTimeInSeconds |30 |最大重试时间（以秒为单位）。 |

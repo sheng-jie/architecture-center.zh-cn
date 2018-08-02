@@ -10,12 +10,12 @@ pnp.series.title: Identity management
 pnp.series.prev: adds-extend-domain
 pnp.series.next: adfs
 cardTitle: Create an AD DS forest in Azure
-ms.openlocfilehash: 105ffc4b329331522529161731b1947f99e02280
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: 64253d900dbce9966aa76d99d758bfb581b9df5f
+ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142193"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39352604"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>在 Azure 中创建 Active Directory 域服务 (AD DS) 资源林
 
@@ -171,7 +171,7 @@ Active Directory 能够针对属于同一域的域控制器自动进行缩放。
 [creating-forest-trusts]: https://technet.microsoft.com/library/cc816810(v=ws.10).aspx
 [github]: https://github.com/mspnp/reference-architectures/tree/master/identity/adds-forest
 [incoming-trust]: https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/adds-forest/extensions/incoming-trust.ps1
-[microsoft_systems_center]: https://www.microsoft.com/server-cloud/products/system-center-2016/
+[microsoft_systems_center]: https://microsoft.com/cloud-platform/system-center
 [monitoring_ad]: https://msdn.microsoft.com/library/bb727046.aspx
 [resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview
 [solution-script]: https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/adds-forest/Deploy-ReferenceArchitecture.ps1
