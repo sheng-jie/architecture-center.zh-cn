@@ -4,12 +4,12 @@ description: 为设计过程中的复原能力考虑因素提供指导的查检�
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: ca4bf77c9348f6c656348d9cd61d3a1241d69ba8
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: 883424d5d3535f822cdba61ecb9520ce05f75ec7
+ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29782608"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39352638"
 ---
 # <a name="resiliency-checklist"></a>复原能力查检表
 
@@ -17,7 +17,7 @@ ms.locfileid: "29782608"
 
 ## <a name="requirements"></a>要求
 
-**定义客户的可用性要求。** 客户对应用程序的组件有可用性要求，这会影响应用程序设计。 让客户认可应用程序每个组成部分的可用性目标，否则设计可能不符合客户期望。 有关详细信息，请参阅[定义复原要求](../resiliency/index.md#defining-your-resiliency-requirements)。
+**定义客户的可用性要求。** 客户对应用程序的组件有可用性要求，这会影响应用程序设计。 让客户认可应用程序每个组成部分的可用性目标，否则设计可能不符合客户期望。 有关详细信息，请参阅[设计适用于 Azure 的可复原应用程序](../resiliency/index.md)。
 
 ## <a name="application-design"></a>应用程序设计
 
@@ -58,7 +58,7 @@ ms.locfileid: "29782608"
 
 **确保使用的任何第三方服务提供 SLA。** 如果应用程序依赖于某个第三方服务，但该服务不以 SLA 的形式保证可用性，则也无法保证应用程序的可用性。 SLA 只与应用程序的最低可用性组件一样高。
 
-**在适用的情况下，请实施复原模式以进行远程操作。** 如果应用程序依赖于远程服务之间的通信，请遵循处理暂时性故障的设计模式，例如[重试模式][retry-pattern]和[断路器模式][circuit-breaker]。 有关详细信息，请参阅[复原策略](../resiliency/index.md#resiliency-strategies)。
+**在适用的情况下，请实施复原模式以进行远程操作。** 如果应用程序依赖于远程服务之间的通信，请遵循处理暂时性故障的[设计模式](../patterns/category/resiliency.md)，例如[重试模式][retry-pattern]和[断路器模式][circuit-breaker]。 
 
 **尽量执行异步操作。** 同步操作可能会独占资源，并在调用方等待进程完成时阻塞其他操作。 设计应用程序的每个组成部分，以尽量执行异步操作。 有关如何在 C# 中实现异步编程的详细信息，请参阅[使用 async 和 await 进行异步编程][asynchronous-c-sharp]。
 
