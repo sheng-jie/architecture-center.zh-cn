@@ -3,11 +3,12 @@ title: Azure 虚拟数据中心
 description: Microsoft Azure 虚拟数据中心的资源
 keywords: Azure
 layout: LandingPage
-ms.openlocfilehash: 4aa858a78dab44f34d7155a40554cf0a136aa360
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.openlocfilehash: e37ac347247b2960b85832a20a2b57eec18f65a7
+ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38987506"
 ---
 # <a name="azure-virtual-datacenter-and-the-enterprise-control-plane"></a>Azure 虚拟数据中心和企业控制平面
 
@@ -25,7 +26,7 @@ Azure 虚拟数据中心是充分利用 Azure 云平台的功能，同时遵循�
 <tr>
     <td style="width: 64px; vertical-align: middle;"><a href="/azure/networking/networking-virtual-datacenter"><img src="./images/vdc-network.png" alt="Network Perspective" /></a></td>
     <td>
-        <h3><a href="https://docs.microsoft.com/en-us/azure/networking/networking-virtual-datacenter">Azure 虚拟数据中心：网络透视图</a></h3>
+        <h3><a href="/azure/networking/networking-virtual-datacenter">Azure 虚拟数据中心：网络透视图</a></h3>
         <p>许多客户在考虑将全部内容迁移到云时都会担心结构规模、性能和安全问题，此在线文章概述了可用于解决这些问题的网络模式和设计。</p>
     </td>
 </tr>

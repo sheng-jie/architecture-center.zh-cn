@@ -2,12 +2,12 @@
 title: 自我修复型设计
 description: 可复原应用程序可从故障中恢复，而无需人工干预。
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 0782b65b77615f7c006724264ab0ca2d2c7c04e2
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 508341ba428b294cf268e34e922aced9d2d67579
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206530"
 ---
 # <a name="design-for-self-healing"></a>自我修复型设计
 

@@ -2,14 +2,15 @@
 title: 在 Azure 中使用共享服务实现中心辐射型网络拓扑
 description: 如何在 Azure 中使用共享服务实现中心辐射型网络拓扑。
 author: telmosampaio
-ms.date: 02/25/2018
+ms.date: 06/19/2018
 pnp.series.title: Implement a hub-spoke network topology with shared services in Azure
 pnp.series.prev: hub-spoke
-ms.openlocfilehash: 83367a3be2f7a1e33c2ef7018d42f70aae99104d
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: 283251d5b11f76985405410c5c237e5a64ee98fe
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060789"
 ---
 # <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a>在 Azure 中使用共享服务实现中心辐射型网络拓扑
 
@@ -71,7 +72,7 @@ ms.lasthandoff: 04/16/2018
 
 如果使用需要针对 Azure 和本地环境分开进行控制的组策略对象，请针对每个 Azure 区域使用不同的 AD 站点。 将域控制器置于可供依赖性工作负荷访问的中心 VNet（简称“中心”）。
 
-### <a name="security"></a>安全
+### <a name="security"></a>“安全”
 
 将工作负荷从本地环境移到 Azure 时，其中的某些工作负荷将需要托管在 VM 中。 出于符合性考虑，可能需要对流经这些工作负荷的流量强制实施限制。 
 
@@ -92,163 +93,154 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[GitHub][ref-arch-repo] 上提供了此体系结构的部署。 它使用每个 VNet 中的 Ubuntu VM 来测试连接。 没有实际服务托管在 **中心 VNet** 内的**共享服务**中。
+[GitHub][ref-arch-repo] 上提供了此体系结构的部署。 该部署在订阅中创建以下资源组：
+
+- hub-adds-rg
+- hub-nva-rg
+- hub-vnet-rg
+- onprem-vnet-rg
+- spoke1-vnet-rg
+- spoke2-vent-rg
+
+模板参数文件将引用这些名称，因此，如果更改了这些名称，请相应地更新参数文件。
 
 ### <a name="prerequisites"></a>先决条件
 
-在将参考体系结构部署到自己的订阅之前，必须执行以下步骤。
-
-1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
-
-2. 确保在计算机上安装了 Azure CLI 2.0。 有关 CLI 安装说明，请参阅[安装 Azure CLI 2.0][azure-cli-2]。
-
-3. 安装 [Azure 构建基块][azbb] npm 包。
-
-4. 在命令提示符、bash 提示符或 PowerShell 提示符处使用以下命令登录到 Azure 帐户，然后按提示操作。
-
-   ```bash
-   az login
-   ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 ### <a name="deploy-the-simulated-on-premises-datacenter-using-azbb"></a>使用 azbb 部署模拟的本地数据中心
 
-若要将模拟的本地数据中心部署为 Azure VNet，请执行以下步骤：
+此步骤将模拟的本地数据中心部署为 Azure VNet。
 
-1. 导航到已在前面的先决条件步骤中下载的存储库的 `hybrid-networking\shared-services-stack\` 文件夹。
+1. 导航到 GitHub 存储库的 `hybrid-networking\shared-services-stack\` 文件夹。
 
-2. 打开 `onprem.json` 文件，在第 45 行和第 46 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
+2. 打开 `onprem.json` 文件。 
+
+3. 搜索 `Password` 和 `adminPassword` 的所有实例。 在参数中输入用户名和密码的值，然后保存文件。 
+
+4. 运行以下命令：
 
    ```bash
-   "adminUsername": "XXX",
-   "adminPassword": "YYY",
+   azbb -s <subscription_id> -g onprem-vnet-rg -l <location> -p onprem.json --deploy
+   ```
+5. 等待部署完成。 此部署创建虚拟网络、运行 Windows 的虚拟机和 VPN 网关。 VPN 网关创建可能需要 40 多分钟才能完成。
+
+### <a name="deploy-the-hub-vnet"></a>部署中心 VNet
+
+此步骤部署中心 VNet 并将其连接到模拟的本地 VNet。
+
+1. 打开 `hub-vnet.json` 文件。 
+
+2. 搜索 `adminPassword`，然后在参数中输入用户名和密码。 
+
+3. 搜索 `sharedKey` 的所有实例，然后输入某个共享密钥的值。 保存文件。
+
+   ```bash
+   "sharedKey": "abc123",
    ```
 
-3. 运行 `azbb` 以部署模拟的本地环境，如下所示。
+4. 运行以下命令：
 
    ```bash
-   azbb -s <subscription_id> -g onprem-vnet-rg - l <location> -p onoprem.json --deploy
-   ```
-   > [!NOTE]
-   > 如果决定使用其他资源组名称（而非 `onprem-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
-
-4. 等待部署完成。 此部署创建虚拟网络、运行 Windows 的虚拟机和 VPN 网关。 VPN 网关创建可能需要 40 多分钟才能完成。
-
-### <a name="azure-hub-vnet"></a>Azure 中心 VNet
-
-若要部署中心 VNet 并连接到前面创建的模拟的本地 VNet，请执行以下步骤。
-
-1. 打开 `hub-vnet.json` 文件，在第 50 行和第 51 行中输入括在引号中的用户名和密码，如下所示。
-
-   ```bash
-   "adminUsername": "XXX",
-   "adminPassword": "YYY",
+   azbb -s <subscription_id> -g hub-vnet-rg -l <location> -p hub-vnet.json --deploy
    ```
 
-2. 在第 52 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
+5. 等待部署完成。 此部署创建虚拟网络、虚拟机、VPN 网关和到上一部分创建的网关的连接。 VPN 网关可能需要 40 多分钟才能完成。
 
-3. 在第 83 行中输入括在引号中的共享密钥，如下所示，然后保存文件。
+### <a name="deploy-ad-ds-in-azure"></a>在 Azure 中部署 AD DS
 
-   ```bash
-   "sharedKey": "",
-   ```
+此步骤在 Azure 中部署 AD DS 域控制器。
 
-4. 运行 `azbb` 以部署模拟的本地环境，如下所示。
+1. 打开 `hub-adds.json` 文件。
 
-   ```bash
-   azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet.json --deploy
-   ```
-   > [!NOTE]
-   > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+2. 搜索 `Password` 和 `adminPassword` 的所有实例。 在参数中输入用户名和密码的值，然后保存文件。 
 
-5. 等待部署完成。 此部署创建虚拟网络、虚拟机、VPN 网关和到上一部分创建的网关的连接。 VPN 网关创建可能需要 40 多分钟才能完成。
-
-### <a name="adds-in-azure"></a>Azure 中的 ADDS
-
-若要在 Azure 中部署 ADDS 域控制器，请执行以下步骤。
-
-1. 打开 `hub-adds.json` 文件，在第 14 行和第 15 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
+3. 运行以下命令：
 
    ```bash
-   "adminUsername": "XXX",
-   "adminPassword": "YYY",
-   ```
-
-2. 运行 `azbb`，以便部署 ADDS 域控制器，如下所示。
-
-   ```bash
-   azbb -s <subscription_id> -g hub-adds-rg - l <location> -p hub-adds.json --deploy
+   azbb -s <subscription_id> -g hub-adds-rg -l <location> -p hub-adds.json --deploy
    ```
   
-   > [!NOTE]
-   > 如果决定使用其他资源组名称（而非 `hub-adds-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+此部署步骤可能需要数分钟的时间，因为需要将两个 VM 加入到域中，而该域托管在模拟的本地数据中心，然后需要在其上安装 AD DS。
 
-   > [!NOTE]
-   > 这部分的部署可能需要数分钟的时间，因为需要将两个 VM 加入到域中，而该域托管在模拟的本地数据中心，然后需要在其上安装 AD DS。
+### <a name="deploy-the-spoke-vnets"></a>部署辐射 VNet
 
-### <a name="nva"></a>NVA
+此步骤部署辐射 VNet。
 
-若要在 `dmz` 子网中部署 NVA，请执行以下步骤：
+1. 打开 `spoke1.json` 文件。
 
-1. 打开 `hub-nva.json` 文件，在第 13 行和第 14 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
+2. 搜索 `adminPassword`，然后在参数中输入用户名和密码。 
 
-   ```bash
-   "adminUsername": "XXX",
-   "adminPassword": "YYY",
-   ```
-2. 运行 `azbb`，以便部署 NVA VM 和用户定义的路由。
+3. 运行以下命令：
 
    ```bash
-   azbb -s <subscription_id> -g hub-nva-rg - l <location> -p hub-nva.json --deploy
-   ```
-   > [!NOTE]
-   > 如果决定使用其他资源组名称（而非 `hub-nva-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
-
-### <a name="azure-spoke-vnets"></a>Azure 辐射 VNet
-
-若要部署辐射 VNet，请执行以下步骤。
-
-1. 打开 `spoke1.json` 文件，在第 52 行和第 53 行中输入括在引号中的用户名和密码，如下所示，然后保存文件。
-
-   ```bash
-   "adminUsername": "XXX",
-   "adminPassword": "YYY",
-   ```
-
-2. 在第 54 行中键入 `Windows` 或 `Linux` 作为 `osType`，以便安装 Windows Server 2016 Datacenter 或 Ubuntu 16.04 作为 Jumpbox 的操作系统。
-
-3. 运行 `azbb` 以部署第一个辐射 VNet 环境，如下所示。
-
-   ```bash
-   azbb -s <subscription_id> -g spoke1-vnet-rg - l <location> -p spoke1.json --deploy
+   azbb -s <subscription_id> -g spoke1-vnet-rg -l <location> -p spoke1.json --deploy
    ```
   
-   > [!NOTE]
-   > 如果决定使用其他资源组名称（而非 `spoke1-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+4. 针对 `spoke2.json` 文件重复步骤 1 和 2。
 
-4. 对文件 `spoke2.json` 重复上面的步骤 1。
-
-5. 运行 `azbb` 以部署第二个辐射 VNet 环境，如下所示。
+5. 运行以下命令：
 
    ```bash
-   azbb -s <subscription_id> -g spoke2-vnet-rg - l <location> -p spoke2.json --deploy
+   azbb -s <subscription_id> -g spoke2-vnet-rg -l <location> -p spoke2.json --deploy
    ```
-   > [!NOTE]
-   > 如果决定使用其他资源组名称（而非 `spoke2-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
 
-### <a name="azure-hub-vnet-peering-to-spoke-vnets"></a>Azure 中心 VNet 到辐射 VNet 的对等互连
+### <a name="peer-the-hub-vnet-to-the-spoke-vnets"></a>将中心 VNet 与辐射 VNet 对等互连
 
-若要创建从中心 VNet 到辐射 VNet 的对等互连连接，请执行以下步骤。
+若要创建从中心 VNet 到辐射 VNet 的对等互连连接，请运行以下命令：
 
-1. 打开 `hub-vnet-peering.json` 文件，验证资源组名称以及在第 29 行中开始的每个虚拟网络对等互连的虚拟网络名称是否正确。
+```bash
+azbb -s <subscription_id> -g hub-vnet-rg -l <location> -p hub-vnet-peering.json --deploy
+```
 
-2. 运行 `azbb` 以部署第一个辐射 VNet 环境，如下所示。
+### <a name="deploy-the-nva"></a>部署 NVA
+
+此步骤在 `dmz` 子网中部署 NVA。
+
+1. 打开 `hub-nva.json` 文件。
+
+2. 搜索 `adminPassword`，然后在参数中输入用户名和密码。 
+
+3. 运行以下命令：
 
    ```bash
-   azbb -s <subscription_id> -g hub-vnet-rg - l <location> -p hub-vnet-peering.json --deploy
+   azbb -s <subscription_id> -g hub-nva-rg -l <location> -p hub-nva.json --deploy
    ```
 
-   > [!NOTE]
-   > 如果决定使用其他资源组名称（而非 `hub-vnet-rg`），请确保搜索使用了该名称的所有参数文件并对其进行编辑以使用你自己的资源组名称。
+### <a name="test-connectivity"></a>测试连接 
+
+测试从模拟本地环境到中心 VNet 的连接。
+
+1. 使用 Azure 门户在 `onprem-jb-rg` 资源组中找到名为 `jb-vm1` 的 VM。
+
+2. 单击 `Connect` 来与 VM 建立远程桌面会话。 使用 `onprem.json` 参数文件中指定的密码。
+
+3. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到中心 VNet 中的 Jumpbox VM。
+
+   ```powershell
+   Test-NetConnection 10.0.0.68 -CommonTCPPort RDP
+   ```
+输出应如下所示：
+
+```powershell
+ComputerName     : 10.0.0.68
+RemoteAddress    : 10.0.0.68
+RemotePort       : 3389
+InterfaceAlias   : Ethernet 2
+SourceAddress    : 192.168.1.000
+TcpTestSucceeded : True
+```
+
+> [!NOTE]
+> 默认情况下，Windows Server VM 不允许 Azure 中的 ICMP 响应。 若要使用 `ping` 来测试连接，需在“Windows 高级防火墙”中为每个 VM 启用 ICMP 流量。
+
+重复相同的步骤，测试到辐射 VNet 的连接：
+
+```powershell
+Test-NetConnection 10.1.0.68 -CommonTCPPort RDP
+Test-NetConnection 10.2.0.68 -CommonTCPPort RDP
+```
+
 
 <!-- links -->
 

@@ -2,20 +2,21 @@
 title: 在 Azure 中实现安全的混合网络体系结构
 description: 如何在 Azure 中实现安全的混合网络体系结构。
 author: telmosampaio
-ms.date: 11/23/2016
+ms.date: 07/01/2018
 pnp.series.title: Network DMZ
 pnp.series.prev: ./index
 pnp.series.next: secure-vnet-dmz
 cardTitle: DMZ between Azure and on-premises
-ms.openlocfilehash: 81dea2e4439d5a01ebb88ab86dc0a59609bb7bc3
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 45583473ef297b2c7a5b0c4baff52485286dd051
+ms.sourcegitcommit: 9b459f75254d97617e16eddd0d411d1f80b7fe90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37403158"
 ---
 # <a name="dmz-between-azure-and-your-on-premises-datacenter"></a>Azure 与本地数据中心之间的 DMZ
 
-此参考体系结构显示了一个可将本地网络扩展到 Azure 的安全混合网络。 此体系结构在本地网络与 Azure 虚拟网络 (VNet) 之间实现一个 DMZ（也称为外围网络）。 DMZ 包括防火墙和数据包检查等实现安全功能的网络虚拟设备 (NVA)。 来自 VNet 的所有传出流量都通过本地网络强制隧道传输到 Internet，以便可以进行审核。
+此参考体系结构显示了一个可将本地网络扩展到 Azure 的安全混合网络。 此体系结构在本地网络与 Azure 虚拟网络 (VNet) 之间实现一个 DMZ（也称为外围网络）。 DMZ 包括防火墙和数据包检查等实现安全功能的网络虚拟设备 (NVA)。 来自 VNet 的所有传出流量都通过本地网络强制隧道传输到 Internet，以便可以进行审核。 [**部署此解决方案**。](#deploy-the-solution)
 
 [![0]][0] 
 
@@ -77,7 +78,8 @@ DevOps 和 IT 管理员角色不应具有 NVA 资源的访问权限。 这应限
 
 ### <a name="nva-recommendations"></a>有关 NVA 的建议
 
-NVA 可提供不同服务来管理和监视网络流量。 [Azure Marketplace][azure-marketplace-nva] 提供多个可以使用的第三方供应商 NVA。 如果这些第三方 NVA 都不满足你的要求，则可以使用 VM 创建自定义 NVA。 
+NVA 可提供不同服务来管理和监视网络流量。 
+  [Azure 市场][azure-marketplace-nva]提供多个可以使用的第三方供应商 NVA。 如果这些第三方 NVA 都不满足你的要求，则可以使用 VM 创建自定义 NVA。 
 
 例如，此参考体系结构的解决方案部署在 VM 上实现具有以下功能的 NVA：
 
@@ -158,19 +160,65 @@ NVA 前面的负载均衡器还通过忽略在负载均衡规则中未打开的�
 ### <a name="devops-access"></a>DevOps 访问权限
 使用 [RBAC][rbac] 可限制 DevOps 可以在每个层执行的操作。 授予权限时，请使用[最低特权原则][security-principle-of-least-privilege]。 记录所有管理操作并执行定期审核，确保所有配置更改按计划进行。
 
-## <a name="solution-deployment"></a>解决方案部署
+## <a name="deploy-the-solution"></a>部署解决方案
 
-[GitHub][github-folder] 上提供了可实施这些建议的参考体系结构部署。 可以遵照以下指导，部署该参考体系结构：
+[GitHub][github-folder] 上提供了可实施这些建议的参考体系结构部署。 
 
-1. 单击下面的按钮：<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-hybrid%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-2. 在 Azure 门户中打开该链接后，必须输入某些设置的值：   
-   * 参数文件中已定义**资源组**名称，因此请选择“新建”，并在文本框中输入 `ra-private-dmz-rg`。
-   * 从“位置”下拉框中选择区域。
-   * 不要编辑“模板根 URI”或“参数根 URI”文本框。
-   * 查看条款和条件，并单击“我同意上述条款和条件”复选框。
-   * 单击“购买”按钮。
-3. 等待部署完成。
-4. 参数文件包括所有 VM 的硬编码管理员用户名和密码，我们强烈建议立即更改。 针对部署中的每个 VM，请在 Azure 门户选择该 VM，并在“支持 + 故障排除”边栏选项卡中单击“重置密码”。 在“模式”下拉框中选择“重置密码”，并选择新**用户名**和**密码**。 单击“更新”按钮保存设置。
+### <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
+
+### <a name="deploy-resources"></a>部署资源
+
+1. 导航到参考体系结构 GitHub 存储库的 `/dmz/secure-vnet-hybrid` 文件夹。
+
+2. 运行以下命令：
+
+    ```bash
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p onprem.json --deploy
+    ```
+
+3. 运行以下命令：
+
+    ```bash
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p secure-vnet-hybrid.json --deploy
+    ```
+
+### <a name="connect-the-on-premises-and-azure-gateways"></a>连接本地网关和 Azure 网关
+
+此步骤连接两个本地网络网关。
+
+1. 在 Azure 门户中，导航到已创建的资源组。 
+
+2. 找到名为 `ra-vpn-vgw-pip` 的资源，并复制“概述”边栏选项卡中显示的 IP 地址。
+
+3. 找到名为 `onprem-vpn-lgw` 的资源。
+
+4. 单击“配置”边栏选项卡。 在“IP 地址”下，粘贴步骤 2 中获取的 IP 地址。
+
+    ![](./images/local-net-gw.png)
+
+5. 单击“保存”并等待操作完成。 可能需要大约 5 分钟。
+
+6. 找到名为 `onprem-vpn-gateway1-pip` 的资源。 复制“概述”边栏选项卡中显示的 IP 地址。
+
+7. 找到名为 `ra-vpn-lgw` 的资源。 
+
+8. 单击“配置”边栏选项卡。 在“IP 地址”下，粘贴步骤 6 中获取的 IP 地址。
+
+9. 单击“保存”并等待操作完成。
+
+10. 若要验证连接，请转到每个网关的“连接”边栏选项卡。 状态应为“已连接”。
+
+### <a name="verify-that-network-traffic-reaches-the-web-tier"></a>验证网络流量是否抵达 Web 层
+
+1. 在 Azure 门户中，导航到已创建的资源组。 
+
+2. 找到名为 `int-dmz-lb` 的资源，即专用外围网络前面的负载均衡器。 复制“概述”边栏选项卡中的专用 IP 地址。
+
+3. 找到名为 `jb-vm1` 的 VM。 单击“连接”，使用远程桌面连接到 VM。 用户名和密码已在 onprem.json 文件中指定。
+
+4. 在远程桌面会话中打开 Web 浏览器，并导航到步骤 2 中获取的 IP 地址。 应会看到默认的 Apache2 服务器主页。
 
 ## <a name="next-steps"></a>后续步骤
 

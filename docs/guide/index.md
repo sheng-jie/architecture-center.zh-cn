@@ -1,19 +1,16 @@
 ---
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 80cb7fde0694257a5c413b702505e27f18aed8d3
-ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
+ms.openlocfilehash: 3a667334be682e7e96c6dd30bd401a7e4c608108
+ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/29/2018
+ms.locfileid: "39334260"
 ---
 # <a name="azure-application-architecture-guide"></a>Azure 应用程序体系结构指南
 
 本指南演示用于在 Azure 上设计可缩放、可复原且高度可用的应用程序的结构化方法。 该方法基于我们从客户互动中掌握的成熟做法。
-
-<br/>
-
-<img src="./images/guide-steps.svg" style="max-width:800px;"/>
 
 ## <a name="introduction"></a>介绍
 
@@ -55,14 +52,13 @@ Polyglot 持久性（存储技术的混合）<br/>
 
 《Azure 应用程序体系结构指南》组织成一系列步骤：从体系结构和设计到实施。 每个步骤都有支持性的指导，可帮助设计应用程序体系结构。
 
-### <a name="architecture-styles"></a>体系结构样式
+### <a name="architecture-styles"></a>架构样式
 
 第一个决策点至关重要。 要生成哪种类型的体系结构？ 它可能是微服务体系结构、更传统的 N 层应用程序，或大数据解决方案。 我们已确定了多种不同的体系结构样式。 这些样式各有利弊。
 
 了解更多：
 
-- [体系结构样式][arch-styles]
-- [Azure 参考体系结构][ref-archs]
+- [体系结构样式](./architecture-styles/index.md)
 
 ### <a name="technology-choices"></a>技术选择
 
@@ -79,36 +75,14 @@ Polyglot 持久性（存储技术的混合）<br/>
 
 了解更多：
 
-- [Azure 应用程序的设计原则][design-principles]
-- [针对云进行构建时的最佳做法][best-practices]
+- [设计原则](./design-principles/index.md)
+
 
 ### <a name="quality-pillars"></a>质量要点
 
 一个成功的云应用程序应注重软件质量的五大构成要点：可伸缩性、可用性、复原能力、管理和安全性。 使用我们的设计评审查检表可根据这些质量要点评审体系结构。
 
-了解更多：
-
-- [软件质量的要点][pillars]
-- [设计评审查检表][checklists] 
-
-### <a name="cloud-design-patterns"></a>云设计模式
-
-设计模式是常见软件设计问题的常规解决方案。 我们已确定了一组在设计云的分布式应用程序时特别有用的设计模式。
-
-了解更多：
-
-- [云设计模式类别](../patterns/index.md)
+- [质量要点](./pillars.md)
 
 
-[arch-styles]: ./architecture-styles/index.md
-[best-practices]: ../best-practices/index.md
-[checklists]: ../checklist/index.md
-[compute-options]: ./technology-choices/compute-comparison.md
-[design-principles]: ./design-principles/index.md
 [ebook]: https://azure.microsoft.com/campaigns/cloud-application-architecture-guide/
-[patterns]: ../patterns/index.md?toc=/azure/architecture/guide/toc.json
-[pillars]: ./pillars.md
-[ref-archs]: ../reference-architectures/index.md
-[storage-options]: ./technology-choices/data-store-comparison.md
-[technology-choices]: ./technology-choices/index.md
-

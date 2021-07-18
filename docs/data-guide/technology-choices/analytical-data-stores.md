@@ -1,5 +1,5 @@
 ---
-title: 选择分析数据存储
+title: 选择分析型数据存储
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
@@ -8,16 +8,17 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30846876"
 ---
-# <a name="choosing-an-analytical-data-store-in-azure"></a>在 Azure 中选择分析数据存储
+# <a name="choosing-an-analytical-data-store-in-azure"></a>在 Azure 中选择分析型数据存储
 
-在[大数据](../big-data/index.md)体系结构中，通常需要使用分析数据存储以可供使用分析工具进行查询的结构化格式提供处理的数据。 同时支持对热路径和冷路径进行查询的分析数据存储统称为服务层或数据服务存储。
+在[大数据](../big-data/index.md)架构中，通常需要使用分析型数据存储以可供使用分析型工具进行查询的结构化格式提供处理的数据。 同时支持对热路径和冷路径进行查询的分析型数据存储统称为服务层或数据服务存储。
 
-服务层对来自热路径和冷路径的已处理数据进行处理。 在 [lambda 体系结构](../big-data/index.md#lambda-architecture)中，服务层又细分为一个_速度服务_层（该层存储着以增量方式处理的数据）和一个_批处理服务_层（该层包含已进行批处理的输出）。 服务层要求强力支持低延迟的随机读取。 速度层的数据存储还应当支持随机写入，因为将数据批量加载到此存储中会引起非期望的延迟。 另一方面，批处理层的数据存储不需要支持随机写入，但需要支持批量写入。
+服务层对来自热路径和冷路径的已处理数据进行处理。 在 [lambda 体系结构](../big-data/index.md#lambda-architecture)中，服务层又细分为一个_速度服务_层（该层存储着以增量方式处理的数据）和一个_批处理服务_层（该层包含已进行批处理的输出）。 服务层要求强力支持低延迟的随机读取。  速度层的数据存储还应当支持随机写入，因为将数据批量加载到此存储中会引起非期望的延迟。 另一方面，批处理层的数据存储不需要支持随机写入，但需要支持批量写入。
 
 没有通用于所有数据存储任务的单一最佳数据管理选项。 不同的数据管理解决方案针对不同的任务进行了优化。 大多数实际云应用和大数据流程都具有各种数据存储要求，并且通常使用各种数据存储解决方案的组合。
 
-## <a name="what-are-your-options-when-choosing-an-analytical-data-store"></a>在选择分析数据存储时有哪些选项？
+## <a name="what-are-your-options-when-choosing-an-analytical-data-store"></a>在选择分析型数据存储时有哪些选项？
 
 对于 Azure 中的数据服务存储，有多个选项可用，具体取决于你的需求：
 

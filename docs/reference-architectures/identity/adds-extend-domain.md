@@ -2,15 +2,16 @@
 title: 将 Active Directory 域服务 (AD DS) 扩展到 Azure
 description: 将本地 Active Directory 域扩展到 Azure
 author: telmosampaio
-ms.date: 04/13/2018
+ms.date: 05/02/2018
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: bcd1e2b1b925a5d64665c5651c24589a77e39ec9
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: ecf24a05d071c0d0283fc962b13285108b5ac4bd
+ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37142262"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>将 Active Directory 域服务 (AD DS) 扩展到 Azure
 
@@ -104,48 +105,15 @@ AD DS 服务器提供身份验证服务并且是引入注目的攻击目标。 �
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 克隆、下载 [参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
-
-2. 安装 [Azure CLI 2.0][azure-cli-2]。
-
-3. 安装 [Azure 构建基块][azbb] npm 包。
-
-4. 在命令提示符、bash 提示符或 PowerShell 提示符下使用以下命令登录到 Azure 帐户。
-
-   ```bash
-   az login
-   ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 ### <a name="deploy-the-simulated-on-premises-datacenter"></a>部署模拟的本地数据中心
 
-1. 导航到参考体系结构存储库的 `identity/adds-extend-domain` 文件夹。
+1. 导航到 GitHub 存储库的 `identity/adds-extend-domain` 文件夹。
 
-2. 打开 `onprem.json` 文件。 搜索 `adminPassword` 并添加密码值。 该文件中有三个实例。
+2. 打开 `onprem.json` 文件。 搜索 `adminPassword` 和 `Password` 的实例并添加密码值。
 
-    ```bash
-    "adminUsername": "testuser",
-    "adminPassword": "<password>",
-    ```
-
-3. 在同一文件中，搜索 `protectedSettings` 并添加密码值。 有两个 `protectedSettings` 实例，每个 AD 服务器各有一个实例。
-
-    ```bash
-    "protectedSettings": {
-      "configurationArguments": {
-        ...
-        "AdminCreds": {
-          "UserName": "testadminuser",
-          "Password": "<password>"
-        },
-        "SafeModeAdminCreds": {
-          "UserName": "testsafeadminuser",
-          "Password": "<password>"
-        }
-      }
-    }
-    ```
-
-4. 运行以下命令，并等待部署完成：
+3. 运行以下命令，并等待部署完成：
 
     ```bash
     azbb -s <subscription_id> -g <resource group> -l <location> -p onprem.json --deploy
@@ -153,38 +121,15 @@ AD DS 服务器提供身份验证服务并且是引入注目的攻击目标。 �
 
 ### <a name="deploy-the-azure-vnet"></a>部署 Azure VNet
 
-1. 打开 `azure.json` 文件。  搜索 `adminPassword` 并添加密码值。 该文件中有三个实例。
+1. 打开 `azure.json` 文件。  搜索 `adminPassword` 和 `Password` 的实例并添加密码值。 
 
-    ```bash
-    "adminUsername": "testuser",
-    "adminPassword": "<password>",
-    ```
-
-2. 在同一文件中，搜索 `protectedSettings` 并添加密码值。 有两个 `protectedSettings` 实例，每个 AD 服务器各有一个实例。
-
-    ```bash
-    "protectedSettings": {
-      "configurationArguments": {
-        ...
-        "AdminCreds": {
-          "UserName": "testadminuser",
-          "Password": "<password>"
-        },
-        "SafeModeAdminCreds": {
-          "UserName": "testsafeadminuser",
-          "Password": "<password>"
-        }
-      }
-    }
-    ```
-
-3. 对于 `sharedKey`，请输入 VPN 连接的共享密钥。 参数文件中有两个 `sharedKey` 实例。
+2. 在同一文件中，搜索 `sharedKey` 的实例并输入 VPN 连接的共享密钥。 
 
     ```bash
     "sharedKey": "",
     ```
 
-4. 运行以下命令并等待部署完成。
+3. 运行以下命令并等待部署完成。
 
     ```bash
     azbb -s <subscription_id> -g <resource group> -l <location> -p onoprem.json --deploy
@@ -196,15 +141,17 @@ AD DS 服务器提供身份验证服务并且是引入注目的攻击目标。 �
 
 部署完成后，可以测试从模拟本地环境到 Azure VNet 的连接。
 
-1. 使用 Azure 门户找到名为 `ra-onpremise-mgmt-vm1` 的 VM。
+1. 使用 Azure 门户导航到已创建的资源组。
 
-2. 单击 `Connect` 来与 VM 建立远程桌面会话。 用户名为 `contoso\testuser`，密码为 `onprem.json` 参数文件中指定的密码。
+2. 找到名为 `ra-onpremise-mgmt-vm1` 的 VM。
 
-3. 在远程桌面会话中，与 10.0.4.4（名为 `adds-vm1` 的 VM 的 IP 地址）建立另一个远程桌面会话。 用户名为 `contoso\testuser`，密码为 `azure.json` 参数文件中指定的密码。
+3. 单击 `Connect` 来与 VM 建立远程桌面会话。 用户名为 `contoso\testuser`，密码为 `onprem.json` 参数文件中指定的密码。
 
-4. 在 `adds-vm1` 的远程桌面会话中，转到“服务器管理器”并单击“添加要管理的其他服务器”。 
+4. 在远程桌面会话中，与 10.0.4.4（名为 `adds-vm1` 的 VM 的 IP 地址）建立另一个远程桌面会话。 用户名为 `contoso\testuser`，密码为 `azure.json` 参数文件中指定的密码。
 
-5. 在“Active Directory”选项卡中，单击“立即查找”。 应会看到 AD、AD DS 和 Web VM 的列表。
+5. 在 `adds-vm1` 的远程桌面会话中，转到“服务器管理器”并单击“添加要管理的其他服务器”。 
+
+6. 在“Active Directory”选项卡中，单击“立即查找”。 应会看到 AD、AD DS 和 Web VM 的列表。
 
    ![](./images/add-servers-dialog.png)
 

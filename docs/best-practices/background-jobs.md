@@ -4,11 +4,12 @@ description: 有关独立于用户界面运行的后台任务的指南。
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 10c24afee4b880cfbf8ee534f4d7f945d2b046a9
-ms.sourcegitcommit: 3426a9c5ed937f097725c487cf3d073ae5e2a347
+ms.openlocfilehash: 781d616dfcf24775525e2489e7e463174ec9bfa3
+ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37091081"
 ---
 # <a name="background-jobs"></a>后台作业
 [!INCLUDE [header](../_includes/header.md)]
@@ -106,7 +107,7 @@ Azure Web 作业具有以下特征：
 
 #### <a name="considerations"></a>注意事项
 
-* 默认情况下，Web 作业会随 Web 应用缩放。 但是，可以通过将 **is_singleton** 配置属性设置为 **true**，将作业配置为在单个实例上运行。 单个实例 Web 作业适用于不希望以同时进行的多个实例方式缩放或运行的任务（如重建索引、数据分析和类似任务）。
+* 默认情况下，Web 作业会随 Web 应用缩放。 但是，可以通过将 **is_singleton** 配置属性设置为 **true**，将作业配置为在单个实例上运行。 单个实例 Web 作业适用于不希望以同时进行多个实例的方式进行缩放或运行的任务（如重建索引、数据分析和类似任务）。
 * 要将 Web 应用性能对任务的影响降到最低，请考虑在新的应用服务计划中创建空的 Azure Web 应用，以托管可能长时间运行或资源密集型的 Web 作业。
 
 ### <a name="more-information"></a>详细信息
@@ -115,7 +116,7 @@ Azure Web 作业具有以下特征：
 ### <a name="azure-virtual-machines"></a>Azure 虚拟机
 实施后台任务时，可以避免将其部署到 Azure Web 应用或云服务，但有时这些选项可能不方便。 典型的示例包括 Windows 服务、第三方实用程序和可执行程序。 另一个示例是针对托管应用程序以外的执行环境所编写的程序。 例如，它可能是你想要从 Windows 或 .NET 应用程序执行的 Unix 或 Linux 程序。 可以为 Azure 虚拟机选择各种操作系统，并在该虚拟机上运行服务或可执行文件。
 
-若要确定何时使用虚拟机，请参阅 [Azure 应用服务s, Cloud Services and Virtual Machines comparison](/azure/app-service-web/choose-web-site-cloud-service-vm/)（Azure 应用程序服务、云服务和虚拟机的比较）。 有关虚拟机选项的信息，请参阅 [Virtual Machine and Cloud Service sizes for Azure](http://msdn.microsoft.com/library/azure/dn197896.aspx)（Azure 的虚拟机和云服务大小）。 有关虚拟机可用的操作系统和预建映像的详细信息，请参阅 [Azure Virtual Machines Marketplace](https://azure.microsoft.com/gallery/virtual-machines/)（Azure 虚拟机应用商店）。
+若要确定何时使用虚拟机，请参阅 [Azure 应用服务s, Cloud Services and Virtual Machines comparison](/azure/app-service-web/choose-web-site-cloud-service-vm/)（Azure 应用程序服务、云服务和虚拟机的比较）。 有关虚拟机选项的信息，请参阅 [Virtual Machine and Cloud Service sizes for Azure](http://msdn.microsoft.com/library/azure/dn197896.aspx)（Azure 的虚拟机和云服务大小）。 有关虚拟机可用的操作系统和预建映像的详细信息，请参阅 [Azure 虚拟机市场](https://azure.microsoft.com/gallery/virtual-machines/)。
 
 若要在独立的虚拟机中启动后台任务，可以从多个选项中进行选择：
 
@@ -291,7 +292,7 @@ Web 角色和辅助角色在启动、运行和停止时会经历一组不同的�
   * 必须按特定顺序处理消息，例如，根据数据的现有数据值更改数据的消息（例如，将值添加到现有值）可能不以其原始发送顺序到达。 或者，可能因为每个实例上的负载不同，后台任务的不同实例按不同的顺序处理消息。 必须按特定顺序处理的消息应该包括序号、键，或者可由后台任务用来确保按正确顺序处理这些消息的其他某个指示器。 如果使用 Azure 服务总线，可以使用消息会话来保证传送顺序。 但是，尽可能设计好过程，使消息顺序变得不重要的思路通常更有效率。
   * 一般而言，后台任务会在队列中扫视消息，这会暂时向其他消息使用者隐藏消息。 然后，它会在成功处理消息后，将其删除。 如果后台任务在处理某个消息时失败，该消息会在扫视超时后重新出现在队列中。 该消息由任务的另一个实例处理，或在此实例的下一个处理周期进行处理。 如果消息一直导致使用者出错，则会阻止任务、队列，并最终在队列填满时阻止应用程序本身。 因此，请务必在队列中检测并删除有害消息。 如果使用 Azure 服务总线，导致出错的消息可以自动或手动移到关联的死信队列。
   * 系统为队列保证*至少一次*传送机制，但队列可能会多次传送同一条消息。 此外，如果在处理消息之后、从队列中删除消息之前后台任务失败，消息将可再次处理。 后台任务应该具有幂等性，这意味着多次处理同一条消息不会导致错误，或者使应用程序的数据不一致。 某些操作原生就是幂等的，例如，将存储的值设置为特定的新值。 但是，有些操作（例如，将值添加到现有的存储值而不检查存储值是否仍与最初发送的消息相同）会导致不一致情况。 可将 Azure 服务总线队列配置为自动删除重复消息。
-  * 某些消息传送系统（例如 Azure 存储队列和 Azure 服务总线队列）支持用于指示已从队列中读取消息次数的取消排队计数属性。 这在处理重复消息和有害消息时可能很有用。 有关详细信息，请参阅[异步消息传送入门](http://msdn.microsoft.com/library/dn589781.aspx)和[幂等模式](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/)。
+  * 某些消息传送系统（例如 Azure 存储队列和 Azure 服务总线队列）支持用于指示已从队列中读取消息次数的取消排队计数属性。 这在处理重复消息和有害消息时可能很有用。 有关详细信息，请参阅[异步消息传送入门](http://msdn.microsoft.com/library/dn589781.aspx)和[幂等模式](http://blog.jonathanoliver.com/idempotency-patterns/)。
 
 ## <a name="scaling-and-performance-considerations"></a>缩放和性能注意事项
 后台任务必须提供足够的性能，确保它们不会阻止应用程序，或者不会因系统负载不足而延迟操作时导致不一致。 通常，可以通过缩放托管后台任务的计算实例来提高性能。 规划和设计后台任务时，请注意以下有关伸缩性和性能的要点：

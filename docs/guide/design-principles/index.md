@@ -2,12 +2,12 @@
 title: Azure 应用程序的设计原则
 description: Azure 应用程序的设计原则
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 57b04839e14804ad97fc9c86e1f9c4fe6e0da472
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 462896098c668c0775464ca498925266cd73c6e1
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206792"
 ---
 # <a name="design-principles-for-azure-applications"></a>Azure 应用程序的设计原则
 

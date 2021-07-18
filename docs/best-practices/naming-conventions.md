@@ -4,11 +4,12 @@ description: Azure 资源的命名约定。 如何命名虚拟机、存储帐户
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: f3f010ceb3c810caafa53523de63aa787d392aa1
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: 6ad71a5ee39b8f1863c51dae0120dbdc7baf1f76
+ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39229144"
 ---
 # <a name="naming-conventions"></a>命名约定
 
@@ -33,11 +34,11 @@ Microsoft Azure 中任何资源的名称选择都很重要，因为：
 `<Company> <Department (optional)> <Product Line (optional)> <Environment>`
 
 * 公司通常对每个订阅都是一样的。 但是，一些公司可能存在组织结构内的子公司。 这些公司可能由中心 IT 组管理。 在这些情况下，可能会用母公司名称（Contoso）加上子公司名称（Northwind）来加以区分。
-* 部门是组织内的名称，一群人在其中工作。 命名空间中的此项为可选项。
-* 产品系列是部门中执行的产品或功能的特定名称。 对于面向内部的服务和应用程序，这通常是可选的。 但是强烈建议将此用于需要轻松分离和识别的面向公众的服务（例如，清晰分离账单记录）。
+* 部门是组织内的名称，包含一组员工。 命名空间中的此项为可选项。
+* 产品线是部门中执行的产品或功能的特定名称。 对于面向内部的服务和应用程序，这通常是可选的。 但是强烈建议将此用于需要轻松分离和识别的面向公众的服务（例如，清晰分离账单记录）。
 * 环境是描述应用程序或服务（如开发、QA 或生产）的部署生命周期的名称。
 
-| 公司 | 系 | 产品系列或服务 | 环境 | 全名 |
+| 公司 | 部门 | 产品线或服务 | 环境 | 全名 |
 | --- | --- | --- | --- | --- |
 | Contoso |SocialGaming |AwesomeService |生产 |Contoso SocialGaming AwesomeService Production |
 | Contoso |SocialGaming |AwesomeService |Dev |Contoso SocialGaming AwesomeService Dev |
@@ -60,7 +61,7 @@ Microsoft Azure 中任何资源的名称选择都很重要，因为：
 | 方面 | 示例 | 说明 |
 | --- | --- | --- |
 | 环境 |dev，prod，QA |标识资源的环境 |
-| Location |uw（美国西部），ue（美国东部） |标识要部署资源的区域 |
+| 位置 |uw（美国西部），ue（美国东部） |标识要部署资源的区域 |
 | 实例 |01，02 |适用于具有多个命名实例的资源（Web 服务器等）。 |
 | 产品或服务 |服务 |标识资源支持的产品、应用程序或服务 |
 | 角色 |sql，web，messaging |标识关联的资源的角色 |
@@ -77,7 +78,7 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 
 | 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- | --- |
-|资源组 |订阅 |1-90 |不区分大小写 |字母数字、下划线、括号、连字符、句点（位于末尾的除外） |`<service short name>-<environment>-rg` |`profx-prod-rg` |
+|资源组 |订阅 |1-90 |不区分大小写 |字母数字、下划线、括号、连字符、句点（位于末尾的除外）以及 Unicode 字符 |`<service short name>-<environment>-rg` |`profx-prod-rg` |
 |可用性集 |资源组 |1-80 |不区分大小写 |字母数字、下划线和连字符 |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |标记 |关联的实体 |512（名称）、256（值） |不区分大小写 |字母数字 |`"key" : "value"` |`"department" : "Central IT"` |
 
@@ -85,7 +86,7 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 
 | 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- | --- |
-|虚拟机 |资源组 |1-15 (Windows)、1-64 (Linux) |不区分大小写 |字母数字、下划线和连字符 |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
+|虚拟机 |资源组 |1-15 (Windows)、1-64 (Linux) |不区分大小写 |字母数字和连字符 |`<name>-<role>-vm<number>` |`profx-sql-vm1` |
 |Function App | 全局 |1-60 |不区分大小写 |字母数字和连字符 |`<name>-func` |`calcprofit-func` |
 
 > [!NOTE]
@@ -119,9 +120,16 @@ Azure 中的每个资源或服务类型强制实施一组命名限制和范围�
 |Azure 应用程序网关 |资源组 |1-80 |不区分大小写 |字母数字、连字符、下划线和句点 |`<service or role>-agw` |`profx-agw` |
 |流量管理器配置文件 |资源组 |1-63 |不区分大小写 |字母数字、连字符和句点 |`<descriptive context>` |`app1` |
 
+### <a name="containers"></a>容器
+
+| 实体 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| --- | --- | --- | --- | --- | --- | --- |
+|容器注册表 | 全局 |5-50 |不区分大小写 | 字母数字 |`<service short name>registry` |`app1registry` |
+
+
 ## <a name="organize-resources-with-tags"></a>使用标记组织资源
 
-Azure 资源管理器支持使用任意文本字符串标记实体，以标识上下文和简化自动化。  例如，`"sqlVersion: "sql2014ee"` 标记可以标识运行 SQL Server 2014 Enterprise Edition 的部署中的 VM，以针对其运行自动化脚本。  应将标记与所选的命名约定结合使用，以便增加和增强上下文。
+Azure 资源管理器支持使用任意文本字符串标记实体，以标识上下文和简化自动化。  例如，`"sqlVersion"="sql2014ee"` 标记可以标识运行 SQL Server 2014 Enterprise Edition 的 VM。 应将标记与所选的命名约定结合使用，以便增加和增强上下文。
 
 > [!TIP]
 > 标记的另一个优点是标记跨资源组，这样用户可跨不同的部署链接和关联实体。
@@ -166,7 +174,7 @@ Azure 资源管理器支持使用任意文本字符串标记实体，以标识�
 > [!TIP]
 > 存储帐户（无论用于数据还是磁盘）应遵循允许采用多个存储帐户的命名约定（即始终使用数字后缀）。
 
-可以配置自定义域名以便访问 Azure 存储帐户中的 Blob 数据。 BLOB 服务的默认终结点是 https://<name>.blob.core.windows.net`。
+可以配置自定义域名以便访问 Azure 存储帐户中的 Blob 数据。 BLOB 服务的默认终结点是 https://\<name\>.blob.core.windows.net。
 
 但是如果将自定义域（如 www.contoso.com）映射到存储帐户的 Blob 终结点，则用户也可以使用该域访问存储帐户中的 Blob 数据。 例如，对于自定义域名，`http://mystorage.blob.core.windows.net/mycontainer/myblob` 可以作为 `http://www.contoso.com/mycontainer/myblob` 访问。
 

@@ -8,6 +8,7 @@ ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29963187"
 ---
 # <a name="extend-azure-resource-manager-template-functionality"></a>扩展 Azure 资源管理器模板功能
 

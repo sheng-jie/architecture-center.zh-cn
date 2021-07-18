@@ -2,12 +2,13 @@
 title: 在 Azure 中运行高可用性 SharePoint Server 2016 场
 description: 有关在 Azure 中设置高可用性 SharePoint Server 2016 场的成熟做法。
 author: njray
-ms.date: 08/01/2017
-ms.openlocfilehash: d1e3f0b73c94844ac649bf2abb6917809202fdb7
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.date: 07/14/2018
+ms.openlocfilehash: 04c69309e9f96e3bf7cd7faabeedd9b6d9da1ebd
+ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 07/29/2018
+ms.locfileid: "39334124"
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>在 Azure 中运行高可用性 SharePoint Server 2016 场
 
@@ -37,7 +38,9 @@ ms.lasthandoff: 03/30/2018
 
 - **网关**。 网关在本地网络与 Azure 虚拟网络之间提供连接。 连接可以使用 ExpressRoute 或站点到站点 VPN。 有关详细信息，请参阅[将本地网络连接到 Azure][hybrid-ra]。
 
-- **Windows Server Active Directory (AD) 域控制器**。 由于 SharePoint Server 2016 不支持使用 Azure Active Directory 域服务，因此必须部署 Windows Server AD 域控制器。 这些域控制器在 Azure VNet 中运行，并与本地 Windows Server AD 林建立了信任关系。 针对 SharePoint 场资源发出的客户端 Web 请求在 VNet 中进行身份验证，而不是跨网关连接将该身份验证流量发送到本地网络。 在 DNS 中创建 Intranet A 或 CNAME 记录，使 Intranet 用户能够将 SharePoint 场的名称解析成内部负载均衡器的专用 IP 地址。
+- **Windows Server Active Directory (AD) 域控制器**。 此参考体系结构部署 Windows Server AD 域控制器。 这些域控制器在 Azure VNet 中运行，并与本地 Windows Server AD 林建立了信任关系。 针对 SharePoint 场资源发出的客户端 Web 请求在 VNet 中进行身份验证，而不是跨网关连接将该身份验证流量发送到本地网络。 在 DNS 中创建 Intranet A 或 CNAME 记录，使 Intranet 用户能够将 SharePoint 场的名称解析成内部负载均衡器的专用 IP 地址。
+
+  SharePoint Server 2016 也支持使用 [Azure Active Directory 域服务](/azure/active-directory-domain-services/)。 Azure AD 域服务提供托管域服务，因此不需在 Azure 中部署和管理域控制器。
 
 - **SQL Server Always On 可用性组**。 为了实现 SQL Server 数据库的高可用性，我们建议创建 [SQL Server Always On 可用性组][sql-always-on]。 将两个虚拟机用于 SQL Server。 一个虚拟机包含主数据库副本，另一个虚拟机包含次要副本。 
 
@@ -63,17 +66,19 @@ ms.lasthandoff: 03/30/2018
 
 ### <a name="vm-recommendations"></a>VM 建议
 
-根据标准 DSv2 虚拟机大小，此体系结构至少需要 38 个核心：
+此体系结构至少需要 44 个核心：
 
 - Standard_DS3_v2 虚拟机上有 8 个 SharePoint 服务器（每个服务器需要 4 个核心）= 32 个核心
 - Standard_DS1_v2 虚拟机上有 2 个 Active Directory 域控制器（每个域控制器需要 1 个核心）= 2 个核心
-- Standard_DS1_v2 虚拟机上有 2 个 SQL Server VM = 2 个核心
+- Standard_DS3_v2 上有 2 个 SQL Server VM = 8 个核心
 - Standard_DS1_v2 虚拟机上有 1 个多数节点 = 1 个核心
 - Standard_DS1_v2 虚拟机上有 1 个管理服务器 = 1 个核心
 
-核心总数取决于所选的 VM 大小。 有关详细信息，请参阅下面的[有关 SharePoint Server 的建议](#sharepoint-server-recommendations)。
-
 确保 Azure 订阅提供足够的 VM 核心配额用于部署，否则部署将会失败。 请参阅 [Azure 订阅和服务限制、配额与约束][quotas]。 
+
+对于除搜索索引器以外的所有 SharePoint 角色，我们建议使用 [Standard_DS3_v2][vm-sizes-general] VM 大小。 搜索索引器应至少使用 [Standard_DS13_v2][vm-sizes-memory] 大小。 对于测试，此参考体系结构的参数文件为搜索索引器角色指定了较小的 DS3_v2 大小。 对于生产部署，请更新参数文件以使用 DS13 大小或更大大小。 有关详细信息，请参阅 [SharePoint Server 2016 的硬件和软件要求][sharepoint-reqs]。 
+
+对于 SQL Server VM，建议至少配备 4 个核心和 8 GB RAM。 此参考体系结构的参数文件指定了 DS3_v2 大小。 对于生产部署，可能需要指定更大的 VM 大小。 有关详细信息，请参阅[存储和 SQL Server 容量规划与配置 (SharePoint Server)](/sharepoint/administration/storage-and-sql-server-capacity-planning-and-configuration#estimate-memory-requirements)。 
  
 ### <a name="nsg-recommendations"></a>有关 NSG 的建议
 
@@ -106,18 +111,12 @@ ms.lasthandoff: 03/30/2018
 - 缓存超级用户帐户
 - 缓存超级读取者帐户
 
-对于除搜索索引器以外的所有角色，我们建议使用 [Standard_DS3_v2][vm-sizes-general] VM 大小。 搜索索引器应至少使用 [Standard_DS13_v2][vm-sizes-memory] 大小。 
-
-> [!NOTE]
-> 此参考体系结构的资源管理器模板对搜索索引器使用较小的 DS3 大小来测试部署。 对于生产部署，请使用 DS13 或更大大小。 
-
-对于生产工作负荷，请参阅 [SharePoint Server 2016 的硬件和软件要求][sharepoint-reqs]。 
-
 为了满足每秒最低 200 MB 磁盘吞吐量的支持要求，请确保规划好搜索体系结构。 请参阅[在 SharePoint Server 2013 中规划企业搜索体系结构][sharepoint-search]。 另请遵照[有关在 SharePoint Server 2016 中爬网的最佳做法][sharepoint-crawling]中的准则。
 
 此外，请将搜索组件数据存储在高性能的独立存储卷或分区中。 为了减少负载并提高吞吐量，请配置此体系结构中所需的对象缓存用户帐户。 将 Windows Server 操作系统文件、SharePoint Server 2016 程序文件和诊断日志拆分到具有普通性能的三个独立存储卷或分区中。 
 
 有关这些建议的详细信息，请参阅 [SharePoint Server 2016 中的初始部署管理帐户和服务帐户][sharepoint-accounts]。
+
 
 ### <a name="hybrid-workloads"></a>混合工作负荷
 
@@ -169,78 +168,104 @@ SharePoint Server 2016 无法使用 Azure SQL 数据库，因此，此体系结�
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[GitHub][github] 中提供了此参考体系结构的部署脚本。 
+[GitHub][github] 中提供了此参考体系结构的部署。 整个部署可能需要几个小时才能完成。
 
-可以增量方式部署此体系结构，或一次性部署整个体系结构。 对于首次部署，我们建议采用增量方式，以了解每项部署的作用。 使用以下 *mode* 参数之一指定增量部署。
+该部署在订阅中创建以下资源组：
 
-| Mode           | 作用                                                                                                            |
-|----------------|-------------------------------------------------------------------------------------------------------------------------|
-| onprem         | （可选）部署用于测试或评估的模拟本地网络环境。 此步骤不会连接到实际本地网络。 |
-| infrastructure | 将 SharePoint 2016 网络基础结构和 Jumpbox 部署到 Azure。                                                |
-| createvpn      | 部署 SharePoint 和本地网络的虚拟网络网关，并将两者相连接。 仅当运行了 `onprem` 步骤时，才需要运行此步骤。                |
-| workload       | 将 SharePoint 服务器部署到 SharePoint 网络。                                                               |
-| security       | 将网络安全组部署到 SharePoint 网络。                                                           |
-| 本应返回的所有记录的总数，            | 部署上述所有部署。                            
+- ra-onprem-sp2016-rg
+- ra-sp2016-network-rg
 
+模板参数文件将引用这些名称，因此，如果更改了这些名称，请相应地更新参数文件。 
 
-若要使用模拟本地网络环境以增量方式部署体系结构，请依序运行以下步骤：
-
-1. onprem
-2. infrastructure
-3. createvpn
-4. workload
-5. security
-
-若要以增量方式部署体系结构但不使用模拟本地网络环境，请依序运行以下步骤：
-
-1. infrastructure
-2. workload
-3. security
-
-若要通过一个步骤部署所有项目，请使用 `all`。 请注意，整个过程可能需要几个小时。
+参数文件在不同的位置包含了硬编码的密码。 在部署之前，请更改这些值。
 
 ### <a name="prerequisites"></a>先决条件
 
-* 安装最新版本的 [Azure PowerShell][azure-ps]。
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
-* 在部署此参考体系结构之前，请验证订阅是否具有足够的配额 - 至少 38 个核心。 如果没有足够的配额，请使用 Azure 门户提交支持请求，以获取更高的配额。
+### <a name="deploy-the-solution"></a>部署解决方案 
 
-* 若要估算此项部署的成本，请参阅 [Azure 定价计算器][azure-pricing]。
+1. 运行以下命令以部署模拟的本地网络。
 
-### <a name="deploy-the-reference-architecture"></a>部署参考体系结构
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p onprem.json --deploy
+    ```
 
-1.  将 [GitHub 存储库][github]下载或克隆到本地计算机。
+2. 运行以下命令以部署 Azure VNet 和 VPN 网关。
 
-2.  打开 PowerShell 窗口并导航到 `/sharepoint/sharepoint-2016` 文件夹。
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p connections.json --deploy
+    ```
 
-3.  运行以下 PowerShell 命令。 对于 \<subscription id\>，请使用自己的 Azure 订阅 ID。 对于 \<location\>，请指定一个 Azure 区域，例如 `eastus` 或 `westus`。 对于 \<mode\>，请指定 `onprem`、`infrastructure`、`createvpn`、`workload`、`security` 或 `all`。
+3. 运行以下命令以部署 jumpbox、AD 域控制器和 SQL Server VM。
+
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure1.json --deploy
+    ```
+
+4. 运行以下命令以创建故障转移群集和可用性组。 
+
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure2-cluster.json --deploy
+
+5. Run the following command to deploy the remaining VMs.
+
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure3.json --deploy
+    ```
+
+此时，验证是否可以为 SQL Server Always On 可用性组建立从 Web 前端到负载均衡器的 TCP 连接。 为此，请执行以下步骤：
+
+1. 使用 Azure 门户在 `ra-sp2016-network-rg` 资源组中找到名为 `ra-sp-jb-vm1` 的 VM。 这是 jumpbox VM。
+
+2. 单击 `Connect` 来与 VM 建立远程桌面会话。 使用 `azure1.json` 参数文件中指定的密码。
+
+3. 从远程桌面会话登录到 10.0.5.4。 这是名为 `ra-sp-app-vm1` 的 VM 的 IP 地址。
+
+4. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到负载均衡器。
 
     ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>
-    ```   
-4. 根据提示登录到 Azure 帐户。 部署脚本可以需要花费几个小时才能完成，具体时间取决于所选的模式。
+    Test-NetConnection 10.0.3.100 -Port 1433
+    ```
 
-5. 部署完成后，请运行脚本来配置 SQL Server Always On 可用性组。 有关详细信息，请参阅[自述文件][readme]。
+输出应如下所示：
 
-> [!WARNING]
-> 参数文件在不同的位置包含了硬编码的密码 (`AweS0me@PW`)。 在部署之前，请更改这些值。
+```powershell
+ComputerName     : 10.0.3.100
+RemoteAddress    : 10.0.3.100
+RemotePort       : 1433
+InterfaceAlias   : Ethernet 3
+SourceAddress    : 10.0.0.132
+TcpTestSucceeded : True
+```
 
+如果失败，请使用 Azure 门户重启名为 `ra-sp-sql-vm2` 的 VM。 VM 重启后，再次运行 `Test-NetConnection` 命令。 在 VM 重启后，可能需要等待大约一分钟，连接才能成功。 
 
-## <a name="validate-the-deployment"></a>验证部署
+现在，如下所示完成部署。
 
-部署此参考体系结构之后，所用订阅的下面会列出以下资源组：
+1. 运行以下命令以部署 SharePoint 场的主节点。
 
-| 资源组        | 目的                                                                                         |
-|-----------------------|-------------------------------------------------------------------------------------------------|
-| ra-onprem-sp2016-rg   | 包含 Active Directory 且与 SharePoint 2016 网络联合的模拟本地网络 |
-| ra-sp2016-network-rg  | 用于支持 SharePoint 部署的基础结构                                                 |
-| ra-sp2016-workload-rg | SharePoint 和支持性资源                                                             |
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure4-sharepoint-server.json --deploy
+    ```
 
-### <a name="validate-access-to-the-sharepoint-site-from-the-on-premises-network"></a>验证从本地网络对 SharePoint 站点的访问
+2. 运行以下命令以部署 SharePoint 缓存、搜索和 web。
 
-1. 在 [Azure 门户][azure-portal]中的“资源组”下，选择 `ra-onprem-sp2016-rg` 资源组。
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure5-sharepoint-farm.json --deploy
+    ```
 
-2. 在资源列表中，选择名为 `ra-adds-user-vm1` 的 VM 资源。 
+3. 运行以下命令以创建 NSG 规则。
+
+    ```bash
+    azbb -s <subscription_id> -g ra-onprem-sp2016-rg -l <location> -p azure6-security.json --deploy
+    ```
+
+### <a name="validate-the-deployment"></a>验证部署
+
+1. 在 [Azure 门户][azure-portal]中，导航到 `ra-onprem-sp2016-rg` 资源组。
+
+2. 在资源列表中，选择名为 `ra-onpr-u-vm1` 的 VM 资源。 
 
 3. 根据[连接到虚拟机][connect-to-vm]中所述连接到该 VM。 用户名为 `\onpremuser`。
 
@@ -249,38 +274,6 @@ SharePoint Server 2016 无法使用 Azure SQL 数据库，因此，此体系结�
 6.  在“Windows 安全性”框中，使用用户名 `contoso.local\testuser` 登录到 SharePoint 门户。
 
 执行此项登录会在本地网络使用的 Fabrikam.com 域与 SharePoint 门户使用的 contoso.local 域之间建立隧道。 SharePoint 站点打开后，便会出现根演示站点。
-
-### <a name="validate-jumpbox-access-to-vms-and-check-configuration-settings"></a>验证是否可以通过 Jumpbox 访问 VM，并检查配置设置
-
-1.  在 [Azure 门户][azure-portal]中的“资源组”下，选择 `ra-sp2016-network-rg` 资源组。
-
-2.  在资源列表中，选择名为 `ra-sp2016-jb-vm1` 的 VM 资源，即 Jumpbox。
-
-3. 根据[连接到虚拟机][connect-to-vm]中所述连接到该 VM。 用户名为 `testuser`。
-
-4.  登录到 Jumpbox 后，请从 Jumpbox 打开 RDP 会话。 连接到 VNet 中的其他任何 VM。 用户名为 `testuser`。 可以忽略有关远程计算机安全证书的警告。
-
-5.  打开与 VM 的远程连接后，请查看配置，并使用服务器管理器等管理工具进行更改。
-
-下表显示了已部署的 VM。 
-
-| 资源名称      | 目的                                   | 资源组        | VM 名称                       |
-|--------------------|-------------------------------------------|-----------------------|-------------------------------|
-| Ra-sp2016-ad-vm1   | Active Directory + DNS                    | Ra-sp2016-network-rg  | Ad1.contoso.local             |
-| Ra-sp2016-ad-vm2   | Active Directory + DNS                    | Ra-sp2016-network-rg  | Ad2.contoso.local             |
-| Ra-sp2016-fsw-vm1  | SharePoint                                | Ra-sp2016-network-rg  | Fsw1.contoso.local            |
-| Ra-sp2016-jb-vm1   | Jumpbox                                   | Ra-sp2016-network-rg  | Jb (use public IP to log on) |
-| Ra-sp2016-sql-vm1  | SQL Always On - 故障转移                  | Ra-sp2016-network-rg  | Sq1.contoso.local             |
-| Ra-sp2016-sql-vm2  | SQL Always On - 主副本                   | Ra-sp2016-network-rg  | Sq2.contoso.local             |
-| Ra-sp2016-app-vm1  | SharePoint 2016 应用程序 MinRole       | Ra-sp2016-workload-rg | App1.contoso.local            |
-| Ra-sp2016-app-vm2  | SharePoint 2016 应用程序 MinRole       | Ra-sp2016-workload-rg | App2.contoso.local            |
-| Ra-sp2016-dch-vm1  | SharePoint 2016 分布式缓存 MinRole | Ra-sp2016-workload-rg | Dch1.contoso.local            |
-| Ra-sp2016-dch-vm2  | SharePoint 2016 分布式缓存 MinRole | Ra-sp2016-workload-rg | Dch2.contoso.local            |
-| Ra-sp2016-srch-vm1 | SharePoint 2016 搜索 MinRole            | Ra-sp2016-workload-rg | Srch1.contoso.local           |
-| Ra-sp2016-srch-vm2 | SharePoint 2016 搜索 MinRole            | Ra-sp2016-workload-rg | Srch2.contoso.local           |
-| Ra-sp2016-wfe-vm1  | SharePoint 2016 Web 前端 MinRole     | Ra-sp2016-workload-rg | Wfe1.contoso.local            |
-| Ra-sp2016-wfe-vm2  | SharePoint 2016 Web 前端 MinRole     | Ra-sp2016-workload-rg | Wfe2.contoso.local            |
-
 
 **此参考体系结构的供稿人** &mdash; Joe Davies、Bob Fox、Neil Hodgkinson、Paul Stork
 

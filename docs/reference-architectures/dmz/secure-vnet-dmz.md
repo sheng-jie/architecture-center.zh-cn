@@ -2,20 +2,21 @@
 title: 在 Azure 与 Internet 之间实施外围网络
 description: 如何在 Azure 中实施一个提供 Internet 访问方式的安全混合网络体系结构。
 author: telmosampaio
-ms.date: 11/23/2016
+ms.date: 07/02/2018
 pnp.series.title: Network DMZ
 pnp.series.next: nva-ha
 pnp.series.prev: secure-vnet-hybrid
 cardTitle: DMZ between Azure and the Internet
-ms.openlocfilehash: c88545b1fcae49b413e7e2b6ac5bd92d3fd3456d
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: 7a062d2394ae8b3bd1b17c19cbdf512327f9a766
+ms.sourcegitcommit: 9b459f75254d97617e16eddd0d411d1f80b7fe90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37403141"
 ---
 # <a name="dmz-between-azure-and-the-internet"></a>Azure 与 Internet 之间的外围网络
 
-此参考体系结构显示了一个可将本地网络扩展到 Azure 并接受 Internet 流量的安全混合网络。 
+此参考体系结构显示了一个可将本地网络扩展到 Azure 并接受 Internet 流量的安全混合网络。 [**部署此解决方案**。](#deploy-the-solution)
 
 [![0]][0] 
 
@@ -78,37 +79,70 @@ ms.lasthandoff: 03/30/2018
 
 应该记录所有端口上的所有传入请求。 定期审核日志，并关注超出预期参数范围的请求，因为这些请求可能暗示着发生了入侵企图。
 
-## <a name="solution-deployment"></a>解决方案部署
 
-[GitHub][github-folder] 上提供了可实施这些建议的参考体系结构部署。 可以遵照以下指导，使用 Windows 或 Linux VM 部署该参考体系结构：
+## <a name="deploy-the-solution"></a>部署解决方案
 
-1. 单击下面的按钮：<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-dmz%2FvirtualNetwork.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-2. 在 Azure 门户中打开该链接后，必须输入某些设置的值：
-   * 参数文件中已定义**资源组**名称，因此请选择“新建”，并在文本框中输入 `ra-public-dmz-network-rg`。
-   * 从“位置”下拉框中选择区域。
-   * 不要编辑“模板根 URI”或“参数根 URI”文本框。
-   * 从下拉框中选择“OS 类型”：“Windows”或“Linux”。
-   * 查看条款和条件，并单击“我同意上述条款和条件”复选框。
-   * 单击“购买”按钮。
-3. 等待部署完成。
-4. 单击下面的按钮：<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-dmz%2Fworkload.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-5. 在 Azure 门户中打开该链接后，必须输入某些设置的值：
-   * 参数文件中已定义**资源组**名称，因此请选择“新建”，并在文本框中输入 `ra-public-dmz-wl-rg`。
-   * 从“位置”下拉框中选择区域。
-   * 不要编辑“模板根 URI”或“参数根 URI”文本框。
-   * 查看条款和条件，并单击“我同意上述条款和条件”复选框。
-   * 单击“购买”按钮。
-6. 等待部署完成。
-7. 单击下面的按钮：<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fdmz%2Fsecure-vnet-dmz%2Fsecurity.azuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-8. 在 Azure 门户中打开该链接后，必须输入某些设置的值：
-   * 参数文件中已定义了**资源组**名称，因此请选择“使用现有”，并在文本框中输入 `ra-public-dmz-network-rg`。
-   * 从“位置”下拉框中选择区域。
-   * 不要编辑“模板根 URI”或“参数根 URI”文本框。
-   * 查看条款和条件，并单击“我同意上述条款和条件”复选框。
-   * 单击“购买”按钮。
-9. 等待部署完成。
-10. 参数文件包括所有 VM 的硬编码管理员用户名和密码，我们强烈建议立即更改。 针对部署中的每个 VM，请在 Azure 门户选择该 VM，并在“支持 + 故障排除”边栏选项卡中单击“重置密码”。 从“模式”下拉框中选择“重置密码”，然后选择新的**用户名**和**密码**。 单击“更新”按钮保存设置。
+[GitHub][github-folder] 上提供了可实施这些建议的参考体系结构部署。 
 
+### <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
+
+### <a name="deploy-resources"></a>部署资源
+
+1. 导航到参考体系结构 GitHub 存储库的 `/dmz/secure-vnet-hybrid` 文件夹。
+
+2. 运行以下命令：
+
+    ```bash
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p onprem.json --deploy
+    ```
+
+3. 运行以下命令：
+
+    ```bash
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p secure-vnet-hybrid.json --deploy
+    ```
+
+### <a name="connect-the-on-premises-and-azure-gateways"></a>连接本地网关和 Azure 网关
+
+此步骤连接两个本地网络网关。
+
+1. 在 Azure 门户中，导航到已创建的资源组。 
+
+2. 找到名为 `ra-vpn-vgw-pip` 的资源，并复制“概述”边栏选项卡中显示的 IP 地址。
+
+3. 找到名为 `onprem-vpn-lgw` 的资源。
+
+4. 单击“配置”边栏选项卡。 在“IP 地址”下，粘贴步骤 2 中获取的 IP 地址。
+
+    ![](./images/local-net-gw.png)
+
+5. 单击“保存”并等待操作完成。 可能需要大约 5 分钟。
+
+6. 找到名为 `onprem-vpn-gateway1-pip` 的资源。 复制“概述”边栏选项卡中显示的 IP 地址。
+
+7. 找到名为 `ra-vpn-lgw` 的资源。 
+
+8. 单击“配置”边栏选项卡。 在“IP 地址”下，粘贴步骤 6 中获取的 IP 地址。
+
+9. 单击“保存”并等待操作完成。
+
+10. 若要验证连接，请转到每个网关的“连接”边栏选项卡。 状态应为“已连接”。
+
+### <a name="verify-that-network-traffic-reaches-the-web-tier"></a>验证网络流量是否抵达 Web 层
+
+1. 在 Azure 门户中，导航到已创建的资源组。 
+
+2. 找到名为 `pub-dmz-lb` 的资源，即公共外围网络前面的负载均衡器。 
+
+3. 复制“概述”边栏选项卡中的公共 IP 地址，并在 Web 浏览器中打开此地址。 应会看到默认的 Apache2 服务器主页。
+
+4. 找到名为 `int-dmz-lb` 的资源，即专用外围网络前面的负载均衡器。 复制“概述”边栏选项卡中的专用 IP 地址。
+
+5. 找到名为 `jb-vm1` 的 VM。 单击“连接”，使用远程桌面连接到 VM。 用户名和密码已在 onprem.json 文件中指定。
+
+6. 在远程桌面会话中打开 Web 浏览器，并导航到步骤 4 中获取的 IP 地址。 应会看到默认的 Apache2 服务器主页。
 
 [availability-set]: /azure/virtual-machines/virtual-machines-windows-manage-availability
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/dmz/secure-vnet-dmz

@@ -2,12 +2,12 @@
 title: 通过分区解决限制
 description: 使用分区来解决数据库、网络和计算限制
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 4371490385b24230551bf17db0075052f320b574
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 86306c6c33ea7a93c4c1f868d820cc522095a8b7
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206528"
 ---
 # <a name="partition-around-limits"></a>通过分区解决限制
 

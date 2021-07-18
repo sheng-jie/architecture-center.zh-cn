@@ -4,11 +4,12 @@ description: 适用于 Microsoft Azure 中运行的基本 Web 应用程序的建
 author: MikeWasson
 ms.date: 12/12/2017
 cardTitle: Basic web application
-ms.openlocfilehash: efd831b1f54fa0662bdfa9874318e7b314172215
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: bc8cf9b5c66fc451d097cbc992ecb9a249645dce
+ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37958834"
 ---
 # <a name="basic-web-application"></a>基本 Web 应用程序
 [!INCLUDE [header](../../_includes/header.md)]
@@ -197,7 +198,7 @@ Azure 应用服务的主要优势是能够根据负载缩放应用程序。 下�
 * 对于多租户方案，应用程序必须实施验证令牌颁发者的逻辑。
 
 ## <a name="deploy-the-solution"></a>部署解决方案
-[GitHub][paas-basic-arm-template] 上提供了本体系结构的示例资源管理器模板。
+[GitHub][paas-basic-arm-template] 上提供了此体系结构的示例资源管理器模板。
 
 若要使用 PowerShell 部署该模板，请运行以下命令：
 

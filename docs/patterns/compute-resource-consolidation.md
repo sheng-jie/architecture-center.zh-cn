@@ -7,11 +7,12 @@ ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
-ms.openlocfilehash: 85191fc630549559f8a1395e5a8622a7a6140a2d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 6e05a30245fbf5183a4e50a54650505f5a5f2aa8
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35252918"
 ---
 # <a name="compute-resource-consolidation-pattern"></a>计算资源合并模式
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 11/14/2017
 
 角色负责启动和停止任务。 当 Azure 结构控制器加载角色时，它会对角色引发 `Start` 事件。 可以替代 `WebRole` 或 `WorkerRole` 类的 `OnStart` 方法以处理此事件，这可能是为了初始化此方法中的任务所依赖的数据和其他资源。
 
-当 `OnStart ` 方法完成时，角色可以开始响应请求。 可以在模式和做法指南[将应用程序移动到](https://msdn.microsoft.com/library/ff728592.aspx)中的[应用程序启动进程](https://msdn.microsoft.com/library/ff803371.aspx#sec16)部分中找到有关在角色中使用 `OnStart` 和 `Run` 方法的详细信息和指导。
+当 `OnStart` 方法完成时，角色可以开始响应请求。 可以在模式和做法指南[将应用程序移动到](https://msdn.microsoft.com/library/ff728592.aspx)中的[应用程序启动进程](https://msdn.microsoft.com/library/ff803371.aspx#sec16)部分中找到有关在角色中使用 `OnStart` 和 `Run` 方法的详细信息和指导。
 
 > 使 `OnStart` 方法中的代码尽可能简洁。 Azure 不会对此方法完成所花费的时间施加任何限制，但是角色在此方法完成之前，无法开始响应发送给它的网络请求。
 

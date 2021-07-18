@@ -3,11 +3,12 @@ title: 实时处理
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 8d3497c37d15dc0aa4645ddfce3bd30740217b2c
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.openlocfilehash: 4abb159924f902b5babe0673cc021e80b00c8529
+ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37090979"
 ---
 # <a name="real-time-processing"></a>实时处理
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 04/03/2018
 
 ### <a name="stream-processing"></a>流处理
 
-- **Azure 流分析**。 Azure 流分析可以针对无约束的数据流运行永久查询。 这些查询使用存储或消息中转站中的数据流、根据时态窗口筛选和聚合数据，并将结果写入接收器（例如存储）、数据库，或直接写入 Power BI 中的报表。
+- **Azure 流分析**。 Azure 流分析可以针对无约束的数据流运行永久查询。 这些查询使用存储或消息中转站中的数据流、根据时态窗口筛选和聚合数据，并将结果写入接收器（例如存储）、数据库，或直接写入 Power BI 中的报表。 Stream Analytics 使用基于 SQL 的查询语言，该语言支持时态和地理空间构造，并可以使用 JavaScript 进行扩展。
 - **Storm**。 Apache Storm 是适用于流处理的开源框架，它使用 Spout 和 Bolt 的拓扑，从实时流数据源使用、处理和输出结果。 可以在 Azure HDInsight 群集中预配 Storm，并以 Java 或 C# 实施拓扑。
 - **Spark Streaming**。 Apache Spark 是适用于常规数据处理的开源分布式平台。 Spark 提供 Spark 流 API，在其中可以使用受支持的任何 Spark 语言（包括 Java、Scala 和 Python）编写代码。 Spark 2.0 引入了 Spark 结构化流 API，该 API 提供更简单且更一致的编程模型。 Spark 2.0 在 Azure HDInsight 群集中提供。
 

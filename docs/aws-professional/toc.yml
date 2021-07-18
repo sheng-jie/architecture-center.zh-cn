@@ -1,8 +1,0 @@
-- name: Azure 体系结构中心
-  href: /azure/architecture
-- name: 面向 AWS 专业人员的 Azure
-  items:
-    - name: 概述
-      href: index.md
-    - name: 服务比较
-      href: services.md

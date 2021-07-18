@@ -2,12 +2,12 @@
 title: 变化型设计
 description: 进化型设计是持续创新的关键。
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 35e91228f3fb0a303594ec06f05b6865008e3a4f
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 9873d5c4e19d738a77a222e1f9a878ac5f5d125f
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206525"
 ---
 # <a name="design-for-evolution"></a>进化型设计
 

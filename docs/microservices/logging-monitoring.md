@@ -8,6 +8,7 @@ ms.sourcegitcommit: 786bafefc731245414c3c1510fc21027afe303dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/12/2017
+ms.locfileid: "26652988"
 ---
 # <a name="designing-microservices-logging-and-monitoring"></a>设计微服务：日志记录和监视
 

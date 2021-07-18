@@ -8,6 +8,7 @@ ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/29/2017
+ms.locfileid: "27549172"
 ---
 # <a name="designing-microservices-api-gateways"></a>设计微服务：API 网关
 
@@ -38,7 +39,7 @@ API 网关位于客户端与服务之间。 它充当反向代理，将来自客
 
 - SSL 终止
 - 身份验证
-- IP 允许列表
+- IP 白名单
 - 客户端速率限制（限制）
 - 日志记录和监视
 - 响应缓存

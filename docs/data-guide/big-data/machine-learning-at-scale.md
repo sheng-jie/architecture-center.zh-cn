@@ -3,11 +3,12 @@ title: 规模化机器学习
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: a92060008f90f43f71869bd1ad251af150b4a9db
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.openlocfilehash: 4e584da18893ac7405fa00863fe034e45b2e3903
+ms.sourcegitcommit: 7ced70ebc11aa0df0dc0104092d3cc6ad5c28bd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34062810"
 ---
 # <a name="machine-learning-at-scale"></a>规模化机器学习
 

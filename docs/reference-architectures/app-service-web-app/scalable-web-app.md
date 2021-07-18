@@ -8,10 +8,11 @@ pnp.series.next: multi-region-web-app
 ms.date: 11/23/2016
 cardTitle: Improve scalability
 ms.openlocfilehash: 6459acebfa25491332e2118b9e8fe51d5fc79ff3
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37958800"
 ---
 # <a name="improve-scalability-in-a-web-application"></a>提高 Web 应用程序的可伸缩性
 
@@ -26,11 +27,11 @@ ms.lasthandoff: 04/06/2018
 此体系结构基于[基本 Web 应用程序][basic-web-app]中显示的体系结构。 它包括以下组件：
 
 * 资源组。 [资源组][resource-group]是 Azure 资源的逻辑容器。
-* **[Web 应用][app-service-web-app]**和 **[API 应用][app-service-api-app]**。 典型的现代应用程序可能包括一个网站以及一个或多个 RESTful Web API。 Web API 可供浏览器客户端通过 AJAX 来使用，也可供本机客户端应用程序或服务器端应用程序使用。 有关设计 Web API 的注意事项，请参阅 [API 设计指南][api-guidance]。    
+* **[Web 应用][app-service-web-app]** 和 **[API 应用][app-service-api-app]**。 典型的现代应用程序可能包括一个网站以及一个或多个 RESTful Web API。 Web API 可供浏览器客户端通过 AJAX 来使用，也可供本机客户端应用程序或服务器端应用程序使用。 有关设计 Web API 的注意事项，请参阅 [API 设计指南][api-guidance]。    
 * **WebJob**。 使用 [Azure WebJobs][webjobs] 在后台运行长时间运行的任务。 WebJobs 可以按计划运行、持续运行或者以响应触发器的方式运行，例如将消息放置到队列中。 WebJob 可在应用服务应用上下文中作为后台进程运行。
 * **队列**。 在此处显示的体系结构中，应用程序通过向 [Azure 队列存储][queue-storage]队列放置消息，将后台任务排队。 消息触发 WebJob 中的函数。 也可使用服务总线队列。 如需比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照][queues-compared]。
 * **缓存**。 在 [Azure Redis 缓存][azure-redis]中存储半静态数据。  
-* <strong>CDN</strong>。 使用 [Azure 内容交付网络][azure-cdn] (CDN) 缓存公开提供的内容，以便降低延迟并加快内容交付速度。
+* <strong>CDN</strong>。 使用 [Azure 内容分发网络][azure-cdn] (CDN) 缓存公开提供的内容，以便降低延迟并加快内容分发速度。
 * **数据存储**。 对关系数据使用 [Azure SQL 数据库][sql-db]。 对于非关系数据，可考虑使用 NoSQL 存储，例如 [Cosmos DB][cosmosdb]。
 * **Azure 搜索**。 使用 [Azure 搜索][azure-search]添加搜索功能，例如搜索建议、模糊搜索、特定于语言的搜索。 Azure 搜索通常与其他数据存储结合使用，尤其是在主数据存储对一致性要求严格的情况下。 此方法将权威数据存储在其他数据存储中，将搜索索引存储在 Azure 搜索中。 也可使用 Azure 搜索合并来自多个数据存储的单一搜索索引。  
 * **电子邮件/短信**。 使用第三方服务（例如 SendGrid 或 Twilio）发送电子邮件或短信，而不是将此功能直接内置到应用程序中。
@@ -72,7 +73,7 @@ ms.lasthandoff: 04/06/2018
 > 
 > 
 
-如需更详细的指南，请参阅[内容交付网络 (CDN) 指南][cdn-guidance]。
+如需更详细的指南，请参阅[内容分发网络 (CDN) 指南][cdn-guidance]。
 
 ### <a name="storage"></a>存储
 现代应用程序通常处理大量的数据。 若要进行适合云的缩放，请务必选择适当的存储类型。 以下是一些基线建议。 

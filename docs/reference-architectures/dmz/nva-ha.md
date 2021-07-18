@@ -11,6 +11,7 @@ ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30847741"
 ---
 # <a name="deploy-highly-available-network-virtual-appliances"></a>部署具有高可用性的网络虚拟设备。
 

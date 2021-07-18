@@ -5,11 +5,12 @@ author: telmosampaio
 ms.date: 04/09/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: 3b19526a9ed77c1605325a9eec101ffbee7c8401
-ms.sourcegitcommit: 3846a0ab2b2b2552202a3c9c21af0097a145ffc6
+ms.openlocfilehash: 9105748f434e5d655b09b1fe0775417f33a912b0
+ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37843586"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>在 Azure 中实现中心辐射型网络拓扑
 
@@ -124,17 +125,7 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 克隆、下载[参考体系结构][ref-arch-repo] GitHub 存储库的 zip 文件或创建其分支。
-
-2. 安装 [Azure CLI 2.0][azure-cli-2]。
-
-3. 安装 [Azure 构建基块][azbb] npm 包。
-
-4. 在命令提示符、bash 提示符或 PowerShell 提示符下使用以下命令登录到 Azure 帐户。
-
-   ```bash
-   az login
-   ```
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
 ### <a name="deploy-the-simulated-on-premises-datacenter"></a>部署模拟的本地数据中心
 
@@ -172,7 +163,7 @@ VNet 对等互连是两个 VNet 之间的不可传递关系。 如果需要将�
 
 2. （可选）对于 Linux 部署，请将 `osType` 设置为 `Linux`。
 
-3. 对于 `sharedKey`，请输入 VPN 连接的共享密钥。 
+3. 找到 `sharedKey` 的两个实例，并输入 VPN 连接的共享密钥。 值必须匹配。
 
     ```bash
     "sharedKey": "",
@@ -272,7 +263,7 @@ TcpTestSucceeded : True
 
 2. 单击 `Connect` 来与 VM 建立远程桌面会话。 使用 `onprem.json` 参数文件中指定的密码。
 
-3. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到中心 VNet 中的 Jumpbox VM。
+3. 在 VM 中打开 PowerShell 控制台，使用 `Test-NetConnection` cmdlet 验证能否连接到辐射 VNet 中的 Jumpbox VM。
 
    ```powershell
    Test-NetConnection 10.1.0.68 -CommonTCPPort RDP

@@ -3,11 +3,12 @@ title: Azure 体系结构中心
 description: Azure 体系结构中心是提供有关在 Microsoft Azure 中生成解决方案的指南、蓝图、模式和最佳做法的官方中心。 它由 Microsoft 模式和实践团队维护。
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 0ac5dd79f765fe9b649cc2ca83c0213b4ba28544
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 544196faa7156c5636b03d3f402bc48dcc63975f
+ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38987584"
 ---
 # <a name="azure-architecture-center"></a>Azure 体系结构中心
 
@@ -78,7 +79,7 @@ ms.lasthandoff: 04/06/2018
                         </div>
                         <div class="cardText">
                             <h3>在 Azure 上构建微服务</h3>
-                            <p>本系列教程由多篇文章组成，将逐步引导你完成在 Azure 上设计和构建微服务体系结构的整个过程。 另外还随附了参考实现。</p>
+                            <p>本设计指南将逐步引导你完成在 Azure 上设计和构建微服务体系结构的整个过程。 另外还随附了参考实现。</p>
                         </div>
                     </div>
                 </div>
@@ -117,8 +118,8 @@ ms.lasthandoff: 04/06/2018
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>云应用程序最佳做法</h3>
-                            <p>有关云应用程序的最佳做法，涉及自动缩放、缓存、数据分区、API 设计等方面。</p>
+                            <h3>云最佳做法</h3>
+                            <p>有关云应用程序的最佳实践，涉及自动缩放、缓存、数据分区、API 设计等方面。</p>
                         </div>
                     </div>
                 </div>
@@ -245,46 +246,6 @@ ms.lasthandoff: 04/06/2018
             </div>
         </a>
     </li>
-    <!-- Sharepoint -->
-    <li>
-        <a href="/azure/architecture/reference-architectures/sharepoint">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="/azure/architecture/reference-architectures/sharepoint/images/sharepoint.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>在 Azure 上运行 SharePoint Server 2016</h3>
-                            <p>在 Azure 上部署和运行高可用性 SharePoint Server 2016 场。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- SAP -->
-    <li>
-        <a href="/azure/architecture/reference-architectures/sap">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="/azure/architecture/reference-architectures/sap/images/sap.svg" width="100%" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>在 Azure 上运行 SAP HANA</h3>
-                            <p>在 Azure 上的高可用性环境中部署和运行 SAP NetWeaver 与 SAP HANA。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
     <!-- Multitenant identity -->
     <li>
         <a href="/azure/architecture/multitenant-identity">
@@ -298,47 +259,7 @@ ms.lasthandoff: 04/06/2018
                         </div>
                         <div class="cardText">
                             <h3>多租户应用程序的标识管理</h3>
-                            <p>了解使用 Azure AD 进行标识管理时有关多租户的最佳做法。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- AzureCAT blog -->
-    <li>
-        <a href="https://blogs.msdn.microsoft.com/azurecat/">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/azurecat.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>Azure 客户顾问团队</h3>
-                            <p>AzureCAT 团队博客</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- SQL CAT blog -->
-    <li>
-        <a href="https://blogs.msdn.microsoft.com/sqlcat/">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/sqlcat.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>SQL Server 客户顾问团队</h3>
-                            <p>SQLCAT 团队博客</p>
+                            <p>关于基于 Azure AD 进行标识管理实现多租户的最佳实践。</p>
                         </div>
                     </div>
                 </div>

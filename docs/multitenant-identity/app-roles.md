@@ -6,11 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: signup
 pnp.series.next: authorize
-ms.openlocfilehash: a39c64f003c26f860086701dd988a8bb21fab5bf
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: ec563936e5f00aba79d65844762feeed97ad547d
+ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 05/21/2018
+ms.locfileid: "34422960"
 ---
 # <a name="application-roles"></a>应用程序角色
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 11/14/2017
 ### <a name="implementation"></a>实现
 **定义角色。** SaaS 提供程序可声明[应用程序清单]中的应用角色。 例如，以下是 Surveys 应用的清单条目：
 
-```
+```json
 "appRoles": [
   {
     "allowedMemberTypes": [
@@ -123,7 +124,7 @@ if (context.User.HasClaim(ClaimTypes.Role, "Admin")) { ... }
 ### <a name="implementation"></a>实现
 在应用程序清单中，将 `groupMembershipClaims` 属性设置为“SecurityGroup”。 从 AAD 获取组成员资格声明需要此属性。
 
-```
+```json
 {
    // ...
    "groupMembershipClaims": "SecurityGroup",

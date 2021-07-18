@@ -3,11 +3,12 @@ title: 网关路由模式
 description: 使用单个终结点将请求路由到多个服务。
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 53239b23cfd98fad1edc38ca37c2274d5a9d7a0f
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: ea0bc4d31b745043a7ac3afb277dfc46d87ff109
+ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35252594"
 ---
 # <a name="gateway-routing-pattern"></a>网关路由模式
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 11/14/2017
 
 ![](./_images/gateway-routing.png)
  
-这种模式允许管理向用户推出更新的方式，可以帮助进行部署。 部署了新版本的服务后，它可以与现有版本并行部署。 通过路由，你可以控制向客户端提供哪种版本的服务，能够灵活地使用各种发布策略，无论是递增、并行还是完整的推出更新都可以。 通过在网关上进行配置更改可以快速还原部署新服务后发现的任何问题，不会影响客户端。
+这种模式允许管理向用户推出更新的方式，可以帮助进行部署。 部署了新版本的服务后，它可以与现有版本并行部署。 通过路由，可以控制向客户端提供哪种版本的服务，能够灵活地使用各种发布策略，无论是递增、并行还是完整的推出更新都可以。 通过在网关上进行配置更改可以快速还原部署新服务后发现的任何问题，不会影响客户端。
 
 ## <a name="issues-and-considerations"></a>问题和注意事项
 

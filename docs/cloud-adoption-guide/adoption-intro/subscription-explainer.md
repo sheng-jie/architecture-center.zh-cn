@@ -7,6 +7,7 @@ ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29478300"
 ---
 # <a name="explainer-what-is-an-azure-subscription"></a>说明：什么是 Azure 订阅？
 
@@ -16,7 +17,7 @@ ms.lasthandoff: 02/23/2018
 
 Azure 实现了此控制，它名为**订阅**。 订阅将用户以及由这些用户创建的资源组合在一起。 其中每个资源都会导致该特定资源的[总体限制][subscription-service-limits]。
 
-组织可以使用订阅管理成本并通过用户、团队、项目或使用许多其他策略管理资源创建。 这些策略将在中间和高级采用阶段文章中进行讨论。 
+组织可以使用订阅管理成本并通过用户、团队、项目或使用许多其他策略管理资源创建。 这些策略将在中级和高级采用阶段文章中进行讨论。 
 
 ## <a name="next-steps"></a>后续步骤
 

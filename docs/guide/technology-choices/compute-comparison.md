@@ -2,13 +2,13 @@
 title: 选择 Azure 计算服务的条件
 description: 跨多个轴比较 Azure 计算服务
 author: MikeWasson
-layout: LandingPage
-ms.date: 04/21/2018
-ms.openlocfilehash: ff90ec41c56ae0ecb81bc82128f02fd06d02cb32
-ms.sourcegitcommit: d702b4d27e96e7a5a248dc4f2f0e25cf6e82c134
+ms.date: 06/13/2018
+ms.openlocfilehash: cc1ee00d768f46094a2115282aac80316d2ce273
+ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060772"
 ---
 # <a name="criteria-for-choosing-an-azure-compute-service"></a>选择 Azure 计算服务的条件
 
@@ -18,36 +18,36 @@ ms.lasthandoff: 04/23/2018
 
 | 条件 | 虚拟机 | 应用服务 | Service Fabric | Azure Functions | Azure 容器服务 | 容器实例 | Azure 批处理 |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
-| 应用程序组合 | 不可知 | 应用程序 | 服务、来宾可执行文件、容器 | 函数 | 容器 | 容器 | 计划的作业  |
-| 密度 | 不可知 | 通过应用计划，每个实例多个应用 | 每个 VM 多个服务 | 没有专用实例 <a href="#note1"><sup>1</sup></a> | 每个 VM 多个容器 |无专用实例 | 每个 VM 多个应用 |
-| 最小节点数 | 1 <a href="#note2"><sup>2</sup></a>  | 1 | 5 <a href="#note3"><sup>3</sup></a> | 没有专用节点 <a href="#note1"><sup>1</sup></a> | 3 | 无专用节点 | 1 <a href="#note4"><sup>4</sup></a> |
+| 应用程序组合 | 不可知 | 应用程序、容器 | 服务、来宾可执行文件、容器 | 函数 | 容器 | 容器 | 计划的作业  |
+| 密度 | 不可知 | 每个实例多个应用（遵循应用服务计划） | 每个 VM 多个服务 | 无服务器 <a href="#note1"><sup>1</sup></a> | 每个 VM 多个容器 |无专用实例 | 每个 VM 多个应用 |
+| 最小节点数 | 1 <a href="#note2"><sup>2</sup></a>  | 1 | 5 <a href="#note3"><sup>3</sup></a> | 无服务器 <a href="#note1"><sup>1</sup></a> | 3 | 无专用节点 | 1 <a href="#note4"><sup>4</sup></a> |
 | 状态管理 | 无状态或有状态 | 无状态 | 无状态或有状态 | 无状态 | 无状态或有状态 | 无状态 | 无状态 |
 | Web 托管 | 不可知 | 内置 | 不可知 | 不适用 | 不可知 | 不可知 | 否 |
-| 操作系统 | Windows、Linux | Windows、Linux  | Windows、Linux | 不适用 | Windows（预览版）、Linux | Windows、Linux | Windows、Linux |
-| 是否可部署到专用 VNet？ | 支持 | 受支持 <a href="#note5"><sup>5</sup></a> | 支持 | 不支持 | 支持 | 不支持 | 支持 |
-| 混合连接 | 支持 | 受支持 <a href="#note1"><sup>6</sup></a>  | 支持 | 不支持 | 支持 | 不支持 | 支持 |
+| 是否可部署到专用 VNet？ | 支持 | 支持<a href="#note5"><sup>5</sup></a> | 支持 | 受支持 <a href="#note5"><sup>5</sup></a> | 支持 | 不支持 | 支持 |
+| 混合连接 | 支持 | 受支持 <a href="#note6"><sup>6</sup></a>  | 支持 | 受支持 <a href="#node7"><sup>7</sup></a> | 支持 | 不支持 | 支持 |
 
 说明
 
-1. <span id="note1">如果使用消耗计划。 如果使用应用服务计划，Functions 在为应用服务计划分配的 VM 上运行。 请参阅[为 Azure Functions 选择正确的服务计划][function-plans]</a>
-2. <span id="note2">具有两个或多个实例的更高版本 SLA。</a>
-3. <span id="note3">对于生产环境。</a>
-4. <span id="note4">作业完成后可以缩小至零。</a>
-5. <span id="note5">需要应用服务环境 (ASE)。</a>
-6. <span id="note7">需要 ASE 或 BizTalk 混合连接</a>
+1. <span id="note1">如果使用消耗计划。如果使用应用服务计划，Functions 在为应用服务计划分配的 VM 上运行。请参阅[为 Azure Functions 选择正确的服务计划][function-plans]</span>
+2. <span id="note2">具有两个或多个实例的更高版本 SLA。</span>
+3. <span id="note3">对于生产环境。</span>
+4. <span id="note4">作业完成后可以缩小至零。</span>
+5. <span id="note5">需要应用服务环境 (ASE)。</span>
+6. <span id="note6">使用 [Azure 应用服务混合连接][app-service-hybrid]。</span>
+7. <span id="note7">需要应用服务计划。</span>
 
 ## <a name="devops"></a>DevOps
 
 | 条件 | 虚拟机 | 应用服务 | Service Fabric | Azure Functions | Azure 容器服务 | 容器实例 | Azure 批处理 |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
-| 本地调试 | 不可知 | IIS Express，其他<a href="#note1b"><sup>1</sup></a> | 本地节点群集 | Azure Functions CLI | 本地容器运行时 | 本地容器运行时 | 不支持 |
-| 编程模型 | 不可知 | Web 应用程序、后台任务的 Web 作业 | 来宾可执行文件、服务模型、参与者模型、容器 | 具有触发器的 Functions | 不可知 | 不可知 | 命令行应用程序 |
-| 应用程序更新 | 没有内置支持 | 部署槽 | 滚动升级（每个服务） | 没有内置支持 | 取决于业务流程协调程序。 大多数支持滚动更新 | 更新容器映像 | 不适用 |
+| 本地调试 | 不可知 | IIS Express，其他<a href="#note1b"><sup>1</sup></a> | 本地节点群集 | Visual Studio 或 Azure Functions CLI | 本地容器运行时 | 本地容器运行时 | 不支持 |
+| 编程模型 | 不可知 | Web 和 API 应用程序、后台任务的 WebJobs | 来宾可执行文件、服务模型、参与者模型、容器 | 具有触发器的 Functions | 不可知 | 不可知 | 命令行应用程序 |
+| 应用程序更新 | 没有内置支持 | 部署槽 | 滚动升级（每个服务） | 部署槽 | 取决于业务流程协调程序。 大多数支持滚动更新 | 更新容器映像 | 不适用 |
 
 说明
 
-1. <span id="note1b">选项包括 IIS Express for ASP.NET 或 node.js (iisnode)；PHP web 服务器；Azure Toolkit for IntelliJ，Azure Toolkit for Eclipse。 应用服务还支持对已部署的 web 应用进行远程调试。</a>
-2. <span id="note2b">请参阅[资源管理器提供程序、区域、API 版本和架构][resource-manager-supported-services]。 
+1. <span id="note1b">选项包括 IIS Express for ASP.NET 或 node.js (iisnode)；PHP web 服务器；Azure Toolkit for IntelliJ，Azure Toolkit for Eclipse。应用服务还支持对已部署的 web 应用进行远程调试。</span>
+2. <span id="note2b">请参阅[资源管理器提供程序、区域、API 版本和架构][resource-manager-supported-services]。</span> 
 
 
 ## <a name="scalability"></a>可伸缩性
@@ -56,12 +56,12 @@ ms.lasthandoff: 04/23/2018
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
 | 自动缩放 | VM 规模集 | 内置服务 | VM 规模集 | 内置服务 | 不支持 | 不支持 | 不适用 |
 | 负载均衡 | Azure 负载均衡器 | 集成 | Azure 负载均衡器 | 集成 | Azure 负载均衡器 |  没有内置支持 | Azure 负载均衡器 |
-| 缩放限制 | 平台映像：每个 VMSS 1000 个节点，自定义映像：每个 VMSS 100 个节点 | 20 个实例，应用服务环境为 50 | 每个 VMSS 100 个节点 | 无限 <a href="#note1c"><sup>1</sup></a> | 100 |每个订阅 20 个容器组 <a href="#note2c"><sup>2</sup></a> | 默认的核心限制为 20。 若要增加数目，请联系客户服务。 |
+| 缩放限制 | 平台映像：每个 VMSS 1000 个节点，自定义映像：每个 VMSS 100 个节点 | 20 个实例，应用服务环境为 100 个 | 每个 VMSS 100 个节点 | 每个 Function App 200 个实例 | 100 <a href="#note2c"><sup>1</sup></a> |每个订阅 20 个容器组（默认）。 若要增加数目，请联系客户服务。 <a href="#note3c"><sup>2</sup></a> | 默认的核心限制为 20。 若要增加数目，请联系客户服务。 |
 
 说明
 
-1. <span id="note1c">如果使用消耗计划。 如果使用应用服务计划，则应用服务缩放限制适用。 请参阅[为 Azure Functions 选择正确的服务计划][function-plans]</a>
-2. <span id="note2c">请参阅 [Azure 容器实例的配额和区域可用性](/azure/container-instances/container-instances-quotas)。</a>
+2. <span id="note1c">请参阅[在容器服务群集中缩放代理节点][scale-acs]</span>。
+3. <span id="note2c">请参阅 [Azure 容器实例的配额和区域可用性](/azure/container-instances/container-instances-quotas)。</span>
 
 
 ## <a name="availability"></a>可用性
@@ -75,9 +75,9 @@ ms.lasthandoff: 04/23/2018
 
 | 条件 | 虚拟机 | 应用服务 | Service Fabric | Azure Functions | Azure 容器服务 | 容器实例 | Azure 批处理 |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
-| SSL | 已在 VM 中配置 | 支持 | 支持  | 支持 | 已在 VM 中配置 | 不支持 | 支持 |
+| SSL | 已在 VM 中配置 | 支持 | 支持  | 支持 | 已在 VM 中配置 | 支持与挎斗容器一起使用 | 支持 |
 | 成本 | [Windows][cost-windows-vm][Linux][cost-linux-vm] | [应用服务定价][cost-app-service] | [Service Fabric 定价][cost-service-fabric] | [Azure Functions 定价][cost-functions] | [Azure 容器服务定价][cost-acs] | [容器实例定价](https://azure.microsoft.com/pricing/details/container-instances/) | [Azure 批处理定价][cost-batch]
-| 合适的体系结构样式 | N 层、大计算 (HPC) | Web-队列-辅助角色 | 微服务，事件驱动的体系结构 (EDA) | 微服务，EDA | 微服务，EDA | 微服务、任务自动化、批处理作业  | 大计算 |
+| 合适的体系结构样式 | [N 层][n-tier]、[大计算][big-compute] (HPC) | [Web-队列-辅助角色][w-q-w]、[N 层][n-tier] | [微服务][microservices]、[事件驱动型体系结构][event-driven] | [微服务][microservices]、[事件驱动型体系结构][event-driven] | [微服务][microservices]、[事件驱动型体系结构][event-driven] | [微服务][microservices]、任务自动化、批处理作业  | [大计算][big-compute] (HPC) |
 
 [cost-linux-vm]: https://azure.microsoft.com/pricing/details/virtual-machines/linux/
 [cost-windows-vm]: https://azure.microsoft.com/pricing/details/virtual-machines/windows/
@@ -96,3 +96,13 @@ ms.lasthandoff: 04/23/2018
 [sla-vm]: https://azure.microsoft.com/support/legal/sla/virtual-machines/
 
 [resource-manager-supported-services]: /azure/azure-resource-manager/resource-manager-supported-services
+[scale-acs]: /azure/container-service/kubernetes/container-service-scale#scaling-considerations
+
+[n-tier]: ../architecture-styles/n-tier.md
+[w-q-w]: ../architecture-styles/web-queue-worker.md
+[microservices]: ../architecture-styles/microservices.md
+[event-driven]: ../architecture-styles/event-driven.md
+[big-date]: ../architecture-styles/big-data.md
+[big-compute]: ../architecture-styles/big-compute.md
+
+[app-service-hybrid]: /azure/app-service/app-service-hybrid-connections

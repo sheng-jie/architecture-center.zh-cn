@@ -3,11 +3,12 @@ title: 选择实时消息引入技术
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 2e6578b779950b5ef11bda7b8ba1fb2e45e09f4e
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 5eaac023e28fc502e5a4e6ebc17e32832f7557c0
+ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/21/2018
+ms.locfileid: "34422977"
 ---
 # <a name="choosing-a-real-time-message-ingestion-technology-in-azure"></a>在 Azure 中选择实时消息引入技术
 
@@ -66,7 +67,7 @@ Kafka 的一些常见用例包括：
 | 设备启动的文件上传 | 是 | 否 | 否 |
 | 设备状态信息 | [设备孪生](/azure/iot-hub/iot-hub-devguide-device-twins) | 否 | 否 |
 | 协议支持 | MQTT、AMQP、HTTPS <sup>1</sup> | AMQP、HTTPS | [Kafka 协议](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol) |
-| “安全” | 每设备标识；可撤销的访问控制权限。 | 共享访问策略；通过发布者策略实现有限的撤销。 | 使用 SASL 的身份验证；可插拔身份验证；与受支持的外部身份验证服务集成。 |
+| 安全 | 每设备标识；可撤销的访问控制权限。 | 共享访问策略；通过发布者策略实现有限的撤销。 | 使用 SASL 的身份验证；可插拔身份验证；与受支持的外部身份验证服务集成。 |
 
 [1] 还可以使用 [Azure IoT 协议网关](/azure/iot-hub/iot-hub-protocol-gateway)作为自定义网关，来为 IoT 中心启用协议自适应。
 

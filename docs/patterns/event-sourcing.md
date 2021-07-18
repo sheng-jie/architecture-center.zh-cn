@@ -13,6 +13,7 @@ ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29963204"
 ---
 # <a name="event-sourcing-pattern"></a>事件溯源模式
 

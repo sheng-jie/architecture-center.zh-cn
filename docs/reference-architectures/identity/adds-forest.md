@@ -5,16 +5,17 @@ description: >-
 
   指南,vpn 网关,ExpressRoute,负载均衡器,虚拟网络,active-directory
 author: telmosampaio
-ms.date: 11/28/2016
+ms.date: 05/02/2018
 pnp.series.title: Identity management
 pnp.series.prev: adds-extend-domain
 pnp.series.next: adfs
 cardTitle: Create an AD DS forest in Azure
-ms.openlocfilehash: e32a6420821e70c84e77d2c39614f0c45efbb7e2
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 64253d900dbce9966aa76d99d758bfb581b9df5f
+ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39352604"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>在 Azure 中创建 Active Directory 域服务 (AD DS) 资源林
 
@@ -60,7 +61,7 @@ Active Directory 域服务 (AD DS) 以分层结构存储标识信息。 分层�
 
 下表总结了一些简单方案的信任配置：
 
-| 方案 | 本地信任 | 云信任 |
+| 场景 | 本地信任 | 云信任 |
 | --- | --- | --- |
 | 本地用户需要访问云中的资源，但云中的用户不需要访问本地资源 |单向、传入 |单向、传出 |
 | 云中的用户需要访问本地资源，本地用户不需要访问云中的资源 |单向、传出 |单向、传入 |
@@ -90,51 +91,61 @@ Active Directory 能够针对属于同一域的域控制器自动进行缩放。
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[GitHub][github] 上提供了一个用于部署此参考体系结构的解决方案。 若要运行部署此解决方案的 Powershell 脚本，需要具有 Azure CLI 的最新版本。 若要部署此参考体系结构，请执行以下步骤：
+[GitHub][github] 上提供了此体系结构的部署。 请注意，整个部署最长可能需要花费两个小时，包括创建 VPN 网关和运行配置 AD DS 的脚本。
 
-1. 将解决方案文件夹从 [GitHub][github] 克隆到本地计算机。
+### <a name="prerequisites"></a>先决条件
 
-2. 打开 Azure CLI 并导航到本地解决方案文件夹。
+[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
 
-3. 运行以下命令：
-   
-    ```Powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>
+### <a name="deploy-the-simulated-on-premises-datacenter"></a>部署模拟的本地数据中心
+
+1. 导航到 GitHub 存储库的 `identity/adds-forest` 文件夹。
+
+2. 打开 `onprem.json` 文件。 搜索 `adminPassword` 和 `Password` 的实例并添加密码值。
+
+3. 运行以下命令，并等待部署完成：
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onprem.json --deploy
     ```
-   
-    将 `<subscription id>` 替换为你的 Azure 订阅 ID。
-   
-    对于 `<location>`，请指定一个 Azure 区域，例如 `eastus` 或 `westus`。
-   
-    `<mode>` 参数控制部署粒度，可以是下列值之一：
-   
-   * `Onpremise`：部署模拟的本地环境。
-   * `Infrastructure`：在 Azure 中部署 VNet 基础结构和 jumpbox。
-   * `CreateVpn`：部署 Azure 虚拟网络网关并将其连接到模拟的本地网络。
-   * `AzureADDS`：部署充当 Active Directory DS 服务器的 VM，将 Active Directory 部署到这些 VM，并在 Azure 中部署域。
-   * `WebTier`：部署 Web 层 VM 和负载均衡器。
-   * `Prepare`：部署上述所有部署。 **如果没有现有的本地网络，但是希望如上所述部署完整的参考体系结构以用于测试或评估，则这是建议使用的选项。** 
-   * `Workload`：部署业务和数据层 VM 和负载均衡器。 注意，`Prepare` 部署中未包括这些 VM。
 
-4. 等待部署完成。 如果要部署 `Prepare` 部署，则将需要花费几个小时。
-     
-5. 如果使用模拟的本地配置，请配置传入信任关系：
-   
-   1. 连接到 jumpbox（<em>ra-adtrust-security-rg</em> 资源组中的 <em>ra-adtrust-mgmt-vm1</em>）。 以 <em>testuser</em> 身份和密码 <em>AweS0me@PW</em> 登录。
-   2. 在 jumpbox 上，在 <em>contoso.com</em> 域（本地域）中的第一个 VM 上打开一个 RDP 会话。 此 VM 具有 IP 地址 192.168.0.4。 用户名为 <em>contoso\testuser</em>，密码为 <em>AweS0me@PW</em>。
-   3. 下载 [incoming-trust.ps1][incoming-trust] 脚本并运行它来创建来自 *treyresearch.com* 域的传入信任。
+### <a name="deploy-the-azure-vnet"></a>部署 Azure VNet
 
-6. 如果你使用自己的本地基础结构：
-   
-   1. 则下载 [incoming-trust.ps1][incoming-trust] 脚本。
-   2. 编辑脚本并将 `$TrustedDomainName` 变量的值替换为你自己的域的值。
-   3. 运行该脚本。
+1. 打开 `azure.json` 文件。 搜索 `adminPassword` 和 `Password` 的实例并添加密码值。
 
-7. 从 jumpbox 中，连接到 <em>treyresearch.com</em> 域（云中的域）中的第一个 VM。 此 VM 具有 IP 地址 10.0.4.4。 用户名为 <em>treyresearch\testuser</em>，密码为 <em>AweS0me@PW</em>。
+2. 在同一文件中，搜索 `sharedKey` 的实例并输入 VPN 连接的共享密钥。 
 
-8. 下载 [outgoing-trust.ps1][outgoing-trust] 脚本并运行它来创建来自 *treyresearch.com* 域的传入信任。 如果你在使用自己的本地计算机，请先编辑该脚本。 将 `$TrustedDomainName` 变量设置为你的本地域的名称，在 `$TrustedDomainDnsIpAddresses` 变量中指定此域的 Active Directory DS 服务器的 IP 地址。
+    ```bash
+    "sharedKey": "",
+    ```
 
-9. 等待几分钟时间，直到前面的步骤完成，然后连接到本地 VM 并执行[验证信任][verify-a-trust]一文中列出的步骤来确定是否正确配置了 *contoso.com* 与 *treyresearch.com* 域之间的信任关系。
+3. 运行以下命令并等待部署完成。
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onoprem.json --deploy
+    ```
+
+   部署到本地 VNet 所在的同一个资源组。
+
+
+### <a name="test-the-ad-trust-relation"></a>测试 AD 信任关系
+
+1. 使用 Azure 门户导航到已创建的资源组。
+
+2. 使用 Azure 门户找到名为 `ra-adt-mgmt-vm1` 的 VM。
+
+2. 单击 `Connect` 来与 VM 建立远程桌面会话。 用户名为 `contoso\testuser`，密码为 `onprem.json` 参数文件中指定的密码。
+
+3. 在远程桌面会话中，与 192.168.0.4（名为 `ra-adtrust-onpremise-ad-vm1` 的 VM 的 IP 地址）建立另一个远程桌面会话。 用户名为 `contoso\testuser`，密码为 `azure.json` 参数文件中指定的密码。
+
+4. 在 `ra-adtrust-onpremise-ad-vm1` 的远程桌面会话中转到“服务器管理器”，然后单击“工具” > “Active Directory 域和信任”。 
+
+5. 在左窗格中右键单击“contoso.com”，然后选择“属性”。
+
+6. 单击“信任”选项卡。此时会看到 treyresearch.net 作为传入信任列出。
+
+![](./images/ad-forest-trust.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -144,6 +155,8 @@ Active Directory 能够针对属于同一域的域控制器自动进行缩放。
 <!-- links -->
 [adds-extend-domain]: adds-extend-domain.md
 [adfs]: adfs.md
+[azure-cli-2]: /azure/install-azure-cli
+[azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 
 [implementing-a-secure-hybrid-network-architecture]: ../dmz/secure-vnet-hybrid.md
 [implementing-a-secure-hybrid-network-architecture-with-internet-access]: ../dmz/secure-vnet-dmz.md
@@ -158,7 +171,7 @@ Active Directory 能够针对属于同一域的域控制器自动进行缩放。
 [creating-forest-trusts]: https://technet.microsoft.com/library/cc816810(v=ws.10).aspx
 [github]: https://github.com/mspnp/reference-architectures/tree/master/identity/adds-forest
 [incoming-trust]: https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/adds-forest/extensions/incoming-trust.ps1
-[microsoft_systems_center]: https://www.microsoft.com/server-cloud/products/system-center-2016/
+[microsoft_systems_center]: https://microsoft.com/cloud-platform/system-center
 [monitoring_ad]: https://msdn.microsoft.com/library/bb727046.aspx
 [resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview
 [solution-script]: https://raw.githubusercontent.com/mspnp/reference-architectures/master/identity/adds-forest/Deploy-ReferenceArchitecture.ps1

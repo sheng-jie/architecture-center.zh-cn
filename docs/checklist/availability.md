@@ -4,11 +4,12 @@ description: 为设计过程中的可用性考虑因素提供指导的核对清�
 author: dragon119
 ms.date: 01/10/2018
 ms.custom: checklist
-ms.openlocfilehash: 324d8200d822eb1a7dce95ba4b2a7f29b00fb291
-ms.sourcegitcommit: 441185360db49cfb3cf39527b68f318d17d4cb3d
+ms.openlocfilehash: cea5baf8c37bf793c5de60f6c2be809629df072b
+ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39352621"
 ---
 # <a name="availability-checklist"></a>可用性核对清单
 
@@ -20,7 +21,7 @@ ms.lasthandoff: 01/19/2018
 
 **根据服务级别目标解构工作负荷。** 如果服务由重要和比较不重要的工作负荷组成，请以不同的方式进行管理，并指定服务功能和实例数，以符合其可用性要求。
 
-**最小化和了解服务依赖项。** 尽可能将使用过的不同服务数降到最低，并确保了解所有存在于系统中的功能和服务依赖项， 包括这些依赖项的性质、失败造成的影响，或整个应用程序上每个服务降低的性能。 请参阅[定义复原要求](../resiliency/index.md#defining-your-resiliency-requirements)。
+**最小化和了解服务依赖项。** 尽可能将使用过的不同服务数降到最低，并确保了解所有存在于系统中的功能和服务依赖项， 包括这些依赖项的性质、失败造成的影响，或整个应用程序上每个服务降低的性能。
 
 **尽量设计幂等的任务和消息**。 如果某个操作可以重复多次且生成相同的结果，则该操作是幂等的。 幂等性可以确保重复的请求不会导致问题。 消息使用者与它们执行的操作应该具有幂等性，以便重复以前执行的操作不会使结果无效。 这可能意味着要检测重复消息或使用乐观方法来处理冲突以确保一致性。
 

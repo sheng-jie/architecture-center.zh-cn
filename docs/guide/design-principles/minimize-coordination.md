@@ -2,12 +2,12 @@
 title: 最大程度减少协调
 description: 最大程度减少应用程序服务之间的协调以获得可伸缩性
 author: MikeWasson
-layout: LandingPage
-ms.openlocfilehash: 3cab05b539612234fd8e66517b140ac5257c3e70
-ms.sourcegitcommit: a7aae13569e165d4e768ce0aaaac154ba612934f
+ms.openlocfilehash: f26222148db2b48743c52293011ea0a5a58ebe07
+ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36206523"
 ---
 # <a name="minimize-coordination"></a>最大程度减少协调 
 
